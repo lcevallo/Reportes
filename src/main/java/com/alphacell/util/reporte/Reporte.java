@@ -14,6 +14,7 @@ import java.util.Locale;
 
 /**
  * Created by luis on 12/05/16.
+ * Esta clase me sirve para crear reportes en pdf y en excel
  */
 public class Reporte {
 
