@@ -1,0 +1,79 @@
+<ui:composition template="/WEB-INF/template/LayoutMaestro.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	<ui:define name="titulo">Reporte de Ventas</ui:define>
+        
+
+	<ui:define name="cuerpo">
+
+
+        <h1>Buscar</h1>
+		<p:toolbar style="margin-top: 20px">
+			<p:toolbarGroup>
+				<p:button value="Nuevo" />
+				<p:commandButton value="Buscar" id="botonBuscarReporteVentas" />
+			</p:toolbarGroup>
+
+			<p:toolbarGroup align="right">
+				<p:button value="Generar" />
+			</p:toolbarGroup>
+		</p:toolbar>
+
+        <h:form id="ventasForm">
+
+		<p:panelGrid columns="2" id="panelBusqueda">
+			<p:outputLabel value="Fecha Inicial" for="fechaInicial" />
+            <p:calendar id="fechaInicial" required="true" pattern="dd/MM/yyyy" navigator="true"
+                        value="#{ventasBean.fechaInicial}"  locale="es" />
+
+            <p:outputLabel value="Fecha Final" for="fechaFinal" />
+            <p:calendar id="fechaFinal" required="true" pattern="dd/MM/yyyy" navigator="true"
+                        value="#{ventasBean.fechaFinal}"  locale="es" />
+		</p:panelGrid>
+
+
+        <p:dataTable id="produtosTable" value="#{ventasBean.listaAlphaFacturaView}" var="factura"
+                     resizableColumns="true"
+                     draggableColumns="true"
+                     selection="#{ventasBean.jpaAlphafactuview}"
+                     style="margin-top: 20px" emptyMessage="Ninguna factura encontrada." rows="20"
+                     paginator="true" paginatorAlwaysVisible="false" paginatorPosition="bottom"
+
+        >
+
+            <p:column headerText="No" style="text-align: center; width: 100px">
+                <h:outputText value="#{factura.sno}" />
+            </p:column>
+            <p:column headerText="Cod Item">
+                <h:outputText value="#{factura.codItem}" />
+            </p:column>
+            <p:column headerText="Descripcion" style="width: 250px">
+                <h:outputText value="#{factura.descripcion}"/>
+            </p:column>
+            <p:column headerText="Fecha Factura" style="width: 250px">
+                <h:outputText value="#{factura.fechaFac}"/>
+            </p:column>
+            <p:column headerText="No Doc" style="width: 250px">
+                <h:outputText value="#{factura.noDoc}"/>
+            </p:column>
+            <p:column headerText="Cod Cliente" style="width: 250px">
+                <h:outputText value="#{factura.codCliente}"/>
+            </p:column>
+            <p:column headerText="Cliente" style="width: 250px">
+                <h:outputText value="#{factura.nombCliente}"/>
+            </p:column>
+            <p:column headerText="Cantidad" style="width: 100px">
+                <h:outputText value="#{factura.qty}"/>
+            </p:column>
+            <p:column headerText="Valor unitário" style="text-align: right; width: 120px">
+                <h:outputText value="#{factura.precioUnitario}" />
+            </p:column>
+
+        </p:dataTable>
+
+        </h:form>
+	</ui:define>
+</ui:composition>

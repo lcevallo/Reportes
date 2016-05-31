@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui"
+      xmlns:pe="http://primefaces.org/ui/extensions"
+>
+
+<h:body>
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet library="css" name="sistema.css" />
+    </h:head>
+    <p:dialog header="Informacion del Cobro" modal="true" showEffect="fade"
+              hideEffect="fade" widgetVar="cxcFlujoDialogWidget" width="40%"
+              position="top" appendToBody="false" draggable="false"
+              resizable="true" id="cxcFlujoDialog">
+        <h:form id="fmrxlsCxcFlujoDetalle">
+        <p:panelGrid columns="2">
+
+            <p:outputLabel for="xlsCxcFlujoDetalleTbl" value="Dercargar Excel"/>
+
+
+            <h:commandLink id="xlsCxcFlujoDetalleTbl" >
+                <p:graphicImage  library="images" name="excel.png"  width="24"/>
+                <p:dataExporter type="xls" target="cxcFlujoDetalleTbl" fileName="cxcFlujoDetalle"
+                                postProcessor="#{cxCFlujoDetalleBean.postProcessXLS}"
+                                encoding="UTF-8" />
+
+            </h:commandLink>
+
+
+        </p:panelGrid>
+
+        <p:dataTable id="cxcFlujoDetalleTbl" var="cxcFlujoDetalleRecord"
+                     value="#{cxCFlujoDetalleBean.tablaflujosList}" paginatorPosition="top"
+                     paginator="true" rows="6">
+
+            <f:facet name="header">
+              <h:outputLabel
+                    value="#{cxCFlujoDetalleBean.nombreCliente}" />
+                <br />
+                <h:outputLabel value="#{cxCFlujoDetalleBean.deuda}">
+                    <f:convertNumber type="currency" currencySymbol="$" />
+                </h:outputLabel>
+            </f:facet>
+
+            <p:column headerText="Fact" style="width:35px">
+                <h:outputText value="#{cxcFlujoDetalleRecord.invoice}" />
+            </p:column>
+
+            <p:column headerText="TIPO" style="width:30px">
+                <h:outputText value="#{cxcFlujoDetalleRecord.tipo}" />
+            </p:column>
+
+            <p:column headerText="FECH VENC." style="width:10px">
+                <h:outputText value="#{cxcFlujoDetalleRecord.dueDate}" >
+                <f:convertDateTime dateStyle="full" pattern="MM/dd/yyyy" timeZone="EST" type="date" />
+                </h:outputText>
+            </p:column>
+
+            <p:column headerText="SEMANA" style="width:10px">
+                <h:outputText value="#{cxcFlujoDetalleRecord.semana}" />
+             </p:column>
+
+            <p:column headerText="VALOR" style="width:20px">
+                <h:outputText value="#{cxcFlujoDetalleRecord.amountCur}" >
+                    <f:convertNumber type="currency" currencySymbol="$" />
+                </h:outputText>
+            </p:column>
+
+        </p:dataTable>
+</h:form>
+            </p:dialog>
+
+
+</h:body>
+
+</html>

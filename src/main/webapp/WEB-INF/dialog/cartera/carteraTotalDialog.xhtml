@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui"
+      xmlns:pe="http://primefaces.org/ui/extensions"
+>
+
+<h:body>
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet library="css" name="sistema.css" />
+    </h:head>
+    <p:dialog header="Informacion de Deuda del Cliente" modal="true" showEffect="fade"
+              hideEffect="fade" widgetVar="cartertaTotalDialogWidget" width="40%"
+              position="top" appendToBody="false" draggable="false"
+              resizable="true" id="cartertaTotalDialog">
+
+        <h:form id="fmrcartertaTotalDetalle">
+        <p:panelGrid columns="2">
+
+            <p:outputLabel for="xlsCartertaTotalDetalle" value="Dercargar Excel"/>
+
+
+            <h:commandLink  id="xlsCartertaTotalDetalle" >
+                <p:graphicImage  library="images" name="excel.png"  width="24"/>
+                <p:dataExporter type="xls" target="cartertaTotalDetalleTbl" fileName="cartertaTotalDetalle"
+                                postProcessor="#{carteraTotalDetalleBean.postProcessXLS}"
+                                encoding="UTF-8" />
+
+            </h:commandLink>
+
+        </p:panelGrid>
+
+        <p:dataTable id="cartertaTotalDetalleTbl" var="cartertaTotalDetalleRecord"
+                     value="#{carteraTotalDetalleBean.tmpCarteraTotalXTramo1List}" paginatorPosition="top"
+                     paginator="true" rows="6">
+
+            <f:facet name="header">
+                <h:outputLabel
+                        value="#{carteraTotalDetalleBean.nombreCliente}" />
+                <br />
+                <h:outputLabel value="#{carteraTotalDetalleBean.valorTotalDeuda}">
+                    <f:convertNumber pattern="¤#,##0.00" />
+                </h:outputLabel>
+            </f:facet>
+
+            <p:column headerText="Doc." style="width:40px">
+                <h:outputText value="#{cartertaTotalDetalleRecord.invoice}" />
+            </p:column>
+
+            <p:column headerText="Diario" style="width:40px">
+                <h:outputText value="#{cartertaTotalDetalleRecord.voucher}" />
+            </p:column>
+
+            <p:column headerText="FECH REGISTRO." style="width:35px">
+                <h:outputText value="#{cartertaTotalDetalleRecord.transdate}" >
+                    <f:convertDateTime dateStyle="full" pattern="MM/dd/yyyy" timeZone="EST" type="date" />
+                </h:outputText>
+            </p:column>
+
+            <p:column headerText="Dias x Vencer" style="width:20px">
+                <h:outputText value="#{cartertaTotalDetalleRecord.diasVencido}" >
+                    <f:convertNumber  />
+                </h:outputText>
+            </p:column>
+
+            <p:column headerText="VALOR" style="width:20px">
+                <h:outputText value="#{cartertaTotalDetalleRecord.amountcur}" >
+                    <f:convertNumber pattern="¤#,##0.00" />
+                </h:outputText>
+            </p:column>
+
+        </p:dataTable>
+</h:form>
+    </p:dialog>
+
+</h:body>
+
+</html>

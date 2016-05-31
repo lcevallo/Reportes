@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="ReportesPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+    <class>com.alphacell.model.Semanatemp</class>
+    <class>com.alphacell.model.cartera.ComportamientoPivote</class>
+    <class>com.alphacell.model.cartera.Historialprotesto</class>
+    <class>com.alphacell.model.cartera.JpaAlphaLimitecredito</class>
+    <class>com.alphacell.model.cartera.TablaCxcpivote</class>
+    <class>com.alphacell.model.cartera.TmpCarteraTotalPvt</class>
+    <class>com.alphacell.model.cartera.TmpCarteraTotalXTramo1</class>
+    <class>com.alphacell.model.cartera.TmpPvtHistorialProtestoAfter</class>
+    <class>com.alphacell.model.financiero.JpaAlphafactuview</class>
+    <class>com.alphacell.model.financiero.LcVistaProveedoresAlpha</class>
+    <class>com.alphacell.model.financiero.Tablaflujo</class>
+    <class>com.alphacell.model.financiero.TblReporteVentas</class>
+    <class>com.alphacell.model.financiero.LcTblCxp</class>
+    <class>com.alphacell.model.financiero.Tmppivotcxp</class>
+    <class>com.alphacell.model.cartera.Tmpcxccomportamientodetalle</class>
+    <class>com.alphacell.model.cartera.Tmpcxccomportamientooffsetrecid</class>
+    <properties>
+      <!-- <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://localhost\MSSQLSERVER:1433;databaseName=Produccion" /> -->
+      <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://192.168.10.21\MSSQLSERVER:1433;databaseName=Produccion"/>
+      <property name="javax.persistence.jdbc.user" value="sa"/>
+      <property name="javax.persistence.jdbc.password" value="...Alpha.2015"/>
+      <property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+      <property name="hibernate.hbm2ddl.auto" value="update"/>
+      <property name="hibernate.show_sql" value="true"/>
+      <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServer2012Dialect"/>
+    </properties>
+  </persistence-unit>
+</persistence>

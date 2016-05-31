@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CXCComportamientoPagoPivote" pageWidth="2450" pageHeight="612" orientation="Landscape" columnWidth="2410" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" whenResourceMissingType="Error" isIgnorePagination="true" uuid="d7c02431-6819-4170-a3f1-aa594ec16f01">
+	<property name="net.sf.jasperreports.export.xls.detect.cell.type" value="true"/>
+    <property name="com.jaspersoft.studio.data.defaultdataadapter" value="Produccion"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="DtsetCxC" uuid="01a396a0-1438-4ddb-b2cf-edbd625c7b67">
+		<queryString>
+			<![CDATA[Exec dbo.LC_COMPORTAMIENTOPAGO]]>
+		</queryString>
+		<field name="ID" class="java.lang.Integer"/>
+		<field name="ACCOUNTNUM" class="java.lang.String"/>
+		<field name="NOMBRE_CLIENTE" class="java.lang.String"/>
+		<field name="INVOICE" class="java.lang.String"/>
+		<field name="VOUCHER" class="java.lang.String"/>
+		<field name="AMOUNTCUR" class="java.math.BigDecimal"/>
+		<field name="DEBE" class="java.math.BigDecimal"/>
+		<field name="PAGADA" class="java.lang.String"/>
+		<field name="TRANSDATE" class="java.sql.Timestamp"/>
+		<field name="fechas30P" class="java.sql.Date"/>
+		<field name="fechas30C" class="java.sql.Date"/>
+		<field name="fechas30DT" class="java.lang.Integer"/>
+		<field name="fechas45P" class="java.sql.Date"/>
+		<field name="fechas45C" class="java.sql.Date"/>
+		<field name="fechas45DT" class="java.lang.Integer"/>
+		<field name="fechas60P" class="java.sql.Date"/>
+		<field name="fechas60C" class="java.sql.Date"/>
+		<field name="fechas60DT" class="java.lang.Integer"/>
+		<field name="fechas90P" class="java.sql.Date"/>
+		<field name="fechas90C" class="java.sql.Date"/>
+		<field name="fechas90DT" class="java.lang.Integer"/>
+		<field name="fechas120P" class="java.sql.Date"/>
+		<field name="fechas120C" class="java.sql.Date"/>
+		<field name="fechas120DT" class="java.lang.Integer"/>
+		<field name="fechas150P" class="java.sql.Date"/>
+		<field name="fechas150C" class="java.sql.Date"/>
+		<field name="fechas150DT" class="java.lang.Integer"/>
+	</subDataset>
+	<queryString>
+		<![CDATA[Select 1]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="256" splitType="Stretch">
+			<componentElement>
+				<reportElement x="0" y="0" width="2430" height="256" uuid="310dd470-837a-498e-b70c-63daf7a00a84"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="DtsetCxC" uuid="f96540c2-7512-4aa8-b724-d4add18584ad">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="80" uuid="b65ffa0c-ce91-44a2-a8db-9f2ef766add3">
+						<property name="local_mesure_unitwidth" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="80" height="30" uuid="c4d45967-e1a0-4f5d-ad5a-4fa403c5be6d"/>
+								<text><![CDATA[ACCOUNTNUM]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="80" height="30" uuid="8ed4b1b1-a7a1-4867-8b3d-768d0dcf913d"/>
+								<textFieldExpression><![CDATA[$F{ACCOUNTNUM}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="250" uuid="5f0432db-7cf7-407f-860c-f0311744ce0a">
+						<property name="local_mesure_unitwidth" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="250" height="30" uuid="f28d9bdb-b74f-4c0e-aebf-2a7fa9c6c61a"/>
+								<text><![CDATA[NOMBRE_CLIENTE]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="250" height="30" uuid="b3154636-dcea-48ef-86bd-ed025e40570a"/>
+								<textFieldExpression><![CDATA[$F{NOMBRE_CLIENTE}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="100" uuid="88ef98dd-ca58-4fc5-b03c-1e1d043332cb">
+						<property name="local_mesure_unitwidth" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="100" height="30" uuid="4b8440b7-f5c7-4919-aaf4-730fade1a9e2"/>
+								<text><![CDATA[FACTURA]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="100" height="30" uuid="52372823-c561-4a9d-ab77-61d8f3d07658"/>
+								<textFieldExpression><![CDATA[$F{INVOICE}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="100" uuid="3e84ce20-4019-4391-ac39-5924dbb3a589">
+						<property name="local_mesure_unitwidth" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="100" height="30" uuid="1f8ebaae-573f-42e6-88ff-611f10d9c818"/>
+								<text><![CDATA[DIARIO]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="100" height="30" uuid="c10035e8-cd07-4eb4-9dae-357a1e2d73a5"/>
+								<textFieldExpression><![CDATA[$F{VOUCHER}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="110" uuid="d73bc236-f200-4b2f-82da-bc40c40ebb87">
+						<property name="local_mesure_unitwidth" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="110" height="30" uuid="58eb8e3b-04b8-4cf5-8028-c5458d9ca72e"/>
+								<text><![CDATA[VALOR]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField pattern="###0.00;-###0.00" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="110" height="30" uuid="a0d41fbb-0eea-4f35-924f-025a8e8791bd"/>
+								<textFieldExpression><![CDATA[$F{AMOUNTCUR}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="110" uuid="aabb41ab-afa0-4f04-a709-33527418e364">
+						<property name="local_mesure_unitwidth" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="110" height="30" uuid="a3bf4d74-702a-43ec-b006-0b6cb0d4581b"/>
+								<text><![CDATA[DEBE]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField pattern="###0.00;-###0.00" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="110" height="30" uuid="0da135d5-a2e9-4c30-b490-944ec6834a34"/>
+								<textFieldExpression><![CDATA[$F{DEBE}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="70" uuid="be0d5f11-070c-43b6-b89f-563ea19fa4b8">
+						<property name="local_mesure_unitwidth" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="70" height="30" uuid="28676776-1c26-4957-8527-ffa6a33d49de"/>
+								<text><![CDATA[PAGADA]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="70" height="30" uuid="0b6721b9-dae7-4c0d-b9d3-b6c9a732fa9c"/>
+								<textFieldExpression><![CDATA[$F{PAGADA}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="80" uuid="d644e278-d99d-4e71-9113-41dfa9839349">
+						<property name="local_mesure_unitwidth" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="80" height="30" uuid="5f7693dc-ce4f-40ec-9f1f-22a29ec6b0e7"/>
+								<text><![CDATA[FECH. EMISION]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField pattern="yyyy-MM-dd" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="80" height="30" uuid="c97100f5-2862-45ad-ad03-4eefea06b6ce"/>
+								<textFieldExpression><![CDATA[$F{TRANSDATE}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="85" uuid="ac3799cf-deb1-40a4-948c-6dcf1e16795b">
+						<property name="local_mesure_unitwidth" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="85" height="30" uuid="cfb55174-7a3e-4939-a84b-1bbc963f1f2a"/>
+								<text><![CDATA[Fecha Pago 30]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField pattern="yyyy-MM-dd" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="85" height="30" uuid="ed9a44da-4a8c-4843-b640-89a5dc3ec130"/>
+								<textFieldExpression><![CDATA[$F{fechas30P}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="85" uuid="4aa1164f-22be-434c-bb23-957ab1440521">
+						<property name="local_mesure_unitwidth" value="pixel"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="85" height="30" uuid="c3541bc3-e827-4a7f-b662-1ba33e15caa6"/>
+								<text><![CDATA[Fecha cobro 30]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField pattern="yyyy-MM-dd" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="85" height="30" uuid="51a94fb0-d99b-483d-a383-3f0dfeeeadb4"/>
+								<textFieldExpression><![CDATA[$F{fechas30C}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="85" uuid="b033cddd-8bf1-4d78-a067-b538fb6e2771">
+						<property name="local_mesure_unitwidth" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="85" height="30" uuid="a4f2376a-ca29-4ca1-a9f8-0e10b5f26cd8"/>
+								<text><![CDATA[Dias Tomados]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField pattern="-##0" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="85" height="30" uuid="3407761a-8d3e-467f-9be9-97b75415f93e"/>
+								<textFieldExpression><![CDATA[$F{fechas30DT}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="85" uuid="29def0a2-9243-41f4-b189-e18181fcbbb6">
+						<property name="local_mesure_unitwidth" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="85" height="30" uuid="249c23b6-5bd2-479b-8c77-46ffab233d03"/>
+								<text><![CDATA[Fecha Pago 45]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField pattern="yyyy-MM-dd" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="85" height="30" uuid="4708dd00-79c7-4348-a2bf-5e1b491d7bd8"/>
+								<textFieldExpression><![CDATA[$F{fechas45P}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="85" uuid="a8cb1c9a-e0f8-4d6d-92d4-07c571aea7f4">
+						<property name="local_mesure_unitwidth" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="85" height="30" uuid="d58ffc19-bcca-4303-9347-0b45cd38775c"/>
+								<text><![CDATA[Fecha Cobro 45]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField pattern="yyyy-MM-dd" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="85" height="30" uuid="64723291-36b4-40dd-b844-ea1fda35655d"/>
+								<textFieldExpression><![CDATA[$F{fechas45C}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="85" uuid="844d04ec-446a-49d5-bb9d-462ce40f931d">
+						<property name="local_mesure_unitwidth" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="85" height="30" uuid="3e237213-68e1-4c3d-b922-95727fe61122"/>
+								<text><![CDATA[Dias Tomados]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField pattern="-##0" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="85" height="30" uuid="4577be3f-4cd3-4bdb-982d-1d533ca801c6"/>
+								<textFieldExpression><![CDATA[$F{fechas45DT}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="85" uuid="3ff300b5-7b9d-42cc-9270-de59c74463c9">
+						<property name="local_mesure_unitwidth" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="85" height="30" uuid="d05986de-b42e-4886-b624-d2754614f773"/>
+								<text><![CDATA[Fecha Pago 60]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField pattern="yyyy-MM-dd" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="85" height="30" uuid="4ea845ae-3c75-436d-9a65-8510588fe24a"/>
+								<textFieldExpression><![CDATA[$F{fechas60P}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="85" uuid="d2d48e83-6087-4405-9696-9801b0c97cfc">
+						<property name="local_mesure_unitwidth" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="85" height="30" uuid="8f1fed08-398c-4d57-983f-44fac6707c53"/>
+								<text><![CDATA[Fecha Cobro 60]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField pattern="yyyy-MM-dd" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="85" height="30" uuid="5d9fda9f-7a00-4361-bf53-98f6f6d37e0f"/>
+								<textFieldExpression><![CDATA[$F{fechas60C}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="85" uuid="5d5a4571-5599-4af4-b223-c702673fa72b">
+						<property name="local_mesure_unitwidth" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="85" height="30" uuid="f14ca4fa-a9bc-48f9-a739-58475d07466b"/>
+								<text><![CDATA[Dias Tomados]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField pattern="-##0" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="85" height="30" uuid="6c9fafc3-870f-4692-839f-34d0fceaeb2f"/>
+								<textFieldExpression><![CDATA[$F{fechas60DT}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="85" uuid="f39019ba-80b0-43f9-bce2-20514649427e">
+						<property name="local_mesure_unitwidth" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="85" height="30" uuid="4a8be5df-1bed-4fc9-8113-da90bb583a64"/>
+								<text><![CDATA[Fecha Pago 90]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField pattern="yyyy-MM-dd" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="85" height="30" uuid="4bed3bb7-b68f-4d5c-bf31-3f1cb1456c92"/>
+								<textFieldExpression><![CDATA[$F{fechas90P}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="85" uuid="0a837e9a-1f18-4d10-9fcb-80780396a592">
+						<property name="local_mesure_unitwidth" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="85" height="30" uuid="57675f04-b8a1-4b94-ad4a-28f2547352a5"/>
+								<text><![CDATA[Fecha Cobro 90]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField pattern="yyyy-MM-dd" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="85" height="30" uuid="19ca80f0-577b-41a0-805c-92cd09c2616e"/>
+								<textFieldExpression><![CDATA[$F{fechas90C}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="85" uuid="b2ed0cc8-731d-4db1-ace6-21ad6fce4e32">
+						<property name="local_mesure_unitwidth" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="85" height="30" uuid="a776c28f-b4af-4593-8112-cf28e051fc12"/>
+								<text><![CDATA[Dias Tomados]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField pattern="-##0" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="85" height="30" uuid="1633fec3-db34-4ca1-80e4-3da0082d99a4"/>
+								<textFieldExpression><![CDATA[$F{fechas90DT}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="85" uuid="a1d99f18-44d8-4645-85f0-44af1e671279">
+						<property name="local_mesure_unitwidth" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="85" height="30" uuid="17580d22-c813-41f6-a20d-f3fd606c8a12"/>
+								<text><![CDATA[Fecha Pago 120]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField pattern="yyyy-MM-dd" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="85" height="30" uuid="ce78188d-0e6b-41eb-bc0d-bca4bc83d36c"/>
+								<textFieldExpression><![CDATA[$F{fechas120P}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="85" uuid="df2c95d0-144a-4c9e-b702-81e112ab04d0">
+						<property name="local_mesure_unitwidth" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="85" height="30" uuid="37c50081-1f51-480f-be45-034202260482"/>
+								<text><![CDATA[Fecha Cobro 120]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField pattern="yyyy-MM-dd" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="85" height="30" uuid="a1a136a2-e501-418c-a80a-960d27a7ecf8"/>
+								<textFieldExpression><![CDATA[$F{fechas120C}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="85" uuid="da984771-2e60-42c1-8b2d-0ada42137ed4">
+						<property name="local_mesure_unitwidth" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="85" height="30" uuid="a81e4f2a-cb4b-4d49-9f59-4a5a82a39fe7"/>
+								<text><![CDATA[Dias Tomados]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField pattern="-##0" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="85" height="30" uuid="448030bd-c3dc-4117-b68c-540d3c20447d"/>
+								<textFieldExpression><![CDATA[$F{fechas120DT}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="85" uuid="df413acc-4e87-4beb-8a12-1f05318508a1">
+						<property name="local_mesure_unitwidth" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="85" height="30" uuid="429d58fe-5280-468a-9165-db752581c238"/>
+								<text><![CDATA[Fecha Pago 150]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField pattern="yyyy-MM-dd" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="85" height="30" uuid="1bda2bad-7956-4c8d-a783-ea9f5148a50b"/>
+								<textFieldExpression><![CDATA[$F{fechas150P}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="85" uuid="296ebef0-b1d1-41b9-b268-533b67b1b9fc">
+						<property name="local_mesure_unitwidth" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="85" height="30" uuid="e7ddd070-a79f-464a-9a8f-888c3265f055"/>
+								<text><![CDATA[Fecha Cobro 150]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField pattern="yyyy-MM-dd" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="85" height="30" uuid="1face341-3458-4d72-9146-5fae0d7eb837"/>
+								<textFieldExpression><![CDATA[$F{fechas150C}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="85" uuid="ea050eb2-5b30-4f49-b76f-6cba83bf4cc9">
+						<property name="local_mesure_unitwidth" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="85" height="30" uuid="52c5bc25-c57a-46ae-af74-4b166662fec4"/>
+								<text><![CDATA[Dias Tomados]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField pattern="-##0" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="85" height="30" uuid="fcdbc691-4a7b-4b67-b635-82326af8f261"/>
+								<textFieldExpression><![CDATA[$F{fechas150DT}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+</jasperReport>

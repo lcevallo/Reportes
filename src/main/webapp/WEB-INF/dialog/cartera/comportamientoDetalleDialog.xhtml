@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui"
+      xmlns:pe="http://primefaces.org/ui/extensions"
+>
+<h:body>
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <h:outputStylesheet library="css" name="sistema.css" />
+</h:head>
+    <p:dialog header="Informacion de Pagos Efectuados del cliente" modal="true" showEffect="fade"
+              hideEffect="fade" widgetVar="comportamientoPagoDialogWidget" width="65%"
+              position="top" appendToBody="false" draggable="false"
+              resizable="true" id="comportamientoPagoDialog">
+
+        <f:facet name="header">
+            <h:outputLabel value="#{comportamientoPagoDetalleBean.comportamientoPivoteSelected.accountnum} --- #{comportamientoPagoDetalleBean.comportamientoPivoteSelected.nombreCliente}" />
+            <p:outputPanel />
+            <h:outputLabel for="inputCxCComportamientoPagoDetalleAmountCur" value="DEUDA TOTAL:" />
+            <p:inputText readonly="true" value="#{comportamientoPagoDetalleBean.comportamientoPivoteSelected.amountcur}" id="inputCxCComportamientoPagoDetalleAmountCur" >
+                <f:convertNumber pattern="¤#,##0.00" />
+            </p:inputText>
+        </f:facet>
+
+        <p:tabView>
+            <p:tab title="Detalle de los Pagos">
+
+                <h:form id="fmrComportamientoDetalle1">
+                    <p:panelGrid columns="2">
+
+                        <p:outputLabel for="xlsComportamientoDetalle1" value="Dercargar Excel"/>
+
+                        <h:commandLink id="xlsComportamientoDetalle1">
+                            <p:graphicImage  library="images" name="excel.png"  width="24"/>
+                            <p:dataExporter type="xls" target="comportamientoPagoDetalleTbl" fileName="ComportamientoPagoDetalle"
+                                            postProcessor="#{comportamientoPagoDetalleBean.postProcessXLS}"
+                                            encoding="UTF-8" />
+
+                        </h:commandLink>
+                    </p:panelGrid>
+                    <p:dataTable id="comportamientoPagoDetalleTbl" var="comportamientoPagoDetalleRecord"
+                                 value="#{comportamientoPagoDetalleBean.tmpcxccomportamientodetalleList}" paginatorPosition="top"
+                                 paginator="true" rows="10">
+
+                        <p:column headerText="OFFSETTRANSVOUCHER" style="width:50px">
+                            <h:outputText value="#{comportamientoPagoDetalleRecord.offsettransvoucher}" >
+                            </h:outputText>
+                        </p:column>
+
+                        <p:column headerText="DETALLE TRANSACCION" style="width:150px">
+                            <h:outputText value="#{comportamientoPagoDetalleRecord.txt}" >
+                            </h:outputText>
+                        </p:column>
+
+                        <p:column headerText="VALOR CANCELADO" style="width:80px">
+                            <h:outputText value="#{comportamientoPagoDetalleRecord.settleamountmst}" >
+                                <f:convertNumber pattern="¤#,##0.00" />
+                            </h:outputText>
+                        </p:column>
+
+                        <p:column headerText="FECHA TRANSACCION" style="width:80px">
+                            <h:outputText value="#{comportamientoPagoDetalleRecord.transdate}" >
+                                <f:convertDateTime dateStyle="full" pattern="yyyy-MM-dd" timeZone="EST" type="date" />
+                            </h:outputText>
+                        </p:column>
+
+                    </p:dataTable>
+                </h:form>
+
+            </p:tab>
+            <p:tab title="Detalle de los cobros">
+                <h:form id="fmrComportamientoDetalle2">
+                <p:panelGrid columns="2">
+
+                    <p:outputLabel for="xlsComportamientoDetalle2" value="Dercargar Excel"/>
+
+                    <h:commandLink id="xlsComportamientoDetalle2">
+                        <p:graphicImage  library="images" name="excel.png"  width="24"/>
+                        <p:dataExporter type="xls" target="comportamientoPagoDetalleTbl2" fileName="ComportamientoPagoDetalleCobrado"
+                                        postProcessor="#{comportamientoPagoDetalleBean.postProcessXLS2}"
+                                        encoding="UTF-8" />
+
+                    </h:commandLink>
+                </p:panelGrid>
+
+
+                <p:dataTable id="comportamientoPagoDetalleTbl2" var="comportamientoPagoDetalleRecord2"
+                             value="#{comportamientoPagoDetalleBean.tmpcxccomportamientooffsetrecidList}" paginatorPosition="top"
+                             paginator="true" rows="10">
+
+                    <p:column headerText="OFFSETTRANSVOUCHER" style="width:50px">
+                        <h:outputText value="#{comportamientoPagoDetalleRecord2.offsettransvoucher}" >
+                        </h:outputText>
+                    </p:column>
+
+                    <p:column headerText="VOUCHER" style="width:50px">
+                        <h:outputText value="#{comportamientoPagoDetalleRecord2.voucher}" >
+                        </h:outputText>
+                    </p:column>
+
+
+                    <p:column headerText="DETALLE TRANSACCION" style="width:150px">
+                        <h:outputText value="#{comportamientoPagoDetalleRecord2.txt}" >
+                        </h:outputText>
+                    </p:column>
+
+                    <p:column headerText="VALOR CANCELADO" style="width:80px">
+                        <h:outputText value="#{comportamientoPagoDetalleRecord2.settleamountmst}" >
+                            <f:convertNumber pattern="¤#,##0.00" />
+                        </h:outputText>
+                    </p:column>
+
+                    <p:column headerText="FECHA TRANSACCION" style="width:80px">
+                        <h:outputText value="#{comportamientoPagoDetalleRecord2.transdate}" >
+                            <f:convertDateTime dateStyle="full" pattern="yyyy-MM-dd" timeZone="EST" type="date" />
+                        </h:outputText>
+                    </p:column>
+
+                </p:dataTable>
+                </h:form>
+
+            </p:tab>
+        </p:tabView>
+            </p:dialog>
+
+</h:body>
+</html>

@@ -1,0 +1,127 @@
+<ui:composition template="/WEB-INF/template/LayoutMaestro.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:pe="http://primefaces.org/ui/extensions"
+                >
+    <ui:define name="titulo">Reporte de Ventas</ui:define>
+
+    <ui:define name="cuerpo">
+
+        <p:outputPanel>
+            <h:form id="formReporteVentas">
+                <p:panelGrid columns="6">
+                    <p:outputLabel for="rptVentasfechaInicialBusqueda" value="Fecha Inicial" />
+                    <p:calendar id="rptVentasfechaInicialBusqueda" required="true" value="#{reporteVentasBean.fechaInicial}" pattern="dd/MM/yyyy" readonlyInput="true"
+                                pages="1" mode="popup" locale="es"
+                                />
+
+                    <p:outputLabel for="rptVentasfechaFinalBusqueda" value="Fecha Final" />
+                    <p:calendar id="rptVentasfechaFinalBusqueda" required="true" value="#{reporteVentasBean.fechaFinal}" pattern="dd/MM/yyyy" readonlyInput="true"
+                                pages="1" mode="popup" locale="es"
+                                />
+                    <p:commandButton actionListener="#{reporteVentasBean.cargarTablaReporte}" value="Generar" update="formReporteVentas:reporteVentasTable"
+                                     onstart="PF('blockUIWidget2').block()" oncomplete="PF('blockUIWidget2').unblock()" />
+
+
+                    <h:commandLink>
+                        <p:graphicImage  library="images" name="excel.png"  width="24"/>
+                        <p:dataExporter type="xls" target="reporteVentasTable" fileName="ReporteVentas"
+                                        postProcessor="#{reporteVentasBean.postProcessXLS}"
+                                        encoding="UTF-8" />
+
+                    </h:commandLink>
+                </p:panelGrid>
+
+
+                <p:dataTable id="reporteVentasTable" value="#{reporteVentasBean.tblReporteVentasList}" var="rptVentasRecord"
+                             rowKey="#{rptVentasRecord.id}"
+                             filteredValue="#{reporteVentasBean.tblReporteVentasListFiltered}"
+                             resizableColumns="true"
+                             selection="#{reporteVentasBean.tblReporteVentasSelected}"
+                             paginatorPosition="bottom"   paginator="true"  rows="15"
+                             scrollable="true"
+                             paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                             emptyMessage="No existen datos para presentar"
+                             rowsPerPageTemplate="5,15,25"
+                             currentPageReportTemplate="Pagina: ({currentPage} de {totalPages})">
+
+                    <p:column headerText="Codigo Cliente" >
+                        <h:outputText value="#{rptVentasRecord.codCliente}" />
+                    </p:column>
+
+                    <p:column headerText="Cliente" >
+                        <h:outputText value="#{rptVentasRecord.nombCliente}" />
+                    </p:column>
+
+                    <p:column headerText="Fecha Doc." >
+                        <h:outputText value="#{rptVentasRecord.fechaDoc}" >
+                            <f:convertDateTime dateStyle="full" pattern="MM/dd/yyyy" timeZone="EST" type="date" />
+                        </h:outputText>
+                    </p:column>
+
+                    <p:column headerText="Cod. Item" >
+                        <h:outputText value="#{rptVentasRecord.codItem}" />
+                    </p:column>
+
+                    <p:column headerText="Item" >
+                        <h:outputText value="#{rptVentasRecord.descripcion}" />
+                    </p:column>
+
+                    <p:column headerText="No Doc" >
+                        <h:outputText value="#{rptVentasRecord.noDoc}" />
+                    </p:column>
+
+                    <p:column headerText="Diario" >
+                        <h:outputText value="#{rptVentasRecord.diario}" />
+                    </p:column>
+
+                    <p:column headerText="Cant." >
+                        <h:outputText value="#{rptVentasRecord.cantidad}" >
+                            <f:convertNumber  />
+                        </h:outputText>
+                    </p:column>
+
+                    <p:column headerText="Precio U." >
+                        <h:outputText value="#{rptVentasRecord.precioUnitario}" >
+                            <f:convertNumber pattern="#,##0.00" />
+                        </h:outputText>
+                    </p:column>
+
+                    <p:column headerText="Neto" >
+                        <h:outputText value="#{rptVentasRecord.neto}" >
+                            <f:convertNumber pattern="#,##0.00" />
+                        </h:outputText>
+                    </p:column>
+
+
+                    <p:column headerText="Costo" >
+                        <h:outputText value="#{rptVentasRecord.costo}" >
+                            <f:convertNumber pattern="#,##0.00" />
+                        </h:outputText>
+                    </p:column>
+
+                    <p:column headerText="Vendedor" >
+                        <h:outputText value="#{rptVentasRecord.vendedor}" />
+                    </p:column>
+
+                </p:dataTable>
+
+
+
+                <pe:blockUI widgetVar="blockUIWidget2">
+                    <h:panelGrid columns="2">
+                        <h:graphicImage library="images" name="loading.gif"
+                                        style="margin-right: 12px; vertical-align: middle;"/>
+                        <h:outputText value="Cargando..." style="white-space: nowrap;"/>
+                    </h:panelGrid>
+                </pe:blockUI>
+
+            </h:form>
+        </p:outputPanel>
+    </ui:define>
+
+
+</ui:composition>

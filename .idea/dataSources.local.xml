@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="SQL Server (Microsoft) - Produccion@localhost" uuid="033db919-9987-4fa2-982a-f050c0194e36">
+      <secret-storage>memory</secret-storage>
+      <user-name>sa</user-name>
+      <schema-pattern>Produccion.*</schema-pattern>
+      <default-schemas>Produccion.*</default-schemas>
+    </data-source>
+    <data-source name="SQL Server (Microsoft) - Produccion@192.168.10.21" uuid="afcc745c-489b-4fa2-9760-964e3c742fa7">
+      <secret-storage>memory</secret-storage>
+      <user-name>sa</user-name>
+      <schema-pattern>Produccion.*</schema-pattern>
+      <default-schemas>Produccion.*</default-schemas>
+    </data-source>
+  </component>
+</project>

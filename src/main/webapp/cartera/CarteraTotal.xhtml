@@ -1,0 +1,111 @@
+<ui:composition template="/WEB-INF/template/LayoutMaestro.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:pe="http://primefaces.org/ui/extensions"
+>
+    <ui:define name="titulo">Reporte de Cartera Total</ui:define>
+    <ui:define name="cuerpo">
+        <h:form id="frmCarteraTotal">
+            <p:outputPanel>
+                <p:dataTable id="tableCarteraPivote" value="#{carteraTotalBean.tmpCarteraTotalPvtList}" var="pvtCarteraRecord"  rowKey="#{pvtCarteraRecord.id}"
+                             selection="#{carteraTotalBean.tmpCarteraTotalPvtListFiltered}"
+                             paginatorPosition="bottom"   paginator="true"  rows="15"
+                             scrollable="true"
+                             paginatorTemplate="{Exporters} {CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                             emptyMessage="No existen datos para presentar"
+                             rowsPerPageTemplate="5,15,25"
+                             currentPageReportTemplate="Pagina: ({currentPage} de {totalPages})"
+                >
+                    <f:facet name="{Exporters}">
+                        <h:commandLink>
+                            <p:graphicImage  library="images" name="excel.png"  width="24"/>
+                            <p:dataExporter type="xls" target="tableCarteraPivote" fileName="CreditoTotal"
+                                            postProcessor="#{carteraTotalBean.postProcessXLS}"
+                            />
+                        </h:commandLink>
+                    </f:facet>
+
+                    <p:column headerText="Codigo Cliente" >
+                        <h:outputText value="#{pvtCarteraRecord.accountnum}" />
+                    </p:column>
+
+                    <p:column headerText="Cliente"  style="width:150px;"  filterBy="#{pvtCarteraRecord.nombreCliente}" filterMatchMode="contains" >
+                        <h:outputText styleClass="descripcionCliente" value="#{pvtCarteraRecord.nombreCliente}" />
+                    </p:column>
+
+
+
+                    <p:column headerText="Vencidos">
+                        <p:commandLink actionListener="#{carteraTotalDetalleBean.invocarDialogo(pvtCarteraRecord.accountnum,pvtCarteraRecord.nombreCliente,pvtCarteraRecord.yaVencidos,1)}">
+                            <h:outputText value="#{pvtCarteraRecord.yaVencidos}" >
+                                <f:convertNumber type="number" />
+                            </h:outputText>
+                        </p:commandLink>
+                    </p:column>
+
+                    <p:column headerText="15 dias">
+                        <p:commandLink actionListener="#{carteraTotalDetalleBean.invocarDialogo(pvtCarteraRecord.accountnum,pvtCarteraRecord.nombreCliente,pvtCarteraRecord.dias,2)}">
+                            <h:outputText value="#{pvtCarteraRecord.dias}" >
+                                <f:convertNumber type="number" />
+                            </h:outputText>
+                        </p:commandLink>
+                    </p:column>
+
+
+                    <p:column headerText="30 dias">
+                        <p:commandLink actionListener="#{carteraTotalDetalleBean.invocarDialogo(pvtCarteraRecord.accountnum,pvtCarteraRecord.nombreCliente,pvtCarteraRecord.dias1,3)}">
+                            <h:outputText value="#{pvtCarteraRecord.dias1}" >
+                                <f:convertNumber type="number" />
+                            </h:outputText>
+                        </p:commandLink>
+                    </p:column>
+
+                    <p:column headerText="45 dias">
+                        <p:commandLink actionListener="#{carteraTotalDetalleBean.invocarDialogo(pvtCarteraRecord.accountnum,pvtCarteraRecord.nombreCliente,pvtCarteraRecord.dias2,4)}">
+                            <h:outputText value="#{pvtCarteraRecord.dias2}" >
+                                <f:convertNumber type="number" />
+                            </h:outputText>
+                        </p:commandLink>
+                    </p:column>
+
+                    <p:column headerText="60 dias">
+                        <p:commandLink actionListener="#{carteraTotalDetalleBean.invocarDialogo(pvtCarteraRecord.accountnum,pvtCarteraRecord.nombreCliente,pvtCarteraRecord.dias3,5)}">
+                            <h:outputText value="#{pvtCarteraRecord.dias3}" >
+                                <f:convertNumber type="number" />
+                            </h:outputText>
+                        </p:commandLink>
+                    </p:column>
+
+
+                    <p:column headerText="90 dias">
+                        <p:commandLink actionListener="#{carteraTotalDetalleBean.invocarDialogo(pvtCarteraRecord.accountnum,pvtCarteraRecord.nombreCliente,pvtCarteraRecord.dias4,6)}">
+                            <h:outputText value="#{pvtCarteraRecord.dias4}" >
+                                <f:convertNumber type="number" />
+                            </h:outputText>
+                        </p:commandLink>
+                    </p:column>
+
+                    <p:column headerText="120 dias">
+                        <p:commandLink actionListener="#{carteraTotalDetalleBean.invocarDialogo(pvtCarteraRecord.accountnum,pvtCarteraRecord.nombreCliente,pvtCarteraRecord.dias5,7)}">
+                            <h:outputText value="#{pvtCarteraRecord.dias5}" >
+                                <f:convertNumber type="number" />
+                            </h:outputText>
+                        </p:commandLink>
+                    </p:column>
+
+                    <p:column headerText="> 120 dias">
+                        <p:commandLink actionListener="#{carteraTotalDetalleBean.invocarDialogo(pvtCarteraRecord.accountnum,pvtCarteraRecord.nombreCliente,pvtCarteraRecord.mayoresa120dias,8)}">
+                            <h:outputText value="#{pvtCarteraRecord.mayoresa120dias}" >
+                                <f:convertNumber type="number" />
+                            </h:outputText>
+                        </p:commandLink>
+                    </p:column>
+
+                </p:dataTable>
+            </p:outputPanel>
+        </h:form>
+</ui:define>
+</ui:composition>

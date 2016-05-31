@@ -1,0 +1,168 @@
+<ui:composition template="/WEB-INF/template/LayoutMaestro.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:pe="http://primefaces.org/ui/extensions"
+>
+    <ui:define name="titulo">Reporte de Historial de Protesto</ui:define>
+
+    <ui:define name="cuerpo">
+        <h:form id="frmHistorialProtesto">
+            <p:outputPanel>
+
+                <p:dataTable id="tablePivoteHistorialProtesto"
+                             value="#{historialProtestoBean.tmpPvtHistorialProtestoAfterList}" var="protestoPivote"
+                             rowKey="#{protestoPivote.id}"
+                             selection="#{historialProtestoBean.tmpPvtHistorialProtestoAfterSelected}"
+                             paginatorPosition="bottom" paginator="true" rows="15"
+                             resizableColumns="true"
+                             draggableColumns="true"
+                             scrollable="true"
+                             paginatorTemplate="{Exporters} {CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                             emptyMessage="No existen datos para presentar"
+                             rowsPerPageTemplate="5,15,25"
+                             currentPageReportTemplate="Pagina: ({currentPage} de {totalPages})"
+                >
+                    <f:facet name="{Exporters}">
+                        <h:commandLink>
+                            <p:graphicImage  library="images" name="excel.png"  width="24"/>
+                            <p:dataExporter type="xls" target="tablePivoteHistorialProtesto" fileName="HistorialProtesto"
+                                            postProcessor="#{historialProtestoBean.postProcessXLS}"
+                            />
+                        </h:commandLink>
+                    </f:facet>
+
+                    <p:column headerText="Codigo Cliente">
+                        <h:outputText value="#{protestoPivote.accountnum}"/>
+                    </p:column>
+
+                    <p:column headerText="Cliente" style="width:150px;" filterBy="#{protestoPivote.nombreCliente}"
+                              filterMatchMode="contains">
+                        <h:outputText styleClass="descripcionCliente" value="#{protestoPivote.nombreCliente}"/>
+                    </p:column>
+
+
+                    <p:column headerText="ENE">
+                        <p:commandLink
+                                actionListener="#{historialProtestoDetalleBean.invocarDialogo(protestoPivote.accountnum,protestoPivote.nombreCliente,1,protestoPivote.a)}">
+                            <h:outputText value="#{protestoPivote.a}">
+                                <f:convertNumber type="number"/>
+                            </h:outputText>
+                        </p:commandLink>
+                    </p:column>
+
+                    <p:column headerText="FEB">
+                        <p:commandLink
+                                actionListener="#{historialProtestoDetalleBean.invocarDialogo(protestoPivote.accountnum,protestoPivote.nombreCliente,2,protestoPivote.a1)}">
+                            <h:outputText value="#{protestoPivote.a1}">
+                                <f:convertNumber type="number"/>
+                            </h:outputText>
+                        </p:commandLink>
+                    </p:column>
+
+                    <p:column headerText="MAR">
+                        <p:commandLink
+                                actionListener="#{historialProtestoDetalleBean.invocarDialogo(protestoPivote.accountnum,protestoPivote.nombreCliente,3,protestoPivote.a2)}">
+                            <h:outputText value="#{protestoPivote.a2}">
+                                <f:convertNumber type="number"/>
+                            </h:outputText>
+                        </p:commandLink>
+                    </p:column>
+
+                    <p:column headerText="ABR">
+                        <p:commandLink
+                                actionListener="#{historialProtestoDetalleBean.invocarDialogo(protestoPivote.accountnum,protestoPivote.nombreCliente,4,protestoPivote.a3)}">
+                            <h:outputText value="#{protestoPivote.a3}">
+                                <f:convertNumber type="number"/>
+                            </h:outputText>
+                        </p:commandLink>
+                    </p:column>
+
+
+                    <p:column headerText="MAY">
+                        <p:commandLink
+                                actionListener="#{historialProtestoDetalleBean.invocarDialogo(protestoPivote.accountnum,protestoPivote.nombreCliente,5,protestoPivote.a4)}">
+                            <h:outputText value="#{protestoPivote.a4}">
+                                <f:convertNumber type="number"/>
+                            </h:outputText>
+                        </p:commandLink>
+                    </p:column>
+
+
+                    <p:column headerText="JUN">
+                        <p:commandLink
+                                actionListener="#{historialProtestoDetalleBean.invocarDialogo(protestoPivote.accountnum,protestoPivote.nombreCliente,6,protestoPivote.a5)}">
+                            <h:outputText value="#{protestoPivote.a5}">
+                                <f:convertNumber type="number"/>
+                            </h:outputText>
+                        </p:commandLink>
+                    </p:column>
+
+
+                    <p:column headerText="JUL">
+                        <p:commandLink
+                                actionListener="#{historialProtestoDetalleBean.invocarDialogo(protestoPivote.accountnum,protestoPivote.nombreCliente,7,protestoPivote.a6)}">
+                            <h:outputText value="#{protestoPivote.a6}">
+                                <f:convertNumber type="number"/>
+                            </h:outputText>
+                        </p:commandLink>
+                    </p:column>
+
+
+                    <p:column headerText="AGO">
+                        <p:commandLink
+                                actionListener="#{historialProtestoDetalleBean.invocarDialogo(protestoPivote.accountnum,protestoPivote.nombreCliente,8,protestoPivote.a7)}">
+                            <h:outputText value="#{protestoPivote.a7}">
+                                <f:convertNumber type="number"/>
+                            </h:outputText>
+                        </p:commandLink>
+                    </p:column>
+
+                    <p:column headerText="SEPT">
+                        <p:commandLink
+                                actionListener="#{historialProtestoDetalleBean.invocarDialogo(protestoPivote.accountnum,protestoPivote.nombreCliente,9,protestoPivote.a8)}">
+                            <h:outputText value="#{protestoPivote.a8}">
+                                <f:convertNumber type="number"/>
+                            </h:outputText>
+                        </p:commandLink>
+                    </p:column>
+
+
+                    <p:column headerText="OCT">
+                        <p:commandLink
+                                actionListener="#{historialProtestoDetalleBean.invocarDialogo(protestoPivote.accountnum,protestoPivote.nombreCliente,10,protestoPivote.a9)}">
+                            <h:outputText value="#{protestoPivote.a9}">
+                                <f:convertNumber type="number"/>
+                            </h:outputText>
+                        </p:commandLink>
+                    </p:column>
+
+
+                    <p:column headerText="NOV">
+                        <p:commandLink
+                                actionListener="#{historialProtestoDetalleBean.invocarDialogo(protestoPivote.accountnum,protestoPivote.nombreCliente,11,protestoPivote.a10)}">
+                            <h:outputText value="#{protestoPivote.a10}">
+                                <f:convertNumber type="number"/>
+                            </h:outputText>
+                        </p:commandLink>
+                    </p:column>
+
+
+                    <p:column headerText="DIC">
+                        <p:commandLink
+                                actionListener="#{historialProtestoDetalleBean.invocarDialogo(protestoPivote.accountnum,protestoPivote.nombreCliente,12,protestoPivote.a11)}">
+                            <h:outputText value="#{protestoPivote.a11}">
+                                <f:convertNumber type="number"/>
+                            </h:outputText>
+                        </p:commandLink>
+                    </p:column>
+
+                </p:dataTable>
+
+            </p:outputPanel>
+        </h:form>
+
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,174 @@
+<ui:composition template="/WEB-INF/template/LayoutMaestro.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:pe="http://primefaces.org/ui/extensions"
+>
+    <ui:define name="titulo">Reporte de Flujo de Caja</ui:define>
+
+    <ui:define name="cuerpo">
+
+
+<h:form id="frmCxCFlujo">
+
+<p:outputPanel>
+  <p:panelGrid columns="6">
+      <p:outputLabel for="flujofechaInicialBusqueda" value="Fecha Inicial" />
+      <p:calendar id="flujofechaInicialBusqueda" required="true" value="#{cxCFlujoBean.fechaInicialBusqueda}" pattern="dd/MM/yyyy" readonlyInput="true"
+                  pages="1" mode="popup" locale="es"
+      >
+        <p:ajax update="flujoNumeroSemana" process="@this" event="dateSelect" listener="#{cxCFlujoBean.generarNumeroSemana}" />
+      </p:calendar>
+
+      <p:outputLabel value="Semana #" for="flujoNumeroSemana"/>
+      <p:inputText id="flujoNumeroSemana" value="#{cxCFlujoBean.numeroSemana}" readonly="true" />
+      <p:commandButton actionListener="#{cxCFlujoBean.cargarTablaFlujo}" value="Generar" update="frmCxCFlujo:tablePivoteCxCFlujo"
+          onstart="PF('blockUIWidget').block()" oncomplete="PF('blockUIWidget').unblock()" />
+
+      <p:commandButton id="dynaButtonCxCFlujoFinanciero" value="Imprimir" type="button" icon="ui-icon-print" />
+      <p:menu overlay="true" trigger="dynaButtonCxCFlujoFinanciero" my="left top" at="left bottom">
+          <p:submenu label="Reporte en:">
+              <p:menuitem value="EXCEL" icon="ui-icon-xls" actionListener="#{cxCFlujoBean.exportarExcelFlujoCxCFinanciero}"
+                          ajax="false" />
+          </p:submenu>
+      </p:menu>
+
+
+  </p:panelGrid>
+</p:outputPanel>
+    <p:outputPanel>
+
+   <p:dataTable id="tablePivoteCxCFlujo" value="#{cxCFlujoBean.tablaCxcpivoteList}" var="pivote"  rowKey="#{pivote.id}"
+                resizableColumns="true"
+                draggableColumns="true"
+                 selection="#{cxCFlujoBean.tablaCxcpivoteSelected}"
+       paginatorPosition="bottom"   paginator="true"  rows="15"
+                 scrollable="true"
+                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                 emptyMessage="No existen datos para presentar"
+   rowsPerPageTemplate="5,15,25"
+                 currentPageReportTemplate="Pagina: ({currentPage} de {totalPages})"
+    >
+
+        <p:column headerText="Codigo Cliente" >
+            <h:outputText value="#{pivote.codigoCliente}" />
+        </p:column>
+
+        <p:column headerText="Cliente"  style="width:150px;"  filterBy="#{pivote.cliente}" filterMatchMode="contains" >
+            <h:outputText styleClass="descripcionCliente" value="#{pivote.cliente}" />
+        </p:column>
+
+        <p:column headerText="Credito">
+            <h:outputText value="#{pivote.creditmax}" >
+                 <f:convertNumber type="currency" currencySymbol="$" />
+            </h:outputText>
+        </p:column>
+
+        <p:column headerText="Utilizado">
+            <h:outputText value="#{pivote.utilizado}" >
+                <f:convertNumber type="currency" currencySymbol="$" />
+            </h:outputText>
+        </p:column>
+
+       <p:column headerText="Saldo">
+           <h:outputText value="#{pivote.saldo}" >
+               <f:convertNumber type="currency" currencySymbol="$" />
+           </h:outputText>
+       </p:column>
+
+
+        <p:column headerText="1era semana">
+
+            <p:commandLink actionListener="#{cxCFlujoDetalleBean.invocarDialogo(pivote.cliente,pivote.codigoCliente,pivote.a,1)}">
+                <h:outputText value="#{pivote.a}" >
+                    <f:convertNumber type="currency" currencySymbol="$" />
+                </h:outputText>
+            </p:commandLink>
+        </p:column>
+
+        <p:column headerText="2da semana">
+            <p:commandLink actionListener="#{cxCFlujoDetalleBean.invocarDialogo(pivote.cliente,pivote.codigoCliente,pivote.a1,2)}">
+            <h:outputText value="#{pivote.a1}" >
+                <f:convertNumber type="currency" currencySymbol="$" />
+            </h:outputText>
+            </p:commandLink>
+        </p:column>
+
+        <p:column headerText="3era semana">
+            <p:commandLink actionListener="#{cxCFlujoDetalleBean.invocarDialogo(pivote.cliente,pivote.codigoCliente,pivote.a2,3)}">
+            <h:outputText value="#{pivote.a2}" >
+                <f:convertNumber type="currency" currencySymbol="$" />
+            </h:outputText>
+            </p:commandLink>
+        </p:column>
+
+        <p:column headerText="4ta semana">
+            <p:commandLink actionListener="#{cxCFlujoDetalleBean.invocarDialogo(pivote.cliente,pivote.codigoCliente,pivote.a3,4)}">
+            <h:outputText value="#{pivote.a3}" >
+                <f:convertNumber type="currency" currencySymbol="$" />
+            </h:outputText>
+            </p:commandLink>
+        </p:column>
+
+        <p:column headerText="5ta semana">
+            <p:commandLink actionListener="#{cxCFlujoDetalleBean.invocarDialogo(pivote.cliente,pivote.codigoCliente,pivote.a4,5)}">
+            <h:outputText value="#{pivote.a4}" >
+                <f:convertNumber type="currency" currencySymbol="$" />
+            </h:outputText>
+            </p:commandLink>
+        </p:column>
+
+
+        <p:column headerText="6ta semana">
+            <p:commandLink actionListener="#{cxCFlujoDetalleBean.invocarDialogo(pivote.cliente,pivote.codigoCliente,pivote.a5,6)}">
+            <h:outputText value="#{pivote.a5}" >
+                <f:convertNumber type="currency" currencySymbol="$" />
+            </h:outputText>
+            </p:commandLink>
+        </p:column>
+
+        <p:column headerText="7ma semana">
+            <p:commandLink actionListener="#{cxCFlujoDetalleBean.invocarDialogo(pivote.cliente,pivote.codigoCliente,pivote.a6,7)}">
+            <h:outputText value="#{pivote.a6}" >
+                <f:convertNumber type="currency" currencySymbol="$" />
+            </h:outputText>
+            </p:commandLink>
+        </p:column>
+
+        <p:column headerText="8ava semana">
+            <p:commandLink actionListener="#{cxCFlujoDetalleBean.invocarDialogo(pivote.cliente,pivote.codigoCliente,pivote.a7,8)}">
+            <h:outputText value="#{pivote.a7}" >
+                <f:convertNumber pattern="¤#,##0.00" />
+            </h:outputText>
+            </p:commandLink>
+        </p:column>
+
+
+       <p:column headerText="9na semana">
+           <p:commandLink actionListener="#{cxCFlujoDetalleBean.invocarDialogo(pivote.cliente,pivote.codigoCliente,pivote.a8,9)}">
+               <h:outputText value="#{pivote.a8}" >
+                   <f:convertNumber pattern="¤#,##0.00" />
+               </h:outputText>
+           </p:commandLink>
+       </p:column>
+
+       <p:column headerText="10ma semana">
+           <p:commandLink actionListener="#{cxCFlujoDetalleBean.invocarDialogo(pivote.cliente,pivote.codigoCliente,pivote.a9,10)}">
+               <h:outputText value="#{pivote.a9}" >
+                   <f:convertNumber pattern="¤#,##0.00" />
+               </h:outputText>
+           </p:commandLink>
+       </p:column>
+
+
+    </p:dataTable>
+    </p:outputPanel>
+
+<!-- Aqui estaba el blockUIWidget ahora esta en el template ojala funcione -->
+
+
+</h:form>
+</ui:define>
+</ui:composition>

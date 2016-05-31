@@ -1,0 +1,143 @@
+ <p:commandLink id="pdfReporteVentas" ajax="false"  >
+                                 <p:graphicImage  library="images" name="excel.png"  width="24"/>
+                        <pe:exporter type="xlsx" target="reporteVentasTable" fileName="ReporteVentas"/>
+                        </p:commandLink>
+
+ <p:commandLink id="xls" ajax="false">
+                    <p:graphicImage library="images" name="excel.png" />
+                    <pe:exporter type="xlsx" target="tablePivoteComportamiento" fileName="ComportamientoPago"
+                                 postProcessor="#{comportamientoPagoBean.postProcessXLS}"
+                                 encoding="UTF-8"
+                    />
+                </p:commandLink>
+
+
+
+
+                        <h:commandLink>
+                           <p:graphicImage  library="images" name="excel.png"  width="24"/>
+                           <p:dataExporter type="xls" target="reporteVentasTable" fileName="ReporteVentas"
+                                           postProcessor="#{reporteVentasBean.postProcessXLS}"
+                                           encoding="UTF-8" />
+
+                       </h:commandLink>
+<!--   <f:convertNumber pattern="¤#,##0.00" /> -->
+
+ <!-- other components  Dynamics-->
+
+                <!--
+                                          <p:columns width="200" var="column" value="#{comportamientoPagoBean.dataTableColumns}" rowspan="#{column.rowspan}" colspan="#{column.colspan}" columnIndexVar="colIndex" >
+                                              <f:facet name="header" >
+                                                  <h:outputText value="#{column.header}" />
+                                              </f:facet>
+                                          </p:columns>
+
+
+
+                                           <p:columns width="200"   value="#{comportamientoPagoBean.dataTableSubColumns}" var="column"
+                                columnIndexVar="colIndex">
+                        <f:facet name="header">
+                            <h:outputText value="#{column.header}" />
+                        </f:facet>
+                    </p:columns>
+                  -->
+
+
+
+/* Para el excel veamos si funciona */
+HSSFWorkbook book = (HSSFWorkbook) document;
+        HSSFSheet sheet = book.getSheetAt(0);
+
+        HSSFCellStyle intStyle = book.createCellStyle();
+        intStyle.setDataFormat((short) 1);
+
+        HSSFCellStyle decStyle = book.createCellStyle();
+        decStyle.setDataFormat((short) 2);
+
+        HSSFCellStyle dollarStyle = book.createCellStyle();
+        dollarStyle.setDataFormat((short) 5);
+
+        for (Row row : sheet) {
+            if (row.getRowNum() == 0) {
+                continue; //Aqui me encargo de que no coja la fila de los nombres
+            }
+            for (Cell cell : row) {
+                int numeroColumna = cell.getColumnIndex();
+
+                //Aqui no le paro bola a las columnas que estoy seguro tienen texto
+                if (numeroColumna <= 6 || numeroColumna > 10) {
+                    continue;
+                }
+
+                String strVal = cell.getStringCellValue();
+
+                cell.setCellType(HSSFCell.CELL_TYPE_BLANK);
+                cell.setCellType(HSSFCell.CELL_TYPE_NUMERIC);
+
+                strVal = strVal.replace(",", StringUtils.EMPTY);
+
+                if (strVal.indexOf('.') == -1) {
+                    //integer
+                    //numStyle.setDataFormat((short)1);
+                    int intVal = Integer.valueOf(strVal);
+
+                    cell.setCellStyle(intStyle);
+                    cell.setCellValue(intVal);
+                } else {
+                    //double
+                    if (strVal.startsWith("$")) {
+                        strVal = strVal.replace("$", StringUtils.EMPTY);
+                        //numStyle.setDataFormat((short)5);
+                        cell.setCellStyle(dollarStyle);
+                    } else {
+                        //numStyle.setDataFormat((short)2);
+                        cell.setCellStyle(decStyle);
+                    }
+
+                    double dblVal = Double.valueOf(strVal);
+                    cell.setCellValue(dblVal);
+                }
+
+            }
+        }
+
+        /*****   ****/
+
+        public void postProcessXLS(Object document) {
+
+                HashSet omitirColumnas = new HashSet();
+                //add elements to HashSet object
+                omitirColumnas.add(new Integer("0"));
+                omitirColumnas.add(new Integer("1"));
+                omitirColumnas.add(new Integer("2"));
+                omitirColumnas.add(new Integer("3"));
+                omitirColumnas.add(new Integer("4"));
+                omitirColumnas.add(new Integer("5"));
+                omitirColumnas.add(new Integer("6"));
+                omitirColumnas.add(new Integer("11"));
+
+                FormatoExcelPoi.formatearArchivoExcel(document,omitirColumnas);
+
+            }
+
+
+ <p:commandLink id="xlsComportamientoDetalle" ajax="false">
+            <p:graphicImage library="images" name="excel.png" />
+            <pe:exporter type="xlsx" target="comportamientoPagoDetalleTbl" fileName="ComportamientoPagoDetalle"/>
+
+        </p:commandLink>
+
+
+         <p:commandLink id="xlsComportamientoDetalle" ajax="false">
+                    <p:graphicImage library="images" name="excel.png" />
+                    <pe:exporter type="xlsx" target="comportamientoPagoDetalleTbl" fileName="ComportamientoPagoDetalle"/>
+
+                </p:commandLink>
+
+
+
+                 <p:commandLink id="xlsHistorialProtestoDetalleTbl" ajax="false">
+                            <p:graphicImage library="images" name="excel.png" />
+                            <pe:exporter type="xlsx" target="historialProtestoDetalleTbl" fileName="historialProtestoDetalle"/>
+
+                        </p:commandLink>

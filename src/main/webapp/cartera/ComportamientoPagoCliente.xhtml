@@ -1,0 +1,219 @@
+<ui:composition template="/WEB-INF/template/LayoutMaestro.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:pe="http://primefaces.org/ui/extensions"
+                >
+    <ui:define name="titulo">Reporte Comportamiento Pago Cliente</ui:define>
+    <ui:define name="cuerpo">
+        <h:form id="frmComportamientoCliente">
+            <p:messages />
+        <p:toolbar>
+            <p:toolbarGroup align="left">
+
+                <p:selectOneMenu id="cmbAnioComportamiento" value="#{comportamientoPagoBean.anioSelecionado}" required="true">
+                    <p:ajax event="change" listener="#{comportamientoPagoBean.LlenarTablaMultivencimientos}" update="tablePivoteComportamiento"
+                         process="@this"  onstart="PF('blockUIWidget').block()" oncomplete="PF('blockUIWidget').unblock()"
+                    />
+                    <f:selectItem itemLabel="Seleccione un año "/>
+                    <f:selectItem itemValue="2016" itemLabel="2016"/>
+
+
+                </p:selectOneMenu>
+
+                <p:commandButton id="dynaButtonCxCComportamiento" value="Imprimir" type="button" icon="ui-icon-print" />
+                <p:menu overlay="true" trigger="dynaButtonCxCComportamiento" my="left top" at="left bottom">
+                    <p:submenu label="Reporte en:">
+                        <p:menuitem value="EXCEL" icon="ui-icon-xls" actionListener="#{comportamientoPagoBean.exportarExcelComportamiento}"
+                            ajax="false" />
+                    </p:submenu>
+                </p:menu>
+
+
+            </p:toolbarGroup>
+        </p:toolbar>
+
+            <p:dataTable
+                id="tablePivoteComportamiento"
+                value="#{comportamientoPagoBean.dtblComportamientoPivotes}"
+                var="dtbComportamiento"
+                scrollable="true"
+                style="height:600px;width:3000px"
+                scrollWidth="100%"
+                paginatorPosition="bottom"
+                paginator="true"
+                rows="15"
+                paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                currentPageReportTemplate="Pagina: ({currentPage} de {totalPages})"
+                rowsPerPageTemplate="5,15,25"
+                scrollRows="15"
+                rowKey="#{dtbComportamiento.id}"
+                emptyMessage="No existen datos para presentar"
+                >
+                <f:facet name="header">
+                    Comportamiento de Pago
+                </f:facet>
+                <p:columnGroup type="header">
+                    <p:row>
+
+                        <p:column width="50" rowspan="2"  headerText="Cod.Cli" />
+                        <p:column width="300" rowspan="2"  headerText="Cliente" filterBy="#{dtbComportamiento.nombreCliente}"  filterMatchMode="contains" />
+                        <p:column width="150" rowspan="2"  headerText="Factura" />
+                        <p:column width="150" rowspan="2"  headerText="Valor" />
+                        <p:column width="150" rowspan="2"  headerText="Fecha Emision" />
+                        <p:column width="300" colspan="3"  headerText="30 dias" />
+                        <p:column width="300" colspan="3"  headerText="45 dias" />
+                        <p:column width="300" colspan="3"  headerText="60 dias" />
+                        <p:column width="300" colspan="3"  headerText="90 dias" />
+                        <p:column width="300" colspan="3"  headerText="120 dias" />
+                        <p:column width="300" colspan="3"  headerText=">120 dias" />
+                    </p:row>
+
+
+                    <p:row>
+
+                        <p:column width="200" headerText="Fecha de Pago" />
+                        <p:column width="200" headerText="Fecha Cobrado" />
+                        <p:column width="200" headerText="Dias Tomados" />
+
+                        <p:column width="200" headerText="Fecha de Pago" />
+                        <p:column width="200" headerText="Fecha Cobrado" />
+                        <p:column width="200" headerText="Dias Tomados" />
+
+                        <p:column width="200" headerText="Fecha de Pago" />
+                        <p:column width="200" headerText="Fecha Cobrado" />
+                        <p:column width="200" headerText="Dias Tomados" />
+
+                        <p:column width="200" headerText="Fecha de Pago" />
+                        <p:column width="200" headerText="Fecha Cobrado" />
+                        <p:column width="200" headerText="Dias Tomados" />
+
+                        <p:column width="200" headerText="Fecha de Pago" />
+                        <p:column width="200" headerText="Fecha Cobrado" />
+                        <p:column width="200" headerText="Dias Tomados" />
+
+                        <p:column width="200" headerText="Fecha de Pago" />
+                        <p:column width="200" headerText="Fecha Cobrado" />
+                        <p:column width="200" headerText="Dias Tomados" />
+
+                    </p:row>                  
+                </p:columnGroup>
+                <p:column width="300" id="clmnCodCliente">
+                    <h:outputText value="#{dtbComportamiento.accountnum}" />
+                </p:column>
+
+                <p:column width="300" id="clmnCliente">
+                    <h:outputText value="#{dtbComportamiento.nombreCliente}" />
+                </p:column>
+
+                <p:column width="300" id="clmnFactura">
+                    <h:outputText value="#{dtbComportamiento.invoice}" />
+                </p:column>
+
+                <p:column width="300" id="clmnValorFactura">
+                    <h:outputText value="#{dtbComportamiento.amountcur}" >
+                    <f:convertNumber type="number" />
+                    </h:outputText>
+                </p:column>
+
+                <p:column width="300" id="clmnFechaFactura">
+                    <h:outputText value="#{dtbComportamiento.transdate}" >
+                    <f:convertDateTime dateStyle="full" pattern="yyyy-MM-dd" timeZone="EST" type="date" />
+                    </h:outputText>
+                </p:column>
+
+
+                <p:column style="min-width:250px" id="clmnFechaFecha30P">
+                    <h:outputText value="#{dtbComportamiento.fechas30P}" />
+                </p:column>
+
+                <p:column style="min-width:250px" id="clmnFechaFecha30C">
+                    <p:commandLink actionListener="#{comportamientoPagoDetalleBean.invocarDialogo(dtbComportamiento,'30C')}">
+                        <h:outputText value="#{dtbComportamiento.fechas30C}" >
+                        </h:outputText>
+                    </p:commandLink>
+                </p:column>
+
+                <p:column style="min-width:250px" id="clmnFechaFecha30T">
+                    <h:outputText value="#{dtbComportamiento.fechas30DT}" />
+                </p:column>
+
+                <p:column width="200" id="clmnFechaFecha45P">
+                    <h:outputText value="#{dtbComportamiento.fechas45P}" />
+                </p:column>
+
+                <p:column width="200" id="clmnFechaFecha45C">
+                    <p:commandLink actionListener="#{comportamientoPagoDetalleBean.invocarDialogo(dtbComportamiento,'45C')}">
+                    <h:outputText value="#{dtbComportamiento.fechas45C}" />
+                    </p:commandLink>
+                </p:column>
+
+                <p:column width="200" id="clmnFechaFecha45T">
+                    <h:outputText value="#{dtbComportamiento.fechas45DT}" />
+                </p:column>
+
+                <p:column width="200" id="clmnFechaFecha60P">
+                    <h:outputText value="#{dtbComportamiento.fechas60P}" />
+                </p:column>
+
+                <p:column width="200" id="clmnFechaFecha60C">
+                    <p:commandLink actionListener="#{comportamientoPagoDetalleBean.invocarDialogo(dtbComportamiento,'60C')}">
+                    <h:outputText value="#{dtbComportamiento.fechas60C}" />
+                    </p:commandLink>
+                </p:column>
+
+                <p:column width="200" id="clmnFechaFecha60T">
+                    <h:outputText value="#{dtbComportamiento.fechas60DT}" />
+                </p:column>
+
+                <p:column width="200" id="clmnFechaFecha90P">
+                    <h:outputText value="#{dtbComportamiento.fechas90P}" />
+                </p:column>
+
+                <p:column width="200"  id="clmnFechaFecha90C">
+                    <p:commandLink actionListener="#{comportamientoPagoDetalleBean.invocarDialogo(dtbComportamiento,'90C')}">
+                    <h:outputText value="#{dtbComportamiento.fechas90C}" />
+                    </p:commandLink>
+                </p:column>
+
+                <p:column width="200" id="clmnFechaFecha90T">
+                    <h:outputText value="#{dtbComportamiento.fechas90DT}" />
+                </p:column>
+
+                <p:column width="200" id="clmnFechaFecha120P">
+                    <h:outputText value="#{dtbComportamiento.fechas120P}" />
+                </p:column>
+
+                <p:column width="200" id="clmnFechaFecha120C">
+                    <p:commandLink actionListener="#{comportamientoPagoDetalleBean.invocarDialogo(dtbComportamiento,'120C')}">
+                    <h:outputText value="#{dtbComportamiento.fechas120C}" />
+                    </p:commandLink>
+                </p:column>
+
+                <p:column width="200" id="clmnFechaFecha120T">
+                    <h:outputText value="#{dtbComportamiento.fechas120DT}" />
+                </p:column>
+
+                <p:column width="200" id="clmnFechaFechaM120P">
+                    <h:outputText value="#{dtbComportamiento.fechas150P}" />
+                </p:column>
+
+                <p:column width="200" id="clmnFechaFechaM120C">
+                    <p:commandLink actionListener="#{comportamientoPagoDetalleBean.invocarDialogo(dtbComportamiento,'150C')}">
+                    <h:outputText value="#{dtbComportamiento.fechas150C}" />
+                    </p:commandLink>
+                </p:column>
+
+                <p:column width="200" id="clmnFechaFechaM120T">
+                    <h:outputText value="#{dtbComportamiento.fechas150DT}" />
+                </p:column>
+
+            </p:dataTable>
+
+
+        </h:form>
+    </ui:define>
+</ui:composition>

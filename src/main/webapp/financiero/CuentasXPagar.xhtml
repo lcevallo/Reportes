@@ -1,0 +1,127 @@
+<ui:composition template="/WEB-INF/template/LayoutMaestro.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:pe="http://primefaces.org/ui/extensions"
+>
+    <ui:define name="titulo">Reporte de Cuentas x Pagar</ui:define>
+    <!--  update="formReporteCuentasxPagar:reporteVentasTable" -->
+    <ui:define name="cuerpo">
+
+        <h:form id="formReporteCuentasxPagar">
+            <p:messages id="messagesCxP" showDetail="true" autoUpdate="true" closable="true" />
+            <p:panelGrid columns="10" >
+                
+                <p:outputLabel value="Nombre del Proveedor" for="nomProveedorCxP" />
+                <p:autoComplete id="nomProveedorCxP" value="#{reporteCuentasXPagarBean.proveedor}"
+                     completeMethod="#{reporteCuentasXPagarBean.sugerirProveedor}"
+                     forceSelection="true"
+                     var="prove"
+                     itemLabel="#{prove.name}"
+                     itemValue="#{prove}"
+                >
+
+                </p:autoComplete>
+
+                <p:outputLabel value="Tipo Proveedor" for="tipProveedorCxP" />
+                <p:selectOneMenu id="tipProveedorCxP" value="#{reporteCuentasXPagarBean.tipoProveedor}" >
+                    <f:selectItem itemLabel="Todos" itemValue="Todos"/>
+                    <f:selectItem itemLabel="Locales" itemValue="Locales"/>
+                    <f:selectItem itemLabel="Extranjeros" itemValue="Extranjeros"/>
+                </p:selectOneMenu>
+
+
+                <p:outputLabel for="fechaInicialBusquedaCxP" value="Fecha Inicial" />
+                <p:calendar id="fechaInicialBusquedaCxP" required="true" value="#{reporteCuentasXPagarBean.fechaInicial}" pattern="dd/MM/yyyy" readonlyInput="true"
+                            pages="1" mode="popup" locale="es"
+                />
+
+                <p:outputLabel for="fechaFinalBusquedaCxP" value="Fecha Final" />
+                <p:calendar id="fechaFinalBusquedaCxP" required="true" value="#{reporteCuentasXPagarBean.fechaFinal}" pattern="dd/MM/yyyy" readonlyInput="true"
+                            pages="1" mode="popup" locale="es"
+                />
+
+                <p:commandButton actionListener="#{reporteCuentasXPagarBean.cargarTablaReporte}" value="Buscar"
+                      update="tableCxPagarDetalles"  onstart="PF('blockUIWidget').block()" oncomplete="PF('blockUIWidget').unblock()" />
+
+                <h:commandLink>
+                    <p:graphicImage  library="images" name="excel.png"  width="24"/>
+                    <p:dataExporter type="xls" target="tableCxPagarDetalles" fileName="ReporteCxPagar"
+                                    postProcessor="#{reporteCuentasXPagarBean.postProcessXLS}"
+                                    encoding="UTF-8" />
+
+                </h:commandLink>
+
+            </p:panelGrid>
+
+            <p:outputPanel>
+            <p:dataTable id="tableCxPagarDetalles" value="#{reporteCuentasXPagarBean.dtblCuentasXPagar}" var="CxPrecord"  rowKey="#{CxPrecord.id}"
+                         style="height:600px;"
+                         scrollable="true"
+                         scrollWidth="100%"
+                         selection="#{reporteCuentasXPagarBean.recordTblCxP}"
+                         paginatorPosition="bottom"
+                         paginator="true"
+                         rows="10"
+                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                         emptyMessage="No existen datos para presentar"
+                         rowsPerPageTemplate="5,15,25"
+                         currentPageReportTemplate="Pagina: ({currentPage} de {totalPages})"
+            >
+
+                <p:column headerText="Codigo Proveedor" >
+                    <h:outputText value="#{CxPrecord.accountnum}" />
+                </p:column>
+
+                <p:column headerText="Tipo" >
+                    <h:outputText value="#{CxPrecord.tipo}" />
+                </p:column>
+
+                <p:column headerText="Proveedor" filterBy="#{CxPrecord.nombreCliente}" filterMatchMode="contains" >
+                    <h:outputText value="#{CxPrecord.nombreCliente}" />
+                </p:column>
+
+                <p:column headerText="No Doc" >
+                    <h:outputText value="#{CxPrecord.invoice}" />
+                </p:column>
+
+                <p:column headerText="Diario" >
+                    <h:outputText value="#{CxPrecord.voucher}" />
+                </p:column>
+
+                <p:column headerText="Fecha Transaccion" >
+                    <h:outputText value="#{CxPrecord.transdate}" >
+                        <f:convertDateTime dateStyle="full" pattern="MM/dd/yyyy" timeZone="EST" type="date" />
+                    </h:outputText>
+                </p:column>
+
+                <p:column headerText="No Chq" >
+                    <h:outputText value="#{CxPrecord.paymReference}" />
+                </p:column>
+
+                <p:column headerText="Descripcion" >
+                    <h:outputText value="#{CxPrecord.des}" />
+                </p:column>
+
+                <p:column headerText="Debito" >
+                    <h:outputText value="#{CxPrecord.debito}" >
+                        <f:convertNumber pattern="#,##0.00" />
+                    </h:outputText>
+                </p:column>
+
+                <p:column headerText="Credito" >
+                    <h:outputText value="#{CxPrecord.credito}" >
+                        <f:convertNumber pattern="#,##0.00" />
+                    </h:outputText>
+                </p:column>
+
+
+            </p:dataTable>
+            </p:outputPanel>
+        </h:form>
+
+    </ui:define>
+
+    </ui:composition>

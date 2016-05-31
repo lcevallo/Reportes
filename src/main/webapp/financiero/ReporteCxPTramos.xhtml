@@ -1,0 +1,166 @@
+<ui:composition template="/WEB-INF/template/LayoutMaestro.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:pe="http://primefaces.org/ui/extensions"
+>
+
+ <ui:define name="titulo">Reporte de Cuentas x Pagar Tramos</ui:define>
+ <ui:define name="cuerpo">
+
+     <h:form id="frmCxPTramos">
+         <p:outputPanel>
+             <p:panelGrid columns="4">
+             <p:outputLabel for="flujofechaInicialBusqueda" value="Fecha Inicial" />
+             <p:calendar id="flujofechaInicialBusqueda" required="true" value="#{reporteCxPTramoBean.fechaInicialBusqueda}" pattern="dd/MM/yyyy" readonlyInput="true"
+                         pages="1" mode="popup" locale="es"
+             />
+              <p:commandButton actionListener="#{reporteCxPTramoBean.generarTablaPivoteada}" value="Buscar" update="frmCxPTramos:tablePivoteCxPTramos"
+                                  onstart="PF('blockUIWidget').block()" oncomplete="PF('blockUIWidget').unblock()" />
+
+
+                 <h:commandLink>
+                     <p:graphicImage  library="images" name="excel.png"  width="24"/>
+                     <p:dataExporter type="xls" target="tablePivoteCxPTramos" fileName="ReporteCxPFlujo"
+                                     postProcessor="#{reporteCxPTramoBean.postProcessXLS}"
+                                     encoding="UTF-8" />
+
+                 </h:commandLink>
+             </p:panelGrid>
+         </p:outputPanel>
+         <p:outputPanel>
+             <p:dataTable id="tablePivoteCxPTramos" value="#{reporteCxPTramoBean.tablaCxPPivoteList}" var="pivote"  rowKey="#{pivote.id}"
+                          resizableColumns="true"
+                          draggableColumns="true"
+                          filteredValue="#{reporteCxPTramoBean.tablaCxPPivoteListFiltered}"
+                          selection="#{reporteCxPTramoBean.tmppivotcxpSelected}"
+                          paginatorPosition="bottom"   paginator="true"  rows="15"
+                          scrollable="true"
+                          paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                          emptyMessage="No existen datos para presentar"
+                          rowsPerPageTemplate="5,15,25"
+                          currentPageReportTemplate="Pagina: ({currentPage} de {totalPages})"
+             >
+                 <p:column headerText="Codigo Proveedor" >
+                     <h:outputText value="#{pivote.accountnum}" />
+                 </p:column>
+
+                 <p:column headerText="Proveedor"  style="width:150px;"  filterBy="#{pivote.nombreCliente}" filterMatchMode="contains" >
+                     <h:outputText styleClass="descripcionCliente" value="#{pivote.nombreCliente}" />
+                 </p:column>
+
+
+                 <p:column headerText="Vencidos">
+                     <h:outputText value="#{pivote.vencida}" >
+                         <f:convertNumber pattern="#,##0.00" />
+                     </h:outputText>
+                 </p:column>
+
+                 <p:column headerText="1era Semana">
+                     <p:commandLink actionListener="#{reporteCxPTramoDetalleBean.invocarDialogo(pivote,reporteCxPTramoBean.semanaInicialList.get(0),1)}">
+                        <h:outputText value="#{pivote.primeraSemana}" >
+                             <f:convertNumber pattern="#,##0.00" />
+                         </h:outputText>
+                     </p:commandLink>
+                 </p:column>
+
+                 <p:column headerText="2da Semana">
+                     <p:commandLink actionListener="#{reporteCxPTramoDetalleBean.invocarDialogo(pivote,reporteCxPTramoBean.semanaInicialList.get(0),2)}">
+                     <h:outputText value="#{pivote.segundaSemana}" >
+                         <f:convertNumber pattern="#,##0.00" />
+                     </h:outputText>
+                     </p:commandLink>
+                 </p:column>
+
+                 <p:column headerText="3era Semana">
+                     <p:commandLink actionListener="#{reporteCxPTramoDetalleBean.invocarDialogo(pivote,reporteCxPTramoBean.semanaInicialList.get(0),3)}">
+                     <h:outputText value="#{pivote.terceraSemana}" >
+                         <f:convertNumber pattern="#,##0.00" />
+                     </h:outputText>
+                     </p:commandLink>
+                 </p:column>
+
+
+                 <p:column headerText="4ta Semana">
+                     <p:commandLink actionListener="#{reporteCxPTramoDetalleBean.invocarDialogo(pivote,reporteCxPTramoBean.semanaInicialList.get(0),4)}">
+                     <h:outputText value="#{pivote.cuartaSemana}" >
+                         <f:convertNumber pattern="#,##0.00" />
+                     </h:outputText>
+                     </p:commandLink>
+                 </p:column>
+
+                 <p:column headerText="5ta Semana">
+                     <p:commandLink actionListener="#{reporteCxPTramoDetalleBean.invocarDialogo(pivote,reporteCxPTramoBean.semanaInicialList.get(0),5)}">
+                     <h:outputText value="#{pivote.quintaSemana}" >
+                         <f:convertNumber pattern="#,##0.00" />
+                     </h:outputText>
+                     </p:commandLink>
+                 </p:column>
+
+                 <p:column headerText="6ta Semana">
+                     <p:commandLink actionListener="#{reporteCxPTramoDetalleBean.invocarDialogo(pivote,reporteCxPTramoBean.semanaInicialList.get(0),6)}">
+                     <h:outputText value="#{pivote.sextaSemana}" >
+                         <f:convertNumber pattern="#,##0.00" />
+                     </h:outputText>
+                     </p:commandLink>
+                 </p:column>
+
+                 <p:column headerText="7ma Semana">
+                     <p:commandLink actionListener="#{reporteCxPTramoDetalleBean.invocarDialogo(pivote,reporteCxPTramoBean.semanaInicialList.get(0),7)}">
+                     <h:outputText value="#{pivote.septimaSemana}" >
+                         <f:convertNumber pattern="#,##0.00" />
+                     </h:outputText>
+                     </p:commandLink>
+                 </p:column>
+
+
+                 <p:column headerText="8va Semana">
+                     <p:commandLink actionListener="#{reporteCxPTramoDetalleBean.invocarDialogo(pivote,reporteCxPTramoBean.semanaInicialList.get(0),8)}">
+                     <h:outputText value="#{pivote.octavaSemana}" >
+                         <f:convertNumber pattern="#,##0.00" />
+                     </h:outputText>
+                     </p:commandLink>
+                 </p:column>
+
+                 <p:column headerText="9na Semana">
+                     <p:commandLink actionListener="#{reporteCxPTramoDetalleBean.invocarDialogo(pivote,reporteCxPTramoBean.semanaInicialList.get(0),9)}">
+                     <h:outputText value="#{pivote.novenaSemana}" >
+                         <f:convertNumber pattern="#,##0.00" />
+                     </h:outputText>
+                     </p:commandLink>
+                 </p:column>
+
+
+                 <p:column headerText="10ma Semana">
+                     <p:commandLink actionListener="#{reporteCxPTramoDetalleBean.invocarDialogo(pivote,reporteCxPTramoBean.semanaInicialList.get(0),10)}">
+                     <h:outputText value="#{pivote.decimaSemana}" >
+                         <f:convertNumber pattern="#,##0.00" />
+                     </h:outputText>
+                     </p:commandLink>
+                 </p:column>
+
+
+                 <p:column headerText="11va Semana">
+                     <p:commandLink actionListener="#{reporteCxPTramoDetalleBean.invocarDialogo(pivote,reporteCxPTramoBean.semanaInicialList.get(0),11)}">
+                 <h:outputText value="#{pivote.onceavaSemana}" >
+                     <f:convertNumber pattern="#,##0.00" />
+                 </h:outputText>
+                     </p:commandLink>
+             </p:column>
+
+                 <p:column headerText="12va Semana">
+                     <p:commandLink actionListener="#{reporteCxPTramoDetalleBean.invocarDialogo(pivote,reporteCxPTramoBean.semanaInicialList.get(0),12)}">
+                     <h:outputText value="#{pivote.doceavaSemana}" >
+                         <f:convertNumber pattern="#,##0.00" />
+                     </h:outputText>
+                     </p:commandLink>
+                 </p:column>
+
+             </p:dataTable>
+
+         </p:outputPanel>
+     </h:form>
+ </ui:define>
+ </ui:composition>
