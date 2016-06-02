@@ -15,10 +15,7 @@
                     <p:commandButton id="dynaButtonCxCInfoCliente" value="Imprimir" type="button" icon="ui-icon-print"/>
                     <p:menu overlay="true" trigger="dynaButtonCxCInfoCliente" my="left top" at="left bottom">
                         <p:submenu label="Reporte en:">
-                            <p:menuitem value="EXCEL" icon="ui-icon-xls"
-                                        actionListener="#{infoClienteBean.postProcessXLS}"
-                                        ajax="false"/>
-
+                            <p:menuitem value="EXCEL" icon="ui-icon-xls" ajax="false"/>
                             <p:dataExporter type="xls" target="tableInformacionCliente" fileName="Informacion_Cliente"
                                             postProcessor="#{infoClienteBean.postProcessXLS}"
                             />
