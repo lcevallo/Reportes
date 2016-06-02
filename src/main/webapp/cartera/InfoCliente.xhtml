@@ -12,16 +12,12 @@
             <p:messages/>
             <p:toolbar>
                 <p:toolbarGroup align="left">
-                    <p:commandButton id="dynaButtonCxCInfoCliente" value="Imprimir" type="button" icon="ui-icon-print"/>
-                    <p:menu overlay="true" trigger="dynaButtonCxCInfoCliente" my="left top" at="left bottom">
-                        <p:submenu label="Reporte en:">
-                            <p:menuitem value="EXCEL" icon="ui-icon-xls" ajax="false"/>
-                            <p:dataExporter type="xls" target="tableInformacionCliente" fileName="Informacion_Cliente"
-                                            postProcessor="#{infoClienteBean.postProcessXLS}"
-                            />
-
-                        </p:submenu>
-                    </p:menu>
+                    <h:commandLink>
+                        <p:graphicImage library="images" name="excel.png" width="24"/>
+                        <p:dataExporter type="xls" target="tableInformacionCliente" fileName="Informacion_Cliente"
+                                        postProcessor="#{infoClienteBean.postProcessXLS}"
+                        />
+                    </h:commandLink>
                 </p:toolbarGroup>
             </p:toolbar>
 
