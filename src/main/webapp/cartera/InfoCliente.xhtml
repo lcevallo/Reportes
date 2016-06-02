@@ -1,0 +1,108 @@
+<ui:composition template="/WEB-INF/template/LayoutMaestro.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+>
+    <ui:define name="titulo">Informacion del Cliente</ui:define>
+    <ui:define name="cuerpo">
+
+        <h:form id="frmInformacionCliente">
+            <p:messages/>
+            <p:toolbar>
+                <p:toolbarGroup align="left">
+                    <p:commandButton id="dynaButtonCxCInfoCliente" value="Imprimir" type="button" icon="ui-icon-print"/>
+                    <p:menu overlay="true" trigger="dynaButtonCxCInfoCliente" my="left top" at="left bottom">
+                        <p:submenu label="Reporte en:">
+                            <p:menuitem value="EXCEL" icon="ui-icon-xls"
+                                        actionListener="#{infoClienteBean.postProcessXLS}"
+                                        ajax="false"/>
+                        </p:submenu>
+                    </p:menu>
+                </p:toolbarGroup>
+            </p:toolbar>
+
+            <p:dataTable
+                    id="tableInformacionCliente"
+                    value="#{infoClienteBean.infoClienteTable}"
+                    var="dtbInformacionCliente"
+                    filteredValue="#{infoClienteBean.infoClienteTableFiltered}"
+                    scrollable="true"
+                    style="height:600px;width:3000px"
+                    scrollWidth="100%"
+                    paginatorPosition="bottom"
+                    paginator="true"
+                    rows="15"
+                    paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                    currentPageReportTemplate="Pagina: ({currentPage} de {totalPages})"
+                    rowsPerPageTemplate="5,15,25"
+                    scrollRows="15"
+                    rowKey="#{dtbInformacionCliente.id}"
+                    emptyMessage="No existen datos para presentar"
+            >
+
+                <p:column headerText="Codigo">
+                    <h:outputText value="#{dtbInformacionCliente.accountnum}"/>
+                </p:column>
+
+                <p:column headerText="Cliente" style="width:150px;" filterBy="#{dtbInformacionCliente.nombreCliente}"
+                          filterMatchMode="contains">
+                    <h:outputText value="#{dtbInformacionCliente.nombreCliente}"/>
+                </p:column>
+
+                <p:column headerText="RUC" style="width:150px;" filterBy="#{dtbInformacionCliente.vatnum}"
+                          filterMatchMode="contains">
+                    <h:outputText value="#{dtbInformacionCliente.vatnum}"/>
+                </p:column>
+
+                <p:column headerText="Cupo">
+                    <h:outputText value="#{dtbInformacionCliente.creditmax}"/>
+                </p:column>
+
+                <p:column headerText="Direccion">
+                    <h:outputText value="#{dtbInformacionCliente.address}"/>
+                </p:column>
+
+                <p:column headerText="Telefono">
+                    <h:outputText value="#{dtbInformacionCliente.telefono}"/>
+                </p:column>
+
+
+                <p:column headerText="Correo">
+                    <h:outputText value="#{dtbInformacionCliente.mail}"/>
+                </p:column>
+
+                <p:column headerText="Vendedor" filterBy="#{dtbInformacionCliente.vendedor}" filterMatchMode="contains">
+                    <h:outputText value="#{dtbInformacionCliente.vendedor}"/>
+                </p:column>
+
+
+                <p:column headerText="Pais">
+                    <h:outputText value="#{dtbInformacionCliente.state}"/>
+                </p:column>
+
+                <p:column headerText="Cudad" style="width:150px;" filterBy="#{dtbInformacionCliente.city}"
+                          filterMatchMode="contains">
+                    <h:outputText value="#{dtbInformacionCliente.city}"/>
+                </p:column>
+
+                <p:column headerText="Multivencimiento">
+                    <h:outputText value="#{dtbInformacionCliente.paymSched}"/>
+                </p:column>
+
+                <p:column headerText="Forma Pago">
+                    <h:outputText value="#{dtbInformacionCliente.paymMode}"/>
+                </p:column>
+
+                <p:column headerText="Canal">
+                    <h:outputText value="#{dtbInformacionCliente.canal}"/>
+                </p:column>
+
+
+            </p:dataTable>
+
+
+        </h:form>
+    </ui:define>
+
+</ui:composition>
