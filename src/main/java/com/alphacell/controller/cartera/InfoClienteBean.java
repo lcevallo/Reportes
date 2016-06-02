@@ -41,6 +41,15 @@ public class InfoClienteBean implements Serializable {
         omitirColumnas.add(new Integer("0"));
         omitirColumnas.add(new Integer("1"));
         omitirColumnas.add(new Integer("2"));
+        omitirColumnas.add(new Integer("4"));
+        omitirColumnas.add(new Integer("5"));
+        omitirColumnas.add(new Integer("6"));
+        omitirColumnas.add(new Integer("7"));
+        omitirColumnas.add(new Integer("8"));
+        omitirColumnas.add(new Integer("9"));
+        omitirColumnas.add(new Integer("10"));
+        omitirColumnas.add(new Integer("11"));
+        omitirColumnas.add(new Integer("12"));
 
         FormatoExcelPoi.formatearArchivoExcel(document, omitirColumnas);
 
