@@ -1,8 +1,10 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.alphacell.model.financiero;
 
-/**
- * Created by admin on 05/04/2016.
- */
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -21,26 +23,30 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author admin
+ * @author luis.cevallos
  */
 @Entity
-@Table(name = "tblReporteVentas")
+@Table(name = "TblReporteVentas1")
 @XmlRootElement
 @NamedQueries({
-        @NamedQuery(name = "TblReporteVentas.findAll", query = "SELECT t FROM TblReporteVentas t"),
-        @NamedQuery(name = "TblReporteVentas.findById", query = "SELECT t FROM TblReporteVentas t WHERE t.id = :id"),
-        @NamedQuery(name = "TblReporteVentas.findByNoDoc", query = "SELECT t FROM TblReporteVentas t WHERE t.noDoc = :noDoc"),
-        @NamedQuery(name = "TblReporteVentas.findByFechaDoc", query = "SELECT t FROM TblReporteVentas t WHERE t.fechaDoc = :fechaDoc"),
-        @NamedQuery(name = "TblReporteVentas.findByCodCliente", query = "SELECT t FROM TblReporteVentas t WHERE t.codCliente = :codCliente"),
-        @NamedQuery(name = "TblReporteVentas.findByNombCliente", query = "SELECT t FROM TblReporteVentas t WHERE t.nombCliente = :nombCliente"),
-        @NamedQuery(name = "TblReporteVentas.findByCodItem", query = "SELECT t FROM TblReporteVentas t WHERE t.codItem = :codItem"),
-        @NamedQuery(name = "TblReporteVentas.findByDiario", query = "SELECT t FROM TblReporteVentas t WHERE t.diario = :diario"),
-        @NamedQuery(name = "TblReporteVentas.findByDescripcion", query = "SELECT t FROM TblReporteVentas t WHERE t.descripcion = :descripcion"),
-        @NamedQuery(name = "TblReporteVentas.findByCantidad", query = "SELECT t FROM TblReporteVentas t WHERE t.cantidad = :cantidad"),
-        @NamedQuery(name = "TblReporteVentas.findByPrecioUnitario", query = "SELECT t FROM TblReporteVentas t WHERE t.precioUnitario = :precioUnitario"),
-        @NamedQuery(name = "TblReporteVentas.findByNeto", query = "SELECT t FROM TblReporteVentas t WHERE t.neto = :neto"),
-        @NamedQuery(name = "TblReporteVentas.findByCosto", query = "SELECT t FROM TblReporteVentas t WHERE t.costo = :costo"),
-        @NamedQuery(name = "TblReporteVentas.findByVendedor", query = "SELECT t FROM TblReporteVentas t WHERE t.vendedor = :vendedor")})
+    @NamedQuery(name = "TblReporteVentas1.findAll", query = "SELECT t FROM TblReporteVentas1 t"),
+    @NamedQuery(name = "TblReporteVentas1.findById", query = "SELECT t FROM TblReporteVentas1 t WHERE t.id = :id"),
+    @NamedQuery(name = "TblReporteVentas1.findByNoDoc", query = "SELECT t FROM TblReporteVentas1 t WHERE t.noDoc = :noDoc"),
+    @NamedQuery(name = "TblReporteVentas1.findByFechaDoc", query = "SELECT t FROM TblReporteVentas1 t WHERE t.fechaDoc = :fechaDoc"),
+    @NamedQuery(name = "TblReporteVentas1.findByCodCliente", query = "SELECT t FROM TblReporteVentas1 t WHERE t.codCliente = :codCliente"),
+    @NamedQuery(name = "TblReporteVentas1.findByNombCliente", query = "SELECT t FROM TblReporteVentas1 t WHERE t.nombCliente = :nombCliente"),
+    @NamedQuery(name = "TblReporteVentas1.findByCodItem", query = "SELECT t FROM TblReporteVentas1 t WHERE t.codItem = :codItem"),
+    @NamedQuery(name = "TblReporteVentas1.findByDiario", query = "SELECT t FROM TblReporteVentas1 t WHERE t.diario = :diario"),
+    @NamedQuery(name = "TblReporteVentas1.findByDescripcion", query = "SELECT t FROM TblReporteVentas1 t WHERE t.descripcion = :descripcion"),
+    @NamedQuery(name = "TblReporteVentas1.findByCantidad", query = "SELECT t FROM TblReporteVentas1 t WHERE t.cantidad = :cantidad"),
+    @NamedQuery(name = "TblReporteVentas1.findByPrecioUnitario", query = "SELECT t FROM TblReporteVentas1 t WHERE t.precioUnitario = :precioUnitario"),
+    @NamedQuery(name = "TblReporteVentas1.findByTotalDescuento", query = "SELECT t FROM TblReporteVentas1 t WHERE t.totalDescuento = :totalDescuento"),
+    @NamedQuery(name = "TblReporteVentas1.findByIva", query = "SELECT t FROM TblReporteVentas1 t WHERE t.iva = :iva"),
+    @NamedQuery(name = "TblReporteVentas1.findByNeto", query = "SELECT t FROM TblReporteVentas1 t WHERE t.neto = :neto"),
+    @NamedQuery(name = "TblReporteVentas1.findByCosto", query = "SELECT t FROM TblReporteVentas1 t WHERE t.costo = :costo"),
+    @NamedQuery(name = "TblReporteVentas1.findByExternalItemId", query = "SELECT t FROM TblReporteVentas1 t WHERE t.externalItemId = :externalItemId"),
+    @NamedQuery(name = "TblReporteVentas1.findByCodigoBodega", query = "SELECT t FROM TblReporteVentas1 t WHERE t.codigoBodega = :codigoBodega"),
+    @NamedQuery(name = "TblReporteVentas1.findByVendedor", query = "SELECT t FROM TblReporteVentas1 t WHERE t.vendedor = :vendedor")})
 public class TblReporteVentas implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -93,12 +99,22 @@ public class TblReporteVentas implements Serializable {
     @NotNull
     @Column(name = "PrecioUnitario")
     private BigDecimal precioUnitario;
+    @Column(name = "TotalDescuento")
+    private BigDecimal totalDescuento;
+    @Column(name = "IVA")
+    private BigDecimal iva;
     @Basic(optional = false)
     @NotNull
     @Column(name = "Neto")
     private BigDecimal neto;
     @Column(name = "costo")
     private BigDecimal costo;
+    @Size(max = 20)
+    @Column(name = "ExternalItemId")
+    private String externalItemId;
+    @Size(max = 20)
+    @Column(name = "codigoBodega")
+    private String codigoBodega;
     @Size(max = 100)
     @Column(name = "vendedor")
     private String vendedor;
@@ -204,6 +220,22 @@ public class TblReporteVentas implements Serializable {
         this.precioUnitario = precioUnitario;
     }
 
+    public BigDecimal getTotalDescuento() {
+        return totalDescuento;
+    }
+
+    public void setTotalDescuento(BigDecimal totalDescuento) {
+        this.totalDescuento = totalDescuento;
+    }
+
+    public BigDecimal getIva() {
+        return iva;
+    }
+
+    public void setIva(BigDecimal iva) {
+        this.iva = iva;
+    }
+
     public BigDecimal getNeto() {
         return neto;
     }
@@ -218,6 +250,22 @@ public class TblReporteVentas implements Serializable {
 
     public void setCosto(BigDecimal costo) {
         this.costo = costo;
+    }
+
+    public String getExternalItemId() {
+        return externalItemId;
+    }
+
+    public void setExternalItemId(String externalItemId) {
+        this.externalItemId = externalItemId;
+    }
+
+    public String getCodigoBodega() {
+        return codigoBodega;
+    }
+
+    public void setCodigoBodega(String codigoBodega) {
+        this.codigoBodega = codigoBodega;
     }
 
     public String getVendedor() {
@@ -250,7 +298,7 @@ public class TblReporteVentas implements Serializable {
 
     @Override
     public String toString() {
-        return "Entities.TblReporteVentas[ id=" + id + " ]";
+        return "com.alphacell.model.financiero.TblReporteVentas1[ id=" + id + " ]";
     }
-
+    
 }
