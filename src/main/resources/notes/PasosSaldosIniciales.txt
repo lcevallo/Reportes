@@ -1,0 +1,8 @@
+Primero se debe de sacar el reporte para la fecha 1/1/2016 en la ruta   Cuentas x Cobrar->Reportes->Externo->Estado Cuenta Cliente
+2.- Identificar cada una de las facturas y dirigirse a la opcion Cuentas x Cobrar -> ->Transacciones del cliente
+3.- Pegar en el campo Factura la factura (Hay un check que dice mostrar las abiertas con eso puedo saber si una factura ya fue totalmente cancelada).
+4.- Una vez identificado presionar el boton asiento de ahi sabre que asientos contables se aplicaron a esta factura.
+5.- Copio cada asiento contable en la seccion de asiento dentro de transacciones de cliente, la identifco y presiono ahora documento original se abrira.
+6.- Presiono Mostrar se abrira en diario.
+7.- en el Diario presiono el botono Lineas.
+8.- Y con esa ventana puedo saber la referencia del pago y demas cosas.
