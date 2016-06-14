@@ -15,9 +15,8 @@
 
             <p:dataTable
                     id="tableSaldosIniciales"
-                    value="#{saldosInicialesBean.tblSaldosIniciales}"
-                    var="dtbSaldosIniciales"
-                    filteredValue="#{saldosInicialesBean.tblSaldosInicialesFiltered}"
+                    value="#{saldosInicialesBean.empleadosSubTable}"
+                    var="clientesRecord"
                     scrollable="true"
                     style="height:600px;width:3000px"
                     scrollWidth="100%"
@@ -28,19 +27,35 @@
                     currentPageReportTemplate="Pagina: ({currentPage} de {totalPages})"
                     rowsPerPageTemplate="5,15,25"
                     scrollRows="15"
-                    rowKey="#{dtbSaldosIniciales.id}"
                     emptyMessage="No existen datos para presentar"
             >
 
                     <p:column headerText="Factura" />
                     <p:column headerText="Voucher" />
-                    <p:column headerText="Valor Inicial Deuda" />
-                    <p:column headerText="Fecha de Vencimiento" />
-                    <p:column headerText="Forma de Pago" />
-                    <p:column headerText="Estado" />
-                    <p:column headerText="Valor Pagado"/>
-                    <p:column headerText="Saldo"/>
+                <!--
+                   <p:column headerText="Valor Inicial Deuda" />
+                   <p:column headerText="Fecha de Vencimiento" />
+                   <p:column headerText="Forma de Pago" />
+                   <p:column headerText="Estado" />
+                   <p:column headerText="Valor Pagado"/>
+                   <p:column headerText="Saldo"/>
+                   -->
 
+
+                <p:subTable var="detalleRecord" value="#{clientesRecord.get(0)}">
+                    <f:facet name="header">
+                        <h:outputText value="#{clientesRecord.get(0).getAccountnum}"/>
+                    </f:facet>
+
+                    <p:column>
+                        <h:outputText value="#{detalleRecord.getInvoice}"/>
+                    </p:column>
+
+                    <p:column>
+                        <h:outputText value="#{detalleRecord.getVoucher}"/>
+                    </p:column>
+
+                </p:subTable>
 
 
 
