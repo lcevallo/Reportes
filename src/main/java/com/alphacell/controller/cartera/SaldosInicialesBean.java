@@ -73,6 +73,8 @@ public class SaldosInicialesBean implements Serializable {
                 .collect(Collectors.groupingBy(si -> si.getAccountnum()));
 
 
+        //   System.out.println(this.empleadosSubTable);
+
         //empleadosID.forEach((employee) -> System.out.print(employee + "; "));
 
     }
