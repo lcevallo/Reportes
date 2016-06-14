@@ -84,6 +84,10 @@
                         </h:outputText>
                     </p:column>
 
+                    <p:column headerText="Procentaje Iva">
+                        <h:outputText value="#{rptVentasRecord.taxcode}"/>
+                    </p:column>
+
                     <p:column headerText="Precio U." >
                         <h:outputText value="#{rptVentasRecord.precioUnitario}" >
                             <f:convertNumber pattern="#,##0.00" />
@@ -96,9 +100,7 @@
                         </h:outputText>
                     </p:column>
 
-                    <p:column headerText="Procentaje Iva">
-                        <h:outputText value="#{rptVentasRecord.taxcode}"/>
-                    </p:column>
+
 
                     <p:column headerText="IVA">
                         <h:outputText value="#{rptVentasRecord.iva}">

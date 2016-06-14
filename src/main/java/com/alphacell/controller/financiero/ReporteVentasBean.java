@@ -85,9 +85,9 @@ public class ReporteVentasBean implements Serializable {
         omitirColumnas.add(new Integer("4"));
         omitirColumnas.add(new Integer("5"));
         omitirColumnas.add(new Integer("6"));
-        omitirColumnas.add(new Integer("9"));
-        omitirColumnas.add(new Integer("13"));
-        omitirColumnas.add(new Integer("15"));
+        omitirColumnas.add(new Integer("8"));
+        omitirColumnas.add(new Integer("14"));
+        omitirColumnas.add(new Integer("16"));
 
         FormatoExcelPoi.formatearArchivoExcel(document,omitirColumnas);
 
