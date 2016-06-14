@@ -90,12 +90,33 @@
                         </h:outputText>
                     </p:column>
 
+                    <p:column headerText="Procentaje Iva">
+                        <h:outputText value="#{rptVentasRecord.taxcode}"/>
+                    </p:column>
+
+                    <p:column headerText="IVA">
+                        <h:outputText value="#{rptVentasRecord.iva}">
+                            <f:convertNumber pattern="#,##0.00"/>
+                        </h:outputText>
+                    </p:column>
+
                     <p:column headerText="Neto" >
                         <h:outputText value="#{rptVentasRecord.neto}" >
                             <f:convertNumber pattern="#,##0.00" />
                         </h:outputText>
                     </p:column>
 
+                    <p:column headerText="Total">
+                        <h:outputText value="#{rptVentasRecord.neto+rptVentasRecord.iva}">
+                            <f:convertNumber pattern="#,##0.00"/>
+                        </h:outputText>
+                    </p:column>
+
+                    <p:column headerText="Multivencimiento">
+                        <h:outputText value="#{rptVentasRecord.externalItemId}">
+
+                        </h:outputText>
+                    </p:column>
 
                     <p:column headerText="Costo" >
                         <h:outputText value="#{rptVentasRecord.costo}" >
