@@ -4,7 +4,6 @@
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:f="http://xmlns.jcp.org/jsf/core"
-                xmlns:pe="http://primefaces.org/ui/extensions"
 >
     <ui:define name="titulo">Reporte de Cuentas x Pagar</ui:define>
     <!--  update="formReporteCuentasxPagar:reporteVentasTable" -->
@@ -83,23 +82,24 @@
                     <h:outputText value="#{CxPrecord.nombreCliente}" />
                 </p:column>
 
-                <p:column headerText="No Doc" >
-                    <h:outputText value="#{CxPrecord.invoice}" />
-                </p:column>
-
-                <p:column headerText="Diario" >
-                    <h:outputText value="#{CxPrecord.voucher}" />
-                </p:column>
-
                 <p:column headerText="Fecha Transaccion" >
                     <h:outputText value="#{CxPrecord.transdate}" >
                         <f:convertDateTime dateStyle="full" pattern="MM/dd/yyyy" timeZone="EST" type="date" />
                     </h:outputText>
                 </p:column>
 
-                <p:column headerText="No Chq" >
+                <p:column headerText="No Doc">
+                    <h:outputText value="#{CxPrecord.invoice}"/>
+                </p:column>
+
+                <p:column headerText="Ref de Pago">
                     <h:outputText value="#{CxPrecord.paymReference}" />
                 </p:column>
+
+                <p:column headerText="Diario">
+                    <h:outputText value="#{CxPrecord.voucher}"/>
+                </p:column>
+
 
                 <p:column headerText="Descripcion" >
                     <h:outputText value="#{CxPrecord.des}" />
