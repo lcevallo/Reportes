@@ -26,27 +26,27 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author luis.cevallos
  */
 @Entity
-@Table(name = "TblReporteVentas1")
+@Table(name = "TblReporteVentas")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "TblReporteVentas1.findAll", query = "SELECT t FROM TblReporteVentas1 t"),
-    @NamedQuery(name = "TblReporteVentas1.findById", query = "SELECT t FROM TblReporteVentas1 t WHERE t.id = :id"),
-    @NamedQuery(name = "TblReporteVentas1.findByNoDoc", query = "SELECT t FROM TblReporteVentas1 t WHERE t.noDoc = :noDoc"),
-    @NamedQuery(name = "TblReporteVentas1.findByFechaDoc", query = "SELECT t FROM TblReporteVentas1 t WHERE t.fechaDoc = :fechaDoc"),
-    @NamedQuery(name = "TblReporteVentas1.findByCodCliente", query = "SELECT t FROM TblReporteVentas1 t WHERE t.codCliente = :codCliente"),
-    @NamedQuery(name = "TblReporteVentas1.findByNombCliente", query = "SELECT t FROM TblReporteVentas1 t WHERE t.nombCliente = :nombCliente"),
-    @NamedQuery(name = "TblReporteVentas1.findByCodItem", query = "SELECT t FROM TblReporteVentas1 t WHERE t.codItem = :codItem"),
-    @NamedQuery(name = "TblReporteVentas1.findByDiario", query = "SELECT t FROM TblReporteVentas1 t WHERE t.diario = :diario"),
-    @NamedQuery(name = "TblReporteVentas1.findByDescripcion", query = "SELECT t FROM TblReporteVentas1 t WHERE t.descripcion = :descripcion"),
-    @NamedQuery(name = "TblReporteVentas1.findByCantidad", query = "SELECT t FROM TblReporteVentas1 t WHERE t.cantidad = :cantidad"),
-    @NamedQuery(name = "TblReporteVentas1.findByPrecioUnitario", query = "SELECT t FROM TblReporteVentas1 t WHERE t.precioUnitario = :precioUnitario"),
-    @NamedQuery(name = "TblReporteVentas1.findByTotalDescuento", query = "SELECT t FROM TblReporteVentas1 t WHERE t.totalDescuento = :totalDescuento"),
-    @NamedQuery(name = "TblReporteVentas1.findByIva", query = "SELECT t FROM TblReporteVentas1 t WHERE t.iva = :iva"),
-    @NamedQuery(name = "TblReporteVentas1.findByNeto", query = "SELECT t FROM TblReporteVentas1 t WHERE t.neto = :neto"),
-    @NamedQuery(name = "TblReporteVentas1.findByCosto", query = "SELECT t FROM TblReporteVentas1 t WHERE t.costo = :costo"),
-    @NamedQuery(name = "TblReporteVentas1.findByExternalItemId", query = "SELECT t FROM TblReporteVentas1 t WHERE t.externalItemId = :externalItemId"),
-    @NamedQuery(name = "TblReporteVentas1.findByCodigoBodega", query = "SELECT t FROM TblReporteVentas1 t WHERE t.codigoBodega = :codigoBodega"),
-    @NamedQuery(name = "TblReporteVentas1.findByVendedor", query = "SELECT t FROM TblReporteVentas1 t WHERE t.vendedor = :vendedor")})
+    @NamedQuery(name = "TblReporteVentas.findAll", query = "SELECT t FROM TblReporteVentas t"),
+    @NamedQuery(name = "TblReporteVentas.findById", query = "SELECT t FROM TblReporteVentas t WHERE t.id = :id"),
+    @NamedQuery(name = "TblReporteVentas.findByNoDoc", query = "SELECT t FROM TblReporteVentas t WHERE t.noDoc = :noDoc"),
+    @NamedQuery(name = "TblReporteVentas.findByFechaDoc", query = "SELECT t FROM TblReporteVentas t WHERE t.fechaDoc = :fechaDoc"),
+    @NamedQuery(name = "TblReporteVentas.findByCodCliente", query = "SELECT t FROM TblReporteVentas t WHERE t.codCliente = :codCliente"),
+    @NamedQuery(name = "TblReporteVentas.findByNombCliente", query = "SELECT t FROM TblReporteVentas t WHERE t.nombCliente = :nombCliente"),
+    @NamedQuery(name = "TblReporteVentas.findByCodItem", query = "SELECT t FROM TblReporteVentas t WHERE t.codItem = :codItem"),
+    @NamedQuery(name = "TblReporteVentas.findByDiario", query = "SELECT t FROM TblReporteVentas t WHERE t.diario = :diario"),
+    @NamedQuery(name = "TblReporteVentas.findByDescripcion", query = "SELECT t FROM TblReporteVentas t WHERE t.descripcion = :descripcion"),
+    @NamedQuery(name = "TblReporteVentas.findByCantidad", query = "SELECT t FROM TblReporteVentas t WHERE t.cantidad = :cantidad"),
+    @NamedQuery(name = "TblReporteVentas.findByPrecioUnitario", query = "SELECT t FROM TblReporteVentas t WHERE t.precioUnitario = :precioUnitario"),
+    @NamedQuery(name = "TblReporteVentas.findByTotalDescuento", query = "SELECT t FROM TblReporteVentas t WHERE t.totalDescuento = :totalDescuento"),
+    @NamedQuery(name = "TblReporteVentas.findByIva", query = "SELECT t FROM TblReporteVentas t WHERE t.iva = :iva"),
+    @NamedQuery(name = "TblReporteVentas.findByNeto", query = "SELECT t FROM TblReporteVentas t WHERE t.neto = :neto"),
+    @NamedQuery(name = "TblReporteVentas.findByCosto", query = "SELECT t FROM TblReporteVentas t WHERE t.costo = :costo"),
+    @NamedQuery(name = "TblReporteVentas.findByExternalItemId", query = "SELECT t FROM TblReporteVentas t WHERE t.externalItemId = :externalItemId"),
+    @NamedQuery(name = "TblReporteVentas.findByCodigoBodega", query = "SELECT t FROM TblReporteVentas t WHERE t.codigoBodega = :codigoBodega"),
+    @NamedQuery(name = "TblReporteVentas.findByVendedor", query = "SELECT t FROM TblReporteVentas t WHERE t.vendedor = :vendedor")})
 public class TblReporteVentas implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -298,7 +298,7 @@ public class TblReporteVentas implements Serializable {
 
     @Override
     public String toString() {
-        return "com.alphacell.model.financiero.TblReporteVentas1[ id=" + id + " ]";
+        return "com.alphacell.model.financiero.TblReporteVentas[ id=" + id + " ]";
     }
     
 }
