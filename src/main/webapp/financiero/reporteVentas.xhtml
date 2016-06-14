@@ -90,6 +90,12 @@
                         </h:outputText>
                     </p:column>
 
+                    <p:column headerText="Total Desc." >
+                        <h:outputText value="#{rptVentasRecord.totalDescuento}" >
+                            <f:convertNumber pattern="#,##0.00" />
+                        </h:outputText>
+                    </p:column>
+
                     <p:column headerText="Procentaje Iva">
                         <h:outputText value="#{rptVentasRecord.taxcode}"/>
                     </p:column>
