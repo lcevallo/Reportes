@@ -30,30 +30,26 @@
                     emptyMessage="No existen datos para presentar"
             >
 
-                    <p:column headerText="Factura" />
-                    <p:column headerText="Voucher" />
-                <!--
-                   <p:column headerText="Valor Inicial Deuda" />
-                   <p:column headerText="Fecha de Vencimiento" />
-                   <p:column headerText="Forma de Pago" />
-                   <p:column headerText="Estado" />
-                   <p:column headerText="Valor Pagado"/>
-                   <p:column headerText="Saldo"/>
-                   -->
+                <p:column headerText="Valores"/>
+                <!--     <p:column headerText="Voucher" />
+                     <p:column headerText="Valor Inicial Deuda" />
+                     <p:column headerText="Fecha de Vencimiento" />
+                     <p:column headerText="Forma de Pago" />
+                     <p:column headerText="Estado" />
+                     <p:column headerText="Valor Pagado"/>
+                     <p:column headerText="Saldo"/>
 
+  -->
 
-                <p:subTable var="detalleRecord" value="#{clientesRecord.get(0)}">
+                <p:subTable value="#{clientesRecord.key.accountnum}" var="detalleRecord">
                     <f:facet name="header">
-                        <h:outputText value="#{clientesRecord.get(0).getAccountnum}"/>
+                        <h:outputText value="#{clientesRecord.key.accountnum}"/>
                     </f:facet>
 
                     <p:column>
-                        <h:outputText value="#{detalleRecord.getInvoice}"/>
+                        <h:outputText value="#{clientesRecord.value}"/>
                     </p:column>
 
-                    <p:column>
-                        <h:outputText value="#{detalleRecord.getVoucher}"/>
-                    </p:column>
 
                 </p:subTable>
 
