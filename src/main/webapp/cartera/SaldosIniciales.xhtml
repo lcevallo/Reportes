@@ -87,16 +87,32 @@
 
                     <p:columnGroup type="footer">
                         <p:row>
-                            <p:column footerText="Total Facturas: " style="text-align: right" />
-                            <p:column footerText="#{clientesRecord.sumatoriaDeuda}">
-                                <f:convertNumber pattern="#,##0.00" />
+                            <p:column colspan="2" footerText="Total Facturas: " style="text-align: right" />
+                            <p:column >
+                                <f:facet name="footer">
+                                    <h:outputText value="#{clientesRecord.sumatoriaDeuda}">
+                                        <f:convertNumber pattern="#,##0.00" />
+                                    </h:outputText>
+                                </f:facet>
+                                </p:column>
+
+                            <p:column colspan="3"  footerText="Total Pagado:" style="text-align: right" />
+                              <p:column >
+                                    <f:facet name="footer">
+                                        <h:outputText value="#{clientesRecord.sumatoriaPagado}">
+                                            <f:convertNumber pattern="#,##0.00" />
+                                        </h:outputText>
+                                    </f:facet>
+                                </p:column>
+
+                            <p:column >
+                                <f:facet name="footer">
+                                    <h:outputText value="#{clientesRecord.sumatoriaDeuda-clientesRecord.sumatoriaPagado}">
+                                        <f:convertNumber pattern="#,##0.00" />
+                                    </h:outputText>
+                                </f:facet>
                             </p:column>
-                            </p:row>
-                        <p:row>
-                            <p:column footerText="Total Pagado: " style="text-align: right" />
-                            <p:column footerText="#{clientesRecord.sumatoriaPagado}">
-                                <f:convertNumber pattern="#,##0.00" />
-                            </p:column>
+
 
                         </p:row>
                     </p:columnGroup>
