@@ -1,5 +1,6 @@
 package com.alphacell.repository;
 
+import com.alphacell.model.cartera.ClientesLC;
 import com.alphacell.model.cartera.Tmpcxcsaldosiniciales;
 import com.alphacell.model.cartera.Tmpcxcsidiariocompensaciondetalle;
 import org.hibernate.SQLQuery;
@@ -8,7 +9,10 @@ import org.hibernate.Session;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Created by luis on 13/06/16.
@@ -20,25 +24,41 @@ public class SaldosInicialesRepository implements Serializable {
     @Inject
     private EntityManager manager;
 
-    public List<Tmpcxcsaldosiniciales> cargarTablaSaldosIniciales() {
 
-        List<Tmpcxcsaldosiniciales> listaEnviada;
+    public List<ClientesLC> cargarTablaSaldosIniciales(){
+
+        List<ClientesLC> listaEnviada;
+        List<Tmpcxcsaldosiniciales> tmpcxcsaldosinicialesList;
+        Map<String, List<Tmpcxcsaldosiniciales>> empleadosSubTable;
+
 
         try {
 
             Session session = manager.unwrap(Session.class);
 
             SQLQuery query = session.createSQLQuery("EXEC dbo.LC_CXC_SALDOS_INICIALES ").addEntity(Tmpcxcsaldosiniciales.class);
-            listaEnviada = query.list();
+            tmpcxcsaldosinicialesList = query.list();
+
+
+            listaEnviada  = new ArrayList<ClientesLC>();
+
+            empleadosSubTable = tmpcxcsaldosinicialesList.stream()
+                    .collect(Collectors.groupingBy(si -> si.getAccountnum()));
+
+
+            empleadosSubTable.forEach((k,v)->listaEnviada.add(new ClientesLC(k,v)));
+
             return listaEnviada;
 
         } catch (SecurityException | IllegalStateException e) {
             e.printStackTrace();
         }
         return null;
+
+
     }
 
-    public List<Tmpcxcsidiariocompensaciondetalle> cargarTablaSaldosInicialesDetalle(String factura) {
+     public List<Tmpcxcsidiariocompensaciondetalle> cargarTablaSaldosInicialesDetalle(String factura) {
 
         List<Tmpcxcsidiariocompensaciondetalle> listaEnviada;
 

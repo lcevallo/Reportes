@@ -15,11 +15,9 @@
 
             <p:dataTable
                     id="tableSaldosIniciales"
-                    value="#{saldosInicialesBean.empleadosSubTable}"
+                    value="#{saldosInicialesBean.tblClientesLCs}"
                     var="clientesRecord"
                     scrollable="true"
-                    style="height:600px;width:3000px"
-                    scrollWidth="100%"
                     paginatorPosition="bottom"
                     paginator="true"
                     rows="15"
@@ -30,24 +28,61 @@
                     emptyMessage="No existen datos para presentar"
             >
 
-                <p:column headerText="Valores"/>
-                <!--     <p:column headerText="Voucher" />
+                     <p:column headerText="Factura"/>
+                     <p:column headerText="Voucher" />
                      <p:column headerText="Valor Inicial Deuda" />
                      <p:column headerText="Fecha de Vencimiento" />
                      <p:column headerText="Forma de Pago" />
-                     <p:column headerText="Estado" />
+                     <p:column headerText="Estado de Fact" />
                      <p:column headerText="Valor Pagado"/>
                      <p:column headerText="Saldo"/>
 
-  -->
 
-                <p:subTable value="#{clientesRecord.key.accountnum}" var="detalleRecord">
+
+                <p:subTable value="#{clientesRecord.tmpcxcsaldosinicialesList}" var="detalleRecord">
                     <f:facet name="header">
-                        <h:outputText value="#{clientesRecord.key.accountnum}"/>
+                        <h:outputText value="#{clientesRecord.accountNum}"/>
                     </f:facet>
 
                     <p:column>
-                        <h:outputText value="#{clientesRecord.value}"/>
+                        <h:outputText value="#{detalleRecord.invoice}"/>
+                    </p:column>
+
+                    <p:column>
+                        <h:outputText value="#{detalleRecord.voucher}"/>
+                    </p:column>
+
+                    <p:column>
+                        <h:outputText value="#{detalleRecord.amountcur}">
+                        <f:convertNumber pattern="#,##0.00" />
+                        </h:outputText>
+                    </p:column>
+
+                    <p:column>
+                        <h:outputText value="#{detalleRecord.duedate}" >
+                        <f:convertDateTime dateStyle="full" pattern="yyyy-MM-dd" timeZone="EST" type="date" />
+                        </h:outputText>
+                    </p:column>
+
+                    <p:column>
+                        <h:outputText value="#{detalleRecord.paymmode}"/>
+                    </p:column>
+
+                    <p:column>
+                        <h:outputText value="#{detalleRecord.pagada}"/>
+                    </p:column>
+
+                    <p:column>
+                        <h:outputText value="#{detalleRecord.valorpagado}" >
+                        <f:convertNumber pattern="#,##0.00" />
+                    </h:outputText>
+                    </p:column>
+
+
+                    <p:column>
+                        <h:outputText value="#{detalleRecord.amountcur-detalleRecord.valorpagado}" >
+                            <f:convertNumber pattern="#,##0.00" />
+                        </h:outputText>
                     </p:column>
 
 
