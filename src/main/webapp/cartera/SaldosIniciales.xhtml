@@ -41,7 +41,7 @@
 
                 <p:subTable value="#{clientesRecord.tmpcxcsaldosinicialesList}" var="detalleRecord">
                     <f:facet name="header">
-                        <h:outputText value="#{clientesRecord.accountNum}"/>
+                        <h:outputText value="#{clientesRecord.nombreCodigo}"  style="text-align: left" />
                     </f:facet>
 
                     <p:column>
@@ -84,6 +84,22 @@
                             <f:convertNumber pattern="#,##0.00" />
                         </h:outputText>
                     </p:column>
+
+                    <p:columnGroup type="footer">
+                        <p:row>
+                            <p:column footerText="Total Facturas: " style="text-align: right" />
+                            <p:column footerText="#{clientesRecord.sumatoriaDeuda}">
+                                <f:convertNumber pattern="#,##0.00" />
+                            </p:column>
+                            </p:row>
+                        <p:row>
+                            <p:column footerText="Total Pagado: " style="text-align: right" />
+                            <p:column footerText="#{clientesRecord.sumatoriaPagado}">
+                                <f:convertNumber pattern="#,##0.00" />
+                            </p:column>
+
+                        </p:row>
+                    </p:columnGroup>
 
 
                 </p:subTable>

@@ -10,12 +10,20 @@ import java.util.Objects;
 public class ClientesLC {
     private String name;
     private String accountNum;
+    private String nombreCodigo;
     private List<Tmpcxcsaldosiniciales> tmpcxcsaldosinicialesList;
     private BigDecimal sumatoriaDeuda;
     private BigDecimal sumatoriaPagado;
 
 
     public ClientesLC(String accountNum, List<Tmpcxcsaldosiniciales> tmpcxcsaldosinicialesList) {
+        this.accountNum = accountNum;
+        this.name=tmpcxcsaldosinicialesList.get(0).getNombreCliente();
+        this.tmpcxcsaldosinicialesList = tmpcxcsaldosinicialesList;
+    }
+
+    public ClientesLC(String name, String accountNum, List<Tmpcxcsaldosiniciales> tmpcxcsaldosinicialesList) {
+        this.name = name;
         this.accountNum = accountNum;
         this.tmpcxcsaldosinicialesList = tmpcxcsaldosinicialesList;
     }
@@ -77,5 +85,15 @@ public class ClientesLC {
 
     public void setSumatoriaPagado(BigDecimal sumatoriaPagado) {
         this.sumatoriaPagado = sumatoriaPagado;
+    }
+
+
+    public String getNombreCodigo() {
+        this.nombreCodigo=this.name+":  "+this.accountNum;
+        return nombreCodigo;
+    }
+
+    public void setNombreCodigo(String nombreCodigo) {
+        this.nombreCodigo = nombreCodigo;
     }
 }
