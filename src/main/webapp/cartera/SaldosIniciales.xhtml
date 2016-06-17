@@ -11,12 +11,21 @@
         <h:form id="frmSaldosIniciales">
             <p:messages/>
 
-            <p:outputLabel value="Cliente" for="clientecombo" />
-            <p:selectOneMenu id="clientecombo">
-                <f:selectItem itemLabel="Seleccione el cliente" />
-                <f:selectItems value="#{saldosInicialesBean.comboClientes}" var="clientesCmb"
-                               itemValue="#{clientesCmb}" itemLabel="#{clientesCmb.nombreCliente}" />
-            </p:selectOneMenu>
+            <p:toolbar style="margin-top:  20px;">
+                    <p:toolbarGroup>
+                        <p:outputLabel value="Cliente" for="clientecombo" />
+                        <p:selectOneMenu id="clientecombo">
+                            <f:selectItem itemLabel="Seleccione el cliente" />
+                            <f:selectItems value="#{saldosInicialesBean.comboClientes}" var="clientesCmb"
+                                           itemValue="#{clientesCmb}" itemLabel="#{clientesCmb.nombreCliente}" />
+                        </p:selectOneMenu>
+
+                        <p:commandButton value="Buscar" id="cxcBuscarClienteSI" />
+
+                    </p:toolbarGroup>
+            </p:toolbar>
+
+
 
             <p:dataTable
                     id="tableSaldosIniciales"
