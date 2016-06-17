@@ -1,5 +1,6 @@
-package com.alphacell.repository;
+package com.alphacell.repository.cxc;
 
+import com.alphacell.model.cartera.ClienteVista;
 import com.alphacell.model.cartera.ClientesLC;
 import com.alphacell.model.cartera.Tmpcxcsaldosiniciales;
 import com.alphacell.model.cartera.Tmpcxcsidiariocompensaciondetalle;
@@ -75,6 +76,12 @@ public class SaldosInicialesRepository implements Serializable {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public List<ClienteVista> obtenerClientes()
+    {
+        return manager.createQuery("from ClienteVista",ClienteVista.class).getResultList();
+
     }
 
 }

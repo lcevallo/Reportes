@@ -1,8 +1,9 @@
 package com.alphacell.controller.cartera;
 
+import com.alphacell.model.cartera.ClienteVista;
 import com.alphacell.model.cartera.ClientesLC;
 import com.alphacell.model.cartera.Tmpcxcsaldosiniciales;
-import com.alphacell.repository.SaldosInicialesRepository;
+import com.alphacell.repository.cxc.SaldosInicialesRepository;
 
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
@@ -27,6 +28,7 @@ public class SaldosInicialesBean implements Serializable {
 
 
     private ClientesLC recordTmpcxcsaldosiniciales;
+    private List<ClienteVista> comboClientes;
     private List<ClientesLC> tblClientesLCs;
     private List<String> empleadosID;
 
@@ -34,14 +36,10 @@ public class SaldosInicialesBean implements Serializable {
     private SaldosInicialesRepository saldosInicialesRepository;
 
 
-
-
-
     @PostConstruct
     public void inicializar() {
 
-        this.tblClientesLCs = saldosInicialesRepository.cargarTablaSaldosIniciales();
-
+        this.comboClientes=this.saldosInicialesRepository.obtenerClientes();
 /*
         this.empleadosID = this.tblSaldosIniciales.stream()
                 //.filter(distinctByKey(p -> p.getName())
@@ -49,6 +47,12 @@ public class SaldosInicialesBean implements Serializable {
                 .distinct()
                 .collect(toList());
 */
+    }
+
+    public void cargarTablaSaldosIniciales()
+    {
+        this.tblClientesLCs = saldosInicialesRepository.cargarTablaSaldosIniciales();
+
     }
 
     public List<String> getEmpleadosID() {
@@ -73,5 +77,13 @@ public class SaldosInicialesBean implements Serializable {
 
     public void setRecordTmpcxcsaldosiniciales(ClientesLC recordTmpcxcsaldosiniciales) {
         this.recordTmpcxcsaldosiniciales = recordTmpcxcsaldosiniciales;
+    }
+
+    public List<ClienteVista> getComboClientes() {
+        return comboClientes;
+    }
+
+    public void setComboClientes(List<ClienteVista> comboClientes) {
+        this.comboClientes = comboClientes;
     }
 }

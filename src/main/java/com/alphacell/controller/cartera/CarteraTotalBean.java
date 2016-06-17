@@ -1,7 +1,7 @@
 package com.alphacell.controller.cartera;
 
 import com.alphacell.model.cartera.TmpCarteraTotalPvt;
-import com.alphacell.repository.CarteraTotalRepository;
+import com.alphacell.repository.cxc.CarteraTotalRepository;
 import com.alphacell.util.jsf.FormatoExcelPoi;
 
 import javax.annotation.PostConstruct;

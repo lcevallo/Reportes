@@ -1,7 +1,7 @@
 package com.alphacell.controller.cartera;
 
 import com.alphacell.model.cartera.TmpCarteraTotalXTramo1;
-import com.alphacell.repository.CarteraTotalRepository;
+import com.alphacell.repository.cxc.CarteraTotalRepository;
 import com.alphacell.util.jsf.FormatoExcelPoi;
 import org.primefaces.context.RequestContext;
 

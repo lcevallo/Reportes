@@ -11,7 +11,12 @@
         <h:form id="frmSaldosIniciales">
             <p:messages/>
 
-
+            <p:outputLabel value="Cliente" for="clientecombo" />
+            <p:selectOneMenu id="clientecombo">
+                <f:selectItem itemLabel="Seleccione el cliente" />
+                <f:selectItems value="#{saldosInicialesBean.comboClientes}" var="clientesCmb"
+                               itemValue="#{clientesCmb}" itemLabel="#{clientesCmb.nombreCliente}" />
+            </p:selectOneMenu>
 
             <p:dataTable
                     id="tableSaldosIniciales"
