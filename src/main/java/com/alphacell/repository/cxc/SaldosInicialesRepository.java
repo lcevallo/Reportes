@@ -9,6 +9,7 @@ import org.hibernate.Session;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -80,8 +81,16 @@ public class SaldosInicialesRepository implements Serializable {
 
     public List<ClienteVista> obtenerClientes()
     {
-        return manager.createQuery("from ClienteVista",ClienteVista.class).getResultList();
+        return manager.createNamedQuery("ClienteVista.findAll",ClienteVista.class).getResultList();
 
+    }
+
+
+    public ClienteVista findByCodigoCliente(String codigo)
+    {
+        Query query = manager.createNamedQuery("ClienteVista.findByAccountnum");
+        query.setParameter("accountnum", codigo);
+        return (ClienteVista) query.getSingleResult();
     }
 
 }
