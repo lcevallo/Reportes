@@ -60,3 +60,8 @@ h1 {
     height: 100%;
     padding-bottom:5px;
 }
+
+.sin-bordes td{
+	border: none;
+	padding: 5px;
+}

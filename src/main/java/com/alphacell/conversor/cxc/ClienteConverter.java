@@ -19,20 +19,22 @@ import javax.faces.convert.FacesConverter;
 public class ClienteConverter implements Converter {
 
     // @Inject
-    SaldosInicialesRepository saldosInicialesRepository;
+    private SaldosInicialesRepository saldosInicialesRepository;
 
 
     public ClienteConverter() {
-        this.saldosInicialesRepository = CDIServiceLocator.getBean(SaldosInicialesRepository.class);
+        this.saldosInicialesRepository = (SaldosInicialesRepository) CDIServiceLocator.getBean(SaldosInicialesRepository.class);
     }
 
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
+
+
         if (value == null || value.isEmpty()) {
             return null;
         }
         try {
-            Object obj = saldosInicialesRepository.findByCodigoCliente(value);
+            ClienteVista obj= saldosInicialesRepository.findByCodigoCliente(value);
             return obj;
 
         } catch (Exception e) {
@@ -48,7 +50,7 @@ public class ClienteConverter implements Converter {
         if (!(value instanceof ClienteVista)) {
             return null;
         }
-        String s = String.valueOf(((ClienteVista) value).getAccountnum());
+        String s = String.valueOf(((ClienteVista) value).getNombreCliente());
         return s;
     }
 

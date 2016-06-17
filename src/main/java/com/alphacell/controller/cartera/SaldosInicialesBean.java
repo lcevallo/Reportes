@@ -28,6 +28,7 @@ public class SaldosInicialesBean implements Serializable {
 
 
     private ClientesLC recordTmpcxcsaldosiniciales;
+    private ClienteVista clienteSelected;
     private List<ClienteVista> comboClientes;
     private List<ClientesLC> tblClientesLCs;
     private List<String> empleadosID;
@@ -85,5 +86,14 @@ public class SaldosInicialesBean implements Serializable {
 
     public void setComboClientes(List<ClienteVista> comboClientes) {
         this.comboClientes = comboClientes;
+    }
+
+
+    public ClienteVista getClienteSelected() {
+        return clienteSelected;
+    }
+
+    public void setClienteSelected(ClienteVista clienteSelected) {
+        this.clienteSelected = clienteSelected;
     }
 }
