@@ -4,147 +4,189 @@
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:pe="http://primefaces.org/ui/extensions"
                 >
     <ui:define name="titulo">Saldos Iniciales</ui:define>
     <ui:define name="cuerpo">
 
         <h:form id="frmSaldosIniciales">
-            <p:messages/>
+            <p:growl id="msgs" />
 
-            <p:toolbar style="margin-top:  20px;">
-                <p:toolbarGroup>
-                    <p:selectOneMenu id="clientecombo" required="true"
-                                    value="#{saldosInicialesBean.clienteSelected}"
-                                     var="clienteRecord"
-                                    filter="true"
-                                     filterMatchMode="contains"
-                                >
-                        <f:selectItem itemLabel="Seleccione el cliente" />
-                        <f:selectItem itemValue="#{null}" itemLabel="Todos" />
-                        <f:selectItems value="#{saldosInicialesBean.comboClientes}" var="clientesCmb"
-                                       itemValue="#{clientesCmb}" itemLabel="#{clientesCmb.nombreCliente}" />
-                        <p:column>#{clientesCmb.nombreCliente}</p:column>
-                    </p:selectOneMenu>
+<!--<p:selectOneMenu -->
 
-                    <p:commandButton value="Buscar" id="cxcBuscarClienteSI" />
-
-                </p:toolbarGroup>
-            </p:toolbar>
+            <p:wizard flowListener="#{saldosInicialesBean.onFlowProcess}">
 
 
+                <p:tab id="SICriterio" title="Criterios de busqueda">
 
-            <p:dataTable
-                id="tableSaldosIniciales"
-                value="#{saldosInicialesBean.tblClientesLCs}"
-                var="clientesRecord"
-                scrollable="true"
-                paginatorPosition="bottom"
-                paginator="true"
-                rows="15"
-                paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
-                currentPageReportTemplate="Pagina: ({currentPage} de {totalPages})"
-                rowsPerPageTemplate="5,15,25"
-                scrollRows="15"
-                emptyMessage="No existen datos para presentar"
-                >
+                    <p:panel header="Criterios de Busqueda">
+                        <p:messages/>
 
-                <p:column headerText="Factura"/>
-                <p:column headerText="Voucher" />
-                <p:column headerText="Valor Inicial Deuda" />
-                <p:column headerText="Fecha de Vencimiento" />
-                <p:column headerText="Forma de Pago" />
-                <p:column headerText="Estado de Fact" />
-                <p:column headerText="Valor Pagado"/>
-                <p:column headerText="Saldo"/>
+                        <p:panelGrid columns="2" >
+
+                            <h:outputText value="Desea ver Todos Clientes: " />
+                            <p:selectBooleanButton id="value2" value="#{saldosInicialesBean.todosClientes}" onLabel="Si" offLabel="No" onIcon="ui-icon-check" offIcon="ui-icon-close" style="width:60px">
+                                <p:ajax update="msgs" listener="#{saldosInicialesBean.addMessage}" />
+                            </p:selectBooleanButton>
 
 
+                         <h:outputLabel for="clientecombo"  value="Cliente(*):" />
+                         <p:selectCheckboxMenu label="Seleccione Clientes"
+                                              id="clientecombo" required="false"
+                                              value="#{saldosInicialesBean.selectedClients}"
+                                              filter="true"
+                                              filterMatchMode="contains"
+                        >
+                            <f:selectItems value="#{saldosInicialesBean.comboClientes}" var="clientesCmb"
+                                           itemValue="#{clientesCmb}" itemLabel="#{clientesCmb.nombreCliente}" />
+                            </p:selectCheckboxMenu>
 
-                <p:subTable value="#{clientesRecord.tmpcxcsaldosinicialesList}" var="detalleRecord">
-                    <f:facet name="header">
-                        <h:outputText value="#{clientesRecord.nombreCodigo}"  style="text-align: left" />
-                    </f:facet>
+                        </p:panelGrid>
 
-                    <p:column>
-                        <h:outputText value="#{detalleRecord.invoice}"/>
-                    </p:column>
+                        <h:panelGrid columns="3" columnClasses="label,label, value">
 
-                    <p:column>
-                        <h:outputText value="#{detalleRecord.voucher}"/>
-                    </p:column>
+                          <h:outputLabel value="Factura Abierta" for="siCondicionFacturaAbierta" />
+                          <p:selectOneMenu id="siCondicionFacturaAbierta" value="#{saldosInicialesBean.condicionFacturaAbierta}">
+                                <f:selectItem itemLabel="mayor o igual que" itemValue="graterequalthan"/>
+                                <f:selectItem itemLabel="mayor que" itemValue="graterthan"/>
+                                <f:selectItem itemLabel="igual que" itemValue="equals"/>
+                                <f:selectItem itemLabel="menor o igual que" itemValue="lessequalsthan"/>
+                                <f:selectItem itemLabel="menor que" itemValue="lessthan"/>
+                            </p:selectOneMenu>
+                            <pe:inputNumber id="siValorCondicionFacturaAbierta" value="#{saldosInicialesBean.valorCondicionFacturaAbierta}" symbol="$" validatorMessage="El valor debe de ser un numero decimal" emptyValue="zero" />
 
-                    <p:column>
-                        <h:outputText value="#{detalleRecord.amountcur}">
-                            <f:convertNumber pattern="#,##0.00" />
-                        </h:outputText>
-                    </p:column>
+                            <h:outputLabel value="Factura Cerrada" for="siCondicionFacturaCerrada" />
+                            <p:selectOneMenu id="siCondicionFacturaCerrada" value="#{saldosInicialesBean.condicionFacturaCerrada}" >
+                                <f:selectItem itemLabel="mayor o igual que" itemValue="graterequalthan"/>
+                                <f:selectItem itemLabel="mayor que" itemValue="graterthan"/>
+                                <f:selectItem itemLabel="igual que" itemValue="equals"/>
+                                <f:selectItem itemLabel="menor o igual que" itemValue="lessequalsthan"/>
+                                <f:selectItem itemLabel="menor que" itemValue="lessthan"/>
+                            </p:selectOneMenu>
+                            <pe:inputNumber id="siValorCondicionFacturaCerrada" value="#{saldosInicialesBean.valorCondicionFacturaAbierta}" symbol="$" validatorMessage="El valor debe de ser un numero decimal" emptyValue="zero" />
 
-                    <p:column>
-                        <h:outputText value="#{detalleRecord.duedate}" >
-                            <f:convertDateTime dateStyle="full" pattern="dd/MM/yyyy" timeZone="EST" type="date" />
-                        </h:outputText>
-                    </p:column>
+                        </h:panelGrid>
+                    </p:panel>
 
-                    <p:column>
-                        <h:outputText value="#{detalleRecord.paymmode}"/>
-                    </p:column>
+                </p:tab>
 
-                    <p:column>
-                        <h:outputText value="#{detalleRecord.pagada}"/>
-                    </p:column>
-
-                    <p:column>
-                        <h:outputText value="#{detalleRecord.valorpagado}" >
-                            <f:convertNumber pattern="#,##0.00" />
-                        </h:outputText>
-                    </p:column>
+                <p:tab id="SItableTab" title="Resultado">
 
 
-                    <p:column>
-                        <h:outputText value="#{detalleRecord.amountcur-detalleRecord.valorpagado}" >
-                            <f:convertNumber pattern="#,##0.00" />
-                        </h:outputText>
-                    </p:column>
 
-                    <p:columnGroup type="footer">
-                        <p:row>
-                            <p:column colspan="2" footerText="Total Facturas: " style="text-align: right" />
-                            <p:column >
-                                <f:facet name="footer">
-                                    <h:outputText value="#{clientesRecord.sumatoriaDeuda}">
-                                        <f:convertNumber pattern="#,##0.00" />
-                                    </h:outputText>
-                                </f:facet>
+                    <p:dataTable
+                            id="tableSaldosIniciales"
+                            value="#{saldosInicialesBean.tblClientesLCs}"
+                            var="clientesRecord"
+                            scrollable="true"
+                            paginatorPosition="bottom"
+                            paginator="true"
+                            rows="15"
+                            paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                            currentPageReportTemplate="Pagina: ({currentPage} de {totalPages})"
+                            rowsPerPageTemplate="5,15,25"
+                            scrollRows="15"
+                            emptyMessage="No existen datos para presentar"
+                    >
+
+                        <p:column headerText="Factura"/>
+                        <p:column headerText="Voucher" />
+                        <p:column headerText="Valor Inicial Deuda" />
+                        <p:column headerText="Fecha de Vencimiento" />
+                        <p:column headerText="Forma de Pago" />
+                        <p:column headerText="Estado de Fact" />
+                        <p:column headerText="Valor Pagado"/>
+                        <p:column headerText="Saldo"/>
+
+
+
+                        <p:subTable value="#{clientesRecord.tmpcxcsaldosinicialesList}" var="detalleRecord">
+                            <f:facet name="header">
+                                <h:outputText value="#{clientesRecord.nombreCodigo}"  style="text-align: left" />
+                            </f:facet>
+
+                            <p:column>
+                                <h:outputText value="#{detalleRecord.invoice}"/>
                             </p:column>
 
-                            <p:column colspan="3"  footerText="Total Pagado:" style="text-align: right" />
-                            <p:column >
-                                <f:facet name="footer">
-                                    <h:outputText value="#{clientesRecord.sumatoriaPagado}">
-                                        <f:convertNumber pattern="#,##0.00" />
-                                    </h:outputText>
-                                </f:facet>
+                            <p:column>
+                                <h:outputText value="#{detalleRecord.voucher}"/>
                             </p:column>
 
-                            <p:column >
-                                <f:facet name="footer">
-                                    <h:outputText value="#{clientesRecord.sumatoriaDeuda-clientesRecord.sumatoriaPagado}">
-                                        <f:convertNumber pattern="#,##0.00" />
-                                    </h:outputText>
-                                </f:facet>
+                            <p:column>
+                                <h:outputText value="#{detalleRecord.amountcur}">
+                                    <f:convertNumber pattern="#,##0.00" />
+                                </h:outputText>
+                            </p:column>
+
+                            <p:column>
+                                <h:outputText value="#{detalleRecord.duedate}" >
+                                    <f:convertDateTime dateStyle="full" pattern="dd/MM/yyyy" timeZone="EST" type="date" />
+                                </h:outputText>
+                            </p:column>
+
+                            <p:column>
+                                <h:outputText value="#{detalleRecord.paymmode}"/>
+                            </p:column>
+
+                            <p:column>
+                                <h:outputText value="#{detalleRecord.pagada}"/>
+                            </p:column>
+
+                            <p:column>
+                                <h:outputText value="#{detalleRecord.valorpagado}" >
+                                    <f:convertNumber pattern="#,##0.00" />
+                                </h:outputText>
                             </p:column>
 
 
-                        </p:row>
-                    </p:columnGroup>
+                            <p:column>
+                                <h:outputText value="#{detalleRecord.amountcur-detalleRecord.valorpagado}" >
+                                    <f:convertNumber pattern="#,##0.00" />
+                                </h:outputText>
+                            </p:column>
+
+                            <p:columnGroup type="footer">
+                                <p:row>
+                                    <p:column colspan="2" footerText="Total Facturas: " style="text-align: right" />
+                                    <p:column >
+                                        <f:facet name="footer">
+                                            <h:outputText value="#{clientesRecord.sumatoriaDeuda}">
+                                                <f:convertNumber pattern="#,##0.00" />
+                                            </h:outputText>
+                                        </f:facet>
+                                    </p:column>
+
+                                    <p:column colspan="3"  footerText="Total Pagado:" style="text-align: right" />
+                                    <p:column >
+                                        <f:facet name="footer">
+                                            <h:outputText value="#{clientesRecord.sumatoriaPagado}">
+                                                <f:convertNumber pattern="#,##0.00" />
+                                            </h:outputText>
+                                        </f:facet>
+                                    </p:column>
+
+                                    <p:column >
+                                        <f:facet name="footer">
+                                            <h:outputText value="#{clientesRecord.sumatoriaDeuda-clientesRecord.sumatoriaPagado}">
+                                                <f:convertNumber pattern="#,##0.00" />
+                                            </h:outputText>
+                                        </f:facet>
+                                    </p:column>
 
 
-                </p:subTable>
+                                </p:row>
+                            </p:columnGroup>
 
 
+                        </p:subTable>
+                    </p:dataTable>
+
+                </p:tab>
 
 
+            </p:wizard>
 
-            </p:dataTable>
 
         </h:form>
     </ui:define>
