@@ -82,7 +82,7 @@ public class ClienteVista implements Serializable  {
 
     @Override
     public String toString() {
-        return "com.alphacell.model.cartera.ClienteVista[ accountnum=" + accountnum + " ]";
+        return  accountnum ;
     }
 
 

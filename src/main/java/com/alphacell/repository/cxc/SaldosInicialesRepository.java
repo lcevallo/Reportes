@@ -27,7 +27,7 @@ public class SaldosInicialesRepository implements Serializable {
     private EntityManager manager;
 
 
-    public List<ClientesLC> cargarTablaSaldosIniciales(){
+    public List<ClientesLC> cargarTablaSaldosIniciales(String clientes){
 
         List<ClientesLC> listaEnviada;
         List<Tmpcxcsaldosiniciales> tmpcxcsaldosinicialesList;
@@ -38,9 +38,18 @@ public class SaldosInicialesRepository implements Serializable {
 
             Session session = manager.unwrap(Session.class);
 
-            SQLQuery query = session.createSQLQuery("EXEC dbo.LC_CXC_SALDOS_INICIALES ").addEntity(Tmpcxcsaldosiniciales.class);
-            tmpcxcsaldosinicialesList = query.list();
+            if(clientes==null)
+            {
+                SQLQuery query = session.createSQLQuery("EXEC dbo.LC_CXC_SALDOS_INICIALES ").addEntity(Tmpcxcsaldosiniciales.class);
+                tmpcxcsaldosinicialesList = query.list();
+            }
+            else
+            {
+                SQLQuery query = session.createSQLQuery("EXEC dbo.LC_CXC_SALDOS_INICIALES null,:conjuntoID").addEntity(Tmpcxcsaldosiniciales.class);
+                query.setString("conjuntoID", clientes);
+                tmpcxcsaldosinicialesList = query.list();
 
+            }
 
             listaEnviada  = new ArrayList<ClientesLC>();
 
@@ -56,7 +65,6 @@ public class SaldosInicialesRepository implements Serializable {
             e.printStackTrace();
         }
         return null;
-
 
     }
 

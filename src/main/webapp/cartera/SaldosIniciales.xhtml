@@ -17,21 +17,22 @@
             <p:wizard flowListener="#{saldosInicialesBean.onFlowProcess}">
 
 
-                <p:tab id="SICriterio" title="Criterios de busqueda">
+                <p:tab id="SICriterio" title="Criterios">
 
-                    <p:panel header="Criterios de Busqueda">
+                    <p:panel header="Criterios">
                         <p:messages/>
 
                         <p:panelGrid columns="2" >
 
                             <h:outputText value="Desea ver Todos Clientes: " />
-                            <p:selectBooleanButton id="value2" value="#{saldosInicialesBean.todosClientes}" onLabel="Si" offLabel="No" onIcon="ui-icon-check" offIcon="ui-icon-close" style="width:60px">
-                                <p:ajax update="msgs" listener="#{saldosInicialesBean.addMessage}" />
+                            <p:selectBooleanButton id="bbTodos" value="#{saldosInicialesBean.todosClientes}" onLabel="Si" offLabel="No" onIcon="ui-icon-check" offIcon="ui-icon-close" style="width:60px">
+                                <p:ajax update="msgs clientecombo" listener="#{saldosInicialesBean.addMessage}" />
                             </p:selectBooleanButton>
 
 
                          <h:outputLabel for="clientecombo"  value="Cliente(*):" />
                          <p:selectCheckboxMenu label="Seleccione Clientes"
+                                              disabled="#{saldosInicialesBean.todosClientes}"
                                               id="clientecombo" required="false"
                                               value="#{saldosInicialesBean.selectedClients}"
                                               filter="true"
@@ -41,12 +42,21 @@
                                            itemValue="#{clientesCmb}" itemLabel="#{clientesCmb.nombreCliente}" />
                             </p:selectCheckboxMenu>
 
+
+                            <p:outputLabel for="siEstado" value="Estado:" />
+                            <p:selectOneRadio id="siEstado" value="#{saldosInicialesBean.estado}" required="true">
+                                   <f:selectItems value="#{saldosInicialesBean.estadoLista}" var="i"
+                                               itemLabel="#{i}" itemValue="#{i}" />
+                                <p:ajax update="frmSaldosIniciales:siCondicionFacturaAbierta frmSaldosIniciales:siCondicionFacturaCerrada"
+                                        listener="#{saldosInicialesBean.estadoChangeHandler}" />
+                            </p:selectOneRadio>
+
                         </p:panelGrid>
 
-                        <h:panelGrid columns="3" columnClasses="label,label, value">
+                        <p:panelGrid columns="3" columnClasses="label,label, value">
 
                           <h:outputLabel value="Factura Abierta" for="siCondicionFacturaAbierta" />
-                          <p:selectOneMenu id="siCondicionFacturaAbierta" value="#{saldosInicialesBean.condicionFacturaAbierta}">
+                          <p:selectOneMenu disabled="#{saldosInicialesBean.condicionFacturaOpen}" id="siCondicionFacturaAbierta" value="#{saldosInicialesBean.condicionFacturaAbierta}">
                                 <f:selectItem itemLabel="mayor o igual que" itemValue="graterequalthan"/>
                                 <f:selectItem itemLabel="mayor que" itemValue="graterthan"/>
                                 <f:selectItem itemLabel="igual que" itemValue="equals"/>
@@ -56,7 +66,7 @@
                             <pe:inputNumber id="siValorCondicionFacturaAbierta" value="#{saldosInicialesBean.valorCondicionFacturaAbierta}" symbol="$" validatorMessage="El valor debe de ser un numero decimal" emptyValue="zero" />
 
                             <h:outputLabel value="Factura Cerrada" for="siCondicionFacturaCerrada" />
-                            <p:selectOneMenu id="siCondicionFacturaCerrada" value="#{saldosInicialesBean.condicionFacturaCerrada}" >
+                            <p:selectOneMenu disabled="#{saldosInicialesBean.condicionFacturaClose}"  id="siCondicionFacturaCerrada" value="#{saldosInicialesBean.condicionFacturaCerrada}" >
                                 <f:selectItem itemLabel="mayor o igual que" itemValue="graterequalthan"/>
                                 <f:selectItem itemLabel="mayor que" itemValue="graterthan"/>
                                 <f:selectItem itemLabel="igual que" itemValue="equals"/>
@@ -65,12 +75,12 @@
                             </p:selectOneMenu>
                             <pe:inputNumber id="siValorCondicionFacturaCerrada" value="#{saldosInicialesBean.valorCondicionFacturaAbierta}" symbol="$" validatorMessage="El valor debe de ser un numero decimal" emptyValue="zero" />
 
-                        </h:panelGrid>
+                        </p:panelGrid>
                     </p:panel>
 
                 </p:tab>
 
-                <p:tab id="SItableTab" title="Resultado">
+                <p:tab id="SItableTab" title="Reporte">
 
 
 

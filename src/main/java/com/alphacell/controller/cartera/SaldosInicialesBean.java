@@ -2,8 +2,9 @@ package com.alphacell.controller.cartera;
 
 import com.alphacell.model.cartera.ClienteVista;
 import com.alphacell.model.cartera.ClientesLC;
-import com.alphacell.model.cartera.Tmpcxcsaldosiniciales;
 import com.alphacell.repository.cxc.SaldosInicialesRepository;
+import com.alphacell.util.reporte.Reporte;
+import org.primefaces.context.RequestContext;
 import org.primefaces.event.FlowEvent;
 
 import javax.annotation.PostConstruct;
@@ -14,11 +15,10 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
-
-import static java.util.stream.Collectors.toList;
+import java.util.stream.Stream;
 
 /**
  * Created by luis on 13/06/16.
@@ -32,15 +32,23 @@ public class SaldosInicialesBean implements Serializable {
 
     private ClientesLC recordTmpcxcsaldosiniciales;
     private String[] selectedClients;
-    private boolean todosClientes;
+    private boolean todosClientes = true;
+    private boolean condicionFacturaOpen = true;
+    private boolean condicionFacturaClose=true;
     private ClienteVista clienteSelected;
     private List<ClienteVista> comboClientes;
     private List<ClientesLC> tblClientesLCs;
+    private List<ClientesLC> tblClientesLCOriginal;
     private List<String> empleadosID;
     private Double valorCondicionFacturaAbierta;
     private Double valorCondicionFacturaCerrada;
     private String condicionFacturaCerrada;
     private String condicionFacturaAbierta;
+    private String clientesSeleccionados;
+    private String estado;
+    private List<String> estadoLista;
+    private HashMap<String, Object> parametros;
+    private Reporte rpt;
 
 
     @Inject
@@ -50,7 +58,13 @@ public class SaldosInicialesBean implements Serializable {
     @PostConstruct
     public void inicializar() {
 
-        this.comboClientes=this.saldosInicialesRepository.obtenerClientes();
+        this.comboClientes = this.saldosInicialesRepository.obtenerClientes();
+        this.parametros = new HashMap<String, Object>();
+        this.estadoLista= new ArrayList<String>();
+        this.estadoLista.add("Todos");
+        this.estadoLista.add("Abiertas");
+        this.estadoLista.add("Cerradas");
+
 /*
         this.empleadosID = this.tblSaldosIniciales.stream()
                 //.filter(distinctByKey(p -> p.getName())
@@ -60,10 +74,16 @@ public class SaldosInicialesBean implements Serializable {
 */
     }
 
-    public void cargarTablaSaldosIniciales()
-    {
-        this.tblClientesLCs = saldosInicialesRepository.cargarTablaSaldosIniciales();
+    public void cargarTablaSaldosIniciales() {
+        this.tblClientesLCOriginal = saldosInicialesRepository.cargarTablaSaldosIniciales(null);
+    }
 
+    public void cargarTablaSaldosIniciales(String[] clientes) {
+
+        String[] clientes2 = Stream.of(clientes).map(t -> "\'" + t + "\'").toArray(String[]::new);
+        String parametro2 = Stream.of(clientes2).reduce((t, u) -> t + "," + u).get();
+        this.clientesSeleccionados = "(" + parametro2 + ")";
+        this.tblClientesLCOriginal = saldosInicialesRepository.cargarTablaSaldosIniciales(this.clientesSeleccionados);
     }
 
     public List<String> getEmpleadosID() {
@@ -108,9 +128,29 @@ public class SaldosInicialesBean implements Serializable {
     }
 
     public String onFlowProcess(FlowEvent event) {
-        System.out.println("Flow Event Happened :: New Step :: "+event.getNewStep()+" :: Old Step :: "+event.getOldStep());
-        if(event.getNewStep().equals("SItableTab"))
-        {
+
+        if (event.getNewStep().equals("SItableTab")) {
+
+            //AQUI DEBO DE HACER LA BUSQUEDA SI ES QUE HAY EMPLEADOS SELECCIONADOS O SON TODOS
+
+            if (todosClientes) {
+                this.cargarTablaSaldosIniciales();
+                this.tblClientesLCs = this.tblClientesLCOriginal;
+
+            } else {
+                this.cargarTablaSaldosIniciales(this.selectedClients);
+                this.tblClientesLCs = this.tblClientesLCOriginal;
+
+                /*
+                this.tblClientesLCs = this.tblClientesLCOriginal.stream().filter(u ->
+                        u.getTmpcxcsaldosinicialesList().stream().anyMatch(tmpcxcsaldosiniciales -> tmpcxcsaldosiniciales.getPagada().equals("CERRADA"))
+                ).collect(Collectors.toList());
+                */
+
+            }
+
+            RequestContext.getCurrentInstance().update("frmSaldosIniciales:tableSaldosIniciales");
+
             System.out.println(this.condicionFacturaAbierta);
             System.out.println(this.condicionFacturaCerrada);
 
@@ -121,11 +161,37 @@ public class SaldosInicialesBean implements Serializable {
 
     public void addMessage() {
         String summary = this.todosClientes ? "Checked" : "Unchecked";
+        this.parametros.put("bbTodos", this.todosClientes);
+        if (this.todosClientes == true) {
+            RequestContext.getCurrentInstance().reset("frmSaldosIniciales:clientecombo");
+            RequestContext.getCurrentInstance().update("frmSaldosIniciales:clientecombo");
+            this.selectedClients = null;
+        } else {
+            RequestContext.getCurrentInstance().update("frmSaldosIniciales:clientecombo");
+        }
+
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(summary));
     }
 
-
-
+    public void estadoChangeHandler()
+    {
+        System.out.println(this.estado);
+        switch (this.estado)
+        {
+            case "Todos":
+                this.condicionFacturaClose=true;
+                this.condicionFacturaOpen=true;
+                break;
+            case "Abiertas":
+                this.condicionFacturaClose=false;
+                this.condicionFacturaOpen=true;
+                break;
+            case "Cerradas":
+                this.condicionFacturaClose=true;
+                this.condicionFacturaOpen=false;
+                break;
+        }
+    }
 
     public boolean isTodosClientes() {
         return todosClientes;
@@ -173,5 +239,69 @@ public class SaldosInicialesBean implements Serializable {
 
     public void setCondicionFacturaAbierta(String condicionFacturaAbierta) {
         this.condicionFacturaAbierta = condicionFacturaAbierta;
+    }
+
+    public HashMap<String, Object> getParametros() {
+        return parametros;
+    }
+
+    public void setParametros(HashMap<String, Object> parametros) {
+        this.parametros = parametros;
+    }
+
+    public Reporte getRpt() {
+        return rpt;
+    }
+
+    public void setRpt(Reporte rpt) {
+        this.rpt = rpt;
+    }
+
+    public String getClientesSeleccionados() {
+        return clientesSeleccionados;
+    }
+
+    public void setClientesSeleccionados(String clientesSeleccionados) {
+        this.clientesSeleccionados = clientesSeleccionados;
+    }
+
+    public List<ClientesLC> getTblClientesLCOriginal() {
+        return tblClientesLCOriginal;
+    }
+
+    public void setTblClientesLCOriginal(List<ClientesLC> tblClientesLCOriginal) {
+        this.tblClientesLCOriginal = tblClientesLCOriginal;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public List<String> getEstadoLista() {
+        return estadoLista;
+    }
+
+    public void setEstadoLista(List<String> estadoLista) {
+        this.estadoLista = estadoLista;
+    }
+
+    public boolean isCondicionFacturaOpen() {
+        return condicionFacturaOpen;
+    }
+
+    public void setCondicionFacturaOpen(boolean condicionFacturaOpen) {
+        this.condicionFacturaOpen = condicionFacturaOpen;
+    }
+
+    public boolean isCondicionFacturaClose() {
+        return condicionFacturaClose;
+    }
+
+    public void setCondicionFacturaClose(boolean condicionFacturaClose) {
+        this.condicionFacturaClose = condicionFacturaClose;
     }
 }
