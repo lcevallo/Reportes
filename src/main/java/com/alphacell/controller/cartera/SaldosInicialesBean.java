@@ -33,8 +33,8 @@ public class SaldosInicialesBean implements Serializable {
     private ClientesLC recordTmpcxcsaldosiniciales;
     private String[] selectedClients;
     private boolean todosClientes = true;
-    private boolean condicionFacturaOpen = true;
-    private boolean condicionFacturaClose=true;
+    private boolean condicionFacturaOpen = false;
+    private boolean condicionFacturaClose=false;
     private ClienteVista clienteSelected;
     private List<ClienteVista> comboClientes;
     private List<ClientesLC> tblClientesLCs;
@@ -179,16 +179,16 @@ public class SaldosInicialesBean implements Serializable {
         switch (this.estado)
         {
             case "Todos":
-                this.condicionFacturaClose=true;
-                this.condicionFacturaOpen=true;
+                this.condicionFacturaClose=false;
+                this.condicionFacturaOpen=false;
                 break;
             case "Abiertas":
-                this.condicionFacturaClose=false;
-                this.condicionFacturaOpen=true;
-                break;
-            case "Cerradas":
                 this.condicionFacturaClose=true;
                 this.condicionFacturaOpen=false;
+                break;
+            case "Cerradas":
+                this.condicionFacturaClose=false;
+                this.condicionFacturaOpen=true;
                 break;
         }
     }
