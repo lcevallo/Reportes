@@ -11,6 +11,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -27,7 +28,7 @@ public class SaldosInicialesRepository implements Serializable {
     private EntityManager manager;
 
 
-    public List<ClientesLC> cargarTablaSaldosIniciales(String clientes){
+    public List<ClientesLC> cargarTablaSaldosIniciales(String clientes,byte abierto,BigDecimal facturaOpen,BigDecimal facturaClose,String condicionOPen, String condicionClose){
 
         List<ClientesLC> listaEnviada;
         List<Tmpcxcsaldosiniciales> tmpcxcsaldosinicialesList;
@@ -38,6 +39,7 @@ public class SaldosInicialesRepository implements Serializable {
 
             Session session = manager.unwrap(Session.class);
 
+           /*
             if(clientes==null)
             {
                 SQLQuery query = session.createSQLQuery("EXEC dbo.LC_CXC_SALDOS_INICIALES ").addEntity(Tmpcxcsaldosiniciales.class);
@@ -45,11 +47,18 @@ public class SaldosInicialesRepository implements Serializable {
             }
             else
             {
-                SQLQuery query = session.createSQLQuery("EXEC dbo.LC_CXC_SALDOS_INICIALES null,:conjuntoID").addEntity(Tmpcxcsaldosiniciales.class);
+             */
+                SQLQuery query = session.createSQLQuery("EXEC dbo.LC_CXC_SALDOS_INICIALES null,:conjuntoID, :abierto , :facturaOPEN, :facturaCLOSE, :condicionFacturaOPEN, :condicionFacturaCLOSE").addEntity(Tmpcxcsaldosiniciales.class);
                 query.setString("conjuntoID", clientes);
+                query.setByte("abierto", abierto);
+                query.setBigDecimal("facturaOPEN", facturaOpen);
+                query.setBigDecimal("facturaCLOSE", facturaClose);
+                query.setString("condicionFacturaOPEN", condicionOPen);
+                query.setString("condicionFacturaCLOSE", condicionOPen);
+
                 tmpcxcsaldosinicialesList = query.list();
 
-            }
+            //}
 
             listaEnviada  = new ArrayList<ClientesLC>();
 
