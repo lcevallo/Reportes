@@ -47,7 +47,7 @@
                             <p:selectOneRadio id="siEstado" value="#{saldosInicialesBean.estado}" required="true">
                                    <f:selectItems value="#{saldosInicialesBean.estadoLista}" var="i"
                                                itemLabel="#{i}" itemValue="#{i}" />
-                                <p:ajax update="frmSaldosIniciales:siCondicionFacturaAbierta frmSaldosIniciales:siCondicionFacturaCerrada"
+                                <p:ajax update="frmSaldosIniciales:siCondicionFacturaAbierta frmSaldosIniciales:siValorCondicionFacturaAbierta frmSaldosIniciales:siValorCondicionFacturaCerrada frmSaldosIniciales:siCondicionFacturaCerrada"
                                         listener="#{saldosInicialesBean.estadoChangeHandler}" />
                             </p:selectOneRadio>
 
@@ -63,7 +63,7 @@
                                 <f:selectItem itemLabel="menor o igual que" itemValue="lessequalsthan"/>
                                 <f:selectItem itemLabel="menor que" itemValue="lessthan"/>
                             </p:selectOneMenu>
-                            <pe:inputNumber id="siValorCondicionFacturaAbierta" value="#{saldosInicialesBean.valorCondicionFacturaAbierta}" symbol="$" validatorMessage="El valor debe de ser un numero decimal" emptyValue="zero" />
+                            <pe:inputNumber disabled="#{saldosInicialesBean.condicionFacturaOpen}" id="siValorCondicionFacturaAbierta" value="#{saldosInicialesBean.valorCondicionFacturaAbierta}" symbol="$" validatorMessage="El valor debe de ser un numero decimal" emptyValue="zero" />
 
                             <h:outputLabel value="Factura Cerrada" for="siCondicionFacturaCerrada" />
                             <p:selectOneMenu disabled="#{saldosInicialesBean.condicionFacturaClose}"  id="siCondicionFacturaCerrada" value="#{saldosInicialesBean.condicionFacturaCerrada}" >
@@ -73,7 +73,7 @@
                                 <f:selectItem itemLabel="menor o igual que" itemValue="lessequalsthan"/>
                                 <f:selectItem itemLabel="menor que" itemValue="lessthan"/>
                             </p:selectOneMenu>
-                            <pe:inputNumber id="siValorCondicionFacturaCerrada" value="#{saldosInicialesBean.valorCondicionFacturaAbierta}" symbol="$" validatorMessage="El valor debe de ser un numero decimal" emptyValue="zero" />
+                            <pe:inputNumber disabled="#{saldosInicialesBean.condicionFacturaClose}" id="siValorCondicionFacturaCerrada" value="#{saldosInicialesBean.valorCondicionFacturaAbierta}" symbol="$" validatorMessage="El valor debe de ser un numero decimal" emptyValue="zero" />
 
                         </p:panelGrid>
                     </p:panel>
