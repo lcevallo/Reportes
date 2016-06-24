@@ -18,7 +18,6 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
@@ -46,8 +45,12 @@ public class SaldosInicialesBean implements Serializable {
     private String condicionFacturaCerrada;
     private String condicionFacturaAbierta;
     private String clientesSeleccionados;
+
+
+
     private String estado;
-    private Byte estadoByte;
+    private Integer estadoByte;
+
     private List<String> estadoLista;
     private HashMap<String, Object> parametros;
     private Reporte rpt;
@@ -78,17 +81,75 @@ public class SaldosInicialesBean implements Serializable {
 
      public void cargarTablaSaldosIniciales(String[] clientes) {
 
-        if(clientes!=null)
+        String condicionAbierta=null;
+        String condicionCerrada=null;
+
+         switch (this.condicionFacturaAbierta)
+        {
+            case "graterequalthan":
+                condicionAbierta=">=";
+                break;
+
+            case "graterthan":
+                condicionAbierta=">";
+                break;
+
+            case "equals":
+                condicionAbierta="=";
+                break;
+
+            case "lessequalsthan":
+                condicionAbierta="<=";
+                break;
+
+            case "lessthan":
+                condicionAbierta="<";
+                break;
+            default:
+                condicionAbierta=(String)null;
+        }
+
+         switch (this.condicionFacturaCerrada)
+         {
+             case "graterequalthan":
+                 condicionCerrada=">=";
+                 break;
+
+             case "graterthan":
+                 condicionCerrada=">";
+                 break;
+
+             case "equals":
+                 condicionCerrada="=";
+                 break;
+
+             case "lessequalsthan":
+                 condicionCerrada="<=";
+                 break;
+
+             case "lessthan":
+                 condicionCerrada="<";
+                 break;
+             default:
+                 condicionCerrada=(String)null;
+         }
+
+         if(clientes!=null)
         {
             String[] clientes2 = Stream.of(clientes).map(t -> "\'" + t + "\'").toArray(String[]::new);
             String parametro2 = Stream.of(clientes2).reduce((t, u) -> t + "," + u).get();
             this.clientesSeleccionados = "(" + parametro2 + ")";
-            this.tblClientesLCOriginal = saldosInicialesRepository.cargarTablaSaldosIniciales(this.clientesSeleccionados,this.estadoByte,this.valorCondicionFacturaAbierta,this.valorCondicionFacturaCerrada,this.condicionFacturaAbierta,this.condicionFacturaCerrada);
+            this.tblClientesLCOriginal = saldosInicialesRepository.cargarTablaSaldosIniciales(this.clientesSeleccionados,this.estadoByte,this.valorCondicionFacturaAbierta,this.valorCondicionFacturaCerrada,condicionAbierta,condicionCerrada);
 
         }
         else
         {
-            this.tblClientesLCOriginal = saldosInicialesRepository.cargarTablaSaldosIniciales(null,this.estadoByte,this.valorCondicionFacturaAbierta,this.valorCondicionFacturaCerrada,this.condicionFacturaAbierta,this.condicionFacturaCerrada);
+            this.tblClientesLCOriginal = saldosInicialesRepository.cargarTablaSaldosIniciales((String)null,
+                                                                                                this.estadoByte==null?(Integer)null:this.estadoByte,
+                                                                                                this.valorCondicionFacturaAbierta==null?(BigDecimal)null:this.valorCondicionFacturaAbierta,
+                                                                                                this.valorCondicionFacturaCerrada==null?(BigDecimal)null:this.valorCondicionFacturaCerrada,
+                                                                                                condicionAbierta,
+                                                                                                condicionCerrada);
 
         }
 
@@ -266,6 +327,14 @@ public class SaldosInicialesBean implements Serializable {
         this.tblClientesLCOriginal = tblClientesLCOriginal;
     }
 
+    public Integer getEstadoByte() {
+        return estadoByte;
+    }
+
+    public void setEstadoByte(Integer estadoByte) {
+        this.estadoByte = estadoByte;
+    }
+
     public String getEstado() {
         return estado;
     }
@@ -296,15 +365,6 @@ public class SaldosInicialesBean implements Serializable {
 
     public void setCondicionFacturaClose(boolean condicionFacturaClose) {
         this.condicionFacturaClose = condicionFacturaClose;
-    }
-
-
-    public Byte getEstadoByte() {
-        return estadoByte;
-    }
-
-    public void setEstadoByte(Byte estadoByte) {
-        this.estadoByte = estadoByte;
     }
 
     public BigDecimal getValorCondicionFacturaAbierta() {

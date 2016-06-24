@@ -4,6 +4,7 @@ import com.alphacell.model.cartera.ClienteVista;
 import com.alphacell.model.cartera.ClientesLC;
 import com.alphacell.model.cartera.Tmpcxcsaldosiniciales;
 import com.alphacell.model.cartera.Tmpcxcsidiariocompensaciondetalle;
+import org.hibernate.Hibernate;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 
@@ -28,7 +29,7 @@ public class SaldosInicialesRepository implements Serializable {
     private EntityManager manager;
 
 
-    public List<ClientesLC> cargarTablaSaldosIniciales(String clientes,byte abierto,BigDecimal facturaOpen,BigDecimal facturaClose,String condicionOPen, String condicionClose){
+    public List<ClientesLC> cargarTablaSaldosIniciales(String clientes,  Integer abierto, BigDecimal facturaOpen, BigDecimal facturaClose, String condicionOPen, String condicionClose){
 
         List<ClientesLC> listaEnviada;
         List<Tmpcxcsaldosiniciales> tmpcxcsaldosinicialesList;
@@ -48,13 +49,37 @@ public class SaldosInicialesRepository implements Serializable {
             else
             {
              */
-                SQLQuery query = session.createSQLQuery("EXEC dbo.LC_CXC_SALDOS_INICIALES null,:conjuntoID, :abierto , :facturaOPEN, :facturaCLOSE, :condicionFacturaOPEN, :condicionFacturaCLOSE").addEntity(Tmpcxcsaldosiniciales.class);
-                query.setString("conjuntoID", clientes);
-                query.setByte("abierto", abierto);
-                query.setBigDecimal("facturaOPEN", facturaOpen);
-                query.setBigDecimal("facturaCLOSE", facturaClose);
-                query.setString("condicionFacturaOPEN", condicionOPen);
-                query.setString("condicionFacturaCLOSE", condicionOPen);
+
+            StringBuilder queryStrB = new StringBuilder("EXEC dbo.LC_CXC_SALDOS_INICIALES null ");
+
+
+            queryStrB.append(clientes!=null?":conjuntoID":",null").append(abierto!=null?",:abierto":",null").append(facturaOpen!=null?",:facturaOPEN":",null")
+                      .append(facturaClose!=null?",:facturaCLOSE":",null").append(condicionOPen!=null?",:condicionFacturaOPEN":",null")
+                       .append(condicionClose!=null?",:condicionFacturaCLOSE":",null");
+
+
+
+                SQLQuery query = session.createSQLQuery(queryStrB.toString()).addEntity(Tmpcxcsaldosiniciales.class);
+
+                if(clientes!=null) {
+                    query.setString("conjuntoID", clientes);
+                }
+
+                if (abierto!=null)
+                    query.setInteger("abierto",abierto);
+
+
+                if (facturaOpen!=null)
+                    query.setBigDecimal("facturaOPEN",facturaOpen);
+
+                if (facturaClose!=null)
+                    query.setBigDecimal("facturaCLOSE",facturaClose);
+
+                if (condicionOPen!=null)
+                    query.setString("condicionFacturaOPEN",condicionOPen);
+
+                if (condicionClose!=null)
+                    query.setString("condicionFacturaCLOSE",condicionClose);
 
                 tmpcxcsaldosinicialesList = query.list();
 
