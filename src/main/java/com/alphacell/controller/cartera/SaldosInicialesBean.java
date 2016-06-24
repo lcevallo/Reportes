@@ -34,7 +34,7 @@ public class SaldosInicialesBean implements Serializable {
     private String[] selectedClients;
     private boolean todosClientes = true;
     private boolean condicionFacturaOpen = false;
-    private boolean condicionFacturaClose=false;
+    private boolean condicionFacturaClose = false;
     private ClienteVista clienteSelected;
     private List<ClienteVista> comboClientes;
     private List<ClientesLC> tblClientesLCs;
@@ -45,7 +45,6 @@ public class SaldosInicialesBean implements Serializable {
     private String condicionFacturaCerrada;
     private String condicionFacturaAbierta;
     private String clientesSeleccionados;
-
 
 
     private String estado;
@@ -65,7 +64,7 @@ public class SaldosInicialesBean implements Serializable {
 
         this.comboClientes = this.saldosInicialesRepository.obtenerClientes();
         this.parametros = new HashMap<String, Object>();
-        this.estadoLista= new ArrayList<String>();
+        this.estadoLista = new ArrayList<String>();
         this.estadoLista.add("Abiertas y Cerradas");
         this.estadoLista.add("Abiertas");
         this.estadoLista.add("Cerradas");
@@ -79,77 +78,76 @@ public class SaldosInicialesBean implements Serializable {
 */
     }
 
-     public void cargarTablaSaldosIniciales(String[] clientes) {
+    public void cargarTablaSaldosIniciales(String[] clientes) {
 
-        String condicionAbierta=null;
-        String condicionCerrada=null;
+        String condicionAbierta = null;
+        String condicionCerrada = null;
 
-         switch (this.condicionFacturaAbierta)
-        {
-            case "graterequalthan":
-                condicionAbierta=">=";
-                break;
 
-            case "graterthan":
-                condicionAbierta=">";
-                break;
+        if (this.condicionFacturaAbierta != null) {
+            switch (this.condicionFacturaAbierta) {
+                case "graterequalthan":
+                    condicionAbierta = ">=";
+                    break;
 
-            case "equals":
-                condicionAbierta="=";
-                break;
+                case "graterthan":
+                    condicionAbierta = ">";
+                    break;
 
-            case "lessequalsthan":
-                condicionAbierta="<=";
-                break;
+                case "equals":
+                    condicionAbierta = "=";
+                    break;
 
-            case "lessthan":
-                condicionAbierta="<";
-                break;
-            default:
-                condicionAbierta=(String)null;
+                case "lessequalsthan":
+                    condicionAbierta = "<=";
+                    break;
+
+                case "lessthan":
+                    condicionAbierta = "<";
+                    break;
+                default:
+                    condicionAbierta = (String) null;
+            }
         }
 
-         switch (this.condicionFacturaCerrada)
-         {
-             case "graterequalthan":
-                 condicionCerrada=">=";
-                 break;
+        if (this.condicionFacturaCerrada != null) {
+            switch (this.condicionFacturaCerrada) {
+                case "graterequalthan":
+                    condicionCerrada = ">=";
+                    break;
 
-             case "graterthan":
-                 condicionCerrada=">";
-                 break;
+                case "graterthan":
+                    condicionCerrada = ">";
+                    break;
 
-             case "equals":
-                 condicionCerrada="=";
-                 break;
+                case "equals":
+                    condicionCerrada = "=";
+                    break;
 
-             case "lessequalsthan":
-                 condicionCerrada="<=";
-                 break;
+                case "lessequalsthan":
+                    condicionCerrada = "<=";
+                    break;
 
-             case "lessthan":
-                 condicionCerrada="<";
-                 break;
-             default:
-                 condicionCerrada=(String)null;
-         }
-
-         if(clientes!=null)
-        {
+                case "lessthan":
+                    condicionCerrada = "<";
+                    break;
+                default:
+                    condicionCerrada = (String) null;
+            }
+        }
+        if (clientes != null) {
             String[] clientes2 = Stream.of(clientes).map(t -> "\'" + t + "\'").toArray(String[]::new);
             String parametro2 = Stream.of(clientes2).reduce((t, u) -> t + "," + u).get();
             this.clientesSeleccionados = "(" + parametro2 + ")";
-            this.tblClientesLCOriginal = saldosInicialesRepository.cargarTablaSaldosIniciales(this.clientesSeleccionados,this.estadoByte,this.valorCondicionFacturaAbierta,this.valorCondicionFacturaCerrada,condicionAbierta,condicionCerrada);
+            this.tblClientesLCOriginal = saldosInicialesRepository.cargarTablaSaldosIniciales(this.clientesSeleccionados, this.estadoByte, this.valorCondicionFacturaAbierta, this.valorCondicionFacturaCerrada, condicionAbierta, condicionCerrada);
 
-        }
-        else
-        {
-            this.tblClientesLCOriginal = saldosInicialesRepository.cargarTablaSaldosIniciales((String)null,
-                                                                                                this.estadoByte==null?(Integer)null:this.estadoByte,
-                                                                                                this.valorCondicionFacturaAbierta==null?(BigDecimal)null:this.valorCondicionFacturaAbierta,
-                                                                                                this.valorCondicionFacturaCerrada==null?(BigDecimal)null:this.valorCondicionFacturaCerrada,
-                                                                                                condicionAbierta,
-                                                                                                condicionCerrada);
+        } else {
+            this.tblClientesLCOriginal = saldosInicialesRepository.cargarTablaSaldosIniciales((String) null,
+                    this.estadoByte == null ? (Integer) null : this.estadoByte,
+                    this.valorCondicionFacturaAbierta == null ? (BigDecimal) null : this.valorCondicionFacturaAbierta,
+                    this.valorCondicionFacturaCerrada == null ? (BigDecimal) null : this.valorCondicionFacturaCerrada,
+                    condicionAbierta,
+                    condicionCerrada);
 
         }
 
@@ -203,18 +201,17 @@ public class SaldosInicialesBean implements Serializable {
 
         if (event.getNewStep().equals("SItableTab")) {
 
-                this.cargarTablaSaldosIniciales(this.selectedClients);
-                this.tblClientesLCs = this.tblClientesLCOriginal;
+            this.cargarTablaSaldosIniciales(this.selectedClients);
+            this.tblClientesLCs = this.tblClientesLCOriginal;
                 /*
                 this.tblClientesLCs = this.tblClientesLCOriginal.stream().filter(u ->
                         u.getTmpcxcsaldosinicialesList().stream().anyMatch(tmpcxcsaldosiniciales -> tmpcxcsaldosiniciales.getPagada().equals("CERRADA"))
                 ).collect(Collectors.toList());
                 */
-            }
-
-        else{
-            this.tblClientesLCOriginal=null;
-            this.tblClientesLCs=null;
+        } else {
+            this.tblClientesLCOriginal = null;
+            this.tblClientesLCs = null;
+            RequestContext.getCurrentInstance().reset("frmSaldosIniciales");
         }
 
         RequestContext.getCurrentInstance().update("frmSaldosIniciales:tableSaldosIniciales");
@@ -235,26 +232,24 @@ public class SaldosInicialesBean implements Serializable {
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(summary));
     }
 
-    public void estadoChangeHandler()
-    {
-        switch (this.estado)
-        {
+    public void estadoChangeHandler() {
+        switch (this.estado) {
             case "Abiertas y Cerradas":
-                this.condicionFacturaClose=false;
-                this.condicionFacturaOpen=false;
-                this.estadoByte=null;
+                this.condicionFacturaClose = false;
+                this.condicionFacturaOpen = false;
+                this.estadoByte = null;
                 break;
             case "Abiertas":
-                this.condicionFacturaClose=true;
-                this.condicionFacturaOpen=false;
-                this.estadoByte=1;
+                this.condicionFacturaClose = true;
+                this.condicionFacturaOpen = false;
+                this.estadoByte = 1;
                 RequestContext.getCurrentInstance().reset("frmSaldosIniciales:siValorCondicionFacturaAbierta");
                 RequestContext.getCurrentInstance().reset("frmSaldosIniciales:siValorCondicionFacturaCerrada");
                 break;
             case "Cerradas":
-                this.condicionFacturaClose=false;
-                this.condicionFacturaOpen=true;
-                this.estadoByte=0;
+                this.condicionFacturaClose = false;
+                this.condicionFacturaOpen = true;
+                this.estadoByte = 0;
                 RequestContext.getCurrentInstance().reset("frmSaldosIniciales:siValorCondicionFacturaAbierta");
                 RequestContext.getCurrentInstance().reset("frmSaldosIniciales:siValorCondicionFacturaCerrada");
                 break;
@@ -276,7 +271,6 @@ public class SaldosInicialesBean implements Serializable {
     public void setSelectedClients(String[] selectedClients) {
         this.selectedClients = selectedClients;
     }
-
 
 
     public String getCondicionFacturaCerrada() {

@@ -14,15 +14,15 @@
 
 <!--<p:selectOneMenu -->
 
-            <p:wizard flowListener="#{saldosInicialesBean.onFlowProcess}">
+            <p:wizard flowListener="#{saldosInicialesBean.onFlowProcess}" backLabel="Anterior" nextLabel="Siguiente">
 
 
-                <p:tab id="SICriterio" title="Criterios">
+                <p:tab id="SICriterio" title="Criterios" >
 
-                    <p:panel header="Criterios">
+                    <p:panel  id="SIpanel" header="Criterios">
                         <p:messages/>
 
-                        <p:panelGrid columns="2" >
+                        <p:panelGrid  columns="2" >
 
                             <h:outputText value="Desea ver Todos Clientes: " />
                             <p:selectBooleanButton id="bbTodos" value="#{saldosInicialesBean.todosClientes}" onLabel="Si" offLabel="No" onIcon="ui-icon-check" offIcon="ui-icon-close" style="width:60px">
@@ -51,6 +51,9 @@
                                         listener="#{saldosInicialesBean.estadoChangeHandler}" />
                             </p:selectOneRadio>
 
+
+
+
                         </p:panelGrid>
 
                         <p:panelGrid columns="3" columnClasses="label,label, value">
@@ -76,6 +79,10 @@
                             <pe:inputNumber disabled="#{saldosInicialesBean.condicionFacturaClose}" id="siValorCondicionFacturaCerrada" value="#{saldosInicialesBean.valorCondicionFacturaCerrada}" symbol="$" validatorMessage="El valor debe de ser un numero decimal" emptyValue="zero" />
 
                         </p:panelGrid>
+
+                        <p:commandButton value="Resetear Valores" update="SIpanel" process="@this" style="margin-right:20px;" >
+                            <p:resetInput target="SIpanel" />
+                        </p:commandButton>
                     </p:panel>
 
                 </p:tab>

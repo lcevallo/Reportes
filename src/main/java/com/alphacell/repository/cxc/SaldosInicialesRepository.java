@@ -40,20 +40,10 @@ public class SaldosInicialesRepository implements Serializable {
 
             Session session = manager.unwrap(Session.class);
 
-           /*
-            if(clientes==null)
-            {
-                SQLQuery query = session.createSQLQuery("EXEC dbo.LC_CXC_SALDOS_INICIALES ").addEntity(Tmpcxcsaldosiniciales.class);
-                tmpcxcsaldosinicialesList = query.list();
-            }
-            else
-            {
-             */
-
             StringBuilder queryStrB = new StringBuilder("EXEC dbo.LC_CXC_SALDOS_INICIALES null ");
 
 
-            queryStrB.append(clientes!=null?":conjuntoID":",null").append(abierto!=null?",:abierto":",null").append(facturaOpen!=null?",:facturaOPEN":",null")
+            queryStrB.append(clientes!=null?",:conjuntoID":",null").append(abierto!=null?",:abierto":",null").append(facturaOpen!=null?",:facturaOPEN":",null")
                       .append(facturaClose!=null?",:facturaCLOSE":",null").append(condicionOPen!=null?",:condicionFacturaOPEN":",null")
                        .append(condicionClose!=null?",:condicionFacturaCLOSE":",null");
 
