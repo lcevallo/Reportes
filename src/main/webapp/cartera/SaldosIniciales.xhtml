@@ -99,12 +99,17 @@
                             paginatorPosition="bottom"
                             paginator="true"
                             rows="15"
-                            paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                            paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
                             currentPageReportTemplate="Pagina: ({currentPage} de {totalPages})"
                             rowsPerPageTemplate="5,15,25"
                             scrollRows="15"
                             emptyMessage="No existen datos para presentar"
                     >
+                        <f:facet name="{Exporters}">
+                        <h:commandLink actionListener="#{saldosInicialesBean.exportarExcelSaldosIniciales}">
+                            <p:graphicImage  library="images" name="excel.png"  width="24"/>
+                        </h:commandLink>
+                        </f:facet>
 
                         <p:column headerText="Factura"/>
                         <p:column headerText="Voucher" />
