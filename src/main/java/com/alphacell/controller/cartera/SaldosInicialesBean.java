@@ -4,6 +4,7 @@ import com.alphacell.model.cartera.ClienteVista;
 import com.alphacell.model.cartera.ClientesLC;
 import com.alphacell.repository.cxc.SaldosInicialesRepository;
 import com.alphacell.util.reporte.Reporte;
+import net.sf.jasperreports.engine.JRException;
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.FlowEvent;
 
@@ -13,6 +14,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.io.IOException;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -83,58 +85,14 @@ public class SaldosInicialesBean implements Serializable {
         String condicionAbierta = null;
         String condicionCerrada = null;
 
-
         if (this.condicionFacturaAbierta != null) {
-            switch (this.condicionFacturaAbierta) {
-                case "graterequalthan":
-                    condicionAbierta = ">=";
-                    break;
-
-                case "graterthan":
-                    condicionAbierta = ">";
-                    break;
-
-                case "equals":
-                    condicionAbierta = "=";
-                    break;
-
-                case "lessequalsthan":
-                    condicionAbierta = "<=";
-                    break;
-
-                case "lessthan":
-                    condicionAbierta = "<";
-                    break;
-                default:
-                    condicionAbierta = (String) null;
-            }
+            condicionAbierta= this.resultadoCondicion(this.condicionFacturaAbierta);
         }
 
         if (this.condicionFacturaCerrada != null) {
-            switch (this.condicionFacturaCerrada) {
-                case "graterequalthan":
-                    condicionCerrada = ">=";
-                    break;
-
-                case "graterthan":
-                    condicionCerrada = ">";
-                    break;
-
-                case "equals":
-                    condicionCerrada = "=";
-                    break;
-
-                case "lessequalsthan":
-                    condicionCerrada = "<=";
-                    break;
-
-                case "lessthan":
-                    condicionCerrada = "<";
-                    break;
-                default:
-                    condicionCerrada = (String) null;
-            }
+            condicionCerrada= this.resultadoCondicion(this.condicionFacturaCerrada);
         }
+
         if (clientes != null) {
             String[] clientes2 = Stream.of(clientes).map(t -> "\'" + t + "\'").toArray(String[]::new);
             String parametro2 = Stream.of(clientes2).reduce((t, u) -> t + "," + u).get();
@@ -255,6 +213,86 @@ public class SaldosInicialesBean implements Serializable {
                 break;
         }
     }
+
+
+    public String  resultadoCondicion(String condicionInicial)
+    {
+        String condicionSalida = null;
+
+
+        switch (condicionInicial) {
+            case "graterequalthan":
+                condicionSalida = ">=";
+                break;
+
+            case "graterthan":
+                condicionSalida = ">";
+                break;
+
+            case "equals":
+                condicionSalida = "=";
+                break;
+
+            case "lessequalsthan":
+                condicionSalida = "<=";
+                break;
+
+            case "lessthan":
+                condicionSalida = "<";
+                break;
+            default:
+                condicionSalida = (String) null;
+        }
+
+        return condicionSalida;
+    }
+
+
+    public void exportarExcelSaldosIniciales(){
+
+        rpt= new Reporte();
+        parametros= new HashMap<String, Object>();
+
+
+        String condicionAbierta = null;
+        String condicionCerrada = null;
+
+        if (this.condicionFacturaAbierta != null) {
+            condicionAbierta= this.resultadoCondicion(this.condicionFacturaAbierta);
+        }
+
+        if (this.condicionFacturaCerrada != null) {
+            condicionCerrada= this.resultadoCondicion(this.condicionFacturaCerrada);
+        }
+
+
+
+        StringBuilder queryStrB = new StringBuilder("null, ");
+
+
+        queryStrB.append(this.clientesSeleccionados!=null?this.clientesSeleccionados+"":"null")
+                  .append(this.estadoByte!=null?","+this.estadoByte:",null").append(this.valorCondicionFacturaAbierta!=null?","+this.valorCondicionFacturaAbierta:",null")
+                  .append(this.valorCondicionFacturaCerrada!=null?","+this.valorCondicionFacturaCerrada:",null")
+                  .append(condicionAbierta!=null?","+condicionAbierta:",null")
+                  .append(condicionCerrada!=null?","+condicionCerrada:",null");
+
+        parametros.put("outSPParameters", queryStrB.toString());
+
+        String path="/reportes/CXCSaldosIniciales.jasper";
+
+        try{
+
+            rpt.exportarXLS(parametros,path,"comportamientoPagoPivote");
+        } catch (JRException e) {
+            FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_FATAL,"Error",e.getMessage()));
+        } catch (IOException e) {
+            FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_FATAL,"Error",e.getMessage()));
+        }
+
+
+    }
+
+
 
     public boolean isTodosClientes() {
         return todosClientes;
