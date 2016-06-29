@@ -89,7 +89,11 @@
 
                 <p:tab id="SItableTab" title="Reporte">
 
-
+                    <p:toolbar>
+                        <f:facet name="left">
+                            <p:commandButton actionListener="#{saldosInicialesBean.exportarExcelSaldosIniciales}" icon="ui-icon-xls" title="Exportar para XLS" />
+                        </f:facet>
+                    </p:toolbar>
 
                     <p:dataTable
                             id="tableSaldosIniciales"
@@ -98,18 +102,15 @@
                             scrollable="true"
                             paginatorPosition="bottom"
                             paginator="true"
-                            rows="15"
-                            paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
+                            style="margin-top: 10px"
+                            rows="10"
+                            paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
                             currentPageReportTemplate="Pagina: ({currentPage} de {totalPages})"
                             rowsPerPageTemplate="5,15,25"
                             scrollRows="15"
                             emptyMessage="No existen datos para presentar"
                     >
-                        <f:facet name="{Exporters}">
-                        <h:commandLink actionListener="#{saldosInicialesBean.exportarExcelSaldosIniciales}">
-                            <p:graphicImage  library="images" name="excel.png"  width="24"/>
-                        </h:commandLink>
-                        </f:facet>
+
 
                         <p:column headerText="Factura"/>
                         <p:column headerText="Voucher" />
