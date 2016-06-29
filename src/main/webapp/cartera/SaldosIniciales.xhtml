@@ -79,9 +79,8 @@
 
                         </p:panelGrid>
 
-                        <p:commandButton value="Resetear Valores" update="frmSaldosIniciales:SIpanel" process="@this" style="margin-right:20px;" >
-                            <p:resetInput target="SIpanel" />
-                        </p:commandButton>
+                        <p:commandButton action="#{saldosInicialesBean.resetearFormulario}" value="Resetear Valores" update="frmSaldosIniciales:SIpanel" process="@this" style="margin-right:20px;" />
+
                     </p:panel>
 
                 </p:tab>

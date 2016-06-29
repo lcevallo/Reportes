@@ -155,6 +155,23 @@ public class SaldosInicialesBean implements Serializable {
         this.clienteSelected = clienteSelected;
     }
 
+    public void resetearFormulario()
+    {
+        this.tblClientesLCOriginal = null;
+        this.tblClientesLCs = null;
+        this.estado=null;
+        this.valorCondicionFacturaAbierta=null;
+        this.condicionFacturaAbierta=null;
+        this.todosClientes = true;
+        this.condicionFacturaOpen = false;
+        this.condicionFacturaClose = false;
+        this.valorCondicionFacturaCerrada=null;
+        this.condicionFacturaCerrada=null;
+        this.selectedClients=null;
+        RequestContext.getCurrentInstance().reset("frmSaldosIniciales:SIpanel");
+
+    }
+
     public String onFlowProcess(FlowEvent event) {
 
         if (event.getNewStep().equals("SItableTab")) {
@@ -167,19 +184,9 @@ public class SaldosInicialesBean implements Serializable {
                 ).collect(Collectors.toList());
                 */
         } else {
-            this.tblClientesLCOriginal = null;
-            this.tblClientesLCs = null;
-            this.estado=null;
-            this.valorCondicionFacturaAbierta=null;
-            this.condicionFacturaAbierta=null;
-            this.todosClientes = true;
-            this.condicionFacturaOpen = false;
-            this.condicionFacturaClose = false;
-            this.valorCondicionFacturaCerrada=null;
-            this.condicionFacturaCerrada=null;
-            this.selectedClients=null;
 
-            RequestContext.getCurrentInstance().reset("frmSaldosIniciales:SIpanel");
+            this.resetearFormulario();
+
         }
 
         RequestContext.getCurrentInstance().update("frmSaldosIniciales:tableSaldosIniciales");
