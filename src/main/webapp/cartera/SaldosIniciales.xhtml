@@ -16,7 +16,6 @@
 
             <p:wizard flowListener="#{saldosInicialesBean.onFlowProcess}" backLabel="Anterior" nextLabel="Siguiente">
 
-
                 <p:tab id="SICriterio" title="Criterios" >
 
                     <p:panel  id="SIpanel" header="Criterios">
@@ -86,12 +85,12 @@
                     </p:panel>
 
                 </p:tab>
-
                 <p:tab id="SItableTab" title="Reporte">
 
                     <p:toolbar>
                         <f:facet name="left">
-                            <p:commandButton actionListener="#{saldosInicialesBean.exportarExcelSaldosIniciales}" icon="ui-icon-xls" title="Exportar para XLS" />
+                            <p:commandButton icon="ui-icon-xls" value="Excel" action="#{saldosInicialesBean.exportarExcelSaldosIniciales}" ajax="false"   />
+
                         </f:facet>
                     </p:toolbar>
 
@@ -206,7 +205,6 @@
                     </p:dataTable>
 
                 </p:tab>
-
 
             </p:wizard>
 

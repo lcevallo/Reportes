@@ -46,11 +46,9 @@ h1 {
 	font-size: small;
 }
 
-.ui-state-default .ui-icon-xls {
-	background-image: url(../images/excel.png);
+.ui-icon-xls {
+	background-image: url("#{facesContext.externalContext.request.contextPath}/resources/images/excel-icon.png") !important;
 }
-
-
 
 /*
 ** Centrar texto en tablas.
