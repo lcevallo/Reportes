@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="42bb9734-3d35-4382-8a18-0f8fc37f30f9" name="Default" comment="Saldos Iniciales aqui use Java Lambdas">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/alphacell/controller/cartera/SaldosInicialesBean.java" afterPath="$PROJECT_DIR$/src/main/java/com/alphacell/controller/cartera/SaldosInicialesBean.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/cartera/SaldosIniciales.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/cartera/SaldosIniciales.xhtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/sistema.css" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/sistema.css" />
     </list>
     <list id="5fb3735a-a8d9-4456-8b9c-5922df4d1f29" name="Failed commit: Default" comment="Aqui agregue la informacion del cliente ya que Paula HD lo necesitaba" />
     <ignored path="Reportes.iws" />
@@ -35,13 +35,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="SaldosInicialesBean.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SaldosInicialesBean.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/controller/cartera/SaldosInicialesBean.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="235">
-              <caret line="144" column="55" selection-start-line="144" selection-start-column="55" selection-end-line="144" selection-end-column="55" />
+            <state relative-caret-position="190">
+              <caret line="163" column="18" selection-start-line="163" selection-start-column="18" selection-end-line="163" selection-end-column="18" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#4885#4886#0" expanded="true" />
+                <element signature="e#4921#4922#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -57,11 +59,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SaldosIniciales.xhtml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SaldosIniciales.xhtml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/cartera/SaldosIniciales.xhtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="427">
-              <caret line="207" column="0" selection-start-line="207" selection-start-column="0" selection-end-line="207" selection-end-column="0" />
+            <state relative-caret-position="127">
+              <caret line="60" column="181" selection-start-line="60" selection-start-column="158" selection-end-line="60" selection-end-column="181" />
               <folding />
             </state>
           </provider>
@@ -167,10 +169,10 @@
         <option value="$PROJECT_DIR$/src/main/java/com/alphacell/model/cartera/ClienteVista.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/alphacell/repository/cxc/SaldosInicialesRepository.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/cartera/ComportamientoPagoCliente.xhtml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/alphacell/controller/cartera/SaldosInicialesBean.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/template/LayoutMaestro.xhtml" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/css/sistema.css" />
         <option value="$PROJECT_DIR$/src/main/webapp/cartera/SaldosIniciales.xhtml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/alphacell/controller/cartera/SaldosInicialesBean.java" />
       </list>
     </option>
   </component>
@@ -1139,7 +1141,7 @@
       <workItem from="1467050249913" duration="8000" />
       <workItem from="1467050900267" duration="1244000" />
       <workItem from="1467123972962" duration="9542000" />
-      <workItem from="1467209175576" duration="9886000" />
+      <workItem from="1467209175576" duration="14530000" />
     </task>
     <task id="LOCAL-00001" summary="Hi">
       <created>1464900277059</created>
@@ -1250,7 +1252,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="564012000" />
+    <option name="totallyTimeSpent" value="568656000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1263,7 +1265,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="0" width="1178" height="743" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31660232" sideWeight="0.50292826" order="9" side_tool="true" content_ui="tabs" />
@@ -1673,16 +1675,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/controller/cartera/SaldosInicialesBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="144" column="55" selection-start-line="144" selection-start-column="55" selection-end-line="144" selection-end-column="55" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/css/sistema.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="262">
@@ -1693,9 +1685,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/cartera/SaldosIniciales.xhtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="427">
-          <caret line="207" column="0" selection-start-line="207" selection-start-column="0" selection-end-line="207" selection-end-column="0" />
+        <state relative-caret-position="127">
+          <caret line="60" column="181" selection-start-line="60" selection-start-column="158" selection-end-line="60" selection-end-column="181" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/controller/cartera/SaldosInicialesBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="163" column="18" selection-start-line="163" selection-start-column="18" selection-end-line="163" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4885#4886#0" expanded="true" />
+            <element signature="e#4921#4922#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

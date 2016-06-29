@@ -169,7 +169,17 @@ public class SaldosInicialesBean implements Serializable {
         } else {
             this.tblClientesLCOriginal = null;
             this.tblClientesLCs = null;
-            RequestContext.getCurrentInstance().reset("frmSaldosIniciales");
+            this.estado=null;
+            this.valorCondicionFacturaAbierta=null;
+            this.condicionFacturaAbierta=null;
+            this.todosClientes = true;
+            this.condicionFacturaOpen = false;
+            this.condicionFacturaClose = false;
+            this.valorCondicionFacturaCerrada=null;
+            this.condicionFacturaCerrada=null;
+            this.selectedClients=null;
+
+            RequestContext.getCurrentInstance().reset("frmSaldosIniciales:SIpanel");
         }
 
         RequestContext.getCurrentInstance().update("frmSaldosIniciales:tableSaldosIniciales");
