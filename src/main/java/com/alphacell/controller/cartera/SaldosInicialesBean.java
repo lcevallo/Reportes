@@ -276,13 +276,36 @@ public class SaldosInicialesBean implements Serializable {
                   .append(condicionAbierta!=null?","+condicionAbierta:",null")
                   .append(condicionCerrada!=null?","+condicionCerrada:",null");
 
-        parametros.put("outSPParameters", queryStrB.toString());
+        //parametros.put("outfactura", null);
+
+
+        if(this.clientesSeleccionados!=null)
+            parametros.put("outconjuntoID",this.clientesSeleccionados);
+
+        if(this.estadoByte!=null)
+            parametros.put("outabierto",this.estadoByte);
+
+        if(this.valorCondicionFacturaAbierta!=null)
+            parametros.put("outfacturaOPEN",this.valorCondicionFacturaAbierta);
+
+
+        if(this.valorCondicionFacturaCerrada!=null)
+            parametros.put("outfacturaCLOSE",this.valorCondicionFacturaCerrada);
+
+
+        if(condicionAbierta!=null)
+            parametros.put("outcondicionFacturaOPEN",condicionAbierta);
+
+
+        if(condicionCerrada!=null)
+            parametros.put("outcondicionFacturaCLOSE",condicionCerrada);
+
 
         String path="/reportes/CXCSaldosIniciales.jasper";
 
         try{
 
-            rpt.exportarXLS(parametros,path,"comportamientoPagoPivote");
+            rpt.exportarXLS(parametros,path,"CXCSaldosIniciales");
         } catch (JRException e) {
             FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_FATAL,"Error",e.getMessage()));
         } catch (IOException e) {

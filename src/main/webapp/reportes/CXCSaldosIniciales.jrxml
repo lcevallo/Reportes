@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 5.6.1.final using JasperReports Library version 5.6.1  -->
-<!-- 2016-06-28T10:59:23 -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CXCSaldosIniciales" pageWidth="1100" pageHeight="900" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="1060" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7298bbfa-ec6b-43a4-83b1-11b06dd82731">
+<!-- Created with Jaspersoft Studio version 6.3.0.final using JasperReports Library version 6.3.0  -->
+<!-- 2016-06-29T11:06:57 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CXCSaldosIniciales" pageWidth="1190" pageHeight="900" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="1150" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isIgnorePagination="true" uuid="7298bbfa-ec6b-43a4-83b1-11b06dd82731">
 	<property name="template.engine" value="tabular_template"/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Produccion"/>
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="585"/>
+	<property name="ireport.y" value="27"/>
 	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
@@ -51,13 +54,19 @@
 	</style>
 	<subDataset name="tableDataset" uuid="7af56e5e-d7de-404c-96c8-24db9501cba4">
 		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Produccion"/>
-		<parameter name="SPParameters" class="java.lang.String">
-			<parameterDescription><![CDATA[]]></parameterDescription>
-			<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
-		</parameter>
-		<queryString language="SQL">
-			<![CDATA[EXEC dbo.LC_CXC_SALDOS_INICIALES  $P{SPParameters} ]]>
+		<parameter name="factura" class="java.lang.String" isForPrompting="false"/>
+		<parameter name="conjuntoID" class="java.lang.String" isForPrompting="false"/>
+		<parameter name="abierto" class="java.lang.Integer" isForPrompting="false"/>
+		<parameter name="facturaOPEN" class="java.math.BigDecimal" isForPrompting="false"/>
+		<parameter name="facturaCLOSE" class="java.math.BigDecimal" isForPrompting="false"/>
+		<parameter name="condicionFacturaOPEN" class="java.lang.String" isForPrompting="false"/>
+		<parameter name="condicionFacturaCLOSE" class="java.lang.String" isForPrompting="false"/>
+		<queryString>
+			<![CDATA[EXEC dbo.LC_CXC_SALDOS_INICIALES $P{factura},$P{conjuntoID},$P{abierto},$P{facturaOPEN},$P{facturaCLOSE},$P{condicionFacturaOPEN},$P{condicionFacturaCLOSE}]]>
 		</queryString>
+		<field name="ID" class="java.lang.Integer"/>
+		<field name="ACCOUNTNUM" class="java.lang.String"/>
+		<field name="NOMBRE_CLIENTE" class="java.lang.String"/>
 		<field name="TRANSDATE" class="java.sql.Timestamp"/>
 		<field name="VOUCHER" class="java.lang.String"/>
 		<field name="INVOICE" class="java.lang.String"/>
@@ -68,42 +77,68 @@
 		<field name="PAGADA" class="java.lang.String"/>
 		<field name="CANTIDADPAGOS" class="java.lang.Integer"/>
 		<field name="VALORPAGADO" class="java.math.BigDecimal"/>
-		<field name="ACCOUNTNUM" class="java.lang.String"/>
-		<field name="NOMBRE_CLIENTE" class="java.lang.String"/>
-		<field name="ID" class="java.lang.Integer"/>
+		<variable name="SumAmmountG" class="java.math.BigDecimal" resetType="Group" resetGroup="ACCOUNTNUM" calculation="Sum">
+			<variableExpression><![CDATA[$F{AMOUNTCUR}]]></variableExpression>
+		</variable>
+		<variable name="SumValorPagadoG" class="java.math.BigDecimal" resetType="Group" resetGroup="ACCOUNTNUM" calculation="Sum">
+			<variableExpression><![CDATA[$F{VALORPAGADO}]]></variableExpression>
+		</variable>
+		<variable name="SumVal" class="java.lang.String"/>
+		<variable name="Saldo" class="java.math.BigDecimal">
+			<variableExpression><![CDATA[$F{AMOUNTCUR}.subtract($F{VALORPAGADO})]]></variableExpression>
+		</variable>
+		<variable name="SumSaldo" class="java.math.BigDecimal" resetType="Group" resetGroup="ACCOUNTNUM" calculation="Sum">
+			<variableExpression><![CDATA[$V{Saldo}]]></variableExpression>
+		</variable>
 		<group name="ACCOUNTNUM">
 			<groupExpression><![CDATA[$F{ACCOUNTNUM}]]></groupExpression>
 		</group>
 	</subDataset>
-	<parameter name="outSPParameters" class="java.lang.String">
-		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
-	</parameter>
+	<parameter name="outfactura" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="outconjuntoID" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="outabierto" class="java.lang.Integer" isForPrompting="false"/>
+	<parameter name="outfacturaOPEN" class="java.math.BigDecimal" isForPrompting="false"/>
+	<parameter name="outfacturaCLOSE" class="java.math.BigDecimal" isForPrompting="false"/>
+	<parameter name="outcondicionFacturaOPEN" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="outcondicionFacturaCLOSE" class="java.lang.String" isForPrompting="false"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
-	<title>
-		<band height="79" splitType="Stretch"/>
-	</title>
-	<pageFooter>
-		<band height="54" splitType="Stretch"/>
-	</pageFooter>
 	<summary>
-		<band height="200" splitType="Stretch">
+		<band height="240" splitType="Stretch">
 			<property name="local_mesure_unitheight" value="pixel"/>
 			<componentElement>
-				<reportElement x="0" y="0" width="1073" height="200" uuid="b3e7cc0b-66e0-4c3b-a52e-2d26fa1f1b86"/>
+				<reportElement key="" x="0" y="0" width="1170" height="200" uuid="b3e7cc0b-66e0-4c3b-a52e-2d26fa1f1b86"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="tableDataset" uuid="55374fba-7f70-4a4e-85c9-72d27571d8cc">
-						<datasetParameter name="SPParameters">
-							<datasetParameterExpression><![CDATA[$P{outSPParameters}]]></datasetParameterExpression>
+					<datasetRun subDataset="tableDataset" uuid="7aab2277-565c-406a-8a26-baed12906106">
+						<datasetParameter name="abierto">
+							<datasetParameterExpression><![CDATA[$P{outabierto}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="condicionFacturaCLOSE">
+							<datasetParameterExpression><![CDATA[$P{outcondicionFacturaCLOSE}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="condicionFacturaOPEN">
+							<datasetParameterExpression><![CDATA[$P{outcondicionFacturaOPEN}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="conjuntoID">
+							<datasetParameterExpression><![CDATA[$P{outconjuntoID}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="factura">
+							<datasetParameterExpression><![CDATA[$P{outfactura}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="facturaCLOSE">
+							<datasetParameterExpression><![CDATA[$P{outfacturaCLOSE}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="facturaOPEN">
+							<datasetParameterExpression><![CDATA[$P{outfacturaOPEN}]]></datasetParameterExpression>
 						</datasetParameter>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
-					<jr:columnGroup width="1073" uuid="79457696-4c2d-4a6d-aeaf-ff9884a3d7fb">
+					<jr:columnGroup width="1163" uuid="79457696-4c2d-4a6d-aeaf-ff9884a3d7fb">
 						<jr:groupHeader groupName="ACCOUNTNUM">
-							<jr:cell style="Table_CH" height="30">
+							<jr:cell style="Table_CH" height="30" rowSpan="1">
 								<textField>
-									<reportElement mode="Transparent" x="0" y="0" width="620" height="30" forecolor="#000000" backcolor="#FFFFFF" uuid="8b4d7835-d961-4e16-bc13-a3d3ae359200"/>
+									<reportElement mode="Transparent" x="0" y="0" width="1163" height="30" forecolor="#000000" backcolor="#FFFFFF" uuid="8b4d7835-d961-4e16-bc13-a3d3ae359200"/>
 									<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
 										<font fontName="DejaVu Sans" size="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 									</textElement>
@@ -111,10 +146,57 @@
 								</textField>
 							</jr:cell>
 						</jr:groupHeader>
+						<jr:groupFooter groupName="ACCOUNTNUM">
+							<jr:cell style="Table_CH" height="30" rowSpan="1">
+								<textField pattern="###0.###" isBlankWhenNull="true">
+									<reportElement positionType="Float" mode="Transparent" x="983" y="0" width="88" height="30" forecolor="#000000" backcolor="#FFFFFF" uuid="d09d31a1-66b0-40a5-9ea8-95e91db00425"/>
+									<textElement verticalAlignment="Middle" rotation="None" markup="none">
+										<font fontName="DejaVu Sans" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+										<paragraph lineSpacing="Single"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$V{SumValorPagadoG}]]></textFieldExpression>
+								</textField>
+								<staticText>
+									<reportElement mode="Transparent" x="371" y="0" width="166" height="30" forecolor="#000000" backcolor="#FFFFFF" uuid="daff5611-bf85-4977-94c2-2b981ae7ccb0"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+										<font fontName="DejaVu Sans" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+									</textElement>
+									<text><![CDATA[Total de facturas :]]></text>
+								</staticText>
+								<textField pattern="###0.###" isBlankWhenNull="true">
+									<reportElement mode="Transparent" x="539" y="0" width="88" height="30" forecolor="#000000" backcolor="#FFFFFF" uuid="aabda9ae-eb46-499f-851e-b7adeea3e595"/>
+									<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+										<font fontName="DejaVu Sans" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+										<paragraph lineSpacing="Single"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$V{SumAmmountG}]]></textFieldExpression>
+								</textField>
+								<staticText>
+									<reportElement mode="Transparent" x="801" y="0" width="166" height="30" forecolor="#000000" backcolor="#FFFFFF" uuid="c10a5eba-9ab6-4872-9759-5c294b1076bc"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+										<font fontName="DejaVu Sans" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+									</textElement>
+									<text><![CDATA[Total de Pagado :]]></text>
+								</staticText>
+								<textField pattern="###0.###" isBlankWhenNull="true">
+									<reportElement mode="Transparent" x="1073" y="0" width="89" height="30" forecolor="#000000" backcolor="#FFFFFF" uuid="e8ce8e90-ea3e-4121-9ed8-5cbc637aaeee"/>
+									<box>
+										<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+										<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+										<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+										<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+									</box>
+									<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+										<font fontName="DejaVu Sans" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$V{SumSaldo}]]></textFieldExpression>
+								</textField>
+							</jr:cell>
+						</jr:groupFooter>
 						<jr:column width="89" uuid="afd23e67-2e7d-43d9-a25a-5c2268cf326f">
-							<jr:tableHeader style="Table_TH" height="30"/>
-							<jr:tableFooter style="Table_TH" height="30"/>
-							<jr:columnHeader style="Table_CH" height="30">
+							<jr:tableHeader style="Table_TH" height="30" rowSpan="1"/>
+							<jr:tableFooter style="Table_TH" height="30" rowSpan="1"/>
+							<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
 								<staticText>
 									<reportElement x="0" y="0" width="89" height="30" uuid="491c9284-22be-44d8-a1be-6ba34f4b408e">
 										<property name="local_mesure_unitwidth" value="pixel"/>
@@ -127,8 +209,8 @@
 									<text><![CDATA[FECHA DOC.]]></text>
 								</staticText>
 							</jr:columnHeader>
-							<jr:columnFooter style="Table_CH" height="30"/>
-							<jr:detailCell style="Table_TD" height="30">
+							<jr:columnFooter style="Table_CH" height="30" rowSpan="1"/>
+							<jr:detailCell style="Table_TD" height="30" rowSpan="1">
 								<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
 									<reportElement x="0" y="0" width="89" height="30" uuid="c5756203-c8ad-4239-81e6-60bede5b98a7">
 										<property name="local_mesure_unitwidth" value="pixel"/>
@@ -143,9 +225,9 @@
 							</jr:detailCell>
 						</jr:column>
 						<jr:column width="150" uuid="3d68d0dd-e571-4203-8e85-2e08af048cb1">
-							<jr:tableHeader style="Table_TH" height="30"/>
-							<jr:tableFooter style="Table_TH" height="30"/>
-							<jr:columnHeader style="Table_CH" height="30">
+							<jr:tableHeader style="Table_TH" height="30" rowSpan="1"/>
+							<jr:tableFooter style="Table_TH" height="30" rowSpan="1"/>
+							<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
 								<staticText>
 									<reportElement mode="Transparent" x="0" y="0" width="150" height="30" forecolor="#000000" backcolor="#FFFFFF" uuid="4d7519c0-b2f6-4af8-ac1f-5e81c1c35dc9">
 										<property name="local_mesure_unitheight" value="pixel"/>
@@ -159,8 +241,8 @@
 									<text><![CDATA[DIARIO]]></text>
 								</staticText>
 							</jr:columnHeader>
-							<jr:columnFooter style="Table_CH" height="30"/>
-							<jr:detailCell style="Table_TD" height="30">
+							<jr:columnFooter style="Table_CH" height="30" rowSpan="1"/>
+							<jr:detailCell style="Table_TD" height="30" rowSpan="1">
 								<textField>
 									<reportElement x="0" y="0" width="150" height="30" uuid="9f8daa2b-cf93-474d-b8bf-d50c267a6579">
 										<property name="local_mesure_unitwidth" value="pixel"/>
@@ -175,9 +257,9 @@
 							</jr:detailCell>
 						</jr:column>
 						<jr:column width="150" uuid="57d9d9fc-902a-45e5-9cc0-6126c184ca56">
-							<jr:tableHeader style="Table_TH" height="30"/>
-							<jr:tableFooter style="Table_TH" height="30"/>
-							<jr:columnHeader style="Table_CH" height="30">
+							<jr:tableHeader style="Table_TH" height="30" rowSpan="1"/>
+							<jr:tableFooter style="Table_TH" height="30" rowSpan="1"/>
+							<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
 								<staticText>
 									<reportElement x="0" y="0" width="150" height="30" uuid="64898e96-fbe6-4225-85ed-e47a9341f129">
 										<property name="local_mesure_unitwidth" value="pixel"/>
@@ -190,8 +272,8 @@
 									<text><![CDATA[DOCUMENTO]]></text>
 								</staticText>
 							</jr:columnHeader>
-							<jr:columnFooter style="Table_CH" height="30"/>
-							<jr:detailCell style="Table_TD" height="30">
+							<jr:columnFooter style="Table_CH" height="30" rowSpan="1"/>
+							<jr:detailCell style="Table_TD" height="30" rowSpan="1">
 								<textField>
 									<reportElement x="0" y="0" width="150" height="30" uuid="46bf95bb-e0bc-4404-b59b-c09a08c4e49e">
 										<property name="local_mesure_unitwidth" value="pixel"/>
@@ -206,9 +288,9 @@
 							</jr:detailCell>
 						</jr:column>
 						<jr:column width="150" uuid="3b216470-f9e9-4dbf-921c-5c764035bec4">
-							<jr:tableHeader style="Table_TH" height="30"/>
-							<jr:tableFooter style="Table_TH" height="30"/>
-							<jr:columnHeader style="Table_CH" height="30">
+							<jr:tableHeader style="Table_TH" height="30" rowSpan="1"/>
+							<jr:tableFooter style="Table_TH" height="30" rowSpan="1"/>
+							<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
 								<staticText>
 									<reportElement x="0" y="0" width="150" height="30" uuid="91e0e809-c23b-487b-a8e6-0a4347529455">
 										<property name="local_mesure_unitwidth" value="pixel"/>
@@ -221,8 +303,8 @@
 									<text><![CDATA[DESCRIPCION]]></text>
 								</staticText>
 							</jr:columnHeader>
-							<jr:columnFooter style="Table_CH" height="30"/>
-							<jr:detailCell style="Table_TD" height="30">
+							<jr:columnFooter style="Table_CH" height="30" rowSpan="1"/>
+							<jr:detailCell style="Table_TD" height="30" rowSpan="1">
 								<textField>
 									<reportElement x="0" y="0" width="150" height="30" uuid="f3d8c4d0-794f-403d-bcf3-c277ee4be473">
 										<property name="local_mesure_unitwidth" value="pixel"/>
@@ -237,9 +319,9 @@
 							</jr:detailCell>
 						</jr:column>
 						<jr:column width="89" uuid="a5fc40e8-4714-4f7a-8158-bedfe7ec6eaf">
-							<jr:tableHeader style="Table_TH" height="30"/>
-							<jr:tableFooter style="Table_TH" height="30"/>
-							<jr:columnHeader style="Table_CH" height="30">
+							<jr:tableHeader style="Table_TH" height="30" rowSpan="1"/>
+							<jr:tableFooter style="Table_TH" height="30" rowSpan="1"/>
+							<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
 								<staticText>
 									<reportElement x="0" y="0" width="89" height="30" uuid="9dac3d4f-6a92-4a35-bd01-b479456244cd">
 										<property name="local_mesure_unitwidth" value="pixel"/>
@@ -252,8 +334,8 @@
 									<text><![CDATA[VALOR INICIAL]]></text>
 								</staticText>
 							</jr:columnHeader>
-							<jr:columnFooter style="Table_CH" height="30"/>
-							<jr:detailCell style="Table_TD" height="30">
+							<jr:columnFooter style="Table_CH" height="30" rowSpan="1"/>
+							<jr:detailCell style="Table_TD" height="30" rowSpan="1">
 								<textField pattern="###0.###" isBlankWhenNull="true">
 									<reportElement x="0" y="0" width="89" height="30" uuid="e874d74b-0a73-4c3e-97b6-4e3a0fd56033">
 										<property name="local_mesure_unitwidth" value="pixel"/>
@@ -268,9 +350,9 @@
 							</jr:detailCell>
 						</jr:column>
 						<jr:column width="89" uuid="917ebc70-408b-46c3-a5a1-f13d74f08e2b">
-							<jr:tableHeader style="Table_TH" height="30"/>
-							<jr:tableFooter style="Table_TH" height="30"/>
-							<jr:columnHeader style="Table_CH" height="30">
+							<jr:tableHeader style="Table_TH" height="30" rowSpan="1"/>
+							<jr:tableFooter style="Table_TH" height="30" rowSpan="1"/>
+							<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
 								<staticText>
 									<reportElement x="0" y="0" width="89" height="30" uuid="b5d27989-7b65-4343-946a-331310885538">
 										<property name="local_mesure_unitwidth" value="pixel"/>
@@ -283,8 +365,8 @@
 									<text><![CDATA[FECHA VENC.]]></text>
 								</staticText>
 							</jr:columnHeader>
-							<jr:columnFooter style="Table_CH" height="30"/>
-							<jr:detailCell style="Table_TD" height="30">
+							<jr:columnFooter style="Table_CH" height="30" rowSpan="1"/>
+							<jr:detailCell style="Table_TD" height="30" rowSpan="1">
 								<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
 									<reportElement mode="Transparent" x="0" y="0" width="89" height="30" forecolor="#000000" backcolor="#FFFFFF" uuid="14283cbf-c230-4725-ad5c-801a49f1f9c8">
 										<property name="local_mesure_unitwidth" value="pixel"/>
@@ -299,9 +381,9 @@
 							</jr:detailCell>
 						</jr:column>
 						<jr:column width="89" uuid="ae175a2f-e682-44b7-9319-17f60d21b294">
-							<jr:tableHeader style="Table_TH" height="30"/>
-							<jr:tableFooter style="Table_TH" height="30"/>
-							<jr:columnHeader style="Table_CH" height="30">
+							<jr:tableHeader style="Table_TH" height="30" rowSpan="1"/>
+							<jr:tableFooter style="Table_TH" height="30" rowSpan="1"/>
+							<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
 								<staticText>
 									<reportElement x="0" y="0" width="89" height="30" uuid="1e7de46c-7049-4c91-9eff-c8516cb9d5a2">
 										<property name="local_mesure_unitwidth" value="pixel"/>
@@ -314,8 +396,8 @@
 									<text><![CDATA[FORMA PAGO]]></text>
 								</staticText>
 							</jr:columnHeader>
-							<jr:columnFooter style="Table_CH" height="30"/>
-							<jr:detailCell style="Table_TD" height="30">
+							<jr:columnFooter style="Table_CH" height="30" rowSpan="1"/>
+							<jr:detailCell style="Table_TD" height="30" rowSpan="1">
 								<textField>
 									<reportElement x="0" y="0" width="89" height="30" uuid="a3b6be1c-5f80-40f1-b723-4092c2b8fc99">
 										<property name="local_mesure_unitwidth" value="pixel"/>
@@ -330,9 +412,9 @@
 							</jr:detailCell>
 						</jr:column>
 						<jr:column width="89" uuid="94f7927f-7f9d-4c63-8f6c-07a97f89716a">
-							<jr:tableHeader style="Table_TH" height="30"/>
-							<jr:tableFooter style="Table_TH" height="30"/>
-							<jr:columnHeader style="Table_CH" height="30">
+							<jr:tableHeader style="Table_TH" height="30" rowSpan="1"/>
+							<jr:tableFooter style="Table_TH" height="30" rowSpan="1"/>
+							<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
 								<staticText>
 									<reportElement x="0" y="0" width="89" height="30" uuid="e6a72444-11ad-4b04-b405-29017c820ebc">
 										<property name="local_mesure_unitwidth" value="pixel"/>
@@ -345,8 +427,8 @@
 									<text><![CDATA[ESTADO]]></text>
 								</staticText>
 							</jr:columnHeader>
-							<jr:columnFooter style="Table_CH" height="30"/>
-							<jr:detailCell style="Table_TD" height="30">
+							<jr:columnFooter style="Table_CH" height="30" rowSpan="1"/>
+							<jr:detailCell style="Table_TD" height="30" rowSpan="1">
 								<textField>
 									<reportElement x="0" y="0" width="89" height="30" uuid="4311696c-c75d-4264-a1f4-a93729c9071e">
 										<property name="local_mesure_unitwidth" value="pixel"/>
@@ -361,9 +443,9 @@
 							</jr:detailCell>
 						</jr:column>
 						<jr:column width="89" uuid="ad5ab5fe-7b23-4745-9daf-0d8d86552e15">
-							<jr:tableHeader style="Table_TH" height="30"/>
-							<jr:tableFooter style="Table_TH" height="30"/>
-							<jr:columnHeader style="Table_CH" height="30">
+							<jr:tableHeader style="Table_TH" height="30" rowSpan="1"/>
+							<jr:tableFooter style="Table_TH" height="30" rowSpan="1"/>
+							<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
 								<staticText>
 									<reportElement x="0" y="0" width="89" height="30" uuid="50945769-9d50-4ec7-880e-d38a14d174c4">
 										<property name="local_mesure_unitwidth" value="pixel"/>
@@ -376,8 +458,8 @@
 									<text><![CDATA[No PAGOS]]></text>
 								</staticText>
 							</jr:columnHeader>
-							<jr:columnFooter style="Table_CH" height="30"/>
-							<jr:detailCell style="Table_TD" height="30">
+							<jr:columnFooter style="Table_CH" height="30" rowSpan="1"/>
+							<jr:detailCell style="Table_TD" height="30" rowSpan="1">
 								<textField>
 									<reportElement x="0" y="0" width="89" height="30" uuid="120b9aa5-81bd-4321-b07d-20800859939d">
 										<property name="local_mesure_unitwidth" value="pixel"/>
@@ -392,9 +474,9 @@
 							</jr:detailCell>
 						</jr:column>
 						<jr:column width="89" uuid="c1d69519-d19a-4bb6-beb4-498b0237aef7">
-							<jr:tableHeader style="Table_TH" height="30"/>
-							<jr:tableFooter style="Table_TH" height="30"/>
-							<jr:columnHeader style="Table_CH" height="30">
+							<jr:tableHeader style="Table_TH" height="30" rowSpan="1"/>
+							<jr:tableFooter style="Table_TH" height="30" rowSpan="1"/>
+							<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
 								<staticText>
 									<reportElement x="0" y="0" width="89" height="30" uuid="dcbaf710-d09c-4abd-b2e7-3998e7d0a8d1">
 										<property name="local_mesure_unitwidth" value="pixel"/>
@@ -407,8 +489,8 @@
 									<text><![CDATA[TOTAL PAGADO]]></text>
 								</staticText>
 							</jr:columnHeader>
-							<jr:columnFooter style="Table_CH" height="30"/>
-							<jr:detailCell style="Table_TD" height="30">
+							<jr:columnFooter style="Table_CH" height="30" rowSpan="1"/>
+							<jr:detailCell style="Table_TD" height="30" rowSpan="1">
 								<textField pattern="###0.###" isBlankWhenNull="true">
 									<reportElement mode="Transparent" x="0" y="0" width="89" height="30" forecolor="#000000" backcolor="#FFFFFF" uuid="5eeb82b5-b287-4346-9cc4-9eb8fda84375">
 										<property name="local_mesure_unitwidth" value="pixel"/>
@@ -419,6 +501,37 @@
 										<font fontName="DejaVu Sans" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 									</textElement>
 									<textFieldExpression><![CDATA[$F{VALORPAGADO}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="90" uuid="7f9b62bb-5f9c-4bb2-9e8b-8ac6ed8e3087">
+							<jr:tableHeader style="Table_TH" height="30" rowSpan="1"/>
+							<jr:tableFooter style="Table_TH" height="30" rowSpan="1"/>
+							<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement mode="Transparent" x="0" y="0" width="90" height="30" forecolor="#000000" backcolor="#FFFFFF" uuid="50a33774-ceb5-4496-a119-cdc008132def">
+										<property name="local_mesure_unitwidth" value="pixel"/>
+										<property name="com.jaspersoft.studio.unit.width" value="px"/>
+									</reportElement>
+									<box leftPadding="2"/>
+									<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+										<font fontName="DejaVu Sans" size="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+									</textElement>
+									<text><![CDATA[SALDO]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:columnFooter style="Table_CH" height="30" rowSpan="1"/>
+							<jr:detailCell style="Table_TD" height="30" rowSpan="1">
+								<textField pattern="###0.###" isBlankWhenNull="true">
+									<reportElement mode="Transparent" x="0" y="0" width="90" height="30" forecolor="#000000" backcolor="#FFFFFF" uuid="50ba6fef-a98b-4b22-9d87-714ffe5c8988">
+										<property name="local_mesure_unitwidth" value="pixel"/>
+										<property name="com.jaspersoft.studio.unit.width" value="px"/>
+									</reportElement>
+									<box leftPadding="2"/>
+									<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+										<font fontName="DejaVu Sans" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$V{Saldo}]]></textFieldExpression>
 								</textField>
 							</jr:detailCell>
 						</jr:column>
