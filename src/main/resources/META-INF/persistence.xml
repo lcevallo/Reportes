@@ -24,6 +24,7 @@
     <class>com.alphacell.model.cartera.Cxcinfocliente</class>
     <class>com.alphacell.model.cartera.DyaxTblDetallePagoFactura</class>
     <class>com.alphacell.model.financiero.Tmpcxptramo</class>
+    <class>com.alphacell.model.cartera.LcVistaTramosYaVencidosPivot</class>
     <properties>
       <!-- <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://localhost\MSSQLSERVER:1433;databaseName=Produccion" /> -->
       <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://192.168.10.21\MSSQLSERVER:1433;databaseName=Produccion"/>
@@ -32,6 +33,7 @@
       <property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
       <property name="hibernate.hbm2ddl.auto" value="update"/>
       <property name="hibernate.show_sql" value="true"/>
+      <property name="hibernate.format_sql" value="true"/>
       <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServer2012Dialect"/>
     </properties>
   </persistence-unit>

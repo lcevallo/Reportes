@@ -1,0 +1,46 @@
+<ui:composition template="/WEB-INF/template/LayoutMaestro.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:pe="http://primefaces.org/ui/extensions"
+>
+    <ui:define name="titulo">Saldos Iniciales</ui:define>
+    <ui:define name="cuerpo">
+        <h:form id="frmTramosFacturasVencidas">
+
+
+
+            <p:dataTable
+                    id="tableSaldosIniciales"
+                    value="#{tramosVencidoBean.tablaTramosVencidos}"
+                    var="facturasRecord"
+                    scrollable="true"
+                    paginatorPosition="bottom"
+                    paginator="true"
+                    style="margin-top: 10px"
+                    rows="10"
+                    paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                    currentPageReportTemplate="Pagina: ({currentPage} de {totalPages})"
+                    rowsPerPageTemplate="5,15,25"
+                    scrollRows="15"
+                    emptyMessage="No existen datos para presentar"
+            >
+                <p:column headerText="15 dias"/>
+                <p:column headerText="30 dias" />
+                <p:column headerText="45 dias" />
+                <p:column headerText="60 dias" />
+                <p:column headerText="90 dias" />
+                <p:column headerText="120 dias" />
+                <p:column headerText="> 120 dias"/>
+
+
+
+        </p:dataTable>
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>
+

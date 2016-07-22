@@ -19,7 +19,7 @@
     <facet type="jpa" name="JPA">
       <configuration>
         <setting name="validation-enabled" value="true" />
-        <setting name="provider-name" value="" />
+        <setting name="provider-name" value="Hibernate" />
         <datasource-mapping>
           <factory-entry name="ReportesPU" value="afcc745c-489b-4fa2-9760-964e3c742fa7" />
         </datasource-mapping>
