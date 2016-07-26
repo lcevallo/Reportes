@@ -135,7 +135,7 @@ public class TramosVencidosLC {
                             return  new BigDecimal(Double.parseDouble(x.substring(posicion+2,x.length())));
                         })
                 );
-
+/*
         List<Integer> longitud= new ArrayList<Integer>();
 
         longitud.add(this._15Dias.size());
@@ -149,17 +149,20 @@ public class TramosVencidosLC {
         int max = longitud.stream().collect(Collectors.summarizingInt(Integer::intValue)).getMax();
 
         Object[][] dataTabla={
-                {this._15Dias.entrySet().stream().map(e->e.getValue()).collect(Collectors.toList())},
-                {this._30Dias.entrySet().stream().map(e->e.getValue()).collect(Collectors.toList())},
-                {this._45Dias.entrySet().stream().map(e->e.getValue()).collect(Collectors.toList())},
-                {this._60Dias.entrySet().stream().map(e->e.getValue()).collect(Collectors.toList())},
-                {this._90Dias.entrySet().stream().map(e->e.getValue()).collect(Collectors.toList())},
-                {this._120Dias.entrySet().stream().map(e->e.getValue()).collect(Collectors.toList())},
-                {this.M_120Dias.entrySet().stream().map(e->e.getValue()).collect(Collectors.toList())}
+                {(this._15Dias.entrySet().stream().map(e->e.getKey()).collect(Collectors.toList())).stream().toArray(String[]::new)},
+                {(this._30Dias.entrySet().stream().map(e->e.getKey()).collect(Collectors.toList())).stream().toArray(String[]::new)},
+                {(this._45Dias.entrySet().stream().map(e->e.getKey()).collect(Collectors.toList())).stream().toArray(String[]::new)},
+                {(this._60Dias.entrySet().stream().map(e->e.getKey()).collect(Collectors.toList())).stream().toArray(String[]::new)},
+                {(this._90Dias.entrySet().stream().map(e->e.getKey()).collect(Collectors.toList())).stream().toArray(String[]::new)},
+                {(this._120Dias.entrySet().stream().map(e->e.getKey()).collect(Collectors.toList())).stream().toArray(String[]::new)},
+                {(this.M_120Dias.entrySet().stream().map(e->e.getKey()).collect(Collectors.toList())).stream().toArray(String[]::new)}
 
         };
 
         System.out.println(dataTabla);
+        System.out.println(dataTabla[1][2]);
+        */
+
 
     }catch (Exception e){
             e.printStackTrace();
