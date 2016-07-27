@@ -1,6 +1,8 @@
 package com.alphacell.controller.cartera;
 
+import com.alphacell.model.cartera.LcTramosYaVencidosPivot;
 import com.alphacell.model.cartera.TramosVencidosLC;
+import com.alphacell.model.cartera.TramosVencidosLC_bu;
 import com.alphacell.repository.cxc.TramosVencidosRepository;
 
 import javax.annotation.PostConstruct;
@@ -9,6 +11,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by luis on 19/07/16.
@@ -23,6 +26,10 @@ public class TramosVencidoBean implements Serializable {
 
     private  List<TramosVencidosLC> tablaTramosVencidos;
 
+    private Map<String, List<LcTramosYaVencidosPivot>> tablaTramosVencidosMap;
+
+
+
 
     @Inject
     private TramosVencidosRepository tramosVencidosRepository;
@@ -31,7 +38,7 @@ public class TramosVencidoBean implements Serializable {
     @PostConstruct
     public void init()
     {
-        this.tablaTramosVencidos = tramosVencidosRepository.cargarTablaFacturasVencidas();
+        this.tablaTramosVencidos = tramosVencidosRepository.cargarTablasFacturasVencidas();
 
     }
 
@@ -41,5 +48,14 @@ public class TramosVencidoBean implements Serializable {
 
     public void setTablaTramosVencidos(List<TramosVencidosLC> tablaTramosVencidos) {
         this.tablaTramosVencidos = tablaTramosVencidos;
+    }
+
+
+    public Map<String, List<LcTramosYaVencidosPivot>> getTablaTramosVencidosMap() {
+        return tablaTramosVencidosMap;
+    }
+
+    public void setTablaTramosVencidosMap(Map<String, List<LcTramosYaVencidosPivot>> tablaTramosVencidosMap) {
+        this.tablaTramosVencidosMap = tablaTramosVencidosMap;
     }
 }

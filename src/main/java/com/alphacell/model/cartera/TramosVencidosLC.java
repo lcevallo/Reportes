@@ -1,176 +1,95 @@
 package com.alphacell.model.cartera;
 
 import java.math.BigDecimal;
-import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 /**
- * Created by luis on 19/07/16.
+ * Created by luis on 26/07/16.
  */
 public class TramosVencidosLC {
-
     private String name;
     private String accountNum;
-    private LcVistaTramosYaVencidosPivot recordTablaPivoteada;
+    private BigDecimal sumatoria15dias;
+    private BigDecimal sumatoria30dias;
+    private BigDecimal sumatoria45dias;
+    private BigDecimal sumatoria60dias;
+    private BigDecimal sumatoria90dias;
+    private BigDecimal sumatoria120dias;
+    private BigDecimal sumatoriaM120dias;
+    private BigDecimal sumatoriaTotal;
+
+    private List<LcTramosYaVencidosPivot> listaLcTramosYaVencidosPivotList;
 
 
-    private Map<String,BigDecimal> _15Dias=new HashMap<String,BigDecimal>();
-    private Map<String,Double> _15DiasP=new HashMap<String,Double>();
-    private Map<String,BigDecimal> _30Dias=new HashMap<String,BigDecimal>();
-    private Map<String,BigDecimal> _45Dias=new HashMap<String,BigDecimal>();
-    private Map<String,BigDecimal> _60Dias=new HashMap<String,BigDecimal>();
-    private Map<String,BigDecimal> _90Dias=new HashMap<String,BigDecimal>();
-    private Map<String,BigDecimal> _120Dias=new HashMap<String,BigDecimal>();
-    private Map<String,BigDecimal> M_120Dias=new HashMap<String,BigDecimal>();
-    private Map<String,BigDecimal> sumatorias=new HashMap<String,BigDecimal>();
+    public TramosVencidosLC(String accountNum,List<LcTramosYaVencidosPivot> listaLcTramosYaVencidosPivotList) {
+        this.accountNum = accountNum;
+        this.name=listaLcTramosYaVencidosPivotList.get(0).getNombreCliente();
+        this.listaLcTramosYaVencidosPivotList = listaLcTramosYaVencidosPivotList;
 
-
-
-
-
-    public TramosVencidosLC(String accountNum,LcVistaTramosYaVencidosPivot tablapivoteada) {
-        this.recordTablaPivoteada = tablapivoteada;
-        this.accountNum=this.recordTablaPivoteada.getAccountnum();
-        this.name=accountNum;
-        String[] ColNanme={"15 dias","30 dias","45 dias","60 dias","90 dias","120 dias","Mayor a 120 dias"};
-
-    try {
-
-      if (this.recordTablaPivoteada.getDias15()!=null)
-        this._15Dias= Stream.of(this.recordTablaPivoteada.getDias15()).map(w->w.split(",")).flatMap(Arrays::stream).collect(Collectors.toList())
+        this.sumatoria15dias= this.listaLcTramosYaVencidosPivotList
                 .stream()
-                .collect(
-                        Collectors.toMap(x -> {
-                            int posicion = x.lastIndexOf("||");
-                            return x.substring(0,posicion);
-                        }, x->{
+                .filter(Objects::nonNull)
+                .filter(c->c.getDias15B()!=null)
+                .map(LcTramosYaVencidosPivot::getDias15B)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
 
-                            int posicion = x.lastIndexOf("||");
-                            return  new BigDecimal(Double.parseDouble(x.substring(posicion+2,x.length())));
-                        })
-                );
-
-        if (this.recordTablaPivoteada.getDias30()!=null)
-        this._30Dias= Stream.of(this.recordTablaPivoteada.getDias30()).map(w->w.split(",")).flatMap(Arrays::stream).collect(Collectors.toList())
+        this.sumatoria30dias= this.listaLcTramosYaVencidosPivotList
                 .stream()
-                .collect(
-                        Collectors.toMap(x -> {
-                            int posicion = x.lastIndexOf("||");
-                            return x.substring(0,posicion);
-                        }, x->{
+                .filter(Objects::nonNull)
+                .filter(c->c.getDias30B()!=null)
+                .map(LcTramosYaVencidosPivot::getDias30B)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
 
-                            int posicion = x.lastIndexOf("||");
-                            return  new BigDecimal(Double.parseDouble(x.substring(posicion+2,x.length())));
-                        })
-                );
-
-        if (this.recordTablaPivoteada.getDias45()!=null)
-        this._45Dias= Stream.of(this.recordTablaPivoteada.getDias45()).map(w->w.split(",")).flatMap(Arrays::stream).collect(Collectors.toList())
+        this.sumatoria45dias= this.listaLcTramosYaVencidosPivotList
                 .stream()
-                .collect(
-                        Collectors.toMap(x -> {
-                            int posicion = x.lastIndexOf("||");
-                            return x.substring(0,posicion);
-                        }, x->{
+                .filter(Objects::nonNull)
+                .filter(c->c.getDias45B()!=null)
+                .map(LcTramosYaVencidosPivot::getDias45B)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
 
-                            int posicion = x.lastIndexOf("||");
-                            return  new BigDecimal(Double.parseDouble(x.substring(posicion+2,x.length())));
-                        })
-                );
-
-        if (this.recordTablaPivoteada.getDias60()!=null)
-        this._60Dias= Stream.of(this.recordTablaPivoteada.getDias60()).map(w->w.split(",")).flatMap(Arrays::stream).collect(Collectors.toList())
+        this.sumatoria60dias= this.listaLcTramosYaVencidosPivotList
                 .stream()
-                .collect(
-                        Collectors.toMap(x -> {
-                            int posicion = x.lastIndexOf("||");
-                            return x.substring(0,posicion);
-                        }, x->{
+                .filter(Objects::nonNull)
+                .filter(c->c.getDias60B()!=null)
+                .map(LcTramosYaVencidosPivot::getDias60B)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
 
-                            int posicion = x.lastIndexOf("||");
-                            return  new BigDecimal(Double.parseDouble(x.substring(posicion+2,x.length())));
-                        })
-                );
-
-        if (this.recordTablaPivoteada.getDias90()!=null)
-        this._90Dias= Stream.of(this.recordTablaPivoteada.getDias90()).map(w->w.split(",")).flatMap(Arrays::stream).collect(Collectors.toList())
+        this.sumatoria90dias= this.listaLcTramosYaVencidosPivotList
                 .stream()
-                .collect(
-                        Collectors.toMap(x -> {
-                            int posicion = x.lastIndexOf("||");
-                            return x.substring(0,posicion);
-                        }, x->{
+                .filter(Objects::nonNull)
+                .filter(c->c.getDias90B()!=null)
+                .map(LcTramosYaVencidosPivot::getDias90B)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
 
-                            int posicion = x.lastIndexOf("||");
-                            return  new BigDecimal(Double.parseDouble(x.substring(posicion+2,x.length())));
-                        })
-                );
-
-        if (this.recordTablaPivoteada.getDias120()!=null)
-        this._120Dias= Stream.of(this.recordTablaPivoteada.getDias120()).map(w->w.split(",")).flatMap(Arrays::stream).collect(Collectors.toList())
+        this.sumatoria120dias= this.listaLcTramosYaVencidosPivotList
                 .stream()
-                .collect(
-                        Collectors.toMap(x -> {
-                            int posicion = x.lastIndexOf("||");
-                            return x.substring(0,posicion);
-                        }, x->{
+                .filter(Objects::nonNull)
+                .filter(c->c.getDias120B()!=null)
+                .map(LcTramosYaVencidosPivot::getDias120B)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
 
-                            int posicion = x.lastIndexOf("||");
-                            return  new BigDecimal(Double.parseDouble(x.substring(posicion+2,x.length())));
-                        })
-                );
-
-        if (this.recordTablaPivoteada.getMayoresDe120Dias()!=null)
-        this.M_120Dias= Stream.of(this.recordTablaPivoteada.getMayoresDe120Dias()).map(w->w.split(",")).flatMap(Arrays::stream).collect(Collectors.toList())
+        this.sumatoriaM120dias= this.listaLcTramosYaVencidosPivotList
                 .stream()
-                .collect(
-                        Collectors.toMap(x -> {
-                            int posicion = x.lastIndexOf("||");
-                            return x.substring(0,posicion);
-                        }, x->{
-
-                            int posicion = x.lastIndexOf("||");
-                            return  new BigDecimal(Double.parseDouble(x.substring(posicion+2,x.length())));
-                        })
-                );
-/*
-        List<Integer> longitud= new ArrayList<Integer>();
-
-        longitud.add(this._15Dias.size());
-        longitud.add(this._30Dias.size());
-        longitud.add(this._45Dias.size());
-        longitud.add(this._60Dias.size());
-        longitud.add(this._90Dias.size());
-        longitud.add(this._120Dias.size());
-        longitud.add(this.M_120Dias.size());
-
-        int max = longitud.stream().collect(Collectors.summarizingInt(Integer::intValue)).getMax();
-
-        Object[][] dataTabla={
-                {(this._15Dias.entrySet().stream().map(e->e.getKey()).collect(Collectors.toList())).stream().toArray(String[]::new)},
-                {(this._30Dias.entrySet().stream().map(e->e.getKey()).collect(Collectors.toList())).stream().toArray(String[]::new)},
-                {(this._45Dias.entrySet().stream().map(e->e.getKey()).collect(Collectors.toList())).stream().toArray(String[]::new)},
-                {(this._60Dias.entrySet().stream().map(e->e.getKey()).collect(Collectors.toList())).stream().toArray(String[]::new)},
-                {(this._90Dias.entrySet().stream().map(e->e.getKey()).collect(Collectors.toList())).stream().toArray(String[]::new)},
-                {(this._120Dias.entrySet().stream().map(e->e.getKey()).collect(Collectors.toList())).stream().toArray(String[]::new)},
-                {(this.M_120Dias.entrySet().stream().map(e->e.getKey()).collect(Collectors.toList())).stream().toArray(String[]::new)}
-
-        };
-
-        System.out.println(dataTabla);
-        System.out.println(dataTabla[1][2]);
-        */
+                .filter(Objects::nonNull)
+                .filter(c->c.getMasDe120DiasB()!=null)
+                .map(LcTramosYaVencidosPivot::getMasDe120DiasB)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+        List<BigDecimal> bigDecimalValues= new ArrayList<>();
+        bigDecimalValues.add(this.sumatoria15dias);
+        bigDecimalValues.add(this.sumatoria30dias);
+        bigDecimalValues.add(this.sumatoria45dias);
+        bigDecimalValues.add(this.sumatoria60dias);
+        bigDecimalValues.add(this.sumatoria90dias);
+        bigDecimalValues.add(this.sumatoria120dias);
+        bigDecimalValues.add(this.sumatoriaM120dias);
 
 
-    }catch (Exception e){
-            e.printStackTrace();
+        this.sumatoriaTotal=bigDecimalValues.stream().reduce(
+                BigDecimal.ZERO, BigDecimal::add);
 
     }
-
-    }
-
 
     public String getName() {
         return name;
@@ -188,69 +107,77 @@ public class TramosVencidosLC {
         this.accountNum = accountNum;
     }
 
-    public Map<String, BigDecimal> get_15Dias() {
-        return _15Dias;
+    public List<LcTramosYaVencidosPivot> getListaLcTramosYaVencidosPivotList() {
+        return listaLcTramosYaVencidosPivotList;
     }
 
-    public void set_15Dias(Map<String, BigDecimal> _15Dias) {
-        this._15Dias = _15Dias;
+    public void setListaLcTramosYaVencidosPivotList(List<LcTramosYaVencidosPivot> listaLcTramosYaVencidosPivotList) {
+        this.listaLcTramosYaVencidosPivotList = listaLcTramosYaVencidosPivotList;
     }
 
-    public Map<String, BigDecimal> get_30Dias() {
-        return _30Dias;
+    public BigDecimal getSumatoria15dias() {
+        return sumatoria15dias;
     }
 
-    public void set_30Dias(Map<String, BigDecimal> _30Dias) {
-        this._30Dias = _30Dias;
+    public void setSumatoria15dias(BigDecimal sumatoria15dias) {
+
+
+        this.sumatoria15dias = sumatoria15dias;
     }
 
-    public Map<String, BigDecimal> get_45Dias() {
-        return _45Dias;
+    public BigDecimal getSumatoria30dias() {
+        return sumatoria30dias;
     }
 
-    public void set_45Dias(Map<String, BigDecimal> _45Dias) {
-        this._45Dias = _45Dias;
+    public void setSumatoria30dias(BigDecimal sumatoria30dias) {
+        this.sumatoria30dias = sumatoria30dias;
     }
 
-    public Map<String, BigDecimal> get_60Dias() {
-        return _60Dias;
+    public BigDecimal getSumatoria45dias() {
+        return sumatoria45dias;
     }
 
-    public void set_60Dias(Map<String, BigDecimal> _60Dias) {
-        this._60Dias = _60Dias;
+    public void setSumatoria45dias(BigDecimal sumatoria45dias) {
+        this.sumatoria45dias = sumatoria45dias;
     }
 
-    public Map<String, BigDecimal> get_90Dias() {
-        return _90Dias;
+    public BigDecimal getSumatoria60dias() {
+        return sumatoria60dias;
     }
 
-    public void set_90Dias(Map<String, BigDecimal> _90Dias) {
-        this._90Dias = _90Dias;
+    public void setSumatoria60dias(BigDecimal sumatoria60dias) {
+        this.sumatoria60dias = sumatoria60dias;
     }
 
-    public Map<String, BigDecimal> get_120Dias() {
-        return _120Dias;
+    public BigDecimal getSumatoria90dias() {
+        return sumatoria90dias;
     }
 
-    public void set_120Dias(Map<String, BigDecimal> _120Dias) {
-        this._120Dias = _120Dias;
+    public void setSumatoria90dias(BigDecimal sumatoria90dias) {
+        this.sumatoria90dias = sumatoria90dias;
     }
 
-    public Map<String, BigDecimal> getM_120Dias() {
-        return M_120Dias;
+    public BigDecimal getSumatoria120dias() {
+        return sumatoria120dias;
     }
 
-    public void setM_120Dias(Map<String, BigDecimal> m_120Dias) {
-        M_120Dias = m_120Dias;
+    public void setSumatoria120dias(BigDecimal sumatoria120dias) {
+        this.sumatoria120dias = sumatoria120dias;
     }
 
-    public Map<String, BigDecimal> getSumatorias() {
-        return sumatorias;
+    public BigDecimal getSumatoriaM120dias() {
+        return sumatoriaM120dias;
     }
 
-    public void setSumatorias(Map<String, BigDecimal> sumatorias) {
-        this.sumatorias = sumatorias;
+    public void setSumatoriaM120dias(BigDecimal sumatoriaM120dias) {
+        this.sumatoriaM120dias = sumatoriaM120dias;
     }
 
+    public BigDecimal getSumatoriaTotal() {
+        return sumatoriaTotal;
+    }
 
+    public void setSumatoriaTotal(BigDecimal sumatoriaTotal) {
+        this.sumatoriaTotal = sumatoriaTotal;
+    }
 }

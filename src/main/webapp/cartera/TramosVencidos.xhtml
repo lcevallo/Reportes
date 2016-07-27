@@ -44,7 +44,117 @@
 
                </p:columnGroup>
 
-                <p:subTable var="clientes" value="#{facturasRecord.}"
+                <p:subTable var="clientes" value="#{facturasRecord.listaLcTramosYaVencidosPivotList}">
+                    <f:facet name="header">
+                        <h:outputText value="#{facturasRecord.name}" style="text-align: left" />
+                    </f:facet>
+
+                    <p:column>
+                        <h:outputText value="#{clientes.dias15F}"/>
+                    </p:column>
+
+                    <p:column>
+                        <h:outputText value="#{clientes.dias30F}"/>
+                    </p:column>
+
+
+                    <p:column>
+                        <h:outputText value="#{clientes.dias45F}"/>
+                    </p:column>
+
+
+                    <p:column>
+                        <h:outputText value="#{clientes.dias60F}"/>
+                    </p:column>
+
+
+                    <p:column>
+                        <h:outputText value="#{clientes.dias90F}"/>
+                    </p:column>
+
+
+                    <p:column>
+                        <h:outputText value="#{clientes.dias120F}"/>
+                    </p:column>
+
+
+                    <p:column>
+                        <h:outputText value="#{clientes.masDe120DiasF}"/>
+                    </p:column>
+
+                    <p:columnGroup type="footer">
+                    <p:row>
+                        <p:column >
+                            <f:facet name="footer">
+                                <h:outputText value="#{facturasRecord.sumatoria15dias}">
+                                    <f:convertNumber pattern="#,##0.00" />
+                                </h:outputText>
+                            </f:facet>
+                        </p:column>
+
+                        <p:column >
+                            <f:facet name="footer">
+                                <h:outputText value="#{facturasRecord.sumatoria30dias}">
+                                    <f:convertNumber pattern="#,##0.00" />
+                                </h:outputText>
+                            </f:facet>
+                        </p:column>
+
+
+                        <p:column >
+                            <f:facet name="footer">
+                                <h:outputText value="#{facturasRecord.sumatoria45dias}">
+                                    <f:convertNumber pattern="#,##0.00" />
+                                </h:outputText>
+                            </f:facet>
+                        </p:column>
+
+                        <p:column >
+                            <f:facet name="footer">
+                                <h:outputText value="#{facturasRecord.sumatoria60dias}">
+                                    <f:convertNumber pattern="#,##0.00" />
+                                </h:outputText>
+                            </f:facet>
+                        </p:column>
+
+
+                        <p:column >
+                            <f:facet name="footer">
+                                <h:outputText value="#{facturasRecord.sumatoria90dias}">
+                                    <f:convertNumber pattern="#,##0.00" />
+                                </h:outputText>
+                            </f:facet>
+                        </p:column>
+
+                        <p:column >
+                            <f:facet name="footer">
+                                <h:outputText value="#{facturasRecord.sumatoria120dias}">
+                                    <f:convertNumber pattern="#,##0.00" />
+                                </h:outputText>
+                            </f:facet>
+                        </p:column>
+
+                        <p:column >
+                            <f:facet name="footer">
+                                <h:outputText value="#{facturasRecord.sumatoriaM120dias}">
+                                    <f:convertNumber pattern="#,##0.00" />
+                                </h:outputText>
+                            </f:facet>
+                        </p:column>
+
+                    </p:row>
+                        <p:row>
+                            <p:column colspan="6" footerText="Total Deuda: " style="text-align: right" />
+                            <p:column >
+                                <f:facet name="footer">
+                                    <h:outputText value="#{facturasRecord.sumatoriaTotal}">
+                                        <f:convertNumber pattern="#,##0.00" />
+                                    </h:outputText>
+                                </f:facet>
+                            </p:column>
+                        </p:row>
+                    </p:columnGroup>
+                </p:subTable>
 
 
         </p:dataTable>
