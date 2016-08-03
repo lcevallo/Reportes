@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 5.6.1.final using JasperReports Library version 5.6.1  -->
+<!-- 2016-08-03T12:31:20 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="TramosVencidos" pageWidth="1200" pageHeight="900" whenNoDataType="AllSectionsNoDetail" columnWidth="1160" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isIgnorePagination="true" uuid="42c76859-bbf7-4388-901f-d030b43047d2">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Produccion"/>
+	<property name="net.sf.jasperreports.export.xls.detect.cell.type" value="true"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+			<topPen lineWidth="1.0" lineColor="#000000"/>
+			<leftPen lineWidth="1.0" lineColor="#000000"/>
+			<bottomPen lineWidth="1.0" lineColor="#000000"/>
+			<rightPen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TH" mode="Transparent" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Transparent" forecolor="#B89F7D" backcolor="#70A9C6">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Transparent" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="tableDataset" uuid="50056bbd-696a-4be4-bf04-e5da7ad66e5e">
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Produccion"/>
+		<queryString>
+			<![CDATA[EXEC dbo.LC_TRAMOS_YA_VENCIDOS]]>
+		</queryString>
+		<field name="ACCOUNTNUM" class="java.lang.String"/>
+		<field name="nombre_cliente" class="java.lang.String"/>
+		<field name="dias15" class="java.lang.String"/>
+		<field name="dias30" class="java.lang.String"/>
+		<field name="dias45" class="java.lang.String"/>
+		<field name="dias60" class="java.lang.String"/>
+		<field name="dias90" class="java.lang.String"/>
+		<field name="dias120" class="java.lang.String"/>
+		<field name="Mas_de_120_dias" class="java.lang.String"/>
+		<variable name="BD15dias" class="java.math.BigDecimal" resetType="Group" resetGroup="nombre_cliente" calculation="Sum">
+			<variableExpression><![CDATA[new BigDecimal(($F{dias15}==null) ? "0" :$F{dias15}.substring(($F{dias15}.lastIndexOf("||")+2),$F{dias15}.length()))]]></variableExpression>
+		</variable>
+		<variable name="BD30dias" class="java.math.BigDecimal" resetType="Group" resetGroup="nombre_cliente" calculation="Sum">
+			<variableExpression><![CDATA[new BigDecimal(($F{dias30}==null) ? "0" :$F{dias30}.substring(($F{dias30}.lastIndexOf("||")+2),$F{dias30}.length()))]]></variableExpression>
+		</variable>
+		<variable name="BD45dias" class="java.math.BigDecimal" resetType="Group" resetGroup="nombre_cliente" calculation="Sum">
+			<variableExpression><![CDATA[new BigDecimal(($F{dias45}==null) ? "0" :$F{dias45}.substring(($F{dias45}.lastIndexOf("||")+2),$F{dias45}.length()))]]></variableExpression>
+		</variable>
+		<variable name="BD60dias" class="java.math.BigDecimal" resetType="Group" resetGroup="nombre_cliente" calculation="Sum">
+			<variableExpression><![CDATA[new BigDecimal(($F{dias60}==null) ? "0" :$F{dias60}.substring(($F{dias60}.lastIndexOf("||")+2),$F{dias60}.length()))]]></variableExpression>
+		</variable>
+		<variable name="BD90dias" class="java.math.BigDecimal" resetType="Group" resetGroup="nombre_cliente" calculation="Sum">
+			<variableExpression><![CDATA[new BigDecimal(($F{dias90}==null) ? "0" :$F{dias90}.substring(($F{dias90}.lastIndexOf("||")+2),$F{dias90}.length()))]]></variableExpression>
+		</variable>
+		<variable name="BD120dias" class="java.math.BigDecimal" resetType="Group" resetGroup="nombre_cliente" calculation="Sum">
+			<variableExpression><![CDATA[new BigDecimal(($F{dias120}==null) ? "0" :$F{dias120}.substring(($F{dias120}.lastIndexOf("||")+2),$F{dias120}.length()))]]></variableExpression>
+		</variable>
+		<variable name="BDM120dias" class="java.math.BigDecimal" resetType="Group" resetGroup="nombre_cliente" calculation="Sum">
+			<variableExpression><![CDATA[new BigDecimal(($F{Mas_de_120_dias}==null) ? "0" :$F{Mas_de_120_dias}.substring(($F{Mas_de_120_dias}.lastIndexOf("||")+2),$F{Mas_de_120_dias}.length()))]]></variableExpression>
+		</variable>
+		<variable name="BDTOTAL" class="java.math.BigDecimal" resetType="Group" resetGroup="nombre_cliente">
+			<variableExpression><![CDATA[$V{BD15dias}.add($V{BD30dias}).add($V{BD45dias}).add($V{BD60dias}).add($V{BD90dias}).add($V{BD120dias}).add($V{BDM120dias})]]></variableExpression>
+		</variable>
+		<group name="nombre_cliente">
+			<groupExpression><![CDATA[$F{nombre_cliente}]]></groupExpression>
+		</group>
+	</subDataset>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="e1e6e881-386b-4b5b-85e3-88dcd2f5bf79"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="a054645a-ee76-4d43-8655-5b2b83d680db"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="b9a3964b-495c-43b2-ad18-c9170d33272e"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="250" splitType="Stretch">
+			<property name="local_mesure_unitheight" value="pixel"/>
+			<componentElement>
+				<reportElement x="0" y="0" width="1160" height="250" uuid="73d0bf05-2353-4e6a-9d41-38e143798efc"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="tableDataset" uuid="c4e43f5f-cdf6-4d99-89e9-737808daa91d">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:columnGroup width="1130" uuid="5ac50c22-92d8-41bb-9379-b61ca3c18f35">
+						<jr:groupHeader groupName="nombre_cliente">
+							<jr:cell style="Table_CH" height="30" rowSpan="1">
+								<textField isStretchWithOverflow="true">
+									<reportElement key="" style="Detail" x="0" y="0" width="1130" height="30" uuid="55bf6d72-ff39-4ba9-bf0f-a3310415675c"/>
+									<textElement verticalAlignment="Middle" markup="none">
+										<font size="14" isBold="true" isItalic="true"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{ACCOUNTNUM}+" - "+$F{nombre_cliente}]]></textFieldExpression>
+								</textField>
+							</jr:cell>
+						</jr:groupHeader>
+						<jr:groupFooter groupName="nombre_cliente">
+							<jr:cell style="Table_CH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement key="" style="Detail" mode="Transparent" x="658" y="0" width="300" height="30" forecolor="#DB201D" backcolor="#FFFFFF" uuid="76ff3c8a-a398-4a83-894d-5141b696b495"/>
+									<box padding="0" topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+									<textElement textAlignment="Right" verticalAlignment="Middle" rotation="None" markup="none">
+										<font fontName="Arial" size="14" isBold="true" isItalic="true" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+										<paragraph lineSpacing="Single" lineSpacingSize="1.0" firstLineIndent="0" leftIndent="0" rightIndent="0" spacingBefore="0" spacingAfter="0" tabStopWidth="40"/>
+									</textElement>
+									<text><![CDATA[Total Deuda:]]></text>
+								</staticText>
+								<textField pattern="#,##0.###" isBlankWhenNull="true">
+									<reportElement style="SubTitle" mode="Transparent" x="963" y="0" width="167" height="30" forecolor="#000000" backcolor="#FFFFFF" uuid="b1edbeeb-8b0b-438e-9e82-8d5b7dc0c1ee">
+										<property name="local_mesure_unitx" value="pixel"/>
+										<property name="com.jaspersoft.studio.unit.x" value="px"/>
+									</reportElement>
+									<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+										<font fontName="SansSerif" size="10" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$V{BDTOTAL}]]></textFieldExpression>
+								</textField>
+							</jr:cell>
+						</jr:groupFooter>
+						<jr:columnFooter height="30" rowSpan="1"/>
+						<jr:column width="160" uuid="1ab681aa-37bb-4cae-9f2e-87066bf05bf4">
+							<property name="local_mesure_unitheight" value="pixel"/>
+							<jr:tableFooter style="Table_TH" height="30" rowSpan="1"/>
+							<jr:groupFooter groupName="nombre_cliente">
+								<jr:cell height="30">
+									<box>
+										<topPen lineWidth="1.0" lineStyle="Solid"/>
+										<leftPen lineWidth="1.0"/>
+										<bottomPen lineWidth="1.0"/>
+										<rightPen lineWidth="1.1" lineStyle="Solid"/>
+									</box>
+									<textField pattern="#,##0.###" isBlankWhenNull="true">
+										<reportElement x="0" y="0" width="160" height="30" uuid="36af5a46-dfba-4d75-9669-afc82c4a1d51"/>
+										<box>
+											<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+											<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+											<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+											<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+										</box>
+										<textElement textAlignment="Center" verticalAlignment="Middle"/>
+										<textFieldExpression><![CDATA[$V{BD15dias}]]></textFieldExpression>
+									</textField>
+								</jr:cell>
+							</jr:groupFooter>
+							<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement key="" style="SubTitle" x="0" y="0" width="160" height="30" forecolor="#0011FF" uuid="99b8d066-30af-4be9-a58d-075384b9993f"/>
+									<box leftPadding="2"/>
+									<textElement>
+										<font fontName="Arial" size="16" isBold="true"/>
+									</textElement>
+									<text><![CDATA[15 dias Vencido]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:columnFooter style="Table_CH" height="30" rowSpan="1"/>
+							<jr:detailCell style="Table_TD" height="30" rowSpan="1">
+								<textField isBlankWhenNull="true">
+									<reportElement style="Detail" x="0" y="0" width="160" height="30" uuid="101a5b38-7cf9-452f-a981-63d7c01770c3"/>
+									<box leftPadding="2"/>
+									<textElement>
+										<font fontName="Arial" size="12"/>
+									</textElement>
+									<textFieldExpression><![CDATA[IF($F{dias15}!=null,$F{dias15}.substring(0,$F{dias15}.lastIndexOf("||")),null)]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="160" uuid="a154d9ce-7ca3-41ad-9066-d1df286f660a">
+							<property name="local_mesure_unitwidth" value="pixel"/>
+							<jr:tableFooter style="Table_TH" height="30" rowSpan="1"/>
+							<jr:groupFooter groupName="nombre_cliente">
+								<jr:cell height="30">
+									<box>
+										<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+										<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+										<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+										<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+									</box>
+									<textField pattern="#,##0.###" isBlankWhenNull="true">
+										<reportElement mode="Transparent" x="0" y="0" width="160" height="30" forecolor="#000000" backcolor="#FFFFFF" uuid="d51e9538-f844-416a-b940-2e34308329fc"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+											<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$V{BD30dias}]]></textFieldExpression>
+									</textField>
+								</jr:cell>
+							</jr:groupFooter>
+							<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement key="" style="SubTitle" mode="Transparent" x="0" y="0" width="160" height="30" forecolor="#0011FF" backcolor="#FFFFFF" uuid="3f55d8e8-d35f-4f20-a938-31f3057d5680"/>
+									<box leftPadding="2"/>
+									<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+										<font fontName="Arial" size="16" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+									</textElement>
+									<text><![CDATA[30 dias Vencido]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:columnFooter style="Table_CH" height="30" rowSpan="1"/>
+							<jr:detailCell style="Table_TD" height="30" rowSpan="1">
+								<textField isBlankWhenNull="true">
+									<reportElement style="Detail" x="0" y="0" width="160" height="30" uuid="fda1f243-c4df-4e26-a901-39519784b9d6"/>
+									<box leftPadding="2"/>
+									<textElement>
+										<font fontName="Arial" size="12"/>
+									</textElement>
+									<textFieldExpression><![CDATA[IF($F{dias30}!=null,$F{dias30}.substring(0,$F{dias30}.lastIndexOf("||")),null)]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="160" uuid="aabecedc-342b-49c5-ae20-a6656ab4131c">
+							<property name="local_mesure_unitwidth" value="pixel"/>
+							<jr:tableFooter style="Table_TH" height="30" rowSpan="1"/>
+							<jr:groupFooter groupName="nombre_cliente">
+								<jr:cell height="30">
+									<box>
+										<topPen lineWidth="1.0"/>
+										<leftPen lineWidth="1.0"/>
+										<bottomPen lineWidth="1.0"/>
+										<rightPen lineWidth="1.0"/>
+									</box>
+									<textField pattern="#,##0.###" isBlankWhenNull="true">
+										<reportElement mode="Transparent" x="0" y="0" width="160" height="30" forecolor="#000000" backcolor="#FFFFFF" uuid="9dc68faf-0137-416d-8d5f-b045460a358a"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+											<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$V{BD45dias}]]></textFieldExpression>
+									</textField>
+								</jr:cell>
+							</jr:groupFooter>
+							<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement key="" style="SubTitle" mode="Transparent" x="0" y="0" width="160" height="30" forecolor="#0011FF" backcolor="#FFFFFF" uuid="bc078d6e-9288-423e-b295-bf03c411e13b"/>
+									<box leftPadding="2"/>
+									<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+										<font fontName="Arial" size="16" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+									</textElement>
+									<text><![CDATA[45 dias Vencido]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:columnFooter style="Table_CH" height="30" rowSpan="1"/>
+							<jr:detailCell style="Table_TD" height="30" rowSpan="1">
+								<textField isBlankWhenNull="true">
+									<reportElement style="Detail" x="0" y="0" width="160" height="30" uuid="08f5905f-cda1-4df5-ac30-178c9031b927"/>
+									<box leftPadding="2"/>
+									<textElement>
+										<font fontName="Arial" size="12"/>
+									</textElement>
+									<textFieldExpression><![CDATA[IF($F{dias45}!=null,$F{dias45}.substring(0,$F{dias45}.lastIndexOf("||")),null)]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="160" uuid="d89a9721-a2b4-4b17-9cce-2f36a3bf8351">
+							<jr:tableFooter style="Table_TH" height="30" rowSpan="1"/>
+							<jr:groupFooter groupName="nombre_cliente">
+								<jr:cell height="30">
+									<box>
+										<topPen lineWidth="1.0"/>
+										<leftPen lineWidth="1.0"/>
+										<bottomPen lineWidth="1.0"/>
+										<rightPen lineWidth="1.0"/>
+									</box>
+									<textField pattern="#,##0.###" isBlankWhenNull="true">
+										<reportElement mode="Transparent" x="0" y="0" width="160" height="30" forecolor="#000000" backcolor="#FFFFFF" uuid="4f9db75b-5a10-4d75-aeb0-0786ac7eb295"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+											<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$V{BD60dias}]]></textFieldExpression>
+									</textField>
+								</jr:cell>
+							</jr:groupFooter>
+							<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement key="" style="SubTitle" mode="Transparent" x="0" y="0" width="160" height="30" forecolor="#0011FF" backcolor="#FFFFFF" uuid="61d227ac-43b1-470c-be43-3693073f2de7"/>
+									<box leftPadding="2"/>
+									<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+										<font fontName="Arial" size="16" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+									</textElement>
+									<text><![CDATA[60 dias Vencido]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:columnFooter style="Table_CH" height="30" rowSpan="1"/>
+							<jr:detailCell style="Table_TD" height="30" rowSpan="1">
+								<textField isBlankWhenNull="true">
+									<reportElement style="Detail" x="0" y="0" width="160" height="30" uuid="c4cab0c4-706d-4592-8bfd-3a620915bed1"/>
+									<box leftPadding="2"/>
+									<textElement>
+										<font fontName="Arial" size="12"/>
+									</textElement>
+									<textFieldExpression><![CDATA[IF($F{dias60}!=null,$F{dias60}.substring(0,$F{dias60}.lastIndexOf("||")),null)]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="160" uuid="bdd9363c-002d-44d4-912f-3b3632778f7f">
+							<property name="local_mesure_unitwidth" value="pixel"/>
+							<jr:tableFooter style="Table_TH" height="30" rowSpan="1"/>
+							<jr:groupFooter groupName="nombre_cliente">
+								<jr:cell height="30">
+									<box>
+										<topPen lineWidth="1.0"/>
+										<leftPen lineWidth="1.0"/>
+										<bottomPen lineWidth="1.0"/>
+										<rightPen lineWidth="1.0"/>
+									</box>
+									<textField pattern="#,##0.###" isBlankWhenNull="true">
+										<reportElement mode="Transparent" x="0" y="0" width="160" height="30" forecolor="#000000" backcolor="#FFFFFF" uuid="5f5bd089-dcbc-44cf-b9cf-8d91ce4e77d8"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+											<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$V{BD90dias}]]></textFieldExpression>
+									</textField>
+								</jr:cell>
+							</jr:groupFooter>
+							<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement key="" style="SubTitle" mode="Transparent" x="0" y="0" width="160" height="30" forecolor="#0011FF" backcolor="#FFFFFF" uuid="49c55d14-a37d-465b-912b-05c27eeeeec0"/>
+									<box leftPadding="2"/>
+									<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+										<font fontName="Arial" size="16" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+									</textElement>
+									<text><![CDATA[90 dias Vencido]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:columnFooter style="Table_CH" height="30" rowSpan="1"/>
+							<jr:detailCell style="Table_TD" height="30" rowSpan="1">
+								<textField isBlankWhenNull="true">
+									<reportElement style="Detail" x="0" y="0" width="160" height="30" uuid="b6578371-fe79-4014-a43b-678f53c1eced"/>
+									<box leftPadding="2"/>
+									<textElement>
+										<font fontName="Arial" size="12"/>
+									</textElement>
+									<textFieldExpression><![CDATA[IF($F{dias90}!=null,$F{dias90}.substring(0,$F{dias90}.lastIndexOf("||")),null)]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="160" uuid="c788ecd3-270c-4c29-9398-343da556b782">
+							<jr:tableFooter style="Table_TH" height="30" rowSpan="1"/>
+							<jr:groupFooter groupName="nombre_cliente">
+								<jr:cell height="30">
+									<box>
+										<topPen lineWidth="1.0"/>
+										<leftPen lineWidth="1.0"/>
+										<bottomPen lineWidth="1.0"/>
+										<rightPen lineWidth="1.0"/>
+									</box>
+									<textField pattern="#,##0.###" isBlankWhenNull="true">
+										<reportElement mode="Transparent" x="0" y="0" width="160" height="30" forecolor="#000000" backcolor="#FFFFFF" uuid="0c7533ec-f95c-4b3a-aef3-7fcb2ca10fb0"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+											<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$V{BD120dias}]]></textFieldExpression>
+									</textField>
+								</jr:cell>
+							</jr:groupFooter>
+							<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement key="" style="SubTitle" mode="Transparent" x="0" y="0" width="160" height="30" forecolor="#0011FF" backcolor="#FFFFFF" uuid="e2fd9fae-e180-4402-9dd4-e76f4cf35e46"/>
+									<box leftPadding="2"/>
+									<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+										<font fontName="Arial" size="16" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+									</textElement>
+									<text><![CDATA[120 dias Vencido]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:columnFooter style="Table_CH" height="30" rowSpan="1"/>
+							<jr:detailCell style="Table_TD" height="30" rowSpan="1">
+								<textField isBlankWhenNull="true">
+									<reportElement style="Detail" x="0" y="0" width="160" height="30" uuid="1c219109-d853-4964-a37c-8d29a3e37b6d"/>
+									<box leftPadding="2"/>
+									<textElement>
+										<font fontName="Arial" size="12"/>
+									</textElement>
+									<textFieldExpression><![CDATA[IF($F{dias120}!=null,$F{dias120}.substring(0,$F{dias120}.lastIndexOf("||")),null)]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="170" uuid="86d94761-1a48-4742-90f0-ade342a10281">
+							<jr:tableFooter style="Table_TH" height="30" rowSpan="1"/>
+							<jr:groupFooter groupName="nombre_cliente">
+								<jr:cell height="30">
+									<box>
+										<topPen lineWidth="1.0"/>
+										<leftPen lineWidth="1.0"/>
+										<bottomPen lineWidth="1.0"/>
+										<rightPen lineWidth="1.0"/>
+									</box>
+									<textField pattern="#,##0.###" isBlankWhenNull="true">
+										<reportElement mode="Transparent" x="0" y="0" width="170" height="30" forecolor="#000000" backcolor="#FFFFFF" uuid="342e52ac-89e3-4934-a7e9-e01a2b2c687f"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+											<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$V{BDM120dias}]]></textFieldExpression>
+									</textField>
+								</jr:cell>
+							</jr:groupFooter>
+							<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement key="" style="SubTitle" mode="Transparent" x="0" y="0" width="170" height="30" forecolor="#0011FF" backcolor="#FFFFFF" uuid="c53a94aa-a1d5-47bd-9e48-7e32b09dde5f"/>
+									<box leftPadding="2"/>
+									<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+										<font fontName="Arial" size="16" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+									</textElement>
+									<text><![CDATA[Mas de 120 dias Vencido]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:columnFooter style="Table_CH" height="30" rowSpan="1"/>
+							<jr:detailCell style="Table_TD" height="30" rowSpan="1">
+								<textField isBlankWhenNull="true">
+									<reportElement style="Detail" x="0" y="0" width="170" height="30" uuid="db14ad58-c49a-4353-a1c3-e38fdab741f2"/>
+									<box leftPadding="2"/>
+									<textElement>
+										<font fontName="Arial" size="12"/>
+									</textElement>
+									<textFieldExpression><![CDATA[IF($F{Mas_de_120_dias}!=null,$F{Mas_de_120_dias}.substring(0,$F{Mas_de_120_dias}.lastIndexOf("||")),null)]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+					</jr:columnGroup>
+				</jr:table>
+			</componentElement>
+		</band>
+	</summary>
+</jasperReport>

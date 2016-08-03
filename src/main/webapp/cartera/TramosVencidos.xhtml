@@ -11,11 +11,18 @@
         <h:form id="frmTramosFacturasVencidas">
 
 
+            <p:toolbar>
+                <f:facet name="left">
+                    <p:commandButton icon="ui-icon-xls" value="Excel" action="#{tramosVencidoBean.exportarExcelTramosVencidos}" ajax="false"   />
+                </f:facet>
+            </p:toolbar>
+
 
             <p:dataTable
                     id="tableSaldosIniciales"
                     value="#{tramosVencidoBean.tablaTramosVencidos}"
                     var="facturasRecord"
+                    widgetVar="vecidosTable"
                     scrollable="true"
                     paginatorPosition="bottom"
                     paginator="true"
@@ -25,9 +32,18 @@
                     currentPageReportTemplate="Pagina: ({currentPage} de {totalPages})"
                     rowsPerPageTemplate="5,15,25"
                     scrollRows="15"
+                    filteredValue="#{tramosVencidoBean.tablaTramosVencidosFiltered}"
                     emptyMessage="No existen datos para presentar"
             >
+                <f:facet name="header">
+                    <p:outputPanel>
+                        <h:outputText value="Busqueda por cliente:" />
+                        <p:inputText id="globalFilter" value="#{tramosVencidoBean.filtroValue}"  style="width:150px" placeholder="Nombre del Cliente" />
+                        <p:commandButton id="cmdFiltrar" update="tableSaldosIniciales" value="Buscar" actionListener="#{tramosVencidoBean.filtrarTabla}" />
 
+                    </p:outputPanel>
+
+                </f:facet>
 
                <p:columnGroup type="header">
 
@@ -158,6 +174,8 @@
 
 
         </p:dataTable>
+
+
         </h:form>
 
     </ui:define>
