@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 5.6.1.final using JasperReports Library version 5.6.1  -->
-<!-- 2016-08-03T12:31:20 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="TramosVencidos" pageWidth="1200" pageHeight="900" whenNoDataType="AllSectionsNoDetail" columnWidth="1160" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isIgnorePagination="true" uuid="42c76859-bbf7-4388-901f-d030b43047d2">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Produccion"/>
 	<property name="net.sf.jasperreports.export.xls.detect.cell.type" value="true"/>
@@ -213,7 +211,7 @@
 									<textElement>
 										<font fontName="Arial" size="12"/>
 									</textElement>
-									<textFieldExpression><![CDATA[IF($F{dias15}!=null,$F{dias15}.substring(0,$F{dias15}.lastIndexOf("||")),null)]]></textFieldExpression>
+									<textFieldExpression><![CDATA[$F{dias15}.isEmpty()?null:$F{dias15}.substring(0,$F{dias15}.lastIndexOf("||"))]]></textFieldExpression>
 								</textField>
 							</jr:detailCell>
 						</jr:column>
@@ -255,7 +253,7 @@
 									<textElement>
 										<font fontName="Arial" size="12"/>
 									</textElement>
-									<textFieldExpression><![CDATA[IF($F{dias30}!=null,$F{dias30}.substring(0,$F{dias30}.lastIndexOf("||")),null)]]></textFieldExpression>
+									<textFieldExpression><![CDATA[$F{dias15}.isEmpty()?null:$F{dias15}.substring(0,$F{dias15}.lastIndexOf("||"))]]></textFieldExpression>
 								</textField>
 							</jr:detailCell>
 						</jr:column>
@@ -297,7 +295,7 @@
 									<textElement>
 										<font fontName="Arial" size="12"/>
 									</textElement>
-									<textFieldExpression><![CDATA[IF($F{dias45}!=null,$F{dias45}.substring(0,$F{dias45}.lastIndexOf("||")),null)]]></textFieldExpression>
+									<textFieldExpression><![CDATA[$F{dias45}.isEmpty()?null:$F{dias45}.substring(0,$F{dias45}.lastIndexOf("||"))]]></textFieldExpression>
 								</textField>
 							</jr:detailCell>
 						</jr:column>
@@ -338,7 +336,7 @@
 									<textElement>
 										<font fontName="Arial" size="12"/>
 									</textElement>
-									<textFieldExpression><![CDATA[IF($F{dias60}!=null,$F{dias60}.substring(0,$F{dias60}.lastIndexOf("||")),null)]]></textFieldExpression>
+									<textFieldExpression><![CDATA[$F{dias45}.isEmpty()?null:$F{dias45}.substring(0,$F{dias45}.lastIndexOf("||"))]]></textFieldExpression>
 								</textField>
 							</jr:detailCell>
 						</jr:column>
@@ -380,7 +378,7 @@
 									<textElement>
 										<font fontName="Arial" size="12"/>
 									</textElement>
-									<textFieldExpression><![CDATA[IF($F{dias90}!=null,$F{dias90}.substring(0,$F{dias90}.lastIndexOf("||")),null)]]></textFieldExpression>
+									<textFieldExpression><![CDATA[$F{dias90}.isEmpty()?null:$F{dias90}.substring(0,$F{dias90}.lastIndexOf("||"))]]></textFieldExpression>
 								</textField>
 							</jr:detailCell>
 						</jr:column>
@@ -421,7 +419,7 @@
 									<textElement>
 										<font fontName="Arial" size="12"/>
 									</textElement>
-									<textFieldExpression><![CDATA[IF($F{dias120}!=null,$F{dias120}.substring(0,$F{dias120}.lastIndexOf("||")),null)]]></textFieldExpression>
+									<textFieldExpression><![CDATA[$F{dias120}.isEmpty()?null:$F{dias120}.substring(0,$F{dias120}.lastIndexOf("||"))]]></textFieldExpression>
 								</textField>
 							</jr:detailCell>
 						</jr:column>
@@ -462,7 +460,7 @@
 									<textElement>
 										<font fontName="Arial" size="12"/>
 									</textElement>
-									<textFieldExpression><![CDATA[IF($F{Mas_de_120_dias}!=null,$F{Mas_de_120_dias}.substring(0,$F{Mas_de_120_dias}.lastIndexOf("||")),null)]]></textFieldExpression>
+									<textFieldExpression><![CDATA[$F{Mas_de_120_dias}.isEmpty()?null:$F{Mas_de_120_dias}.substring(0,$F{Mas_de_120_dias}.lastIndexOf("||"))]]></textFieldExpression>
 								</textField>
 							</jr:detailCell>
 						</jr:column>
