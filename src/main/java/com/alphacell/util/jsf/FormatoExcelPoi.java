@@ -57,6 +57,7 @@ public class FormatoExcelPoi {
 
                 try
                 {
+                         /*
                             if(InetAddress.getLocalHost().getHostName().equals("WSCEVALLOS"))
                             {
                                 //TODO: ESTO FUNCIONA SOLO EN MI MAQUINA
@@ -67,7 +68,9 @@ public class FormatoExcelPoi {
                                 //TODO: PARA EL SERVIDOR YA QUE EL SERVIDOR 1,089,544.6 coloca al reves las cosas
                                 strVal = strVal.replace(",", "");
                             }
-
+                            */
+                    strVal = strVal.replace(".", "");
+                    strVal = strVal.replace(",", ".");
 
                             if (strVal.indexOf('.') == -1) {
                                 //integer

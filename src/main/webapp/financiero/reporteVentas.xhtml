@@ -100,17 +100,15 @@
                         </h:outputText>
                     </p:column>
 
-
+                    <p:column headerText="Neto" >
+                        <h:outputText value="#{rptVentasRecord.neto}" >
+                            <f:convertNumber pattern="#,##0.00" />
+                        </h:outputText>
+                    </p:column>
 
                     <p:column headerText="IVA">
                         <h:outputText value="#{rptVentasRecord.iva}">
                             <f:convertNumber pattern="#,##0.00"/>
-                        </h:outputText>
-                    </p:column>
-
-                    <p:column headerText="Neto" >
-                        <h:outputText value="#{rptVentasRecord.neto}" >
-                            <f:convertNumber pattern="#,##0.00" />
                         </h:outputText>
                     </p:column>
 
