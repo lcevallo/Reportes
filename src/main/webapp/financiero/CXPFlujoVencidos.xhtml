@@ -1,0 +1,139 @@
+<ui:composition template="/WEB-INF/template/LayoutMaestro.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+>
+    <ui:define name="titulo">Reporte de CXP Flujo Vencidos</ui:define>
+
+    <ui:define name="cuerpo">
+
+
+        <h:form id="frm-CXPFlujoVencido">
+        <p:messages/>
+        <p:toolbar>
+            <p:toolbarGroup align="left">
+                <h:commandLink>
+                    <p:graphicImage library="images" name="excel.png" width="24"/>
+                    <p:dataExporter type="xls" target="table-cxpFlujoVencido" fileName="cxpFlujoVencido"
+                                    postProcessor="#{reporteCXPFlujoVencidoBean.postProcessXLS}"
+                    />
+                </h:commandLink>
+            </p:toolbarGroup>
+        </p:toolbar>
+
+        <p:dataTable
+                id="table-cxpFlujoVencido"
+                value="#{reporteCXPFlujoVencidoBean.tableCxpFlujoVencido}"
+                var="dtbCxpFlujoVencido"
+                filteredValue="#{reporteCXPFlujoVencidoBean.tableCxpFlujoVencidoFiltered}"
+                scrollable="true"
+                paginatorPosition="bottom"
+                paginator="true"
+                rows="15"
+                paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                currentPageReportTemplate="Pagina: ({currentPage} de {totalPages})"
+                rowsPerPageTemplate="5,15,25"
+                rowKey="#{dtbCxpFlujoVencido.id}"
+                emptyMessage="No existen datos para presentar"
+        >
+
+            <p:column headerText="Codigo" filterBy="#{dtbCxpFlujoVencido.accountnum}"
+                      filterMatchMode="contains">
+                <h:outputText value="#{dtbCxpFlujoVencido.accountnum}"/>
+            </p:column>
+
+            <p:column headerText="Cliente" style="width:150px;" filterBy="#{dtbCxpFlujoVencido.nombreCliente}"
+                      filterMatchMode="contains">
+                <h:outputText value="#{dtbCxpFlujoVencido.nombreCliente}"/>
+            </p:column>
+
+
+            <p:column headerText="Documento" style="width:150px;" filterBy="#{dtbCxpFlujoVencido.invoice}"
+                      filterMatchMode="contains">
+                <h:outputText value="#{dtbCxpFlujoVencido.invoice}"/>
+            </p:column>
+
+            <p:column headerText="Desc" style="width:150px">
+                <h:outputText value="#{dtbCxpFlujoVencido.txt}" />
+            </p:column>
+
+            <p:column headerText="Fecha Doc." >
+                <h:outputText value="#{dtbCxpFlujoVencido.transdate}" >
+                    <f:convertDateTime dateStyle="full" pattern="dd/MM/yyyy" timeZone="EST" type="date" />
+                </h:outputText>
+            </p:column>
+
+            <p:column headerText="Fecha Venc." >
+                <h:outputText value="#{dtbCxpFlujoVencido.fechaVencimiento}" >
+                    <f:convertDateTime dateStyle="full" pattern="dd/MM/yyyy" timeZone="EST" type="date" />
+                </h:outputText>
+            </p:column>
+
+            <p:column headerText="VALOR" style="width:89px">
+                <h:outputText value="#{dtbCxpFlujoVencido.amountcur}" >
+                    <f:convertNumber pattern="¤#,##0.00" />
+                </h:outputText>
+            </p:column>
+
+            <p:column headerText="Dias Venc." >
+                <h:outputText value="#{dtbCxpFlujoVencido.diasVencidos}" >
+                    <f:convertNumber  />
+                </h:outputText>
+            </p:column>
+
+
+            <p:column headerText="[15 dias]" >
+                <h:outputText value="#{dtbCxpFlujoVencido.dias15}" >
+                    <f:convertNumber pattern="#,##0.00" />
+                </h:outputText>
+            </p:column>
+
+
+            <p:column headerText="[15 dias - 30 dias ] " >
+                <h:outputText value="#{dtbCxpFlujoVencido.dias15}" >
+                    <f:convertNumber pattern="#,##0.00" />
+                </h:outputText>
+            </p:column>
+
+
+            <p:column headerText="[30 dias - 60 dias]" >
+                <h:outputText value="#{dtbCxpFlujoVencido.dias3060}" >
+                    <f:convertNumber pattern="#,##0.00" />
+                </h:outputText>
+            </p:column>
+
+
+            <p:column headerText="[60 dias - 90 dias]" >
+                <h:outputText value="#{dtbCxpFlujoVencido.dias6090}" >
+                    <f:convertNumber pattern="#,##0.00" />
+                </h:outputText>
+            </p:column>
+
+
+            <p:column headerText="[90 dias - 120 dias]" >
+                <h:outputText value="#{dtbCxpFlujoVencido.dias90120}" >
+                    <f:convertNumber pattern="#,##0.00" />
+                </h:outputText>
+            </p:column>
+
+
+            <p:column headerText="[120 dias]" >
+                <h:outputText value="#{dtbCxpFlujoVencido.dias120}" >
+                    <f:convertNumber pattern="#,##0.00" />
+                </h:outputText>
+            </p:column>
+
+            <p:column headerText="[POR VENCER]" >
+                <h:outputText value="#{dtbCxpFlujoVencido.xVencer}" >
+                    <f:convertNumber pattern="#,##0.00" />
+                </h:outputText>
+            </p:column>
+
+        </p:dataTable>
+</h:form>
+
+    </ui:define>
+
+</ui:composition>

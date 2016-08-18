@@ -101,6 +101,9 @@ public class TmpCxpFlujoVencidos implements Serializable {
     @Column(name = "Dias120")
     private BigDecimal dias120;
 
+    @Column(name = "XVencer")
+    private BigDecimal xVencer;
+
     public TmpCxpFlujoVencidos() {
     }
 
@@ -281,5 +284,12 @@ public class TmpCxpFlujoVencidos implements Serializable {
     public String toString() {
         return "com.alphacell.model.financiero.TmpCxpFlujoVencidos[ id=" + id + " ]";
     }
-    
+
+    public BigDecimal getxVencer() {
+        return xVencer;
+    }
+
+    public void setxVencer(BigDecimal xVencer) {
+        this.xVencer = xVencer;
+    }
 }
