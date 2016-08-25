@@ -1,0 +1,171 @@
+<ui:composition template="/WEB-INF/template/LayoutMaestro.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+>
+    <ui:define name="titulo">Reporte de CXC Vencidos y Por Vencer</ui:define>
+
+    <ui:define name="cuerpo">
+
+
+        <h:form id="frm-CXCVyXV">
+            <p:messages/>
+            <p:toolbar>
+                <p:toolbarGroup align="left">
+                    <h:commandLink>
+                        <p:graphicImage library="images" name="excel.png" width="24"/>
+                        <p:dataExporter type="xls" target="table-cxcVyXV" fileName="cxcVencidosyXVencer"
+                                        postProcessor="#{vencidosyXVencerBean.postProcessXLS}"
+                        />
+                    </h:commandLink>
+                </p:toolbarGroup>
+            </p:toolbar>
+
+            <p:dataTable
+                    id="table-cxcVyXV"
+                    value="#{vencidosyXVencerBean.tableVencidosyXVencer}"
+                    var="dtbCxcVyXV"
+                    filteredValue="#{vencidosyXVencerBean.tableVencidosyXVencerFiltered}"
+                    scrollable="true"
+                    paginatorPosition="bottom"
+                    paginator="true"
+                    rows="15"
+                    paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                    currentPageReportTemplate="Pagina: ({currentPage} de {totalPages})"
+                    rowsPerPageTemplate="5,15,25"
+                    rowKey="#{dtbCxcVyXV.id}"
+                    emptyMessage="No existen datos para presentar"
+            >
+
+                <p:column headerText="DIMENSION" filterBy="#{dtbCxcVyXV.dimension1}"
+                          filterMatchMode="contains">
+                    <h:outputText value="#{dtbCxcVyXV.dimension1}"/>
+                </p:column>
+
+                <p:column headerText="Codigo Cliente" filterBy="#{dtbCxcVyXV.accountnum}"
+                          filterMatchMode="contains">
+                    <h:outputText value="#{dtbCxcVyXV.accountnum}"/>
+                </p:column>
+
+                <p:column headerText="Cliente" filterBy="#{dtbCxcVyXV.nombreCliente}"
+                          filterMatchMode="contains">
+                    <h:outputText value="#{dtbCxcVyXV.nombreCliente}"/>
+                </p:column>
+
+                <p:column headerText="No Factura" filterBy="#{dtbCxcVyXV.invoice}"
+                          filterMatchMode="contains">
+                    <h:outputText value="#{dtbCxcVyXV.invoice}"/>
+                </p:column>
+
+
+                <p:column headerText="Fecha Doc." >
+                    <h:outputText value="#{dtbCxcVyXV.transdate}" >
+                        <f:convertDateTime dateStyle="full" pattern="dd/MM/yyyy" timeZone="EST" type="date" />
+                    </h:outputText>
+                </p:column>
+
+                <p:column headerText="Fecha Venc." >
+                    <h:outputText value="#{dtbCxcVyXV.duedate}" >
+                        <f:convertDateTime dateStyle="full" pattern="dd/MM/yyyy" timeZone="EST" type="date" />
+                    </h:outputText>
+                </p:column>
+
+
+                <p:column headerText="Total factura" style="width:89px">
+                    <h:outputText value="#{dtbCxcVyXV.amountcur}" >
+                        <f:convertNumber pattern="#,##0.00" />
+                    </h:outputText>
+                </p:column>
+
+                <p:column headerText="Saldo" style="width:89px">
+                    <h:outputText value="#{dtbCxcVyXV.debe}" >
+                        <f:convertNumber pattern="#,##0.00" />
+                    </h:outputText>
+                </p:column>
+
+
+                <p:column headerText="Total Vencido" style="width:89px">
+                    <h:outputText value="#{dtbCxcVyXV.totalVencido}" >
+                        <f:convertNumber pattern="#,##0.00" />
+                    </h:outputText>
+                </p:column>
+
+
+                <p:column headerText="1 A 30 DIAS vencido" style="width:89px">
+                    <h:outputText value="#{dtbCxcVyXV.dias1a30V}" >
+                        <f:convertNumber pattern="#,##0.00" />
+                    </h:outputText>
+                </p:column>
+
+
+                <p:column headerText="31 A 60 DIAS vencido" style="width:89px">
+                    <h:outputText value="#{dtbCxcVyXV.dias31a60V}" >
+                        <f:convertNumber pattern="#,##0.00" />
+                    </h:outputText>
+                </p:column>
+
+                <p:column headerText="61 A 90 DIAS vencido" style="width:89px">
+                    <h:outputText value="#{dtbCxcVyXV.dias61a90V}" >
+                        <f:convertNumber pattern="#,##0.00" />
+                    </h:outputText>
+                </p:column>
+
+
+                <p:column headerText="91 A 120 DIAS vencido" style="width:89px">
+                    <h:outputText value="#{dtbCxcVyXV.dias91a120V}" >
+                        <f:convertNumber pattern="#,##0.00" />
+                    </h:outputText>
+                </p:column>
+
+                <p:column headerText="MAS DE 120 DIAS vencido" style="width:89px">
+                    <h:outputText value="#{dtbCxcVyXV.dias121V}" >
+                        <f:convertNumber pattern="#,##0.00" />
+                    </h:outputText>
+                </p:column>
+
+
+                <p:column headerText="Total x Vencer" style="width:89px">
+                    <h:outputText value="#{dtbCxcVyXV.totalXVencer}" >
+                        <f:convertNumber pattern="#,##0.00" />
+                    </h:outputText>
+                </p:column>
+
+                <p:column headerText="1 A 30 DIAS x vencer" style="width:89px">
+                    <h:outputText value="#{dtbCxcVyXV.dias1a30XV}" >
+                        <f:convertNumber pattern="#,##0.00" />
+                    </h:outputText>
+                </p:column>
+
+
+                <p:column headerText="31 A 60 DIAS x vencer" style="width:89px">
+                    <h:outputText value="#{dtbCxcVyXV.dias31a60XV}" >
+                        <f:convertNumber pattern="#,##0.00" />
+                    </h:outputText>
+                </p:column>
+
+                <p:column headerText="61 A 90 DIAS x vencer" style="width:89px">
+                    <h:outputText value="#{dtbCxcVyXV.dias61a90XV}" >
+                        <f:convertNumber pattern="#,##0.00" />
+                    </h:outputText>
+                </p:column>
+
+
+                <p:column headerText="91 A 120 DIAS x vencer" style="width:89px">
+                    <h:outputText value="#{dtbCxcVyXV.dias91a120XV}" >
+                        <f:convertNumber pattern="#,##0.00" />
+                    </h:outputText>
+                </p:column>
+
+                <p:column headerText="MAS DE 120 DIAS x VENCER" style="width:89px">
+                    <h:outputText value="#{dtbCxcVyXV.dias121XV}" >
+                        <f:convertNumber pattern="#,##0.00" />
+                    </h:outputText>
+                </p:column>
+
+
+                </p:dataTable>
+            </h:form>
+        </ui:define>
+    </ui:composition>
