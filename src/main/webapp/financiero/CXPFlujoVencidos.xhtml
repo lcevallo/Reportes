@@ -73,7 +73,7 @@
 
             <p:column headerText="VALOR" style="width:89px">
                 <h:outputText value="#{dtbCxpFlujoVencido.amountcur}" >
-                    <f:convertNumber pattern="¤#,##0.00" />
+                    <f:convertNumber pattern="#,##0.00" />
                 </h:outputText>
             </p:column>
 
@@ -92,7 +92,7 @@
 
 
             <p:column headerText="[15 dias - 30 dias ] " >
-                <h:outputText value="#{dtbCxpFlujoVencido.dias15}" >
+                <h:outputText value="#{dtbCxpFlujoVencido.dias1530}" >
                     <f:convertNumber pattern="#,##0.00" />
                 </h:outputText>
             </p:column>
