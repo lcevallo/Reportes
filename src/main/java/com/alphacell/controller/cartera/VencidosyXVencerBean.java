@@ -33,7 +33,7 @@ public class VencidosyXVencerBean implements Serializable{
     public void init()
     {
         //Aqui voy a llamar al metodo del repositorio para llenar el datatable
-        this.tableVencidosyXVencer= this.vencidosYxVencerRepository.findAll();
+        this.tableVencidosyXVencer= this.vencidosYxVencerRepository.cargarTablaCXCVencidosyXVencer();
 
     }
 

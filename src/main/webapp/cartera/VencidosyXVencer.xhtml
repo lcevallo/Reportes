@@ -40,33 +40,33 @@
             >
 
                 <p:column headerText="DIMENSION" filterBy="#{dtbCxcVyXV.dimension1}"
-                          filterMatchMode="contains">
+                          filterMatchMode="contains" style="width:89px" >
                     <h:outputText value="#{dtbCxcVyXV.dimension1}"/>
                 </p:column>
 
                 <p:column headerText="Codigo Cliente" filterBy="#{dtbCxcVyXV.accountnum}"
-                          filterMatchMode="contains">
+                          filterMatchMode="contains" style="width:89px">
                     <h:outputText value="#{dtbCxcVyXV.accountnum}"/>
                 </p:column>
 
                 <p:column headerText="Cliente" filterBy="#{dtbCxcVyXV.nombreCliente}"
-                          filterMatchMode="contains">
+                          filterMatchMode="contains" style="width:135px">
                     <h:outputText value="#{dtbCxcVyXV.nombreCliente}"/>
                 </p:column>
 
                 <p:column headerText="No Factura" filterBy="#{dtbCxcVyXV.invoice}"
-                          filterMatchMode="contains">
+                          filterMatchMode="contains" style="width:135px">
                     <h:outputText value="#{dtbCxcVyXV.invoice}"/>
                 </p:column>
 
 
-                <p:column headerText="Fecha Doc." >
+                <p:column headerText="Fecha Doc." style="width:89px" >
                     <h:outputText value="#{dtbCxcVyXV.transdate}" >
                         <f:convertDateTime dateStyle="full" pattern="dd/MM/yyyy" timeZone="EST" type="date" />
                     </h:outputText>
                 </p:column>
 
-                <p:column headerText="Fecha Venc." >
+                <p:column headerText="Fecha Venc." style="width:89px" >
                     <h:outputText value="#{dtbCxcVyXV.duedate}" >
                         <f:convertDateTime dateStyle="full" pattern="dd/MM/yyyy" timeZone="EST" type="date" />
                     </h:outputText>

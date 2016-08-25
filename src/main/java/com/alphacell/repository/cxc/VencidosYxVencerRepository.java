@@ -5,7 +5,9 @@ import com.alphacell.model.cartera.TmpCxcVyv;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import javax.persistence.StoredProcedureQuery;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,5 +28,30 @@ public class VencidosYxVencerRepository implements Serializable{
 
         return query.getResultList();
     }
+
+    public List<TmpCxcVyv> cargarTablaCXCVencidosyXVencer()
+    {
+        List<TmpCxcVyv> listaEnviada= new ArrayList<TmpCxcVyv>();;
+
+        try {
+
+
+            StoredProcedureQuery query = this.manager.createStoredProcedureQuery("LC_CXC_VENCIDOS_X_VENCER",TmpCxcVyv.class);
+
+            if (query.execute()) {
+
+                listaEnviada = query.getResultList();
+            }
+
+
+            return listaEnviada;
+
+        } catch (SecurityException | IllegalStateException e) {
+            e.printStackTrace();
+        }
+        return null;
+
+    }
+
 
 }
