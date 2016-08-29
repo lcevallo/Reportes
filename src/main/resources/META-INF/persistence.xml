@@ -26,6 +26,7 @@
     <class>com.alphacell.model.financiero.Tmpcxptramo</class>
     <class>com.alphacell.model.cartera.LcVistaTramosYaVencidosPivot</class>
     <class>com.alphacell.model.cartera.LcTramosYaVencidosPivot</class>
+    <class>com.alphacell.model.cartera.TmpCxcVyv</class>
     <properties>
       <!-- <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://localhost\MSSQLSERVER:1433;databaseName=Produccion" /> -->
       <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://192.168.10.21\MSSQLSERVER:1433;databaseName=Produccion"/>

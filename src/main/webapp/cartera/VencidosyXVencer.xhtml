@@ -26,6 +26,7 @@
             <p:dataTable
                     id="table-cxcVyXV"
                     value="#{vencidosyXVencerBean.tableVencidosyXVencer}"
+
                     var="dtbCxcVyXV"
                     filteredValue="#{vencidosyXVencerBean.tableVencidosyXVencerFiltered}"
                     scrollable="true"
@@ -36,8 +37,13 @@
                     currentPageReportTemplate="Pagina: ({currentPage} de {totalPages})"
                     rowsPerPageTemplate="5,15,25"
                     rowKey="#{dtbCxcVyXV.id}"
+                    binding="#{table}"
+                    rowStyleClass="#{dtbCxcVyXV.color eq 'R' ? 'highlightFila' :'normalFila' }"
                     emptyMessage="No existen datos para presentar"
             >
+                <p:column headerText="#" style="width:42px">
+                    #{table.rowIndex + 1}
+                </p:column>
 
                 <p:column headerText="DIMENSION" filterBy="#{dtbCxcVyXV.dimension1}"
                           filterMatchMode="contains" style="width:89px" >
@@ -54,10 +60,23 @@
                     <h:outputText value="#{dtbCxcVyXV.nombreCliente}"/>
                 </p:column>
 
+                <p:column headerText="No Voucher" filterBy="#{dtbCxcVyXV.voucher}"
+                          filterMatchMode="contains" style="width:135px">
+                    <h:outputText value="#{dtbCxcVyXV.voucher}"/>
+                </p:column>
+
+
                 <p:column headerText="No Factura" filterBy="#{dtbCxcVyXV.invoice}"
                           filterMatchMode="contains" style="width:135px">
                     <h:outputText value="#{dtbCxcVyXV.invoice}"/>
                 </p:column>
+
+
+                <p:column headerText="MULTIVENCIMIENTO" filterBy="#{dtbCxcVyXV.multivencimiento}"
+                          filterMatchMode="contains" style="width:135px">
+                    <h:outputText value="#{dtbCxcVyXV.multivencimiento}"/>
+                </p:column>
+
 
 
                 <p:column headerText="Fecha Doc." style="width:89px" >
@@ -67,7 +86,7 @@
                 </p:column>
 
                 <p:column headerText="Fecha Venc." style="width:89px" >
-                    <h:outputText value="#{dtbCxcVyXV.duedate}" >
+                    <h:outputText value="#{dtbCxcVyXV.duedate2}" >
                         <f:convertDateTime dateStyle="full" pattern="dd/MM/yyyy" timeZone="EST" type="date" />
                     </h:outputText>
                 </p:column>

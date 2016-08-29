@@ -41,13 +41,15 @@ public class VencidosyXVencerBean implements Serializable{
 
         HashSet omitirColumnas = new HashSet();
         //add elements to HashSet object
-        omitirColumnas.add(new Integer("0"));
+
         omitirColumnas.add(new Integer("1"));
         omitirColumnas.add(new Integer("2"));
         omitirColumnas.add(new Integer("3"));
         omitirColumnas.add(new Integer("4"));
         omitirColumnas.add(new Integer("5"));
-
+        omitirColumnas.add(new Integer("6"));
+        omitirColumnas.add(new Integer("7"));
+        omitirColumnas.add(new Integer("8"));
 
         FormatoExcelPoi.formatearArchivoExcel(document,omitirColumnas);
 

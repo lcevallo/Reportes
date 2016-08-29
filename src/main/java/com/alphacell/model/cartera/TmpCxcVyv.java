@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author luis.cevallos
+ * @author luis
  */
 @Entity
 @Table(name = "TMP_CXC_VYV")
@@ -45,6 +45,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "TmpCxcVyv.findByInvoice", query = "SELECT t FROM TmpCxcVyv t WHERE t.invoice = :invoice"),
     @NamedQuery(name = "TmpCxcVyv.findByClosed", query = "SELECT t FROM TmpCxcVyv t WHERE t.closed = :closed"),
     @NamedQuery(name = "TmpCxcVyv.findByDuedate", query = "SELECT t FROM TmpCxcVyv t WHERE t.duedate = :duedate"),
+    @NamedQuery(name = "TmpCxcVyv.findByDuedate2", query = "SELECT t FROM TmpCxcVyv t WHERE t.duedate2 = :duedate2"),
+    @NamedQuery(name = "TmpCxcVyv.findByRecid", query = "SELECT t FROM TmpCxcVyv t WHERE t.recid = :recid"),
+    @NamedQuery(name = "TmpCxcVyv.findByOffsetrecid", query = "SELECT t FROM TmpCxcVyv t WHERE t.offsetrecid = :offsetrecid"),
     @NamedQuery(name = "TmpCxcVyv.findBySalesid", query = "SELECT t FROM TmpCxcVyv t WHERE t.salesid = :salesid"),
     @NamedQuery(name = "TmpCxcVyv.findByRecidsales", query = "SELECT t FROM TmpCxcVyv t WHERE t.recidsales = :recidsales"),
     @NamedQuery(name = "TmpCxcVyv.findByDiasUsados", query = "SELECT t FROM TmpCxcVyv t WHERE t.diasUsados = :diasUsados"),
@@ -107,6 +110,13 @@ public class TmpCxcVyv implements Serializable {
     @Column(name = "DUEDATE")
     @Temporal(TemporalType.TIMESTAMP)
     private Date duedate;
+    @Column(name = "DUEDATE2")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date duedate2;
+    @Column(name = "RECID")
+    private BigInteger recid;
+    @Column(name = "OFFSETRECID")
+    private BigInteger offsetrecid;
     @Size(max = 20)
     @Column(name = "SALESID")
     private String salesid;
@@ -259,6 +269,30 @@ public class TmpCxcVyv implements Serializable {
 
     public void setDuedate(Date duedate) {
         this.duedate = duedate;
+    }
+
+    public Date getDuedate2() {
+        return duedate2;
+    }
+
+    public void setDuedate2(Date duedate2) {
+        this.duedate2 = duedate2;
+    }
+
+    public BigInteger getRecid() {
+        return recid;
+    }
+
+    public void setRecid(BigInteger recid) {
+        this.recid = recid;
+    }
+
+    public BigInteger getOffsetrecid() {
+        return offsetrecid;
+    }
+
+    public void setOffsetrecid(BigInteger offsetrecid) {
+        this.offsetrecid = offsetrecid;
     }
 
     public String getSalesid() {
