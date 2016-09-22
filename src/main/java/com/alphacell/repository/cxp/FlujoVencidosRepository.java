@@ -5,6 +5,7 @@
  */
 package com.alphacell.repository.cxp;
 
+import com.alphacell.model.financiero.CXPSumatoriaVencidas;
 import com.alphacell.model.financiero.TmpCxpFlujoVencidos;
 
 import javax.inject.Inject;
@@ -13,6 +14,8 @@ import javax.persistence.StoredProcedureQuery;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -46,6 +49,27 @@ public class FlujoVencidosRepository implements Serializable{
             e.printStackTrace();
         }
         return null;
+
+    }
+
+    public List<CXPSumatoriaVencidas> cargarResumenFlujoVencido()
+    {
+        List<CXPSumatoriaVencidas> listaEnviada= new ArrayList<CXPSumatoriaVencidas>();
+        Map<String, List<TmpCxpFlujoVencidos>> resumenSubTable;
+
+       List<TmpCxpFlujoVencidos> busqueda=new ArrayList<TmpCxpFlujoVencidos>();
+
+        busqueda=this.cargarTablaCXPFlujoVencidos();
+
+
+        resumenSubTable = busqueda.stream()
+                .collect(Collectors.groupingBy(si -> si.getAccountnum()));
+
+
+        resumenSubTable.forEach((k,v)->listaEnviada.add(new CXPSumatoriaVencidas(k,v)));
+
+        return listaEnviada;
+
 
     }
 }
