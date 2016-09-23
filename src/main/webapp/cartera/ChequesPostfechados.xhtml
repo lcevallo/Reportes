@@ -21,7 +21,7 @@
                     <f:selectItem itemLabel="Entre Fechas" itemValue="false" />
                 </p:selectOneButton>
 
-
+              <p:outputLabel value="Fecha" rendered="#{chequePostfechadoBean.activarFecha}"  for="fechaUnicaBusquedaChPtf"/>
                 <p:calendar id="fechaUnicaBusquedaChPtf"
                             value="#{chequePostfechadoBean.fechaUnica}"
                             pattern="dd/MM/yyyy" readonlyInput="true"
@@ -36,13 +36,13 @@
 						<span class="ui-icon ui-icon-grip-dotted-vertical" />
             		</span>
 
-                <p:outputLabel value="Entre Fechas"  />
+                <p:outputLabel value="Entre Fechas" rendered="#{chequePostfechadoBean.activarEntreFecha}"  />
                 <p:calendar id="FechaInicialChPtf"
                             title="Fecha Inicial"
                             pattern="dd/MM/yyyy" readonlyInput="true"
                             pages="1"
                             mode="popup"
-                            rendered="#{chequePostfechadoBean.activarFecha}"
+                            rendered="#{chequePostfechadoBean.activarEntreFecha}"
                             locale="es"
                 >
                     <p:ajax event="blur" listener="#{chequePostfechadoBean.onDateSelectFechaIni}" />
