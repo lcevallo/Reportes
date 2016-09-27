@@ -56,7 +56,7 @@ public class ChequePostfechadoBean implements Serializable{
             this.tableChequesPostfechados=this.cxcChequesPostfechadosRepository.obtenerEntreFechas(this.fechaInicial,this.fechaFinal);
         }
 
-        System.out.println(this.tableChequesPostfechados.get(0).getAccountnum());
+
 
 /*
         RequestContext.getCurrentInstance().update(
