@@ -9,74 +9,76 @@
     <ui:define name="titulo">Reporte de Cheques postFechados</ui:define>
 
     <ui:define name="cuerpo">
-
         <h:form id="frm-CXCChequePostF">
 
-        <p:toolbar  style="margin-top: 20px">
+                <p:toolbar id="toolChequesPostfechados" style="margin-top: 20px">
 
-            <p:toolbarGroup>
+                    <p:toolbarGroup>
 
-                <p:selectOneButton value="#{chequePostfechadoBean.activarFecha}" onchange="submit()" valueChangeListener="#{chequePostfechadoBean.cambiarFormaBusqueda}" >
-                    <f:selectItem itemLabel="Fecha Unica" itemValue="true" />
-                    <f:selectItem itemLabel="Entre Fechas" itemValue="false" />
-                </p:selectOneButton>
+                        <p:selectOneButton id="selectOnefechas" value="#{chequePostfechadoBean.activarFecha}" >
+                            <p:ajax  event="change" update="@form" process="@this" listener="#{chequePostfechadoBean.cambiarFormaBusqueda}" />
+                            <f:selectItem itemLabel="Fecha Unica" itemValue="true" />
+                            <f:selectItem itemLabel="Entre Fechas" itemValue="false" />
+                        </p:selectOneButton>
 
-              <p:outputLabel value="Fecha" rendered="#{chequePostfechadoBean.activarFecha}"  for="fechaUnicaBusquedaChPtf"/>
-                <p:calendar id="fechaUnicaBusquedaChPtf"
-                            value="#{chequePostfechadoBean.fechaUnica}"
-                            pattern="dd/MM/yyyy" readonlyInput="true"
-                            pages="1"
-                            rendered="#{chequePostfechadoBean.activarFecha}"
-                            mode="popup"
-                            locale="es"
-                >
+                        <p:outputLabel value="Fecha" rendered="#{chequePostfechadoBean.activarFecha}"  for="fechaUnicaBusquedaChPtf"/>
+                        <p:calendar id="fechaUnicaBusquedaChPtf"
+                                    value="#{chequePostfechadoBean.fechaUnica}"
+                                    pattern="dd/MM/yyyy" readonlyInput="true"
+                                    pages="1"
+                                    rendered="#{chequePostfechadoBean.activarFecha}"
+                                    mode="popup"
+                                    locale="es"
+                        >
 
-                </p:calendar>
-                    <span class="ui-separator">
-						<span class="ui-icon ui-icon-grip-dotted-vertical" />
-            		</span>
-
-                <p:outputLabel value="Entre Fechas" rendered="#{chequePostfechadoBean.activarEntreFecha}"  />
-                <p:calendar id="FechaInicialChPtf"
-                            title="Fecha Inicial"
-                            pattern="dd/MM/yyyy" readonlyInput="true"
-                            pages="1"
-                            mode="popup"
-                            rendered="#{chequePostfechadoBean.activarEntreFecha}"
-                            locale="es"
-                >
-                    <p:ajax event="blur" listener="#{chequePostfechadoBean.onDateSelectFechaIni}" />
                         </p:calendar>
-                <p:calendar id="FechaFinalChPtf"
-                            title="Fecha Final"
-                            pattern="dd/MM/yyyy" readonlyInput="true"
-                            pages="1"
-                            mode="popup"
-                            locale="es"
-                            onblur=""
-                            rendered="#{chequePostfechadoBean.activarEntreFecha}"
-                >
-                <p:ajax event="blur" listener="#{chequePostfechadoBean.onDateSelectFechaFin}" />
-                </p:calendar>
-
-                <p:commandButton value="Buscar" icon="ui-icon-search"
-                                 action="#{chequePostfechadoBean.consultarPorFecha}"
-                                 process="@this" update="table-ChequePostF"
-                                 rendered="#{chequePostfechadoBean.activarEntreFecha}"
-                />
 
 
-            </p:toolbarGroup>
-            <p:toolbarGroup align="rigth">
-                <h:commandLink>
-                    <p:graphicImage library="images" name="excel.png" width="24" />
-                    <p:dataExporter type="xls" postProcessor="#{chequePostfechadoBean.postProcessXLS}"
-                                    target="mydata" fileName="myexcel" />
-                </h:commandLink>
-            </p:toolbarGroup>
-        </p:toolbar>
+                        <p:outputLabel value="Fecha Inicial" for="FechaInicialChPtf" rendered="#{chequePostfechadoBean.activarEntreFecha}"  />
+                        <p:calendar id="FechaInicialChPtf"
+                                    title="Fecha Inicial"
+                                    value="#{chequePostfechadoBean.fechaInicial}"
+                                    pattern="dd/MM/yyyy" readonlyInput="true"
+                                    pages="1"
+                                    mode="popup"
+                                    rendered="#{chequePostfechadoBean.activarEntreFecha}"
+                                    locale="es"
+                        >
 
-        <p:dataTable
+                        </p:calendar>
+                        <p:outputLabel value="Fecha Final" for="FechaFinalChPtf" rendered="#{chequePostfechadoBean.activarEntreFecha}"  />
+                        <p:calendar id="FechaFinalChPtf"
+                                    title="Fecha Final"
+                                    pattern="dd/MM/yyyy" readonlyInput="true"
+                                    pages="1"
+                                    value="#{chequePostfechadoBean.fechaFinal}"
+                                    mode="popup"
+                                    locale="es"
+                                    rendered="#{chequePostfechadoBean.activarEntreFecha}"
+                        >
+
+                        </p:calendar>
+
+                        <p:commandButton value="Buscar" icon="ui-icon-search"
+                                         actionListener="#{chequePostfechadoBean.consultarPorFecha}"
+                                         onstart="PF('blockUIWidget').block()" oncomplete="PF('blockUIWidget').unblock()"
+                                         update=":frm-tableChPfC:table-ChequePostF"
+                        />
+                    </p:toolbarGroup>
+                    <p:toolbarGroup align="rigth">
+                        <h:commandLink>
+                            <p:graphicImage library="images" name="excel.png" width="24" />
+                            <p:dataExporter type="xls" postProcessor="#{chequePostfechadoBean.postProcessXLS}"
+                                            target=":frm-tableChPfC:frm-tableChPfC" fileName="ChequesPostFechadosAlpha" />
+                        </h:commandLink>
+                    </p:toolbarGroup>
+                </p:toolbar>
+            </h:form>
+
+
+
+        <h:form id="frm-tableChPfC">
+            <p:dataTable
                 id="table-ChequePostF"
                 value="#{chequePostfechadoBean.tableChequesPostfechados}"
                 filteredValue="#{chequePostfechadoBean.tableChequesPostfechadosFiltered}"
@@ -89,18 +91,18 @@
                 currentPageReportTemplate="Pagina: ({currentPage} de {totalPages})"
                 rowsPerPageTemplate="5,15,25"
                 rowKey="#{recordChequePostFechado.id}"
-                emptyMessage="No existen datos para presentar"
-        >
-            <p:column headerText="x(Vencdo/Ven)" width="100px"  style="width:100px">
+                emptyMessage="No existen datos para presentar">
+
+            <p:column headerText="x(Vencdo/Ven)" width="100px"  >
                 <h:outputText value="#{recordChequePostFechado.diasVencido}" >
                     <f:convertNumber />
                 </h:outputText>
             </p:column>
 
 
-            <p:column headerText="Fecha Ingreso Sistema" width="100px" style="width:100px">
+            <p:column headerText="Fecha Ingreso Sistema" width="100px" >
                 <h:outputText value="#{recordChequePostFechado.transdate}" >
-                <f:convertDateTime dateStyle="full" pattern="dd/MM/yyyy" timeZone="EST" type="date" />
+                    <f:convertDateTime dateStyle="full" pattern="dd/MM/yyyy" timeZone="EST" type="date" />
                 </h:outputText>
             </p:column>
 
@@ -108,7 +110,7 @@
                       filterBy="#{recordChequePostFechado.accountnum}"
                       filterMatchMode="contains"
                       width="100px"
-                      style="width:100px"
+
             >
                 <h:outputText value="#{recordChequePostFechado.accountnum}" >
                 </h:outputText>
@@ -118,7 +120,7 @@
                       filterBy="#{recordChequePostFechado.nombreCliente}"
                       filterMatchMode="contains"
                       width="350px"
-                      style="width:350px"
+
             >
                 <h:outputText value="#{recordChequePostFechado.nombreCliente}" >
                 </h:outputText>
@@ -128,7 +130,7 @@
                       filterBy="#{recordChequePostFechado.dimension1}"
                       filterMatchMode="contains"
                       width="100px"
-                      style="width:100px"
+
             >
                 <h:outputText value="#{recordChequePostFechado.dimension1}" >
                 </h:outputText>
@@ -138,7 +140,7 @@
                       filterBy="#{recordChequePostFechado.descripcion}"
                       filterMatchMode="contains"
                       width="300px"
-                      style="width:300px"
+
             >
                 <h:outputText value="#{recordChequePostFechado.descripcion}" >
                 </h:outputText>
@@ -156,12 +158,8 @@
                 </h:outputText>
             </p:column>
 
-
-
-
         </p:dataTable>
 
-        </h:form>
+</h:form>
     </ui:define>
-
     </ui:composition>

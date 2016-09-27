@@ -22,7 +22,8 @@ public class CXCChequesPostfechadosRepository implements Serializable {
     public List<LcVistaChequesPostfechados> obtenerPorFecha(Date fechaBusqueda)
     {
         Query query = manager.createNamedQuery("LcVistaChequesPostfechados.findByDuedateChequePost")
-                .setParameter("duedate",fechaBusqueda);
+                .setParameter("duedate",fechaBusqueda)
+                .setParameter("tipo","CHEQUE POSTFECHADO");
 
         return (List<LcVistaChequesPostfechados>) query.getResultList();
     }

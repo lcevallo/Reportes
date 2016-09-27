@@ -2,17 +2,17 @@ package com.alphacell.controller.cartera;
 
 import com.alphacell.model.cartera.LcVistaChequesPostfechados;
 import com.alphacell.repository.cxc.CXCChequesPostfechadosRepository;
-import org.primefaces.event.SelectEvent;
+import com.alphacell.util.jsf.FormatoExcelPoi;
+import org.primefaces.context.RequestContext;
 
 import javax.annotation.PostConstruct;
-import javax.faces.event.ValueChangeEvent;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * Created by luis on 23/09/16.
@@ -30,38 +30,86 @@ public class ChequePostfechadoBean implements Serializable{
     private Boolean activarFecha=false;
     private Boolean activarEntreFecha=false;
 
-    private List<LcVistaChequesPostfechados> tableChequesPostfechados= new ArrayList<LcVistaChequesPostfechados>();
-    private List<LcVistaChequesPostfechados> tableChequesPostfechadosFiltered= new ArrayList<LcVistaChequesPostfechados>();
+    private List<LcVistaChequesPostfechados> tableChequesPostfechados;
+    private List<LcVistaChequesPostfechados> tableChequesPostfechadosFiltered;
 
     @Inject
     private CXCChequesPostfechadosRepository cxcChequesPostfechadosRepository;
 
 
+    public void consultarPorFecha2() throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        this.fechaUnica= sdf.parse("27/9/2016");
+
+        this.tableChequesPostfechados= this.cxcChequesPostfechadosRepository.obtenerPorFecha(this.fechaUnica);
+    }
 
 
     public void consultarPorFecha()
     {
-        if(this.activarFecha)
-        this.tableChequesPostfechados= this.cxcChequesPostfechadosRepository.obtenerPorFecha(this.fechaUnica);
-        else
-        this.tableChequesPostfechados=this.cxcChequesPostfechadosRepository.obtenerEntreFechas(this.fechaInicial,this.fechaFinal);
+        if(this.activarFecha && this.fechaUnica!=null){
+            this.tableChequesPostfechados= this.cxcChequesPostfechadosRepository.obtenerPorFecha(this.fechaUnica);
+        }
 
+        else if(this.fechaInicial!=null && this.fechaFinal!=null)
+        {
+            this.tableChequesPostfechados=this.cxcChequesPostfechadosRepository.obtenerEntreFechas(this.fechaInicial,this.fechaFinal);
+        }
 
+        System.out.println(this.tableChequesPostfechados.get(0).getAccountnum());
+
+/*
+        RequestContext.getCurrentInstance().update(
+                Arrays.asList("frm-tableChPfC:table-ChequePostF"));
+*/
     }
 
-    public void postProcessXLS()
+    public void onDateSelectFechaIni()
     {
-
+        System.out.println("p:ajax event=\"blur\" listener=\"#{chequePostfechadoBean.onDateSelectFechaIni}\" ");
+    }
+    public void onDateSelectFechaFin()
+    {
+        System.out.println(" p:ajax event=\"blur\" listener=\"#{chequePostfechadoBean.onDateSelectFechaFin}\"  ");
     }
 
-    public void cambiarFormaBusqueda(ValueChangeEvent e)
+    public void postProcessXLS(Object document)
     {
-       this.activarFecha=(Boolean) e.getNewValue();
+        HashSet omitirColumnas = new HashSet();
+        //add elements to HashSet object
+        omitirColumnas.add(new Integer("1"));
+        omitirColumnas.add(new Integer("2"));
+        omitirColumnas.add(new Integer("3"));
+        omitirColumnas.add(new Integer("4"));
+        omitirColumnas.add(new Integer("5"));
+        omitirColumnas.add(new Integer("7"));
+
+        FormatoExcelPoi.formatearArchivoExcel(document,omitirColumnas);
+    }
+
+    public void cambiarFormaBusqueda()
+    {
+        if (this.tableChequesPostfechados!=null)
+            this.tableChequesPostfechados.clear();
 
         if(this.activarFecha)
+        {
             this.activarEntreFecha=false;
+            this.fechaInicial=null;
+            this.fechaFinal=null;
+        }
+
         else
+        {
             this.activarEntreFecha=true;
+            this.fechaUnica=null;
+        }
+
+
+
+        RequestContext.getCurrentInstance().update(
+                Arrays.asList("frm-CXCChequePostF","frm-tableChPfC:table-ChequePostF"));
+
 
     }
 

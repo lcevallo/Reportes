@@ -2,8 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="42bb9734-3d35-4382-8a18-0f8fc37f30f9" name="Default" comment="Saldos Iniciales aqui use Java Lambdas">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Reportes.iml" afterPath="$PROJECT_DIR$/Reportes.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/alphacell/controller/cartera/ChequePostfechadoBean.java" afterPath="$PROJECT_DIR$/src/main/java/com/alphacell/controller/cartera/ChequePostfechadoBean.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/alphacell/model/cartera/LcVistaChequesPostfechados.java" afterPath="$PROJECT_DIR$/src/main/java/com/alphacell/model/cartera/LcVistaChequesPostfechados.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/alphacell/repository/cxc/CXCChequesPostfechadosRepository.java" afterPath="$PROJECT_DIR$/src/main/java/com/alphacell/repository/cxc/CXCChequesPostfechadosRepository.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/template/LayoutMaestro.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/template/LayoutMaestro.xhtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/cartera/CarteraTotal.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/cartera/CarteraTotal.xhtml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/cartera/ChequesPostfechados.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/cartera/ChequesPostfechados.xhtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/cartera/ComportamientoPagoCliente.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/cartera/ComportamientoPagoCliente.xhtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/cartera/HistorialProtesto.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/cartera/HistorialProtesto.xhtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/financiero/FlujoCuentasxCobrar.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/financiero/FlujoCuentasxCobrar.xhtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/financiero/ReporteCxPTramos.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/financiero/ReporteCxPTramos.xhtml" />
     </list>
     <list id="5fb3735a-a8d9-4456-8b9c-5922df4d1f29" name="Failed commit: Default" comment="Aqui agregue la informacion del cliente ya que Paula HD lo necesitaba" />
     <ignored path="Reportes.iws" />
@@ -33,118 +47,58 @@
     <favorites_list name="Reportes" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="vertical" split-proportion="0.5">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="ChequesPostfechados.xhtml" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/main/webapp/cartera/ChequesPostfechados.xhtml">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-285">
-                  <caret line="23" column="91" selection-start-line="23" selection-start-column="91" selection-end-line="23" selection-end-column="91" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="ChequePostfechadoBean.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/controller/cartera/ChequePostfechadoBean.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="94">
-                  <caret line="65" column="5" selection-start-line="65" selection-start-column="5" selection-end-line="65" selection-end-column="5" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                    <element signature="e#946#974#0" expanded="true" />
-                    <element signature="e#1070#1098#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="CuentasXPagar.xhtml" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/webapp/financiero/CuentasXPagar.xhtml">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="570">
-                  <caret line="38" column="0" selection-start-line="35" selection-start-column="16" selection-end-line="38" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="FlujoCuentasxCobrar.xhtml" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/webapp/financiero/FlujoCuentasxCobrar.xhtml">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="375">
-                  <caret line="25" column="31" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="ComportamientoPagoDetalleBean.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/controller/cartera/ComportamientoPagoDetalleBean.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="390">
-                  <caret line="35" column="48" selection-start-line="35" selection-start-column="48" selection-end-line="35" selection-end-column="48" />
-                  <folding>
-                    <element signature="imports" expanded="false" />
-                    <element signature="e#3183#3184#0" expanded="false" />
-                    <element signature="e#3234#3235#0" expanded="false" />
-                    <element signature="e#4215#4216#0" expanded="false" />
-                    <element signature="e#4246#4247#0" expanded="false" />
-                    <element signature="e#4291#4292#0" expanded="false" />
-                    <element signature="e#4326#4327#0" expanded="false" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="CXPResumenFlujoVencidos.xhtml" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/webapp/financiero/CXPResumenFlujoVencidos.xhtml">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="855">
-                  <caret line="57" column="35" selection-start-line="55" selection-start-column="19" selection-end-line="57" selection-end-column="35" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="VencidosyXVencer.xhtml" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/main/webapp/cartera/VencidosyXVencer.xhtml">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="90">
-                  <caret line="12" column="33" selection-start-line="12" selection-start-column="33" selection-end-line="12" selection-end-column="33" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="CXCChequesPostfechadosRepository.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/repository/cxc/CXCChequesPostfechadosRepository.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="180">
-                  <caret line="19" column="34" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
-                  <folding>
-                    <element signature="imports" expanded="false" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="ChequePostfechadoBean.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/controller/cartera/ChequePostfechadoBean.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="83" column="45" selection-start-line="83" selection-start-column="45" selection-end-line="83" selection-end-column="45" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ComportamientoPagoBean.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/controller/cartera/ComportamientoPagoBean.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2015">
+              <caret line="31" column="13" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ChequesPostfechados.xhtml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/cartera/ChequesPostfechados.xhtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="186">
+              <caret line="74" column="28" selection-start-line="74" selection-start-column="28" selection-end-line="74" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HistorialProtestoBean.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/controller/cartera/HistorialProtestoBean.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="63" column="31" selection-start-line="63" selection-start-column="31" selection-end-line="63" selection-end-column="46" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
         <option value="Enum" />
-        <option value="jsf" />
         <option value="Class" />
+        <option value="jsf" />
       </list>
     </option>
   </component>
@@ -159,11 +113,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/alphacell/controller/cartera/HistorialProtestoBean.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/alphacell/repository/InfoClienteRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/alphacell/controller/cartera/InfoClienteBean.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/cartera/InfoCliente.xhtml" />
-        <option value="$PROJECT_DIR$/src/main/resources/notes/PasosSaldosIniciales.txt" />
         <option value="$PROJECT_DIR$/src/main/java/com/alphacell/model/financiero/TblReporteVentas.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/alphacell/controller/financiero/ReporteVentasBean.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/financiero/CuentasXPagar.xhtml" />
@@ -173,11 +122,9 @@
         <option value="$PROJECT_DIR$/src/main/java/com/alphacell/conversor/cxc/ClienteConverter.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/alphacell/model/cartera/ClienteVista.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/alphacell/repository/cxc/SaldosInicialesRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/cartera/ComportamientoPagoCliente.xhtml" />
         <option value="$PROJECT_DIR$/src/main/webapp/META-INF/context.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/META-INF/beans.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/alphacell/model/cartera/LcVistaTramosYaVencidosPivot.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/alphacell/model/cartera/LcTramosYaVencidosPivot.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/alphacell/repository/cxc/TramosVencidosRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/alphacell/model/cartera/TramosVencidosLC.java" />
@@ -204,10 +151,17 @@
         <option value="$PROJECT_DIR$/src/main/java/com/alphacell/controller/financiero/CXPResumenFlujoVencidosBean.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/alphacell/model/financiero/CXPSumatoriaVencidas.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/alphacell/controller/financiero/ResumenFlujoVencidosBean.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/template/LayoutMaestro.xhtml" />
         <option value="$PROJECT_DIR$/src/main/webapp/financiero/CXPResumenFlujoVencidos.xhtml" />
         <option value="$PROJECT_DIR$/src/main/java/com/alphacell/repository/cxp/CXPResumenFlujoRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/alphacell/repository/cxc/CXCChequesPostfechadosRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/alphacell/model/cartera/LcVistaChequesPostfechados.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/financiero/FlujoCuentasxCobrar.xhtml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/cartera/HistorialProtesto.xhtml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/cartera/CarteraTotal.xhtml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/cartera/ComportamientoPagoCliente.xhtml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/template/LayoutMaestro.xhtml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/financiero/ReporteCxPTramos.xhtml" />
         <option value="$PROJECT_DIR$/src/main/java/com/alphacell/controller/cartera/ChequePostfechadoBean.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/cartera/ChequesPostfechados.xhtml" />
       </list>
@@ -239,7 +193,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="width" value="1600" />
+    <option name="x" value="-1" />
+    <option name="width" value="1602" />
     <option name="height" value="875" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -295,6 +250,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -327,11 +285,190 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Reportes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Reportes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Reportes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Reportes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="financiero" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Reportes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Reportes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cartera" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Reportes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Reportes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Reportes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Reportes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="alphacell" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Reportes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Reportes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="alphacell" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Reportes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Reportes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="alphacell" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cartera" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -345,7 +482,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java" />
-    <property name="JPA.DatabaseSchemaImportDialog" value="e63356ce-f769-4773-a82e-216671aa6fa9" />
+    <property name="JPA.DatabaseSchemaImportDialog" value="a1fc2b18-db06-4ba8-b651-5370ec08ff58" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="SQL Server (Microsoft)" />
   </component>
   <component name="RecentsManager">
@@ -358,17 +495,17 @@
       <recent name="com.alphacell.controller" />
       <recent name="com.alphacell.controller.cartera" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\luis.cevallos\Documents\workspaceSPRING\Reportes\src\main\webapp\financiero" />
-      <recent name="C:\Users\luis.cevallos\Documents\workspaceSPRING\Reportes\src\main\webapp\WEB-INF\dialog\finaciero" />
-      <recent name="C:\Users\luis.cevallos\Documents\workspaceSPRING\Reportes\src\main\webapp\WEB-INF\dialog\cartera" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\luis.cevallos\Documents\workspaceSPRING\Reportes\src\main\webapp\WEB-INF\dialog" />
     </key>
     <key name="ImportMappingsDialog.RecentPackages">
       <recent name="com.alphacell.model.cartera" />
       <recent name="" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\luis.cevallos\Documents\workspaceSPRING\Reportes\src\main\webapp\WEB-INF\dialog" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\luis.cevallos\Documents\workspaceSPRING\Reportes\src\main\webapp\financiero" />
+      <recent name="C:\Users\luis.cevallos\Documents\workspaceSPRING\Reportes\src\main\webapp\WEB-INF\dialog\finaciero" />
+      <recent name="C:\Users\luis.cevallos\Documents\workspaceSPRING\Reportes\src\main\webapp\WEB-INF\dialog\cartera" />
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.Unnamed">
@@ -1033,7 +1170,10 @@
       <workItem from="1474301860215" duration="3572000" />
       <workItem from="1474410227916" duration="15654000" />
       <workItem from="1474579966968" duration="22177000" />
-      <workItem from="1474669164059" duration="1877000" />
+      <workItem from="1474669164059" duration="2739000" />
+      <workItem from="1474899541136" duration="1250000" />
+      <workItem from="1474986396168" duration="18411000" />
+      <workItem from="1475006856216" duration="6237000" />
     </task>
     <task id="LOCAL-00001" summary="Hi">
       <created>1464900277059</created>
@@ -1144,7 +1284,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="797779000" />
+    <option name="totallyTimeSpent" value="824539000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1156,7 +1296,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1600" height="875" extended-state="0" />
+    <frame x="-1" y="0" width="1602" height="875" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1166,38 +1306,38 @@
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32603255" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.325625" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27346683" sideWeight="0.41956243" order="1" side_tool="true" content_ui="tabs" x="1070" y="215" width="235" height="416" />
       <window_info id="News Feed" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="JSF" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33462033" sideWeight="0.45306632" order="3" side_tool="false" content_ui="tabs" x="107" y="283" width="1384" height="417" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4028314" sideWeight="0.45306632" order="3" side_tool="false" content_ui="tabs" x="107" y="283" width="1384" height="417" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3284553" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32818532" sideWeight="0.32603255" order="16" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32818532" sideWeight="0.32603255" order="19" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32947233" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32947233" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33462033" sideWeight="0.54693365" order="2" side_tool="true" content_ui="tabs" x="0" y="0" width="1416" height="875" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26846057" sideWeight="0.36808237" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27284107" sideWeight="0.5804376" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2725" sideWeight="0.39870688" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2725" sideWeight="0.6012931" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Reviews" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Reviews" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27346683" sideWeight="0.41956243" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Hibernate Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5804376" sideWeight="0.788774" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.44787645" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.44787645" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="JPA Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33596215" sideWeight="0.4970458" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="JPA Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33590734" sideWeight="0.4970458" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39905363" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32868218" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.329653" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32868218" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
+      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="18" side_tool="false" content_ui="tabs" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.329653" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33333334" sideWeight="0.463125" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1226,7 +1366,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="121" />
+      <option name="time" value="140" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
@@ -1239,107 +1379,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/controller/cartera/HistorialProtestoDetalleBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-69">
-          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/controller/cartera/ComportamientoPagoBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2430">
-          <caret line="193" column="46" selection-start-line="193" selection-start-column="46" selection-end-line="193" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/controller/cartera/CarteraTotalBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/financiero/reporteVentas.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="150" column="0" selection-start-line="150" selection-start-column="0" selection-end-line="153" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/cartera/CarteraTotal.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="41" column="88" selection-start-line="41" selection-start-column="88" selection-end-line="41" selection-end-column="88" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/controller/cartera/CarteraTotalDetalleBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="19" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/controller/cartera/VencidosyXVencerBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/model/cartera/ClienteVista.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="54" column="18" selection-start-line="54" selection-start-column="18" selection-end-line="54" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/css/sistema.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="21" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/repository/cxc/VencidosYxVencerRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/conversor/cxc/ClienteConverter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="52" column="63" selection-start-line="52" selection-start-column="63" selection-end-line="52" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/controller/ventas/CargarTxtBean.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/ventas/cargarTxt.xhtml" />
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="63" selection-start-line="14" selection-start-column="63" selection-end-line="14" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/dialog/cartera/carteraTotalDialog.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="0" selection-start-line="8" selection-start-column="1" selection-end-line="9" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/controller/financiero/CxCFlujoBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="106">
-          <caret line="45" column="47" selection-start-line="45" selection-start-column="47" selection-end-line="45" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3">
@@ -1433,14 +1472,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/template/LayoutMaestro.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="63" selection-start-line="11" selection-start-column="63" selection-end-line="11" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/controller/financiero/ResumenFlujoVencidosBean.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="74">
@@ -1484,21 +1515,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/financiero/FlujoCuentasxCobrar.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="31" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/cartera/HistorialProtesto.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-495">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/cartera/InfoCliente.xhtml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-225">
@@ -1520,79 +1536,267 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/cartera/TramosVencidos.xhtml">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/financiero/CXPResumenFlujoVencidos.xhtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="825">
-          <caret line="55" column="45" selection-start-line="55" selection-start-column="45" selection-end-line="55" selection-end-column="45" />
+        <state relative-caret-position="670">
+          <caret line="57" column="35" selection-start-line="55" selection-start-column="19" selection-end-line="57" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/cartera/VencidosyXVencer.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="38" column="45" selection-start-line="38" selection-start-column="45" selection-end-line="38" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/model/cartera/LcVistaChequesPostfechados2.java" />
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/a1fc2b18-db06-4ba8-b651-5370ec08ff58/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/controller/cartera/CarteraTotalDetalleBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-345">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="9" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/financiero/reporteVentas.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="54" column="52" selection-start-line="54" selection-start-column="52" selection-end-line="54" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="36" column="60" selection-start-line="36" selection-start-column="60" selection-end-line="36" selection-end-column="60" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/financiero/CuentasXPagar.xhtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
+        <state relative-caret-position="145">
           <caret line="38" column="0" selection-start-line="35" selection-start-column="16" selection-end-line="38" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/cartera/TramosVencidos.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1262">
+          <caret line="55" column="45" selection-start-line="55" selection-start-column="45" selection-end-line="55" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/financiero/FlujoCuentasxCobrar.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2370">
+          <caret line="158" column="51" selection-start-line="158" selection-start-column="51" selection-end-line="158" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/dialog/finaciero/cxcFlujoDialog.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="58" selection-start-line="6" selection-start-column="58" selection-end-line="6" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/cartera/HistorialProtesto.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="138" column="40" selection-start-line="138" selection-start-column="40" selection-end-line="138" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/dialog/cartera/historialProtestoDialog.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/cartera/CarteraTotal.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="590">
+          <caret line="109" column="76" selection-start-line="109" selection-start-column="76" selection-end-line="109" selection-end-column="76" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/dialog/cartera/carteraTotalDialog.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="32" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/dialog/cartera/comportamientoDetalleDialog.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="62" selection-start-line="11" selection-start-column="62" selection-end-line="11" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/cartera/ComportamientoPagoCliente.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="175" column="89" selection-start-line="175" selection-start-column="89" selection-end-line="175" selection-end-column="89" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/controller/cartera/ComportamientoPagoDetalleBean.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="35" column="48" selection-start-line="35" selection-start-column="48" selection-end-line="35" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#3183#3184#0" expanded="false" />
-            <element signature="e#3234#3235#0" expanded="false" />
-            <element signature="e#4215#4216#0" expanded="false" />
-            <element signature="e#4246#4247#0" expanded="false" />
-            <element signature="e#4291#4292#0" expanded="false" />
-            <element signature="e#4326#4327#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="-66">
+          <caret line="40" column="16" selection-start-line="40" selection-start-column="16" selection-end-line="40" selection-end-column="16" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/financiero/CXPResumenFlujoVencidos.xhtml">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/financiero/ReporteCxPTramos.xhtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="855">
-          <caret line="57" column="35" selection-start-line="55" selection-start-column="19" selection-end-line="57" selection-end-column="35" />
+        <state relative-caret-position="155">
+          <caret line="135" column="52" selection-start-line="135" selection-start-column="52" selection-end-line="135" selection-end-column="52" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/dialog/finaciero/cxpTramoDetalle.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/template/LayoutMaestro.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="619">
+          <caret line="108" column="0" selection-start-line="108" selection-start-column="0" selection-end-line="108" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/model/cartera/LcVistaChequesPostfechados.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="35" column="13" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
+          <folding>
+            <element signature="e#3566#3567#0" expanded="false" />
+            <element signature="e#3591#3592#0" expanded="false" />
+            <element signature="e#3625#3626#0" expanded="false" />
+            <element signature="e#3653#3654#0" expanded="false" />
+            <element signature="e#3765#3766#0" expanded="false" />
+            <element signature="e#3798#3799#0" expanded="false" />
+            <element signature="e#3850#3851#0" expanded="false" />
+            <element signature="e#3894#3895#0" expanded="false" />
+            <element signature="e#4005#4006#0" expanded="false" />
+            <element signature="e#4038#4039#0" expanded="false" />
+            <element signature="e#4090#4091#0" expanded="false" />
+            <element signature="e#4134#4135#0" expanded="false" />
+            <element signature="e#4253#4254#0" expanded="false" />
+            <element signature="e#4289#4290#0" expanded="false" />
+            <element signature="e#4347#4348#0" expanded="false" />
+            <element signature="e#4397#4398#0" expanded="false" />
+            <element signature="e#4502#4503#0" expanded="false" />
+            <element signature="e#4532#4533#0" expanded="false" />
+            <element signature="e#4578#4579#0" expanded="false" />
+            <element signature="e#4616#4617#0" expanded="false" />
+            <element signature="e#4722#4723#0" expanded="false" />
+            <element signature="e#4752#4753#0" expanded="false" />
+            <element signature="e#4798#4799#0" expanded="false" />
+            <element signature="e#4836#4837#0" expanded="false" />
+            <element signature="e#4936#4937#0" expanded="false" />
+            <element signature="e#4963#4964#0" expanded="false" />
+            <element signature="e#5003#5004#0" expanded="false" />
+            <element signature="e#5035#5036#0" expanded="false" />
+            <element signature="e#5137#5138#0" expanded="false" />
+            <element signature="e#5171#5172#0" expanded="false" />
+            <element signature="e#5226#5227#0" expanded="false" />
+            <element signature="e#5272#5273#0" expanded="false" />
+            <element signature="e#5381#5382#0" expanded="false" />
+            <element signature="e#5413#5414#0" expanded="false" />
+            <element signature="e#5463#5464#0" expanded="false" />
+            <element signature="e#5505#5506#0" expanded="false" />
+            <element signature="e#5638#5639#0" expanded="false" />
+            <element signature="e#5670#5671#0" expanded="false" />
+            <element signature="e#5718#5719#0" expanded="false" />
+            <element signature="e#5760#5761#0" expanded="false" />
+            <element signature="e#5889#5890#0" expanded="false" />
+            <element signature="e#5919#5920#0" expanded="false" />
+            <element signature="e#5963#5964#0" expanded="false" />
+            <element signature="e#6001#6002#0" expanded="false" />
+            <element signature="e#6114#6115#0" expanded="false" />
+            <element signature="e#6148#6149#0" expanded="false" />
+            <element signature="e#6202#6203#0" expanded="false" />
+            <element signature="e#6248#6249#0" expanded="false" />
+            <element signature="e#6343#6344#0" expanded="false" />
+            <element signature="e#6374#6375#0" expanded="false" />
+            <element signature="e#6423#6424#0" expanded="false" />
+            <element signature="e#6463#6464#0" expanded="false" />
+            <element signature="e#6580#6581#0" expanded="false" />
+            <element signature="e#6612#6613#0" expanded="false" />
+            <element signature="e#6666#6667#0" expanded="false" />
+            <element signature="e#6708#6709#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/repository/cxc/CXCChequesPostfechadosRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="19" column="34" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
+        <state relative-caret-position="241">
+          <caret line="21" column="44" selection-start-line="21" selection-start-column="44" selection-end-line="21" selection-end-column="44" />
           <folding>
-            <element signature="imports" expanded="false" />
+            <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/controller/cartera/HistorialProtestoBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="63" column="31" selection-start-line="63" selection-start-column="31" selection-end-line="63" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/controller/cartera/ComportamientoPagoBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2015">
+          <caret line="31" column="13" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/controller/cartera/ChequePostfechadoBean.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="94">
-          <caret line="65" column="5" selection-start-line="65" selection-start-column="5" selection-end-line="65" selection-end-column="5" />
+        <state relative-caret-position="330">
+          <caret line="83" column="45" selection-start-line="83" selection-start-column="45" selection-end-line="83" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#946#974#0" expanded="true" />
-            <element signature="e#1070#1098#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/cartera/VencidosyXVencer.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="12" column="33" selection-start-line="12" selection-start-column="33" selection-end-line="12" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/cartera/ChequesPostfechados.xhtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-285">
-          <caret line="23" column="91" selection-start-line="23" selection-start-column="91" selection-end-line="23" selection-end-column="91" />
+        <state relative-caret-position="186">
+          <caret line="74" column="28" selection-start-line="74" selection-start-column="28" selection-end-line="74" selection-end-column="28" />
           <folding />
         </state>
       </provider>
