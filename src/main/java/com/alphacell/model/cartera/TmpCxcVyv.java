@@ -36,16 +36,19 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "TmpCxcVyv.findByNombreCliente", query = "SELECT t FROM TmpCxcVyv t WHERE t.nombreCliente = :nombreCliente"),
     @NamedQuery(name = "TmpCxcVyv.findByDimension1", query = "SELECT t FROM TmpCxcVyv t WHERE t.dimension1 = :dimension1"),
     @NamedQuery(name = "TmpCxcVyv.findByMultivencimiento", query = "SELECT t FROM TmpCxcVyv t WHERE t.multivencimiento = :multivencimiento"),
+    @NamedQuery(name = "TmpCxcVyv.findByMultivencimiento2", query = "SELECT t FROM TmpCxcVyv t WHERE t.multivencimiento2 = :multivencimiento2"),
     @NamedQuery(name = "TmpCxcVyv.findByColor", query = "SELECT t FROM TmpCxcVyv t WHERE t.color = :color"),
     @NamedQuery(name = "TmpCxcVyv.findByAmountcur", query = "SELECT t FROM TmpCxcVyv t WHERE t.amountcur = :amountcur"),
     @NamedQuery(name = "TmpCxcVyv.findByDebe", query = "SELECT t FROM TmpCxcVyv t WHERE t.debe = :debe"),
     @NamedQuery(name = "TmpCxcVyv.findByDocumentdate", query = "SELECT t FROM TmpCxcVyv t WHERE t.documentdate = :documentdate"),
+    @NamedQuery(name = "TmpCxcVyv.findByDocumentdate2", query = "SELECT t FROM TmpCxcVyv t WHERE t.documentdate2 = :documentdate2"),
     @NamedQuery(name = "TmpCxcVyv.findByTransdate", query = "SELECT t FROM TmpCxcVyv t WHERE t.transdate = :transdate"),
     @NamedQuery(name = "TmpCxcVyv.findByVoucher", query = "SELECT t FROM TmpCxcVyv t WHERE t.voucher = :voucher"),
     @NamedQuery(name = "TmpCxcVyv.findByInvoice", query = "SELECT t FROM TmpCxcVyv t WHERE t.invoice = :invoice"),
     @NamedQuery(name = "TmpCxcVyv.findByClosed", query = "SELECT t FROM TmpCxcVyv t WHERE t.closed = :closed"),
     @NamedQuery(name = "TmpCxcVyv.findByDuedate", query = "SELECT t FROM TmpCxcVyv t WHERE t.duedate = :duedate"),
     @NamedQuery(name = "TmpCxcVyv.findByDuedate2", query = "SELECT t FROM TmpCxcVyv t WHERE t.duedate2 = :duedate2"),
+    @NamedQuery(name = "TmpCxcVyv.findByDuedate3", query = "SELECT t FROM TmpCxcVyv t WHERE t.duedate3 = :duedate3"),
     @NamedQuery(name = "TmpCxcVyv.findByRecid", query = "SELECT t FROM TmpCxcVyv t WHERE t.recid = :recid"),
     @NamedQuery(name = "TmpCxcVyv.findByOffsetrecid", query = "SELECT t FROM TmpCxcVyv t WHERE t.offsetrecid = :offsetrecid"),
     @NamedQuery(name = "TmpCxcVyv.findBySalesid", query = "SELECT t FROM TmpCxcVyv t WHERE t.salesid = :salesid"),
@@ -84,6 +87,9 @@ public class TmpCxcVyv implements Serializable {
     @Size(max = 60)
     @Column(name = "MULTIVENCIMIENTO")
     private String multivencimiento;
+    @Size(max = 60)
+    @Column(name = "MULTIVENCIMIENTO2")
+    private String multivencimiento2;
     @Size(max = 2)
     @Column(name = "COLOR")
     private String color;
@@ -93,10 +99,13 @@ public class TmpCxcVyv implements Serializable {
     @Column(name = "DEBE")
     private BigDecimal debe;
     @Column(name = "DOCUMENTDATE")
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     private Date documentdate;
+    @Column(name = "DOCUMENTDATE2")
+    @Temporal(TemporalType.DATE)
+    private Date documentdate2;
     @Column(name = "TRANSDATE")
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     private Date transdate;
     @Size(max = 20)
     @Column(name = "VOUCHER")
@@ -105,14 +114,17 @@ public class TmpCxcVyv implements Serializable {
     @Column(name = "INVOICE")
     private String invoice;
     @Column(name = "CLOSED")
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     private Date closed;
     @Column(name = "DUEDATE")
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     private Date duedate;
     @Column(name = "DUEDATE2")
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     private Date duedate2;
+    @Column(name = "DUEDATE3")
+    @Temporal(TemporalType.DATE)
+    private Date duedate3;
     @Column(name = "RECID")
     private BigInteger recid;
     @Column(name = "OFFSETRECID")
@@ -199,6 +211,14 @@ public class TmpCxcVyv implements Serializable {
         this.multivencimiento = multivencimiento;
     }
 
+    public String getMultivencimiento2() {
+        return multivencimiento2;
+    }
+
+    public void setMultivencimiento2(String multivencimiento2) {
+        this.multivencimiento2 = multivencimiento2;
+    }
+
     public String getColor() {
         return color;
     }
@@ -229,6 +249,14 @@ public class TmpCxcVyv implements Serializable {
 
     public void setDocumentdate(Date documentdate) {
         this.documentdate = documentdate;
+    }
+
+    public Date getDocumentdate2() {
+        return documentdate2;
+    }
+
+    public void setDocumentdate2(Date documentdate2) {
+        this.documentdate2 = documentdate2;
     }
 
     public Date getTransdate() {
@@ -277,6 +305,14 @@ public class TmpCxcVyv implements Serializable {
 
     public void setDuedate2(Date duedate2) {
         this.duedate2 = duedate2;
+    }
+
+    public Date getDuedate3() {
+        return duedate3;
+    }
+
+    public void setDuedate3(Date duedate3) {
+        this.duedate3 = duedate3;
     }
 
     public BigInteger getRecid() {

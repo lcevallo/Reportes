@@ -78,6 +78,12 @@
                 </p:column>
 
 
+                <p:column headerText="MULTIVENCIMIENTO 2" filterBy="#{dtbCxcVyXV.multivencimiento2}"
+                          filterMatchMode="contains" style="width:135px">
+                    <h:outputText value="#{dtbCxcVyXV.multivencimiento2}"/>
+                </p:column>
+
+
 
                 <p:column headerText="Fecha Doc." style="width:89px" >
                     <h:outputText value="#{dtbCxcVyXV.transdate}" >
@@ -85,8 +91,22 @@
                     </h:outputText>
                 </p:column>
 
-                <p:column headerText="Fecha Venc." style="width:89px" >
+                <p:column headerText="Fecha Venc. " style="width:89px" >
+                    <h:outputText value="#{dtbCxcVyXV.duedate}" >
+                        <f:convertDateTime dateStyle="full" pattern="dd/MM/yyyy" timeZone="EST" type="date" />
+                    </h:outputText>
+                </p:column>
+
+
+                <p:column headerText="Fecha Venc. 2" style="width:89px" >
                     <h:outputText value="#{dtbCxcVyXV.duedate2}" >
+                        <f:convertDateTime dateStyle="full" pattern="dd/MM/yyyy" timeZone="EST" type="date" />
+                    </h:outputText>
+                </p:column>
+
+
+                <p:column headerText="Fecha Venc. 3" style="width:89px" >
+                    <h:outputText value="#{dtbCxcVyXV.duedate3}" >
                         <f:convertDateTime dateStyle="full" pattern="dd/MM/yyyy" timeZone="EST" type="date" />
                     </h:outputText>
                 </p:column>
