@@ -37,9 +37,10 @@ public class VencidosyXVencerBean implements Serializable{
 
     }
 
-    public void postProcessXLS(Object document) {
+    @SuppressWarnings("unchecked")
+	public void postProcessXLS(Object document) {
 
-        HashSet omitirColumnas = new HashSet();
+        HashSet<Integer> omitirColumnas = new HashSet<Integer>();
         //add elements to HashSet object
 
         omitirColumnas.add(new Integer("1"));
@@ -49,6 +50,10 @@ public class VencidosyXVencerBean implements Serializable{
         omitirColumnas.add(new Integer("5"));
         omitirColumnas.add(new Integer("6"));
         omitirColumnas.add(new Integer("7"));
+        omitirColumnas.add(new Integer("9"));
+        omitirColumnas.add(new Integer("10"));
+        omitirColumnas.add(new Integer("11"));
+        omitirColumnas.add(new Integer("12"));
         omitirColumnas.add(new Integer("8"));
 
         FormatoExcelPoi.formatearArchivoExcel(document,omitirColumnas);

@@ -15,6 +15,7 @@
     <class>com.alphacell.model.financiero.Tablaflujo</class>
     <class>com.alphacell.model.financiero.TblReporteVentas</class>
     <class>com.alphacell.model.financiero.LcTblCxp</class>
+    <class>com.alphacell.model.financiero.TmpCxpFlujoVencidos</class>
     <class>com.alphacell.model.financiero.Tmppivotcxp</class>
     <class>com.alphacell.model.cartera.Tmpcxccomportamientodetalle</class>
     <class>com.alphacell.model.cartera.Tmpcxccomportamientooffsetrecid</class>
