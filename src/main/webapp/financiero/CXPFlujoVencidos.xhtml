@@ -27,8 +27,8 @@
                 id="table-cxpFlujoVencido"
                 value="#{reporteCXPFlujoVencidoBean.tableCxpFlujoVencido}"
                 var="dtbCxpFlujoVencido"
-                filteredValue="#{reporteCXPFlujoVencidoBean.tableCxpFlujoVencidoFiltered}"
-                scrollable="true"
+                tableStyle="table-layout: fixed"
+                scrollable="true" scrollWidth="1340"
                 paginatorPosition="bottom"
                 paginator="true"
                 rows="15"
@@ -39,23 +39,51 @@
                 emptyMessage="No existen datos para presentar"
         >
 
-            <p:column headerText="Codigo" filterBy="#{dtbCxpFlujoVencido.accountnum}"
-                      filterMatchMode="contains">
+            <p:column headerText="Codigo" >
                 <h:outputText value="#{dtbCxpFlujoVencido.accountnum}"/>
             </p:column>
 
-            <p:column headerText="Cliente" style="width:150px;" filterBy="#{dtbCxpFlujoVencido.nombreCliente}"
-                      filterMatchMode="contains">
-                <h:outputText value="#{dtbCxpFlujoVencido.nombreCliente}"/>
+            <p:column headerText="Tipo Identificacion"
+                     >
+                <h:outputText value="#{dtbCxpFlujoVencido.tipoidentificacion}"/>
+            </p:column>
+
+            <p:column headerText="RUC"
+                   >
+                <h:outputText value="#{dtbCxpFlujoVencido.ruc}"/>
+            </p:column>
+
+            <p:column headerText="Proveedor">
+                <h:outputText value="#{dtbCxpFlujoVencido.name}"/>
+            </p:column>
+
+            <p:column headerText="Forma Pago"
+                     >
+                <h:outputText value="#{dtbCxpFlujoVencido.formapago}"/>
+            </p:column>
+
+            <p:column headerText="NUMBANCO" >
+                <h:outputText value="#{dtbCxpFlujoVencido.numbanco}" >
+                    <f:convertNumber  />
+                </h:outputText>
+            </p:column>
+
+            <p:column headerText="Codigo Banco"  >
+                <h:outputText value="#{dtbCxpFlujoVencido.codigobanco}"/>
             </p:column>
 
 
-            <p:column headerText="Documento" style="width:150px;" filterBy="#{dtbCxpFlujoVencido.invoice}"
-                      filterMatchMode="contains">
+            <p:column headerText="Num Cuenta"  >
+                <h:outputText value="#{dtbCxpFlujoVencido.numcuenta}"/>
+            </p:column>
+
+
+            <p:column headerText="Documento"
+                      >
                 <h:outputText value="#{dtbCxpFlujoVencido.invoice}"/>
             </p:column>
 
-            <p:column headerText="Desc" style="width:150px">
+            <p:column headerText="Desc" >
                 <h:outputText value="#{dtbCxpFlujoVencido.txt}" />
             </p:column>
 
@@ -71,7 +99,7 @@
                 </h:outputText>
             </p:column>
 
-            <p:column headerText="VALOR" style="width:89px">
+            <p:column headerText="VALOR" >
                 <h:outputText value="#{dtbCxpFlujoVencido.amountcur}" >
                     <f:convertNumber pattern="#,##0.00" />
                 </h:outputText>
@@ -126,7 +154,7 @@
             </p:column>
 
             <p:column headerText="[POR VENCER]" >
-                <h:outputText value="#{dtbCxpFlujoVencido.xVencer}" >
+                <h:outputText value="#{dtbCxpFlujoVencido.XVencer}" >
                     <f:convertNumber pattern="#,##0.00" />
                 </h:outputText>
             </p:column>

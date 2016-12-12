@@ -29,11 +29,13 @@ public class ReporteCXPFlujoVencidoBean implements Serializable {
     private FlujoVencidosRepository flujoVencidosRepository;
 
 
+
     @PostConstruct
     public void init()
     {
         //Aqui voy a llamar al metodo del repositorio para llenar el datatable
         this.tableCxpFlujoVencido= this.flujoVencidosRepository.cargarTablaCXPFlujoVencidos();
+
 
     }
 
@@ -46,7 +48,13 @@ public class ReporteCXPFlujoVencidoBean implements Serializable {
         omitirColumnas.add(new Integer("2"));
         omitirColumnas.add(new Integer("3"));
         omitirColumnas.add(new Integer("4"));
-        omitirColumnas.add(new Integer("5"));
+        omitirColumnas.add(new Integer("6"));
+        omitirColumnas.add(new Integer("7"));
+        omitirColumnas.add(new Integer("8"));
+        omitirColumnas.add(new Integer("9"));
+        omitirColumnas.add(new Integer("10"));
+        omitirColumnas.add(new Integer("11"));
+
 
 
         FormatoExcelPoi.formatearArchivoExcel(document,omitirColumnas);
@@ -68,4 +76,6 @@ public class ReporteCXPFlujoVencidoBean implements Serializable {
     public void setTableCxpFlujoVencidoFiltered(List<TmpCxpFlujoVencidos> tableCxpFlujoVencidoFiltered) {
         this.tableCxpFlujoVencidoFiltered = tableCxpFlujoVencidoFiltered;
     }
+
+
 }

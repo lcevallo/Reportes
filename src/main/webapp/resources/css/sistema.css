@@ -50,6 +50,9 @@ h1 {
 	background-image: url("#{facesContext.externalContext.request.contextPath}/resources/images/excel-icon.png") !important;
 }
 
+
+
+
 /*
 ** Centrar texto en tablas.
 */

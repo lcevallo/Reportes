@@ -26,7 +26,7 @@ public class CXPSumatoriaVencidas {
     public CXPSumatoriaVencidas(String accountnum, List<TmpCxpFlujoVencidos> base) {
 
         List<BigDecimal> listSumas= new ArrayList<BigDecimal>();
-        this.nombreCliente=(base.isEmpty()?null:base.get(0).getNombreCliente());
+        this.nombreCliente=(base.isEmpty()?null:base.get(0).getName());
         this.base = base;
         this.accountnum = accountnum;
 
@@ -78,7 +78,7 @@ public class CXPSumatoriaVencidas {
                 invoiceValue = listaCxpFlujoVencido.stream().filter(Objects::nonNull).reduce(BigDecimal.ZERO, (bd, item) -> bd.add(item.getDias120()), BigDecimal::add);
                 break;
             case "xVencer":
-                invoiceValue = listaCxpFlujoVencido.stream().filter(Objects::nonNull).reduce(BigDecimal.ZERO, (bd, item) -> bd.add(item.getxVencer()), BigDecimal::add);
+                invoiceValue = listaCxpFlujoVencido.stream().filter(Objects::nonNull).reduce(BigDecimal.ZERO, (bd, item) -> bd.add(item.getXVencer()), BigDecimal::add);
                 break;
 
         }

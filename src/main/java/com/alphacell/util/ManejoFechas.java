@@ -1,13 +1,13 @@
 package com.alphacell.util;
 
-import java.time.DayOfWeek;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
+import com.alphacell.model.financiero.FechasCorte;
+
+import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAdjusters;
 import java.time.temporal.WeekFields;
 import java.util.*;
+import java.util.stream.IntStream;
 
 /**
  * Created by luis.cevallos on 2/4/2016.
@@ -58,6 +58,29 @@ public class ManejoFechas {
             fechas_retorno.add(Date.from(printDate.atStartOfDay(ZoneId.systemDefault()).toInstant()));
             printDate = printDate.plusDays(1);
         }
+        return fechas_retorno;
+    }
+
+    public static List<FechasCorte> FechasCortes(Date fecha,Integer noSemana, Integer semanas)
+    {
+        List<FechasCorte> fechas_retorno= new ArrayList<>();
+        LocalDate localDate = fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
+        int year  = localDate.getYear();
+        int month = localDate.getMonthValue();
+        int day   = localDate.getDayOfMonth();
+
+        LocalDateTime xmas = LocalDateTime.of(year, month, day, 0, 0);
+
+
+        IntStream.range(0,semanas)
+                .forEach(x-> {
+                    LocalDateTime newYearsDay = xmas.plusWeeks(x);
+                    Date out = Date.from(newYearsDay.atZone(ZoneId.systemDefault()).toInstant());
+
+                    fechas_retorno.add(new FechasCorte(out,(noSemana+x)));
+                });
+
         return fechas_retorno;
     }
 }

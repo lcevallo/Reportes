@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author luis.cevallos
+ * @author luis
  */
 @Entity
 @Table(name = "tmp_cxp_flujo_vencidos")
@@ -32,22 +32,33 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "TmpCxpFlujoVencidos.findAll", query = "SELECT t FROM TmpCxpFlujoVencidos t"),
     @NamedQuery(name = "TmpCxpFlujoVencidos.findById", query = "SELECT t FROM TmpCxpFlujoVencidos t WHERE t.id = :id"),
     @NamedQuery(name = "TmpCxpFlujoVencidos.findByAccountnum", query = "SELECT t FROM TmpCxpFlujoVencidos t WHERE t.accountnum = :accountnum"),
-    @NamedQuery(name = "TmpCxpFlujoVencidos.findByNombreCliente", query = "SELECT t FROM TmpCxpFlujoVencidos t WHERE t.nombreCliente = :nombreCliente"),
+    @NamedQuery(name = "TmpCxpFlujoVencidos.findByName", query = "SELECT t FROM TmpCxpFlujoVencidos t WHERE t.name = :name"),
+    @NamedQuery(name = "TmpCxpFlujoVencidos.findByVendGroup", query = "SELECT t FROM TmpCxpFlujoVencidos t WHERE t.vendGroup = :vendGroup"),
+    @NamedQuery(name = "TmpCxpFlujoVencidos.findByPaymsched", query = "SELECT t FROM TmpCxpFlujoVencidos t WHERE t.paymsched = :paymsched"),
+    @NamedQuery(name = "TmpCxpFlujoVencidos.findByPaymid", query = "SELECT t FROM TmpCxpFlujoVencidos t WHERE t.paymid = :paymid"),
+    @NamedQuery(name = "TmpCxpFlujoVencidos.findByNumcuenta", query = "SELECT t FROM TmpCxpFlujoVencidos t WHERE t.numcuenta = :numcuenta"),
+    @NamedQuery(name = "TmpCxpFlujoVencidos.findByBankaccount", query = "SELECT t FROM TmpCxpFlujoVencidos t WHERE t.bankaccount = :bankaccount"),
+    @NamedQuery(name = "TmpCxpFlujoVencidos.findByCodigobanco", query = "SELECT t FROM TmpCxpFlujoVencidos t WHERE t.codigobanco = :codigobanco"),
+    @NamedQuery(name = "TmpCxpFlujoVencidos.findByTipoidentificacion", query = "SELECT t FROM TmpCxpFlujoVencidos t WHERE t.tipoidentificacion = :tipoidentificacion"),
+    @NamedQuery(name = "TmpCxpFlujoVencidos.findByFormapago", query = "SELECT t FROM TmpCxpFlujoVencidos t WHERE t.formapago = :formapago"),
+    @NamedQuery(name = "TmpCxpFlujoVencidos.findByNumbanco", query = "SELECT t FROM TmpCxpFlujoVencidos t WHERE t.numbanco = :numbanco"),
+    @NamedQuery(name = "TmpCxpFlujoVencidos.findByRuc", query = "SELECT t FROM TmpCxpFlujoVencidos t WHERE t.ruc = :ruc"),
     @NamedQuery(name = "TmpCxpFlujoVencidos.findByAmountcur", query = "SELECT t FROM TmpCxpFlujoVencidos t WHERE t.amountcur = :amountcur"),
     @NamedQuery(name = "TmpCxpFlujoVencidos.findByAmountmst", query = "SELECT t FROM TmpCxpFlujoVencidos t WHERE t.amountmst = :amountmst"),
     @NamedQuery(name = "TmpCxpFlujoVencidos.findByTransdate", query = "SELECT t FROM TmpCxpFlujoVencidos t WHERE t.transdate = :transdate"),
-    @NamedQuery(name = "TmpCxpFlujoVencidos.findByPaymTermId", query = "SELECT t FROM TmpCxpFlujoVencidos t WHERE t.paymTermId = :paymTermId"),
-    @NamedQuery(name = "TmpCxpFlujoVencidos.findByFechaVencimiento", query = "SELECT t FROM TmpCxpFlujoVencidos t WHERE t.fechaVencimiento = :fechaVencimiento"),
     @NamedQuery(name = "TmpCxpFlujoVencidos.findByDuedate", query = "SELECT t FROM TmpCxpFlujoVencidos t WHERE t.duedate = :duedate"),
-    @NamedQuery(name = "TmpCxpFlujoVencidos.findByDiasVencidos", query = "SELECT t FROM TmpCxpFlujoVencidos t WHERE t.diasVencidos = :diasVencidos"),
+    @NamedQuery(name = "TmpCxpFlujoVencidos.findByPaymTermId", query = "SELECT t FROM TmpCxpFlujoVencidos t WHERE t.paymTermId = :paymTermId"),
     @NamedQuery(name = "TmpCxpFlujoVencidos.findByInvoice", query = "SELECT t FROM TmpCxpFlujoVencidos t WHERE t.invoice = :invoice"),
     @NamedQuery(name = "TmpCxpFlujoVencidos.findByTxt", query = "SELECT t FROM TmpCxpFlujoVencidos t WHERE t.txt = :txt"),
+    @NamedQuery(name = "TmpCxpFlujoVencidos.findByFechaVencimiento", query = "SELECT t FROM TmpCxpFlujoVencidos t WHERE t.fechaVencimiento = :fechaVencimiento"),
+    @NamedQuery(name = "TmpCxpFlujoVencidos.findByDiasVencidos", query = "SELECT t FROM TmpCxpFlujoVencidos t WHERE t.diasVencidos = :diasVencidos"),
     @NamedQuery(name = "TmpCxpFlujoVencidos.findByDias15", query = "SELECT t FROM TmpCxpFlujoVencidos t WHERE t.dias15 = :dias15"),
     @NamedQuery(name = "TmpCxpFlujoVencidos.findByDias1530", query = "SELECT t FROM TmpCxpFlujoVencidos t WHERE t.dias1530 = :dias1530"),
     @NamedQuery(name = "TmpCxpFlujoVencidos.findByDias3060", query = "SELECT t FROM TmpCxpFlujoVencidos t WHERE t.dias3060 = :dias3060"),
     @NamedQuery(name = "TmpCxpFlujoVencidos.findByDias6090", query = "SELECT t FROM TmpCxpFlujoVencidos t WHERE t.dias6090 = :dias6090"),
     @NamedQuery(name = "TmpCxpFlujoVencidos.findByDias90120", query = "SELECT t FROM TmpCxpFlujoVencidos t WHERE t.dias90120 = :dias90120"),
-    @NamedQuery(name = "TmpCxpFlujoVencidos.findByDias120", query = "SELECT t FROM TmpCxpFlujoVencidos t WHERE t.dias120 = :dias120")})
+    @NamedQuery(name = "TmpCxpFlujoVencidos.findByDias120", query = "SELECT t FROM TmpCxpFlujoVencidos t WHERE t.dias120 = :dias120"),
+    @NamedQuery(name = "TmpCxpFlujoVencidos.findByXVencer", query = "SELECT t FROM TmpCxpFlujoVencidos t WHERE t.xVencer = :xVencer")})
 public class TmpCxpFlujoVencidos implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -62,45 +73,97 @@ public class TmpCxpFlujoVencidos implements Serializable {
     @Column(name = "ACCOUNTNUM")
     private String accountnum;
     @Size(max = 100)
-    @Column(name = "NOMBRE_CLIENTE")
-    private String nombreCliente;
+    @Column(name = "NAME")
+    private String name;
+    @Size(max = 10)
+    @Column(name = "VendGroup")
+    private String vendGroup;
+    @Size(max = 30)
+    @Column(name = "PAYMSCHED")
+    private String paymsched;
+    @Size(max = 200)
+    @Column(name = "PAYMID")
+    private String paymid;
+    @Size(max = 35)
+    @Column(name = "NUMCUENTA")
+    private String numcuenta;
+    @Size(max = 10)
+    @Column(name = "BANKACCOUNT")
+    private String bankaccount;
+    @Size(max = 2)
+    @Column(name = "CODIGOBANCO")
+    private String codigobanco;
+    @Size(max = 1)
+    @Column(name = "TIPOIDENTIFICACION")
+    private String tipoidentificacion;
+    @Size(max = 3)
+    @Column(name = "FORMAPAGO")
+    private String formapago;
+    @Column(name = "NUMBANCO")
+    private Integer numbanco;
+    @Size(max = 20)
+    @Column(name = "RUC")
+    private String ruc;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "AMOUNTCUR")
     private BigDecimal amountcur;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "AMOUNTMST")
     private BigDecimal amountmst;
     @Column(name = "TRANSDATE")
     @Temporal(TemporalType.DATE)
     private Date transdate;
-    @Column(name = "PaymTermId")
-    private Integer paymTermId;
-    @Column(name = "FECHA_VENCIMIENTO")
-    @Temporal(TemporalType.DATE)
-    private Date fechaVencimiento;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "DUEDATE")
     @Temporal(TemporalType.TIMESTAMP)
     private Date duedate;
-    @Column(name = "diasVencidos")
-    private Integer diasVencidos;
-    @Size(max = 20)
+    @Column(name = "PaymTermId")
+    private Integer paymTermId;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 20)
     @Column(name = "INVOICE")
     private String invoice;
-    @Size(max = 60)
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 60)
     @Column(name = "TXT")
     private String txt;
+    @Column(name = "FECHA_VENCIMIENTO")
+    @Temporal(TemporalType.DATE)
+    private Date fechaVencimiento;
+    @Column(name = "diasVencidos")
+    private Integer diasVencidos;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "Dias15")
     private BigDecimal dias15;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "Dias1530")
     private BigDecimal dias1530;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "Dias3060")
     private BigDecimal dias3060;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "Dias6090")
     private BigDecimal dias6090;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "Dias90120")
     private BigDecimal dias90120;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "Dias120")
     private BigDecimal dias120;
-
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "XVencer")
     private BigDecimal xVencer;
 
@@ -111,9 +174,21 @@ public class TmpCxpFlujoVencidos implements Serializable {
         this.id = id;
     }
 
-    public TmpCxpFlujoVencidos(Integer id, String accountnum) {
+    public TmpCxpFlujoVencidos(Integer id, String accountnum, BigDecimal amountcur, BigDecimal amountmst, Date duedate, String invoice, String txt, BigDecimal dias15, BigDecimal dias1530, BigDecimal dias3060, BigDecimal dias6090, BigDecimal dias90120, BigDecimal dias120, BigDecimal xVencer) {
         this.id = id;
         this.accountnum = accountnum;
+        this.amountcur = amountcur;
+        this.amountmst = amountmst;
+        this.duedate = duedate;
+        this.invoice = invoice;
+        this.txt = txt;
+        this.dias15 = dias15;
+        this.dias1530 = dias1530;
+        this.dias3060 = dias3060;
+        this.dias6090 = dias6090;
+        this.dias90120 = dias90120;
+        this.dias120 = dias120;
+        this.xVencer = xVencer;
     }
 
     public Integer getId() {
@@ -132,12 +207,92 @@ public class TmpCxpFlujoVencidos implements Serializable {
         this.accountnum = accountnum;
     }
 
-    public String getNombreCliente() {
-        return nombreCliente;
+    public String getName() {
+        return name;
     }
 
-    public void setNombreCliente(String nombreCliente) {
-        this.nombreCliente = nombreCliente;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getVendGroup() {
+        return vendGroup;
+    }
+
+    public void setVendGroup(String vendGroup) {
+        this.vendGroup = vendGroup;
+    }
+
+    public String getPaymsched() {
+        return paymsched;
+    }
+
+    public void setPaymsched(String paymsched) {
+        this.paymsched = paymsched;
+    }
+
+    public String getPaymid() {
+        return paymid;
+    }
+
+    public void setPaymid(String paymid) {
+        this.paymid = paymid;
+    }
+
+    public String getNumcuenta() {
+        return numcuenta;
+    }
+
+    public void setNumcuenta(String numcuenta) {
+        this.numcuenta = numcuenta;
+    }
+
+    public String getBankaccount() {
+        return bankaccount;
+    }
+
+    public void setBankaccount(String bankaccount) {
+        this.bankaccount = bankaccount;
+    }
+
+    public String getCodigobanco() {
+        return codigobanco;
+    }
+
+    public void setCodigobanco(String codigobanco) {
+        this.codigobanco = codigobanco;
+    }
+
+    public String getTipoidentificacion() {
+        return tipoidentificacion;
+    }
+
+    public void setTipoidentificacion(String tipoidentificacion) {
+        this.tipoidentificacion = tipoidentificacion;
+    }
+
+    public String getFormapago() {
+        return formapago;
+    }
+
+    public void setFormapago(String formapago) {
+        this.formapago = formapago;
+    }
+
+    public Integer getNumbanco() {
+        return numbanco;
+    }
+
+    public void setNumbanco(Integer numbanco) {
+        this.numbanco = numbanco;
+    }
+
+    public String getRuc() {
+        return ruc;
+    }
+
+    public void setRuc(String ruc) {
+        this.ruc = ruc;
     }
 
     public BigDecimal getAmountcur() {
@@ -164,22 +319,6 @@ public class TmpCxpFlujoVencidos implements Serializable {
         this.transdate = transdate;
     }
 
-    public Integer getPaymTermId() {
-        return paymTermId;
-    }
-
-    public void setPaymTermId(Integer paymTermId) {
-        this.paymTermId = paymTermId;
-    }
-
-    public Date getFechaVencimiento() {
-        return fechaVencimiento;
-    }
-
-    public void setFechaVencimiento(Date fechaVencimiento) {
-        this.fechaVencimiento = fechaVencimiento;
-    }
-
     public Date getDuedate() {
         return duedate;
     }
@@ -188,12 +327,12 @@ public class TmpCxpFlujoVencidos implements Serializable {
         this.duedate = duedate;
     }
 
-    public Integer getDiasVencidos() {
-        return diasVencidos;
+    public Integer getPaymTermId() {
+        return paymTermId;
     }
 
-    public void setDiasVencidos(Integer diasVencidos) {
-        this.diasVencidos = diasVencidos;
+    public void setPaymTermId(Integer paymTermId) {
+        this.paymTermId = paymTermId;
     }
 
     public String getInvoice() {
@@ -210,6 +349,22 @@ public class TmpCxpFlujoVencidos implements Serializable {
 
     public void setTxt(String txt) {
         this.txt = txt;
+    }
+
+    public Date getFechaVencimiento() {
+        return fechaVencimiento;
+    }
+
+    public void setFechaVencimiento(Date fechaVencimiento) {
+        this.fechaVencimiento = fechaVencimiento;
+    }
+
+    public Integer getDiasVencidos() {
+        return diasVencidos;
+    }
+
+    public void setDiasVencidos(Integer diasVencidos) {
+        this.diasVencidos = diasVencidos;
     }
 
     public BigDecimal getDias15() {
@@ -260,6 +415,14 @@ public class TmpCxpFlujoVencidos implements Serializable {
         this.dias120 = dias120;
     }
 
+    public BigDecimal getXVencer() {
+        return xVencer;
+    }
+
+    public void setXVencer(BigDecimal xVencer) {
+        this.xVencer = xVencer;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -284,12 +447,5 @@ public class TmpCxpFlujoVencidos implements Serializable {
     public String toString() {
         return "com.alphacell.model.financiero.TmpCxpFlujoVencidos[ id=" + id + " ]";
     }
-
-    public BigDecimal getxVencer() {
-        return xVencer;
-    }
-
-    public void setxVencer(BigDecimal xVencer) {
-        this.xVencer = xVencer;
-    }
+    
 }

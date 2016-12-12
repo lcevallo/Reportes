@@ -24,8 +24,23 @@
 
       <p:outputLabel value="Semana #" for="flujoNumeroSemana"/>
       <p:inputText id="flujoNumeroSemana" value="#{cxCFlujoBean.numeroSemana}" readonly="true" />
+
+
+      <h:panelGroup>
+              <p:commandButton icon="ui-icon-search" title="Cortes de mes"
+                               action="#{cxCFlujoBean.abrirDialogo}"
+                               process="@this"
+                               update=":fmrcxc-fechascortes:tablecxc-fechascortes">
+          </p:commandButton>
+
+      </h:panelGroup>
+
+
+
       <p:commandButton actionListener="#{cxCFlujoBean.cargarTablaFlujo}" value="Generar" update="frmCxCFlujo:tablePivoteCxCFlujo"
           onstart="PF('blockUIWidget').block()" oncomplete="PF('blockUIWidget').unblock()" />
+
+
 
       <p:commandButton id="dynaButtonCxCFlujoFinanciero" value="Imprimir" type="button" icon="ui-icon-print" />
       <p:menu overlay="true" trigger="dynaButtonCxCFlujoFinanciero" my="left top" at="left bottom">
@@ -88,6 +103,12 @@
             </p:commandLink>
         </p:column>
 
+       <p:column headerText="1er Grupo" rendered="#{cxCFlujoBean.columnasShow[0]}">
+                  <h:outputText value="#{pivote.sum0}" >
+                   <f:convertNumber type="currency" currencySymbol="$" />
+               </h:outputText>
+       </p:column>
+
         <p:column headerText="2da semana">
             <p:commandLink actionListener="#{cxCFlujoDetalleBean.invocarDialogo(pivote.cliente,pivote.codigoCliente,pivote.a1,2)}">
             <h:outputText value="#{pivote.a1}" >
@@ -95,6 +116,13 @@
             </h:outputText>
             </p:commandLink>
         </p:column>
+
+
+       <p:column headerText="2do Grupo" rendered="#{cxCFlujoBean.columnasShow[1]}">
+           <h:outputText value="#{pivote.sum1}" >
+               <f:convertNumber type="currency" currencySymbol="$" />
+           </h:outputText>
+       </p:column>
 
         <p:column headerText="3era semana">
             <p:commandLink actionListener="#{cxCFlujoDetalleBean.invocarDialogo(pivote.cliente,pivote.codigoCliente,pivote.a2,3)}">
@@ -104,6 +132,13 @@
             </p:commandLink>
         </p:column>
 
+
+       <p:column headerText="3er Grupo" rendered="#{cxCFlujoBean.columnasShow[2]}">
+           <h:outputText value="#{pivote.sum2}" >
+               <f:convertNumber type="currency" currencySymbol="$" />
+           </h:outputText>
+       </p:column>
+
         <p:column headerText="4ta semana">
             <p:commandLink actionListener="#{cxCFlujoDetalleBean.invocarDialogo(pivote.cliente,pivote.codigoCliente,pivote.a3,4)}">
             <h:outputText value="#{pivote.a3}" >
@@ -111,6 +146,13 @@
             </h:outputText>
             </p:commandLink>
         </p:column>
+
+
+       <p:column headerText="4to Grupo" rendered="#{cxCFlujoBean.columnasShow[3]}">
+           <h:outputText value="#{pivote.sum3}" >
+               <f:convertNumber type="currency" currencySymbol="$" />
+           </h:outputText>
+       </p:column>
 
         <p:column headerText="5ta semana">
             <p:commandLink actionListener="#{cxCFlujoDetalleBean.invocarDialogo(pivote.cliente,pivote.codigoCliente,pivote.a4,5)}">
@@ -121,6 +163,13 @@
         </p:column>
 
 
+       <p:column headerText="5to Grupo" rendered="#{cxCFlujoBean.columnasShow[4]}">
+           <h:outputText value="#{pivote.sum4}" >
+               <f:convertNumber type="currency" currencySymbol="$" />
+           </h:outputText>
+       </p:column>
+
+
         <p:column headerText="6ta semana">
             <p:commandLink actionListener="#{cxCFlujoDetalleBean.invocarDialogo(pivote.cliente,pivote.codigoCliente,pivote.a5,6)}">
             <h:outputText value="#{pivote.a5}" >
@@ -128,6 +177,13 @@
             </h:outputText>
             </p:commandLink>
         </p:column>
+
+
+       <p:column headerText="6to Grupo" rendered="#{cxCFlujoBean.columnasShow[5]}">
+           <h:outputText value="#{pivote.sum5}" >
+               <f:convertNumber type="currency" currencySymbol="$" />
+           </h:outputText>
+       </p:column>
 
         <p:column headerText="7ma semana">
             <p:commandLink actionListener="#{cxCFlujoDetalleBean.invocarDialogo(pivote.cliente,pivote.codigoCliente,pivote.a6,7)}">
@@ -137,31 +193,54 @@
             </p:commandLink>
         </p:column>
 
+       <p:column headerText="7mo Grupo"  rendered="#{cxCFlujoBean.columnasShow[6]}">
+           <h:outputText value="#{pivote.sum6}" >
+               <f:convertNumber type="currency" currencySymbol="$" />
+           </h:outputText>
+       </p:column>
+
         <p:column headerText="8ava semana">
             <p:commandLink actionListener="#{cxCFlujoDetalleBean.invocarDialogo(pivote.cliente,pivote.codigoCliente,pivote.a7,8)}">
             <h:outputText value="#{pivote.a7}" >
-                <f:convertNumber pattern="¤#,##0.00" />
+                <f:convertNumber type="currency" currencySymbol="$" />
             </h:outputText>
             </p:commandLink>
         </p:column>
 
 
+       <p:column headerText="8avo Grupo" rendered="#{cxCFlujoBean.columnasShow[7]}" >
+           <h:outputText value="#{pivote.sum7}" >
+               <f:convertNumber type="currency" currencySymbol="$" />
+           </h:outputText>
+       </p:column>
+
        <p:column headerText="9na semana">
            <p:commandLink actionListener="#{cxCFlujoDetalleBean.invocarDialogo(pivote.cliente,pivote.codigoCliente,pivote.a8,9)}">
                <h:outputText value="#{pivote.a8}" >
-                   <f:convertNumber pattern="¤#,##0.00" />
+                   <f:convertNumber type="currency" currencySymbol="$" />
                </h:outputText>
            </p:commandLink>
+       </p:column>
+
+       <p:column headerText="9no Grupo" rendered="#{cxCFlujoBean.columnasShow[8]}" >
+           <h:outputText value="#{pivote.sum8}" >
+               <f:convertNumber type="currency" currencySymbol="$" />
+           </h:outputText>
        </p:column>
 
        <p:column headerText="10ma semana">
            <p:commandLink actionListener="#{cxCFlujoDetalleBean.invocarDialogo(pivote.cliente,pivote.codigoCliente,pivote.a9,10)}">
                <h:outputText value="#{pivote.a9}" >
-                   <f:convertNumber pattern="¤#,##0.00" />
+                   <f:convertNumber type="currency" currencySymbol="$" />
                </h:outputText>
            </p:commandLink>
        </p:column>
 
+       <p:column headerText="10 Grupo" rendered="#{cxCFlujoBean.columnasShow[9]}" >
+           <h:outputText value="#{pivote.sum9}" >
+               <f:convertNumber type="currency" currencySymbol="$" />
+           </h:outputText>
+       </p:column>
 
     </p:dataTable>
     </p:outputPanel>
@@ -171,5 +250,6 @@
 
 </h:form>
 		 <ui:include src="/WEB-INF/dialog/finaciero/cxcFlujoDialog.xhtml"/>
+        <ui:include src="/WEB-INF/dialog/finaciero/cxcFlujoFechasCortes.xhtml"/>
 </ui:define>
 </ui:composition>

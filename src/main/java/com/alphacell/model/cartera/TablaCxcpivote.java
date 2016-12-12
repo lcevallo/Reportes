@@ -10,6 +10,8 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author admin
@@ -81,6 +83,39 @@ public class TablaCxcpivote implements Serializable {
     private BigDecimal a8;
     @Column(name = "10")
     private BigDecimal a9;
+
+    @Transient
+    private BigDecimal sum0;
+
+    @Transient
+    private BigDecimal sum1;
+
+    @Transient
+    private BigDecimal sum2;
+
+    @Transient
+    private BigDecimal sum3;
+
+    @Transient
+    private BigDecimal sum4;
+
+    @Transient
+    private BigDecimal sum5;
+
+    @Transient
+    private BigDecimal sum6;
+
+    @Transient
+    private BigDecimal sum7;
+
+    @Transient
+    private BigDecimal sum8;
+
+    @Transient
+    private BigDecimal sum9;
+
+
+
 
     public TablaCxcpivote() {
     }
@@ -222,6 +257,203 @@ public class TablaCxcpivote implements Serializable {
 
     public void setSaldo(BigDecimal saldo) {
         this.saldo = saldo;
+    }
+
+    public BigDecimal getSum0() {
+        return this.a;
+    }
+
+    public void setSum0(BigDecimal sum0) {
+        this.sum0 = this.a;
+    }
+
+    public BigDecimal getSum1() {
+        List<BigDecimal> listaSumar=new ArrayList<>();
+        listaSumar.add(this.a);
+        listaSumar.add(this.a1);
+
+
+        this.sum1=listaSumar.stream()
+                .filter(c -> c != null)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+
+        return this.sum1;
+    }
+
+    public void setSum1(BigDecimal sum1) {
+        this.sum1 = sum1;
+    }
+
+    public BigDecimal getSum2() {
+        List<BigDecimal> listaSumar=new ArrayList<>();
+        listaSumar.add(this.a);
+        listaSumar.add(this.a1);
+        listaSumar.add(this.a2);
+
+
+        this.sum2=listaSumar.stream()
+                .filter(c -> c != null)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+
+        return this.sum2;
+    }
+
+    public void setSum2(BigDecimal sum2) {
+        this.sum2 = sum2;
+    }
+
+    public BigDecimal getSum3() {
+        List<BigDecimal> listaSumar=new ArrayList<>();
+        listaSumar.add(this.a);
+        listaSumar.add(this.a1);
+        listaSumar.add(this.a2);
+        listaSumar.add(this.a3);
+
+        this.sum3=listaSumar.stream()
+                .filter(c -> c != null)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+
+        return this.sum3;
+    }
+
+    public void setSum3(BigDecimal sum3) {
+        this.sum3 = sum3;
+    }
+
+    public BigDecimal getSum4() {
+
+        List<BigDecimal> listaSumar=new ArrayList<>();
+        listaSumar.add(this.a);
+        listaSumar.add(this.a1);
+        listaSumar.add(this.a2);
+        listaSumar.add(this.a3);
+        listaSumar.add(this.a4);
+
+
+        this.sum4=listaSumar.stream()
+                .filter(c -> c != null)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+
+        return this.sum4;
+    }
+
+    public void setSum4(BigDecimal sum4) {
+        this.sum4 = sum4;
+    }
+
+    public BigDecimal getSum5() {
+        List<BigDecimal> listaSumar=new ArrayList<>();
+        listaSumar.add(this.a);
+        listaSumar.add(this.a1);
+        listaSumar.add(this.a2);
+        listaSumar.add(this.a3);
+        listaSumar.add(this.a4);
+        listaSumar.add(this.a5);
+
+
+        this.sum5=listaSumar.stream()
+                .filter(c -> c != null)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+
+        return this.sum5;
+    }
+
+    public void setSum5(BigDecimal sum5) {
+        this.sum5 = sum5;
+    }
+
+    public BigDecimal getSum6() {
+
+        List<BigDecimal> listaSumar=new ArrayList<>();
+        listaSumar.add(this.a);
+        listaSumar.add(this.a1);
+        listaSumar.add(this.a2);
+        listaSumar.add(this.a3);
+        listaSumar.add(this.a4);
+        listaSumar.add(this.a5);
+        listaSumar.add(this.a6);
+
+
+        this.sum6=listaSumar.stream()
+                .filter(c -> c != null)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+
+        return this.sum6;
+    }
+
+    public void setSum6(BigDecimal sum6) {
+        this.sum6 = sum6;
+    }
+
+    public BigDecimal getSum7() {
+        List<BigDecimal> listaSumar=new ArrayList<>();
+        listaSumar.add(this.a);
+        listaSumar.add(this.a1);
+        listaSumar.add(this.a2);
+        listaSumar.add(this.a3);
+        listaSumar.add(this.a4);
+        listaSumar.add(this.a5);
+        listaSumar.add(this.a6);
+        listaSumar.add(this.a7);
+
+        this.sum7=listaSumar.stream()
+                .filter(c -> c != null)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+
+        return this.sum7;
+    }
+
+    public void setSum7(BigDecimal sum7) {
+        this.sum7 = sum7;
+    }
+
+    public BigDecimal getSum8() {
+
+        List<BigDecimal> listaSumar=new ArrayList<>();
+        listaSumar.add(this.a);
+        listaSumar.add(this.a1);
+        listaSumar.add(this.a2);
+        listaSumar.add(this.a3);
+        listaSumar.add(this.a4);
+        listaSumar.add(this.a5);
+        listaSumar.add(this.a6);
+        listaSumar.add(this.a7);
+        listaSumar.add(this.a8);
+
+        this.sum8=listaSumar.stream()
+                .filter(c -> c != null)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+
+        return this.sum8;
+    }
+
+    public void setSum8(BigDecimal sum8) {
+        this.sum8 = sum8;
+    }
+
+    public BigDecimal getSum9() {
+
+        List<BigDecimal> listaSumar=new ArrayList<>();
+        listaSumar.add(this.a);
+        listaSumar.add(this.a1);
+        listaSumar.add(this.a2);
+        listaSumar.add(this.a3);
+        listaSumar.add(this.a4);
+        listaSumar.add(this.a5);
+        listaSumar.add(this.a6);
+        listaSumar.add(this.a7);
+        listaSumar.add(this.a8);
+        listaSumar.add(this.a9);
+
+        this.sum9=listaSumar.stream()
+                .filter(c -> c != null)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+
+        return this.sum9;
+    }
+
+    public void setSum9(BigDecimal sum9) {
+        this.sum9 = sum9;
     }
 
     @Override
