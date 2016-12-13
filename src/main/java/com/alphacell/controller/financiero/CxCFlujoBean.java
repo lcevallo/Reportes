@@ -5,14 +5,16 @@ import com.alphacell.model.cartera.TablaCxcpivote;
 import com.alphacell.model.financiero.FechasCorte;
 import com.alphacell.repository.CxCFlujoRepository;
 import com.alphacell.util.ManejoFechas;
+import com.alphacell.util.jsf.FormatoExcelPoi;
 import com.alphacell.util.reporte.Reporte;
 import com.lowagie.text.*;
 import net.sf.jasperreports.engine.JRException;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.hssf.usermodel.*;
 import org.apache.poi.hssf.util.HSSFColor;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Font;
-import org.apache.poi.ss.usermodel.IndexedColors;
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.SelectEvent;
 
@@ -26,8 +28,11 @@ import javax.servlet.ServletContext;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.List;
 import java.util.stream.IntStream;
@@ -178,6 +183,68 @@ public class CxCFlujoBean implements Serializable {
     {
         this.semanatempList=cxCFlujoRepository.buscar8Semanas(this.semanaInicialList.get(0));
         this.tablaCxcpivoteList=cxCFlujoRepository.buscarPivoteFlujo(this.semanaInicialList.get(0));
+
+        this.tablaCxcpivoteList.stream().filter(z->z!=null)
+                .forEach(x->{
+           for(int i=0;i<this.diasCorteListSelected.size();i++)
+           {
+               BigDecimal valor = null;
+               Integer numCol = this.diasCorteListSelected.get(i).getNoColumna();
+
+               if(i==0) {
+
+                   valor = this.salidaSumatoriaEntre(x.getListaValores(), 0, numCol);
+
+               }
+               else {
+
+                   valor = this.salidaSumatoriaEntre(x.getListaValores(), this.diasCorteListSelected.get(i-1).getNoColumna(), numCol);
+               }
+
+
+               switch (numCol)
+               {
+                   case 0:
+                       x.setSum0(valor);
+                       break;
+                   case 1:
+                       x.setSum1(valor);
+                       break;
+                   case 2:
+                       x.setSum2(valor);
+                       break;
+                   case 3:
+                       x.setSum3(valor);
+                       break;
+                   case 4:
+                       x.setSum4(valor);
+                       break;
+                   case 5:
+                       x.setSum5(valor);
+                       break;
+                   case 6:
+                       x.setSum6(valor);
+                   case 7:
+                       x.setSum7(valor);
+                       break;
+                   case 8:
+                       x.setSum8(valor);
+                       break;
+                   case 9:
+                       x.setSum9(valor);
+                       break;
+
+               }
+
+           }
+
+        });
+    }
+
+    public BigDecimal salidaSumatoriaEntre(List<BigDecimal> lista,Integer limiteInf,Integer limiteSup )
+    {
+      return lista.stream().skip(limiteInf).limit( (limiteSup-limiteInf)+1).filter(c -> c != null).reduce(BigDecimal.ZERO,BigDecimal::add);
+
     }
 
     public void exportarExcelFlujoCxCFinanciero(){
@@ -221,6 +288,7 @@ public class CxCFlujoBean implements Serializable {
 
         fonteCabecalho.setColor(IndexedColors.WHITE.getIndex());
         fonteCabecalho.setBold(true);
+
         fonteCabecalho.setFontHeightInPoints((short) 16);
 
         estiloCelula.setFont(fonteCabecalho);
@@ -234,6 +302,9 @@ public class CxCFlujoBean implements Serializable {
 
 
     public void postProcessXLS2(Object document) {
+
+        HashSet omitirColumnas = new HashSet();
+
         HSSFWorkbook wb = (HSSFWorkbook) document;
         HSSFSheet sheet = wb.getSheetAt(0);
         HSSFRow header = sheet.getRow(0);
@@ -244,7 +315,187 @@ public class CxCFlujoBean implements Serializable {
 
         for(int i=0; i < header.getPhysicalNumberOfCells();i++) {
             HSSFCell cell = header.getCell(i);
-            cell.setCellStyle(cellStyle);
+
+            switch (cell.toString())
+            {
+
+                case "Codigo Cliente":
+                    omitirColumnas.add(new Integer(i));
+
+                    break;
+
+                case "Cliente":
+                    omitirColumnas.add(new Integer(i));
+                    break;
+
+
+                case "Credito":
+                    if(cell.getRowIndex()>0)
+                        cell.setCellType(Cell.CELL_TYPE_NUMERIC);
+                    break;
+
+                case "Utilizado":
+                    if(cell.getRowIndex()>0)
+                        cell.setCellType(Cell.CELL_TYPE_NUMERIC);
+                    break;
+
+                case "Saldo":
+                    if(cell.getRowIndex()>0)
+                        cell.setCellType(Cell.CELL_TYPE_NUMERIC);
+                    break;
+
+                case "1era semana":
+                    if(cell.getRowIndex()==0)
+                        cell.setCellValue("Semana: "+this.diasCorteList.get(0).getNumeroSemana()+" - "+this.getFechaFormateada(this.diasCorteList.get(0).getFechaCorte()));
+                    else
+                        cell.setCellType(Cell.CELL_TYPE_NUMERIC);
+
+                    break;
+
+                case "1er Grupo":
+                    if(cell.getRowIndex()==0)
+                        cell.setCellValue("Σ Semana: "+this.diasCorteList.get(0).getNumeroSemana());
+                    if(cell.getRowIndex()>0)
+                        cell.setCellType(Cell.CELL_TYPE_NUMERIC);
+                    break;
+
+                case "2da semana":
+                    if(cell.getRowIndex()==0)
+                        cell.setCellValue("Semana: "+this.diasCorteList.get(1).getNumeroSemana()+" - "+this.getFechaFormateada(this.diasCorteList.get(1).getFechaCorte()));
+                    else
+                        cell.setCellType(Cell.CELL_TYPE_NUMERIC);
+                    break;
+
+
+                case "2do Grupo":
+                    if(cell.getRowIndex()==0)
+                        cell.setCellValue("Σ Semana: "+this.diasCorteList.get(1).getNumeroSemana());
+                    if(cell.getRowIndex()>0)
+                        cell.setCellType(Cell.CELL_TYPE_NUMERIC);
+                    break;
+
+                case "3era semana":
+                    if(cell.getRowIndex()==0)
+                        cell.setCellValue("Semana: "+this.diasCorteList.get(2).getNumeroSemana()+" - "+this.getFechaFormateada(this.diasCorteList.get(2).getFechaCorte()));
+                    else
+                        cell.setCellType(Cell.CELL_TYPE_NUMERIC);
+                    break;
+
+
+                case "3er Grupo":
+                    if(cell.getRowIndex()==0)
+                        cell.setCellValue("Σ Semana: "+this.diasCorteList.get(2).getNumeroSemana());
+                    if(cell.getRowIndex()>0)
+                        cell.setCellType(Cell.CELL_TYPE_NUMERIC);
+                    break;
+
+                case "4ta semana":
+                    if(cell.getRowIndex()==0)
+                        cell.setCellValue("Semana: "+this.diasCorteList.get(3).getNumeroSemana()+" - "+this.getFechaFormateada(this.diasCorteList.get(3).getFechaCorte()));
+                    else
+                        cell.setCellType(Cell.CELL_TYPE_NUMERIC);
+                    break;
+
+
+                case "4to Grupo":
+                    if(cell.getRowIndex()==0)
+                        cell.setCellValue("Σ Semana: "+this.diasCorteList.get(3).getNumeroSemana());
+                    if(cell.getRowIndex()>0)
+                        cell.setCellType(Cell.CELL_TYPE_NUMERIC);
+                     break;
+
+
+                case "5ta semana":
+                    if(cell.getRowIndex()==0)
+                        cell.setCellValue("Semana: "+this.diasCorteList.get(4).getNumeroSemana()+" - "+this.getFechaFormateada(this.diasCorteList.get(4).getFechaCorte()));
+                    else
+                        cell.setCellType(Cell.CELL_TYPE_NUMERIC);
+                    break;
+
+
+                case "5to Grupo":
+                    if(cell.getRowIndex()==0)
+                        cell.setCellValue("Σ Semana: "+this.diasCorteList.get(4).getNumeroSemana());
+                    if(cell.getRowIndex()>0)
+                        cell.setCellType(Cell.CELL_TYPE_NUMERIC);
+                    break;
+
+                case "6ta semana":
+
+                    if(cell.getRowIndex()==0)
+                        cell.setCellValue("Semana: "+this.diasCorteList.get(5).getNumeroSemana()+" - "+this.getFechaFormateada(this.diasCorteList.get(5).getFechaCorte()));
+                    else
+                        cell.setCellType(Cell.CELL_TYPE_NUMERIC);
+                    break;
+
+                case "6to Grupo":
+                    if(cell.getRowIndex()==0)
+                        cell.setCellValue("Σ Semana: "+this.diasCorteList.get(5).getNumeroSemana());
+                    if(cell.getRowIndex()>0)
+                        cell.setCellType(Cell.CELL_TYPE_NUMERIC);
+                    break;
+
+                case "7ma semana":
+
+                    if(cell.getRowIndex()==0)
+                        cell.setCellValue("Semana: "+this.diasCorteList.get(6).getNumeroSemana()+" - "+this.getFechaFormateada(this.diasCorteList.get(6).getFechaCorte()));
+                    else
+                        cell.setCellType(Cell.CELL_TYPE_NUMERIC);
+                    break;
+
+                case "7mo Grupo":
+                    if(cell.getRowIndex()==0)
+                        cell.setCellValue("Σ Semana: "+this.diasCorteList.get(6).getNumeroSemana());
+                    if(cell.getRowIndex()>0)
+                        cell.setCellType(Cell.CELL_TYPE_NUMERIC);
+                    break;
+
+                case "8ava semana":
+                    if(cell.getRowIndex()==0)
+                        cell.setCellValue("Semana: "+this.diasCorteList.get(7).getNumeroSemana()+" - "+this.getFechaFormateada(this.diasCorteList.get(7).getFechaCorte()));
+                    else
+                        cell.setCellType(Cell.CELL_TYPE_NUMERIC);
+                    break;
+
+                case "8avo Grupo":
+                    if(cell.getRowIndex()==0)
+                        cell.setCellValue("Σ Semana: "+this.diasCorteList.get(7).getNumeroSemana());
+                    if(cell.getRowIndex()>0)
+                        cell.setCellType(Cell.CELL_TYPE_NUMERIC);
+                    break;
+
+                case "9na semana":
+                    if(cell.getRowIndex()==0)
+                        cell.setCellValue("Semana: "+this.diasCorteList.get(8).getNumeroSemana()+" - "+this.getFechaFormateada(this.diasCorteList.get(8).getFechaCorte()));
+                    else
+                        cell.setCellType(Cell.CELL_TYPE_NUMERIC);
+                    break;
+                case "9no Grupo":
+                    if(cell.getRowIndex()==0)
+                        cell.setCellValue("Σ Semana: "+this.diasCorteList.get(8).getNumeroSemana());
+                    if(cell.getRowIndex()>0)
+                        cell.setCellType(Cell.CELL_TYPE_NUMERIC);
+                    break;
+
+                case "10ma semana":
+                    if(cell.getRowIndex()==0)
+                        cell.setCellValue("Semana: "+this.diasCorteList.get(9).getNumeroSemana()+" - "+this.getFechaFormateada(this.diasCorteList.get(9).getFechaCorte()));
+                    else
+                        cell.setCellType(Cell.CELL_TYPE_NUMERIC);
+                    break;
+
+                case "10mo Grupo":
+                    if(cell.getRowIndex()==0)
+                        cell.setCellValue("Σ Semana: "+this.diasCorteList.get(9).getNumeroSemana());
+                    if(cell.getRowIndex()>0)
+                        cell.setCellType(Cell.CELL_TYPE_NUMERIC);
+                    break;
+
+            }
+
+            FormatoExcelPoi.formatearArchivoExcel(document,omitirColumnas);
+
+
         }
     }
 
@@ -260,6 +511,25 @@ public class CxCFlujoBean implements Serializable {
         pdf.add(image);
     }
 
+
+    public String getFechaFormateada(Date fechaFormatear)
+    {
+
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+
+        LocalDate localDate = fechaFormatear.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
+        int year  = localDate.getYear();
+        int month = localDate.getMonthValue();
+        int day   = localDate.getDayOfMonth();
+        LocalDateTime xmas = LocalDateTime.of(year, month, day, 0, 0);
+        String formattedDateTime = localDate.format(formatter);
+
+        return formattedDateTime;
+
+
+    }
 
     public List<Date> getSemanaInicialList() {
         return semanaInicialList;

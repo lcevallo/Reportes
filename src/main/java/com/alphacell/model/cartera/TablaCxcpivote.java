@@ -85,6 +85,10 @@ public class TablaCxcpivote implements Serializable {
     private BigDecimal a9;
 
     @Transient
+    private List<BigDecimal> listaValores;
+
+
+    @Transient
     private BigDecimal sum0;
 
     @Transient
@@ -118,13 +122,18 @@ public class TablaCxcpivote implements Serializable {
 
 
     public TablaCxcpivote() {
+        this.listaValores= new ArrayList<>();
     }
 
     public TablaCxcpivote(Integer id) {
+
+        this.listaValores= new ArrayList<>();
         this.id = id;
     }
 
     public TablaCxcpivote(Integer id, String codigoCliente, BigDecimal creditmax) {
+
+        this.listaValores= new ArrayList<>();
         this.id = id;
         this.codigoCliente = codigoCliente;
         this.creditmax = creditmax;
@@ -268,6 +277,7 @@ public class TablaCxcpivote implements Serializable {
     }
 
     public BigDecimal getSum1() {
+   /*
         List<BigDecimal> listaSumar=new ArrayList<>();
         listaSumar.add(this.a);
         listaSumar.add(this.a1);
@@ -276,6 +286,7 @@ public class TablaCxcpivote implements Serializable {
         this.sum1=listaSumar.stream()
                 .filter(c -> c != null)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
+                */
 
         return this.sum1;
     }
@@ -285,15 +296,7 @@ public class TablaCxcpivote implements Serializable {
     }
 
     public BigDecimal getSum2() {
-        List<BigDecimal> listaSumar=new ArrayList<>();
-        listaSumar.add(this.a);
-        listaSumar.add(this.a1);
-        listaSumar.add(this.a2);
 
-
-        this.sum2=listaSumar.stream()
-                .filter(c -> c != null)
-                .reduce(BigDecimal.ZERO, BigDecimal::add);
 
         return this.sum2;
     }
@@ -303,15 +306,6 @@ public class TablaCxcpivote implements Serializable {
     }
 
     public BigDecimal getSum3() {
-        List<BigDecimal> listaSumar=new ArrayList<>();
-        listaSumar.add(this.a);
-        listaSumar.add(this.a1);
-        listaSumar.add(this.a2);
-        listaSumar.add(this.a3);
-
-        this.sum3=listaSumar.stream()
-                .filter(c -> c != null)
-                .reduce(BigDecimal.ZERO, BigDecimal::add);
 
         return this.sum3;
     }
@@ -321,19 +315,6 @@ public class TablaCxcpivote implements Serializable {
     }
 
     public BigDecimal getSum4() {
-
-        List<BigDecimal> listaSumar=new ArrayList<>();
-        listaSumar.add(this.a);
-        listaSumar.add(this.a1);
-        listaSumar.add(this.a2);
-        listaSumar.add(this.a3);
-        listaSumar.add(this.a4);
-
-
-        this.sum4=listaSumar.stream()
-                .filter(c -> c != null)
-                .reduce(BigDecimal.ZERO, BigDecimal::add);
-
         return this.sum4;
     }
 
@@ -342,19 +323,6 @@ public class TablaCxcpivote implements Serializable {
     }
 
     public BigDecimal getSum5() {
-        List<BigDecimal> listaSumar=new ArrayList<>();
-        listaSumar.add(this.a);
-        listaSumar.add(this.a1);
-        listaSumar.add(this.a2);
-        listaSumar.add(this.a3);
-        listaSumar.add(this.a4);
-        listaSumar.add(this.a5);
-
-
-        this.sum5=listaSumar.stream()
-                .filter(c -> c != null)
-                .reduce(BigDecimal.ZERO, BigDecimal::add);
-
         return this.sum5;
     }
 
@@ -363,21 +331,6 @@ public class TablaCxcpivote implements Serializable {
     }
 
     public BigDecimal getSum6() {
-
-        List<BigDecimal> listaSumar=new ArrayList<>();
-        listaSumar.add(this.a);
-        listaSumar.add(this.a1);
-        listaSumar.add(this.a2);
-        listaSumar.add(this.a3);
-        listaSumar.add(this.a4);
-        listaSumar.add(this.a5);
-        listaSumar.add(this.a6);
-
-
-        this.sum6=listaSumar.stream()
-                .filter(c -> c != null)
-                .reduce(BigDecimal.ZERO, BigDecimal::add);
-
         return this.sum6;
     }
 
@@ -386,21 +339,7 @@ public class TablaCxcpivote implements Serializable {
     }
 
     public BigDecimal getSum7() {
-        List<BigDecimal> listaSumar=new ArrayList<>();
-        listaSumar.add(this.a);
-        listaSumar.add(this.a1);
-        listaSumar.add(this.a2);
-        listaSumar.add(this.a3);
-        listaSumar.add(this.a4);
-        listaSumar.add(this.a5);
-        listaSumar.add(this.a6);
-        listaSumar.add(this.a7);
-
-        this.sum7=listaSumar.stream()
-                .filter(c -> c != null)
-                .reduce(BigDecimal.ZERO, BigDecimal::add);
-
-        return this.sum7;
+         return this.sum7;
     }
 
     public void setSum7(BigDecimal sum7) {
@@ -408,22 +347,6 @@ public class TablaCxcpivote implements Serializable {
     }
 
     public BigDecimal getSum8() {
-
-        List<BigDecimal> listaSumar=new ArrayList<>();
-        listaSumar.add(this.a);
-        listaSumar.add(this.a1);
-        listaSumar.add(this.a2);
-        listaSumar.add(this.a3);
-        listaSumar.add(this.a4);
-        listaSumar.add(this.a5);
-        listaSumar.add(this.a6);
-        listaSumar.add(this.a7);
-        listaSumar.add(this.a8);
-
-        this.sum8=listaSumar.stream()
-                .filter(c -> c != null)
-                .reduce(BigDecimal.ZERO, BigDecimal::add);
-
         return this.sum8;
     }
 
@@ -432,28 +355,31 @@ public class TablaCxcpivote implements Serializable {
     }
 
     public BigDecimal getSum9() {
-
-        List<BigDecimal> listaSumar=new ArrayList<>();
-        listaSumar.add(this.a);
-        listaSumar.add(this.a1);
-        listaSumar.add(this.a2);
-        listaSumar.add(this.a3);
-        listaSumar.add(this.a4);
-        listaSumar.add(this.a5);
-        listaSumar.add(this.a6);
-        listaSumar.add(this.a7);
-        listaSumar.add(this.a8);
-        listaSumar.add(this.a9);
-
-        this.sum9=listaSumar.stream()
-                .filter(c -> c != null)
-                .reduce(BigDecimal.ZERO, BigDecimal::add);
-
         return this.sum9;
     }
 
     public void setSum9(BigDecimal sum9) {
         this.sum9 = sum9;
+    }
+
+    public List<BigDecimal> getListaValores() {
+
+        this.listaValores.add(a);
+        this.listaValores.add(a1);
+        this.listaValores.add(a2);
+        this.listaValores.add(a3);
+        this.listaValores.add(a4);
+        this.listaValores.add(a5);
+        this.listaValores.add(a6);
+        this.listaValores.add(a7);
+        this.listaValores.add(a8);
+        this.listaValores.add(a9);
+
+        return listaValores;
+    }
+
+    public void setListaValores(List<BigDecimal> listaValores) {
+        this.listaValores = listaValores;
     }
 
     @Override
@@ -480,6 +406,7 @@ public class TablaCxcpivote implements Serializable {
     public String toString() {
         return "Entities.TablaCxcpivote[ id=" + id + " ]";
     }
+
 
 
 }

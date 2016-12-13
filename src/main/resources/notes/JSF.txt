@@ -1,0 +1,19 @@
+Esto saque de FlujoCuentasxCobrar.xhtml
+
+ <p:commandButton actionListener="#{cxCFlujoBean.cargarTablaFlujo}" value="Generar" update="frmCxCFlujo:tablePivoteCxCFlujo"
+          onstart="PF('blockUIWidget').block()" oncomplete="PF('blockUIWidget').unblock()" />
+
+
+ <p:commandButton id="dynaButtonCxCFlujoFinanciero" value="Imprimir" type="button" icon="ui-icon-print" />
+      <p:menu overlay="true" trigger="dynaButtonCxCFlujoFinanciero" my="left top" at="left bottom">
+          <p:submenu label="Reporte en:">
+              <p:menuitem value="EXCEL" icon="ui-icon-xls" actionListener="#{cxCFlujoBean.exportarExcelFlujoCxCFinanciero}"
+                          ajax="false" />
+          </p:submenu>
+      </p:menu>
+
+
+ <h:commandLink>
+                    <p:graphicImage library="images"  name="pdf-icon.png" />
+                    <p:dataExporter type="pdf" target="tablePivoteCxCFlujo" fileName="users" preProcessor="#{cxCFlujoBean.preProcessPDF}"/>
+                </h:commandLink>

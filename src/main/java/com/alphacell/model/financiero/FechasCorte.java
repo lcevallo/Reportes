@@ -7,11 +7,13 @@ public class FechasCorte {
 	private Date fechaCorte;
 	private Boolean esCorte;
 	private Integer numeroSemana;
+	private Integer noColumna;
 
 
-    public FechasCorte(Date fechaCorte, Integer numeroSemana) {
+    public FechasCorte(Date fechaCorte, Integer numeroSemana,Integer noColumna) {
         this.fechaCorte = fechaCorte;
         this.numeroSemana = numeroSemana;
+		this.noColumna=noColumna;
     }
 
     public FechasCorte(Date fechaCorte, Boolean esCorte, Integer numeroSemana) {
@@ -43,5 +45,13 @@ public class FechasCorte {
 
 	public void setNumeroSemana(Integer numeroSemana) {
 		this.numeroSemana = numeroSemana;
+	}
+
+	public Integer getNoColumna() {
+		return noColumna;
+	}
+
+	public void setNoColumna(Integer noColumna) {
+		this.noColumna = noColumna;
 	}
 }

@@ -36,24 +36,22 @@
       </h:panelGroup>
 
 
-
       <p:commandButton actionListener="#{cxCFlujoBean.cargarTablaFlujo}" value="Generar" update="frmCxCFlujo:tablePivoteCxCFlujo"
           onstart="PF('blockUIWidget').block()" oncomplete="PF('blockUIWidget').unblock()" />
-
-
-
-      <p:commandButton id="dynaButtonCxCFlujoFinanciero" value="Imprimir" type="button" icon="ui-icon-print" />
-      <p:menu overlay="true" trigger="dynaButtonCxCFlujoFinanciero" my="left top" at="left bottom">
-          <p:submenu label="Reporte en:">
-              <p:menuitem value="EXCEL" icon="ui-icon-xls" actionListener="#{cxCFlujoBean.exportarExcelFlujoCxCFinanciero}"
-                          ajax="false" />
-          </p:submenu>
-      </p:menu>
-
 
   </p:panelGrid>
 </p:outputPanel>
     <p:outputPanel>
+
+        <h:panelGrid columns="3">
+            <p:panel header="Exportar toda la informacion">
+                <h:commandLink>
+                    <p:graphicImage library="images" name="excel-icon.png" />
+                    <p:dataExporter type="xls" target="tablePivoteCxCFlujo" fileName="FlujoCuentasxCobrar" postProcessor="#{cxCFlujoBean.postProcessXLS2}" />
+                </h:commandLink>
+            </p:panel>
+
+        </h:panelGrid>
 
    <p:dataTable id="tablePivoteCxCFlujo" value="#{cxCFlujoBean.tablaCxcpivoteList}" var="pivote"  rowKey="#{pivote.id}"
                 resizableColumns="true"
@@ -236,29 +234,13 @@
            </p:commandLink>
        </p:column>
 
-       <p:column headerText="10 Grupo" rendered="#{cxCFlujoBean.columnasShow[9]}" >
+       <p:column headerText="10mo Grupo" rendered="#{cxCFlujoBean.columnasShow[9]}" >
            <h:outputText value="#{pivote.sum9}" >
                <f:convertNumber type="currency" currencySymbol="$" />
            </h:outputText>
        </p:column>
 
     </p:dataTable>
-
-
-        <h:panelGrid columns="3">
-        <p:panel header="Export All Data">
-        <h:commandLink>
-            <p:graphicImage value="/resources/images/export/excel.png"/>
-            <p:dataExporter type="xls" target="usersTbl" fileName="users" postProcessor="#{cxCFlujoBean.postProcessXLS2}" />
-        </h:commandLink>
-        <h:commandLink>
-            <p:graphicImage value="/resources/images/export/pdf.png"/>
-            <p:dataExporter type="pdf" target="usersTbl" fileName="users" preProcessor="#{cxCFlujoBean.preProcessPDF}"/>
-        </h:commandLink>
-        </p:panel>
-
-        </h:panelGrid>
-
 
     </p:outputPanel>
 
