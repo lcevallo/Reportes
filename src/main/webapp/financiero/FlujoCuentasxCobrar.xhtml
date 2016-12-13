@@ -243,6 +243,23 @@
        </p:column>
 
     </p:dataTable>
+
+
+        <h:panelGrid columns="3">
+        <p:panel header="Export All Data">
+        <h:commandLink>
+            <p:graphicImage value="/resources/images/export/excel.png"/>
+            <p:dataExporter type="xls" target="usersTbl" fileName="users" postProcessor="#{cxCFlujoBean.postProcessXLS2}" />
+        </h:commandLink>
+        <h:commandLink>
+            <p:graphicImage value="/resources/images/export/pdf.png"/>
+            <p:dataExporter type="pdf" target="usersTbl" fileName="users" preProcessor="#{cxCFlujoBean.preProcessPDF}"/>
+        </h:commandLink>
+        </p:panel>
+
+        </h:panelGrid>
+
+
     </p:outputPanel>
 
 <!-- Aqui estaba el blockUIWidget ahora esta en el template ojala funcione -->

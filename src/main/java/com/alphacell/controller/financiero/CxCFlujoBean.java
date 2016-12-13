@@ -6,7 +6,13 @@ import com.alphacell.model.financiero.FechasCorte;
 import com.alphacell.repository.CxCFlujoRepository;
 import com.alphacell.util.ManejoFechas;
 import com.alphacell.util.reporte.Reporte;
+import com.lowagie.text.*;
 import net.sf.jasperreports.engine.JRException;
+import org.apache.commons.io.IOUtils;
+import org.apache.poi.hssf.usermodel.*;
+import org.apache.poi.hssf.util.HSSFColor;
+import org.apache.poi.ss.usermodel.Font;
+import org.apache.poi.ss.usermodel.IndexedColors;
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.SelectEvent;
 
@@ -16,13 +22,16 @@ import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.ServletContext;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.*;
+import java.util.List;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
+
 
 /**
  * Created by luis.cevallos on 30/3/2016.
@@ -200,6 +209,55 @@ public class CxCFlujoBean implements Serializable {
         }
 
 
+    }
+
+
+    public void posProcessarXls(Object documento) {
+        HSSFWorkbook planilha = (HSSFWorkbook) documento;
+        HSSFSheet folha = planilha.getSheetAt(0);
+        HSSFRow cabecalho = folha.getRow(0);
+        HSSFCellStyle estiloCelula = planilha.createCellStyle();
+        Font fonteCabecalho = planilha.createFont();
+
+        fonteCabecalho.setColor(IndexedColors.WHITE.getIndex());
+        fonteCabecalho.setBold(true);
+        fonteCabecalho.setFontHeightInPoints((short) 16);
+
+        estiloCelula.setFont(fonteCabecalho);
+        estiloCelula.setFillForegroundColor(IndexedColors.BLACK.getIndex());
+        estiloCelula.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
+
+        for (int i = 0; i < cabecalho.getPhysicalNumberOfCells(); i++) {
+            cabecalho.getCell(i).setCellStyle(estiloCelula);
+        }
+    }
+
+
+    public void postProcessXLS2(Object document) {
+        HSSFWorkbook wb = (HSSFWorkbook) document;
+        HSSFSheet sheet = wb.getSheetAt(0);
+        HSSFRow header = sheet.getRow(0);
+
+        HSSFCellStyle cellStyle = wb.createCellStyle();
+        cellStyle.setFillForegroundColor(HSSFColor.GREEN.index);
+        cellStyle.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
+
+        for(int i=0; i < header.getPhysicalNumberOfCells();i++) {
+            HSSFCell cell = header.getCell(i);
+            cell.setCellStyle(cellStyle);
+        }
+    }
+
+    public void preProcessPDF(Object document) throws IOException, BadElementException, DocumentException {
+        Document pdf = (Document) document;
+        pdf.open();
+        pdf.setPageSize(PageSize.A4);
+
+        InputStream stream = ((ServletContext)FacesContext.getCurrentInstance().getExternalContext().getContext()).getResourceAsStream("/resources/images/primefaces.jpg");
+        byte[] logoBytes =  IOUtils.toByteArray(stream);
+        Image image = Image.getInstance(logoBytes);
+        image.scalePercent(50);
+        pdf.add(image);
     }
 
 
