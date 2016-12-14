@@ -13,13 +13,48 @@ import java.math.BigDecimal;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.ParseException;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by luis.cevallos on 27/4/2016.
  */
 public class FormatoExcelPoi {
+
+
+    public static BigDecimal obtenerValor(String strVal)
+    {
+
+        strVal = strVal.replaceAll("\\s+","");
+        strVal = strVal.replaceAll("(?<=\\d),(?=\\d)|\\$", "");
+
+        Locale locale = Locale.getDefault();
+        String lang = locale.getDisplayLanguage();
+        String country = locale.getDisplayCountry();
+
+
+        DecimalFormatSymbols symbols = new DecimalFormatSymbols();
+        symbols.setGroupingSeparator(',');
+        symbols.setDecimalSeparator('.');
+        String pattern = "#,##0.0#";
+        DecimalFormat decimalFormat = new DecimalFormat(pattern, symbols);
+        decimalFormat.setParseBigDecimal(true);
+
+// parse the string
+        BigDecimal bigDecimal = null;
+        try {
+            bigDecimal = (BigDecimal) decimalFormat.parse(strVal);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return bigDecimal;
+
+    }
+
 
     public static void formatearArchivoExcel(Object document, HashSet<Integer> columnasNumero)
     {
@@ -47,6 +82,7 @@ public class FormatoExcelPoi {
                         continue;
 
                 String strVal = cell.getStringCellValue();
+                String strVal2 = cell.getStringCellValue();
 
                 if (strVal.isEmpty()|| strVal==null)
                     continue;
@@ -57,24 +93,17 @@ public class FormatoExcelPoi {
 
                 try
                 {
-                         /*
-                            if(InetAddress.getLocalHost().getHostName().equals("WSCEVALLOS"))
-                            {
-                                //TODO: ESTO FUNCIONA SOLO EN MI MAQUINA
-                                strVal = strVal.replace(".", "");
-                                strVal = strVal.replace(",", ".");
-                            }
-                            else{
-                                //TODO: PARA EL SERVIDOR YA QUE EL SERVIDOR 1,089,544.6 coloca al reves las cosas
-                                strVal = strVal.replace(",", "");
-                            }
-                            */
+                    strVal = strVal.replaceAll("\\s+","");
                     strVal = strVal.replace(".", "");
                     strVal = strVal.replace(",", ".");
+                    strVal = strVal.replaceAll("(?<=\\d),(?=\\d)|\\$", "");
+
+
 
                             if (strVal.indexOf('.') == -1) {
                                 //integer
                                 //numStyle.setDataFormat((short)1);
+
                                 int intVal = Integer.valueOf(strVal);
 
                                 cell.setCellStyle(intStyle);
@@ -92,10 +121,11 @@ public class FormatoExcelPoi {
                                     cell.setCellStyle(decStyle);
                                 }
 
-                                double dblVal = Double.parseDouble(strVal);
-                                //BigDecimal dblVal = BigDecimal.valueOf(strVal);
-                                //cell.setCellValue( new BigDecimal(strVal).doubleValue());
-                                cell.setCellValue(dblVal);
+                                //double dblVal = Double.parseDouble(strVal);
+                                //cell.setCellValue(dblVal);
+
+
+                                cell.setCellValue(obtenerValor(strVal2).doubleValue());
                             }
 
                 }catch (Exception e)

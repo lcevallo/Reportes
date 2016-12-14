@@ -13,7 +13,17 @@ Esto saque de FlujoCuentasxCobrar.xhtml
       </p:menu>
 
 
+
  <h:commandLink>
                     <p:graphicImage library="images"  name="pdf-icon.png" />
                     <p:dataExporter type="pdf" target="tablePivoteCxCFlujo" fileName="users" preProcessor="#{cxCFlujoBean.preProcessPDF}"/>
                 </h:commandLink>
+
+  int pos= strVal.indexOf(".", strVal.indexOf(".") + 1);
+                      if (pos!=-1)
+                      {
+                          StringBuilder myNewVal = new StringBuilder(strVal);
+                          myNewVal.setCharAt(pos,',');
+                          //myNewVal.deleteCharAt(pos);
+                          strVal=myNewVal.toString();
+                      }
