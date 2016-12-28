@@ -15,8 +15,10 @@ import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Font;
+import org.apache.poi.ss.usermodel.Row;
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.SelectEvent;
+import org.primefaces.event.UnselectEvent;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -79,6 +81,7 @@ public class CxCFlujoBean implements Serializable {
     {
 
         this.columnasShow=new ArrayList<>();
+        this.diasCorteListSelected= new ArrayList<>();
         IntStream.rangeClosed(1,10).forEach(n->this.columnasShow.add(false));
 
     }
@@ -170,7 +173,7 @@ public class CxCFlujoBean implements Serializable {
     }
 
 
-    public void changeValueShowColumnUnSelected(SelectEvent event) {
+    public void changeValueShowColumnUnSelected(UnselectEvent event) {
 
         FechasCorte fechasCorteSelected;
         fechasCorteSelected = (FechasCorte) event.getObject();
@@ -328,164 +331,212 @@ public class CxCFlujoBean implements Serializable {
         HSSFDataFormat hssfDataFormat = wb.createDataFormat();
         cellStyle.setDataFormat(hssfDataFormat.getFormat("#.##0,000"));
 
+        if(this.diasCorteList==null || this.diasCorteList.size()==0) {
+            this.diasCorteList=ManejoFechas.FechasCortes(this.semanaInicialList.stream().findFirst().get(),this.NumeroSemana,10);
+        }
+
+
+        //int rows=sheet.getLastRowNum();
+        //sheet.shiftRows(0,sheet.getLastRowNum(), 1);
 
         for(int i=0; i < header.getPhysicalNumberOfCells();i++) {
             HSSFCell cell = header.getCell(i);
 
-            switch (cell.toString())
-            {
 
-               case "Credito":
-                    if(cell.getRowIndex()>0)
-                    {
+                switch (cell.toString())
+                {
 
-                     //  cell.setCellType(Cell.CELL_TYPE_NUMERIC);
+                    case "Credito":
+                        if(cell.getRowIndex()>0)
+                        {
 
-                    }
-                    break;
+                            //  cell.setCellType(Cell.CELL_TYPE_NUMERIC);
 
-                case "Utilizado":
-                    //if(cell.getRowIndex()>0)
-                        //cell.setCellType(Cell.CELL_TYPE_NUMERIC);
+                        }
                         break;
 
-                case "Saldo":
+                    case "Utilizado":
                         //if(cell.getRowIndex()>0)
                         //cell.setCellType(Cell.CELL_TYPE_NUMERIC);
                         break;
 
-                case "1era semana":
-                    if(cell.getRowIndex()==0)
-                        cell.setCellValue("Semana: "+this.diasCorteList.get(0).getNumeroSemana()+" - "+this.getFechaFormateada(this.diasCorteList.get(0).getFechaCorte()));
-
-                        break;
-
-                case "1er Grupo":
-                    if(cell.getRowIndex()==0)
-                        cell.setCellValue("Σ Semana: "+this.diasCorteList.get(0).getNumeroSemana());
-
-                        break;
-
-                case "2da semana":
-                    if(cell.getRowIndex()==0)
-                        cell.setCellValue("Semana: "+this.diasCorteList.get(1).getNumeroSemana()+" - "+this.getFechaFormateada(this.diasCorteList.get(1).getFechaCorte()));
-
-                        break;
-
-
-                case "2do Grupo":
-                    if(cell.getRowIndex()==0)
-                        cell.setCellValue("Σ Semana: "+this.diasCorteList.get(1).getNumeroSemana());
-
-                        break;
-
-                case "3era semana":
-                    if(cell.getRowIndex()==0)
-                        cell.setCellValue("Semana: "+this.diasCorteList.get(2).getNumeroSemana()+" - "+this.getFechaFormateada(this.diasCorteList.get(2).getFechaCorte()));
-
-                     break;
-
-
-                case "3er Grupo":
-                    if(cell.getRowIndex()==0)
-                        cell.setCellValue("Σ Semana: "+this.diasCorteList.get(2).getNumeroSemana());
-
-                        break;
-
-                case "4ta semana":
-                    if(cell.getRowIndex()==0)
-                        cell.setCellValue("Semana: "+this.diasCorteList.get(3).getNumeroSemana()+" - "+this.getFechaFormateada(this.diasCorteList.get(3).getFechaCorte()));
-
-                        break;
-
-
-                case "4to Grupo":
-                    if(cell.getRowIndex()==0)
-                        cell.setCellValue("Σ Semana: "+this.diasCorteList.get(3).getNumeroSemana());
-
-
-                        break;
-
-
-                case "5ta semana":
-                    if(cell.getRowIndex()==0)
-                        cell.setCellValue("Semana: "+this.diasCorteList.get(4).getNumeroSemana()+" - "+this.getFechaFormateada(this.diasCorteList.get(4).getFechaCorte()));
-
-                        break;
-
-
-                case "5to Grupo":
-                    if(cell.getRowIndex()==0)
-                        cell.setCellValue("Σ Semana: "+this.diasCorteList.get(4).getNumeroSemana());
-
-                        break;
-
-                case "6ta semana":
-
-                    if(cell.getRowIndex()==0)
-                        cell.setCellValue("Semana: "+this.diasCorteList.get(5).getNumeroSemana()+" - "+this.getFechaFormateada(this.diasCorteList.get(5).getFechaCorte()));
-
-                        break;
-
-                case "6to Grupo":
-                    if(cell.getRowIndex()==0)
-                        cell.setCellValue("Σ Semana: "+this.diasCorteList.get(5).getNumeroSemana());
-
-                        break;
-
-                case "7ma semana":
-
-                    if(cell.getRowIndex()==0)
-                        cell.setCellValue("Semana: "+this.diasCorteList.get(6).getNumeroSemana()+" - "+this.getFechaFormateada(this.diasCorteList.get(6).getFechaCorte()));
-
-                        break;
-
-                case "7mo Grupo":
-                    if(cell.getRowIndex()==0)
-                        cell.setCellValue("Σ Semana: "+this.diasCorteList.get(6).getNumeroSemana());
-
-                        break;
-
-                case "8ava semana":
-                    if(cell.getRowIndex()==0)
-                        cell.setCellValue("Semana: "+this.diasCorteList.get(7).getNumeroSemana()+" - "+this.getFechaFormateada(this.diasCorteList.get(7).getFechaCorte()));
-
-                        break;
-
-                case "8avo Grupo":
-                    if(cell.getRowIndex()==0)
-                        cell.setCellValue("Σ Semana: "+this.diasCorteList.get(7).getNumeroSemana());
-
-                        break;
-
-                case "9na semana":
-                    if(cell.getRowIndex()==0)
-                        cell.setCellValue("Semana: "+this.diasCorteList.get(8).getNumeroSemana()+" - "+this.getFechaFormateada(this.diasCorteList.get(8).getFechaCorte()));
-                    else
-                        //cell.setCellType(Cell.CELL_TYPE_NUMERIC);
-                        break;
-                case "9no Grupo":
-                    if(cell.getRowIndex()==0)
-                        cell.setCellValue("Σ Semana: "+this.diasCorteList.get(8).getNumeroSemana());
-
-                        break;
-
-                case "10ma semana":
-                    if(cell.getRowIndex()==0)
-                        cell.setCellValue("Semana: "+this.diasCorteList.get(9).getNumeroSemana()+" - "+this.getFechaFormateada(this.diasCorteList.get(9).getFechaCorte()));
-                    else
+                    case "Saldo":
+                        //if(cell.getRowIndex()>0)
                         //cell.setCellType(Cell.CELL_TYPE_NUMERIC);
                         break;
 
-                case "10mo Grupo":
-                    if(cell.getRowIndex()==0)
-                        cell.setCellValue("Σ Semana: "+this.diasCorteList.get(9).getNumeroSemana());
+                    case "1era semana":
+                        if(cell.getRowIndex()==0)
+                            cell.setCellValue("Semana: "+this.diasCorteList.get(0).getNumeroSemana()+" - "+this.getFechaFormateada(this.diasCorteList.get(0).getFechaCorte()));
 
                         break;
 
-            }
+                    case "1er Grupo":
+                        if(cell.getRowIndex()==0)
+                            cell.setCellValue("Total Semana: "+this.diasCorteList.get(0).getNumeroSemana());
+
+                        break;
+
+                    case "2da semana":
+                        if(cell.getRowIndex()==0)
+                            cell.setCellValue("Semana: "+this.diasCorteList.get(1).getNumeroSemana()+" - "+this.getFechaFormateada(this.diasCorteList.get(1).getFechaCorte()));
+
+                        break;
+
+
+                    case "2do Grupo":
+                        if(cell.getRowIndex()==0)
+                            cell.setCellValue("Total Semana: "+this.diasCorteList.get(1).getNumeroSemana());
+
+                        break;
+
+                    case "3era semana":
+                        if(cell.getRowIndex()==0)
+                            cell.setCellValue("Semana: "+this.diasCorteList.get(2).getNumeroSemana()+" - "+this.getFechaFormateada(this.diasCorteList.get(2).getFechaCorte()));
+
+                        break;
+
+
+                    case "3er Grupo":
+                        if(cell.getRowIndex()==0)
+                            cell.setCellValue("Total Semana: "+this.diasCorteList.get(2).getNumeroSemana());
+
+                        break;
+
+                    case "4ta semana":
+                        if(cell.getRowIndex()==0)
+                            cell.setCellValue("Semana: "+this.diasCorteList.get(3).getNumeroSemana()+" - "+this.getFechaFormateada(this.diasCorteList.get(3).getFechaCorte()));
+
+                        break;
+
+
+                    case "4to Grupo":
+                        if(cell.getRowIndex()==0)
+                            cell.setCellValue("Total Semana: "+this.diasCorteList.get(3).getNumeroSemana());
+
+
+                        break;
+
+
+                    case "5ta semana":
+                        if(cell.getRowIndex()==0)
+                            cell.setCellValue("Semana: "+this.diasCorteList.get(4).getNumeroSemana()+" - "+this.getFechaFormateada(this.diasCorteList.get(4).getFechaCorte()));
+
+                        break;
+
+
+                    case "5to Grupo":
+                        if(cell.getRowIndex()==0)
+                            cell.setCellValue("Total Semana: "+this.diasCorteList.get(4).getNumeroSemana());
+
+                        break;
+
+                    case "6ta semana":
+
+                        if(cell.getRowIndex()==0)
+                            cell.setCellValue("Semana: "+this.diasCorteList.get(5).getNumeroSemana()+" - "+this.getFechaFormateada(this.diasCorteList.get(5).getFechaCorte()));
+
+                        break;
+
+                    case "6to Grupo":
+                        if(cell.getRowIndex()==0)
+                            cell.setCellValue("Total Semana: "+this.diasCorteList.get(5).getNumeroSemana());
+
+                        break;
+
+                    case "7ma semana":
+
+                        if(cell.getRowIndex()==0)
+                            cell.setCellValue("Semana: "+this.diasCorteList.get(6).getNumeroSemana()+" - "+this.getFechaFormateada(this.diasCorteList.get(6).getFechaCorte()));
+
+                        break;
+
+                    case "7mo Grupo":
+                        if(cell.getRowIndex()==0)
+                            cell.setCellValue("Total Semana: "+this.diasCorteList.get(6).getNumeroSemana());
+
+                        break;
+
+                    case "8ava semana":
+                        if(cell.getRowIndex()==0)
+                            cell.setCellValue("Semana: "+this.diasCorteList.get(7).getNumeroSemana()+" - "+this.getFechaFormateada(this.diasCorteList.get(7).getFechaCorte()));
+
+                        break;
+
+                    case "8avo Grupo":
+                        if(cell.getRowIndex()==0)
+                            cell.setCellValue("Total Semana: "+this.diasCorteList.get(7).getNumeroSemana());
+
+                        break;
+
+                    case "9na semana":
+                        if(cell.getRowIndex()==0)
+                            cell.setCellValue("Semana: "+this.diasCorteList.get(8).getNumeroSemana()+" - "+this.getFechaFormateada(this.diasCorteList.get(8).getFechaCorte()));
+
+                            break;
+                    case "9no Grupo":
+                        if(cell.getRowIndex()==0)
+                            cell.setCellValue("Total Semana: "+this.diasCorteList.get(8).getNumeroSemana());
+
+                        break;
+
+                    case "10ma semana":
+                        if(cell.getRowIndex()==0)
+                            cell.setCellValue("Semana: "+this.diasCorteList.get(9).getNumeroSemana()+" - "+this.getFechaFormateada(this.diasCorteList.get(9).getFechaCorte()));
+                             break;
+
+                    case "10mo Grupo":
+                        if(cell.getRowIndex()==0)
+                            cell.setCellValue("Total Semana: "+this.diasCorteList.get(9).getNumeroSemana());
+
+                        break;
+
+                }
 
         }
+        sheet.createRow(1);
+         //Aqui ya agregue una linea en la segunda posicion del excel ahora voy a iterar por las dos filas que son el encabezado
+        // Get iterator to all the rows in current sheet
+        Iterator<Row> rowIterator = sheet.iterator();
+        // Traversing over each row of XLSX file
+        while (rowIterator.hasNext() && rowIterator.next().getRowNum()>2) {
+            Row row = rowIterator.next();
+
+            // For each row, iterate through each columns
+            Iterator<Cell> cellIterator = row.cellIterator();
+            Map<Integer,String> cabecera1= new HashMap<>();
+
+
+            while (cellIterator.hasNext()) {
+
+                Cell cell = cellIterator.next();
+
+               int numCol=cell.getColumnIndex();
+
+                if(cell.getRowIndex()==0)
+                {
+                    cabecera1.put(cell.getColumnIndex(),cell.toString());
+
+                    if(cell.toString().contains("Semana:") && !(cell.toString().contains("Total")) )
+                    {
+                       cell.setCellValue(this.getFechaFormateada(this.diasCorteList.get(cell.getColumnIndex()).getFechaCorte()));
+
+                    }
+
+                }
+
+                if(cell.getRowIndex()==1)
+                {
+
+
+
+                }
+
+            }
+        }
+
+
+
         this.postDescarga(document);
     }
 
@@ -494,8 +545,11 @@ public class CxCFlujoBean implements Serializable {
         HashSet omitirColumnas = new HashSet();
         omitirColumnas.add(new Integer(0));
         omitirColumnas.add(new Integer(1));
+        omitirColumnas.add(new Integer(2));
         FormatoExcelPoi.formatearArchivoExcel(document,omitirColumnas);
     }
+
+
 
 
     public void preProcessPDF(Object document) throws IOException, BadElementException, DocumentException {

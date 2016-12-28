@@ -50,6 +50,11 @@ public class TablaCxcpivote implements Serializable {
     @Size(min = 1, max = 100)
     @Column(name = "ACCOUNTNUM")
     private String codigoCliente;
+
+    @Size(max = 30)
+    @Column(name = "DIMENSIONF")
+    private String dimensionf;
+
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Basic(optional = false)
     @NotNull
@@ -361,6 +366,16 @@ public class TablaCxcpivote implements Serializable {
     public void setSum9(BigDecimal sum9) {
         this.sum9 = sum9;
     }
+
+
+    public String getDimensionf() {
+        return dimensionf;
+    }
+
+    public void setDimensionf(String dimensionf) {
+        this.dimensionf = dimensionf;
+    }
+
 
     public List<BigDecimal> getListaValores() {
 

@@ -69,6 +69,10 @@
             <h:outputText value="#{pivote.codigoCliente}" />
         </p:column>
 
+       <p:column headerText="DIMENSION F." >
+           <h:outputText value="#{pivote.dimensionf}" />
+       </p:column>
+
         <p:column headerText="Cliente"  style="width:150px;"  filterBy="#{pivote.cliente}" filterMatchMode="contains" >
             <h:outputText styleClass="descripcionCliente" value="#{pivote.cliente}" />
         </p:column>

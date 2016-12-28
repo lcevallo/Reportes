@@ -28,6 +28,7 @@ import javax.xml.bind.annotation.XmlRootElement;
         @NamedQuery(name = "Tablaflujo.findById", query = "SELECT t FROM Tablaflujo t WHERE t.id = :id"),
         @NamedQuery(name = "Tablaflujo.findByVoucher", query = "SELECT t FROM Tablaflujo t WHERE t.voucher = :voucher"),
         @NamedQuery(name = "Tablaflujo.findByAccountnum", query = "SELECT t FROM Tablaflujo t WHERE t.accountnum = :accountnum"),
+        @NamedQuery(name = "Tablaflujo.findByDimensionf", query = "SELECT t FROM Tablaflujo t WHERE t.dimensionf = :dimensionf"),
         @NamedQuery(name = "Tablaflujo.findByNombreCliente", query = "SELECT t FROM Tablaflujo t WHERE t.nombreCliente = :nombreCliente"),
         @NamedQuery(name = "Tablaflujo.findByTipo", query = "SELECT t FROM Tablaflujo t WHERE t.tipo = :tipo"),
         @NamedQuery(name = "Tablaflujo.findByRango", query = "SELECT t FROM Tablaflujo t WHERE t.rango = :rango"),
@@ -55,6 +56,9 @@ public class Tablaflujo implements Serializable {
     @Size(max = 20)
     @Column(name = "ACCOUNTNUM")
     private String accountnum;
+    @Size(max = 30)
+    @Column(name = "DIMENSIONF")
+    private String dimensionf;
     @Size(max = 100)
     @Column(name = "NOMBRE_CLIENTE")
     private String nombreCliente;
@@ -228,6 +232,14 @@ public class Tablaflujo implements Serializable {
         this.currencyCode = currencyCode;
     }
 
+    public String getDimensionf() {
+        return dimensionf;
+    }
+
+    public void setDimensionf(String dimensionf) {
+        this.dimensionf = dimensionf;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -252,5 +264,6 @@ public class Tablaflujo implements Serializable {
     public String toString() {
         return "Entities.Tablaflujo[ id=" + id + " ]";
     }
+
 
 }

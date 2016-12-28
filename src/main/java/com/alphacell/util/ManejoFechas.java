@@ -78,7 +78,7 @@ public class ManejoFechas {
                     LocalDateTime newYearsDay = xmas.plusWeeks(x);
                     Date out = Date.from(newYearsDay.atZone(ZoneId.systemDefault()).toInstant());
 
-                    fechas_retorno.add(new FechasCorte(out,(noSemana+x),x));
+                    fechas_retorno.add(new FechasCorte(out, getNumeroSemana(out),x));
                 });
 
         return fechas_retorno;
