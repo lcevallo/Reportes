@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="42bb9734-3d35-4382-8a18-0f8fc37f30f9" name="Default" comment="Saldos Iniciales aqui use Java Lambdas">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.classpath" afterPath="$PROJECT_DIR$/.classpath" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/alphacell/controller/financiero/CxCFlujoBean.java" afterPath="$PROJECT_DIR$/src/main/java/com/alphacell/controller/financiero/CxCFlujoBean.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/alphacell/model/cartera/TablaCxcpivote.java" afterPath="$PROJECT_DIR$/src/main/java/com/alphacell/model/cartera/TablaCxcpivote.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/alphacell/model/financiero/Tablaflujo.java" afterPath="$PROJECT_DIR$/src/main/java/com/alphacell/model/financiero/Tablaflujo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/alphacell/util/ManejoFechas.java" afterPath="$PROJECT_DIR$/src/main/java/com/alphacell/util/ManejoFechas.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/financiero/FlujoCuentasxCobrar.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/financiero/FlujoCuentasxCobrar.xhtml" />
     </list>
     <list id="5fb3735a-a8d9-4456-8b9c-5922df4d1f29" name="Failed commit: Default" comment="Aqui agregue la informacion del cliente ya que Paula HD lo necesitaba" />
     <ignored path="Reportes.iws" />
@@ -47,7 +42,24 @@
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="136">
                   <caret line="8" column="33" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
-                  <folding />
+                  <folding>
+                    <element signature="e#435#436#0" expanded="false" />
+                    <element signature="e#459#460#0" expanded="false" />
+                    <element signature="e#506#507#0" expanded="false" />
+                    <element signature="e#541#542#0" expanded="false" />
+                    <element signature="e#573#574#0" expanded="false" />
+                    <element signature="e#594#595#0" expanded="false" />
+                    <element signature="e#638#639#0" expanded="false" />
+                    <element signature="e#667#668#0" expanded="false" />
+                    <element signature="e#704#705#0" expanded="false" />
+                    <element signature="e#730#731#0" expanded="false" />
+                    <element signature="e#784#785#0" expanded="false" />
+                    <element signature="e#823#824#0" expanded="false" />
+                    <element signature="e#857#858#0" expanded="false" />
+                    <element signature="e#880#881#0" expanded="false" />
+                    <element signature="e#928#929#0" expanded="false" />
+                    <element signature="e#961#962#0" expanded="false" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -55,9 +67,11 @@
           <file leaf-file-name="CxCFlujoRepository.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/repository/CxCFlujoRepository.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="380">
+                <state relative-caret-position="1649">
                   <caret line="109" column="41" selection-start-line="109" selection-start-column="41" selection-end-line="109" selection-end-column="41" />
-                  <folding />
+                  <folding>
+                    <element signature="imports" expanded="false" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -65,9 +79,81 @@
           <file leaf-file-name="Tablaflujo.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/model/financiero/Tablaflujo.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="228">
+                <state relative-caret-position="748">
                   <caret line="58" column="4" selection-start-line="58" selection-start-column="4" selection-end-line="60" selection-end-column="30" />
-                  <folding />
+                  <folding>
+                    <element signature="imports" expanded="false" />
+                    <element signature="e#4650#4651#0" expanded="false" />
+                    <element signature="e#4678#4679#0" expanded="false" />
+                    <element signature="e#4708#4709#0" expanded="false" />
+                    <element signature="e#4733#4734#0" expanded="false" />
+                    <element signature="e#4770#4771#0" expanded="false" />
+                    <element signature="e#4798#4799#0" expanded="false" />
+                    <element signature="e#4832#4833#0" expanded="false" />
+                    <element signature="e#4862#4863#0" expanded="false" />
+                    <element signature="e#4908#4909#0" expanded="false" />
+                    <element signature="e#4946#4947#0" expanded="false" />
+                    <element signature="e#4983#4984#0" expanded="false" />
+                    <element signature="e#5016#5017#0" expanded="false" />
+                    <element signature="e#5068#5069#0" expanded="false" />
+                    <element signature="e#5112#5113#0" expanded="false" />
+                    <element signature="e#5152#5153#0" expanded="false" />
+                    <element signature="e#5188#5189#0" expanded="false" />
+                    <element signature="e#5246#5247#0" expanded="false" />
+                    <element signature="e#5296#5297#0" expanded="false" />
+                    <element signature="e#5327#5328#0" expanded="false" />
+                    <element signature="e#5354#5355#0" expanded="false" />
+                    <element signature="e#5394#5395#0" expanded="false" />
+                    <element signature="e#5426#5427#0" expanded="false" />
+                    <element signature="e#5458#5459#0" expanded="false" />
+                    <element signature="e#5486#5487#0" expanded="false" />
+                    <element signature="e#5528#5529#0" expanded="false" />
+                    <element signature="e#5562#5563#0" expanded="false" />
+                    <element signature="e#5599#5600#0" expanded="false" />
+                    <element signature="e#5631#5632#0" expanded="false" />
+                    <element signature="e#5682#5683#0" expanded="false" />
+                    <element signature="e#5724#5725#0" expanded="false" />
+                    <element signature="e#5757#5758#0" expanded="false" />
+                    <element signature="e#5786#5787#0" expanded="false" />
+                    <element signature="e#5830#5831#0" expanded="false" />
+                    <element signature="e#5866#5867#0" expanded="false" />
+                    <element signature="e#5905#5906#0" expanded="false" />
+                    <element signature="e#5939#5940#0" expanded="false" />
+                    <element signature="e#5994#5995#0" expanded="false" />
+                    <element signature="e#6040#6041#0" expanded="false" />
+                    <element signature="e#6077#6078#0" expanded="false" />
+                    <element signature="e#6110#6111#0" expanded="false" />
+                    <element signature="e#6162#6163#0" expanded="false" />
+                    <element signature="e#6206#6207#0" expanded="false" />
+                    <element signature="e#6240#6241#0" expanded="false" />
+                    <element signature="e#6272#6273#0" expanded="false" />
+                    <element signature="e#6320#6321#0" expanded="false" />
+                    <element signature="e#6362#6363#0" expanded="false" />
+                    <element signature="e#6394#6395#0" expanded="false" />
+                    <element signature="e#6424#6425#0" expanded="false" />
+                    <element signature="e#6468#6469#0" expanded="false" />
+                    <element signature="e#6506#6507#0" expanded="false" />
+                    <element signature="e#6553#6554#0" expanded="false" />
+                    <element signature="e#6598#6599#0" expanded="false" />
+                    <element signature="e#6774#6775#0" expanded="false" />
+                    <element signature="e#6804#6805#0" expanded="false" />
+                    <element signature="e#6850#6851#0" expanded="false" />
+                    <element signature="e#6888#6889#0" expanded="false" />
+                    <element signature="e#6928#6929#0" expanded="false" />
+                    <element signature="e#6960#6961#0" expanded="false" />
+                    <element signature="e#7014#7015#0" expanded="false" />
+                    <element signature="e#7056#7057#0" expanded="false" />
+                    <element signature="e#7095#7096#0" expanded="false" />
+                    <element signature="e#7130#7131#0" expanded="false" />
+                    <element signature="e#7186#7187#0" expanded="false" />
+                    <element signature="e#7234#7235#0" expanded="false" />
+                    <element signature="e#7271#7272#0" expanded="false" />
+                    <element signature="e#7304#7305#0" expanded="false" />
+                    <element signature="e#7356#7357#0" expanded="false" />
+                    <element signature="e#7400#7401#0" expanded="false" />
+                    <element signature="e#8031#8032#0" expanded="false" />
+                    <element signature="e#8092#8093#0" expanded="false" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -75,8 +161,8 @@
           <file leaf-file-name="FlujoCuentasxCobrar.xhtml" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/webapp/financiero/FlujoCuentasxCobrar.xhtml">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="35">
-                  <caret line="72" column="56" selection-start-line="72" selection-start-column="56" selection-end-line="72" selection-end-column="56" />
+                <state relative-caret-position="-101">
+                  <caret line="85" column="0" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -85,13 +171,118 @@
           <file leaf-file-name="TablaCxcpivote.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/model/cartera/TablaCxcpivote.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="2580">
+                <state relative-caret-position="4267">
                   <caret line="348" column="0" selection-start-line="348" selection-start-column="0" selection-end-line="348" selection-end-column="0" />
                   <folding>
-                    <element signature="e#8310#8311#0" expanded="true" />
-                    <element signature="e#8343#8344#0" expanded="true" />
-                    <element signature="e#8395#8396#0" expanded="true" />
-                    <element signature="e#8439#8440#0" expanded="true" />
+                    <element signature="imports" expanded="false" />
+                    <element signature="e#3959#3960#0" expanded="false" />
+                    <element signature="e#4011#4012#0" expanded="false" />
+                    <element signature="e#4397#4398#0" expanded="false" />
+                    <element signature="e#4422#4423#0" expanded="false" />
+                    <element signature="e#4459#4460#0" expanded="false" />
+                    <element signature="e#4487#4488#0" expanded="false" />
+                    <element signature="e#4521#4522#0" expanded="false" />
+                    <element signature="e#4551#4552#0" expanded="false" />
+                    <element signature="e#4597#4598#0" expanded="false" />
+                    <element signature="e#4635#4636#0" expanded="false" />
+                    <element signature="e#4675#4676#0" expanded="false" />
+                    <element signature="e#4711#4712#0" expanded="false" />
+                    <element signature="e#4769#4770#0" expanded="false" />
+                    <element signature="e#4819#4820#0" expanded="false" />
+                    <element signature="e#4859#4860#0" expanded="false" />
+                    <element signature="e#4891#4892#0" expanded="false" />
+                    <element signature="e#4945#4946#0" expanded="false" />
+                    <element signature="e#4987#4988#0" expanded="false" />
+                    <element signature="e#5019#5020#0" expanded="false" />
+                    <element signature="e#5043#5044#0" expanded="false" />
+                    <element signature="e#5081#5082#0" expanded="false" />
+                    <element signature="e#5107#5108#0" expanded="false" />
+                    <element signature="e#5140#5141#0" expanded="false" />
+                    <element signature="e#5165#5166#0" expanded="false" />
+                    <element signature="e#5205#5206#0" expanded="false" />
+                    <element signature="e#5233#5234#0" expanded="false" />
+                    <element signature="e#5266#5267#0" expanded="false" />
+                    <element signature="e#5291#5292#0" expanded="false" />
+                    <element signature="e#5331#5332#0" expanded="false" />
+                    <element signature="e#5359#5360#0" expanded="false" />
+                    <element signature="e#5392#5393#0" expanded="false" />
+                    <element signature="e#5417#5418#0" expanded="false" />
+                    <element signature="e#5457#5458#0" expanded="false" />
+                    <element signature="e#5485#5486#0" expanded="false" />
+                    <element signature="e#5518#5519#0" expanded="false" />
+                    <element signature="e#5543#5544#0" expanded="false" />
+                    <element signature="e#5583#5584#0" expanded="false" />
+                    <element signature="e#5611#5612#0" expanded="false" />
+                    <element signature="e#5644#5645#0" expanded="false" />
+                    <element signature="e#5669#5670#0" expanded="false" />
+                    <element signature="e#5709#5710#0" expanded="false" />
+                    <element signature="e#5737#5738#0" expanded="false" />
+                    <element signature="e#5770#5771#0" expanded="false" />
+                    <element signature="e#5795#5796#0" expanded="false" />
+                    <element signature="e#5835#5836#0" expanded="false" />
+                    <element signature="e#5863#5864#0" expanded="false" />
+                    <element signature="e#5896#5897#0" expanded="false" />
+                    <element signature="e#5921#5922#0" expanded="false" />
+                    <element signature="e#5961#5962#0" expanded="false" />
+                    <element signature="e#5989#5990#0" expanded="false" />
+                    <element signature="e#6022#6023#0" expanded="false" />
+                    <element signature="e#6047#6048#0" expanded="false" />
+                    <element signature="e#6087#6088#0" expanded="false" />
+                    <element signature="e#6115#6116#0" expanded="false" />
+                    <element signature="e#6148#6149#0" expanded="false" />
+                    <element signature="e#6173#6174#0" expanded="false" />
+                    <element signature="e#6213#6214#0" expanded="false" />
+                    <element signature="e#6241#6242#0" expanded="false" />
+                    <element signature="e#6282#6283#0" expanded="false" />
+                    <element signature="e#6314#6315#0" expanded="false" />
+                    <element signature="e#6368#6369#0" expanded="false" />
+                    <element signature="e#6410#6411#0" expanded="false" />
+                    <element signature="e#6446#6447#0" expanded="false" />
+                    <element signature="e#6474#6475#0" expanded="false" />
+                    <element signature="e#6520#6521#0" expanded="false" />
+                    <element signature="e#6554#6555#0" expanded="false" />
+                    <element signature="e#6589#6590#0" expanded="false" />
+                    <element signature="e#6618#6619#0" expanded="false" />
+                    <element signature="e#6662#6663#0" expanded="false" />
+                    <element signature="e#6696#6697#0" expanded="false" />
+                    <element signature="e#7092#7093#0" expanded="false" />
+                    <element signature="e#7124#7125#0" expanded="false" />
+                    <element signature="e#7237#7238#0" expanded="false" />
+                    <element signature="e#7269#7270#0" expanded="false" />
+                    <element signature="e#7381#7382#0" expanded="false" />
+                    <element signature="e#7413#7414#0" expanded="false" />
+                    <element signature="e#7448#7449#0" expanded="false" />
+                    <element signature="e#7480#7481#0" expanded="false" />
+                    <element signature="e#7524#7525#0" expanded="false" />
+                    <element signature="e#7556#7557#0" expanded="false" />
+                    <element signature="e#7591#7592#0" expanded="false" />
+                    <element signature="e#7623#7624#0" expanded="false" />
+                    <element signature="e#7667#7668#0" expanded="false" />
+                    <element signature="e#7699#7700#0" expanded="false" />
+                    <element signature="e#7734#7735#0" expanded="false" />
+                    <element signature="e#7766#7767#0" expanded="false" />
+                    <element signature="e#7810#7811#0" expanded="false" />
+                    <element signature="e#7842#7843#0" expanded="false" />
+                    <element signature="e#7877#7878#0" expanded="false" />
+                    <element signature="e#7910#7911#0" expanded="false" />
+                    <element signature="e#7954#7955#0" expanded="false" />
+                    <element signature="e#7986#7987#0" expanded="false" />
+                    <element signature="e#8021#8022#0" expanded="false" />
+                    <element signature="e#8053#8054#0" expanded="false" />
+                    <element signature="e#8097#8098#0" expanded="false" />
+                    <element signature="e#8129#8130#0" expanded="false" />
+                    <element signature="e#8164#8165#0" expanded="false" />
+                    <element signature="e#8196#8197#0" expanded="false" />
+                    <element signature="e#8240#8241#0" expanded="false" />
+                    <element signature="e#8272#8273#0" expanded="false" />
+                    <element signature="e#8310#8311#0" expanded="false" />
+                    <element signature="e#8343#8344#0" expanded="false" />
+                    <element signature="e#8395#8396#0" expanded="false" />
+                    <element signature="e#8439#8440#0" expanded="false" />
+                    <element signature="e#8941#8942#0" expanded="false" />
+                    <element signature="e#8989#8990#0" expanded="false" />
+                    <element signature="e#9632#9633#0" expanded="false" />
+                    <element signature="e#9697#9698#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
@@ -100,7 +291,7 @@
           <file leaf-file-name="cxcFlujoFechasCortes.xhtml" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/dialog/finaciero/cxcFlujoFechasCortes.xhtml">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="804">
+                <state relative-caret-position="816">
                   <caret line="48" column="66" selection-start-line="48" selection-start-column="66" selection-end-line="48" selection-end-column="66" />
                   <folding />
                 </state>
@@ -110,13 +301,42 @@
         </leaf>
       </split-first>
       <split-second>
-        <leaf>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="CxCFlujoBean.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/controller/financiero/CxCFlujoBean.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="52">
-                  <caret line="500" column="47" selection-start-line="500" selection-start-column="47" selection-end-line="500" selection-end-column="47" />
-                  <folding />
+                <state relative-caret-position="86">
+                  <caret line="554" column="55" selection-start-line="554" selection-start-column="55" selection-end-line="554" selection-end-column="55" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#3199#3200#0" expanded="true" />
+                    <element signature="e#3242#3243#0" expanded="true" />
+                    <element signature="e#3312#3313#0" expanded="true" />
+                    <element signature="e#3376#3377#0" expanded="true" />
+                    <element signature="e#3419#3420#0" expanded="true" />
+                    <element signature="e#3460#3461#0" expanded="true" />
+                    <element signature="e#3526#3527#0" expanded="true" />
+                    <element signature="e#3586#3587#0" expanded="true" />
+                    <element signature="e#3622#3623#0" expanded="true" />
+                    <element signature="e#3657#3658#0" expanded="true" />
+                    <element signature="e#3710#3711#0" expanded="true" />
+                    <element signature="e#3753#3754#0" expanded="true" />
+                    <element signature="e#6378#6390#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="ConverterStream.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/util/streams/ConverterStream.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="85">
+                  <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#234#235#0" expanded="true" />
+                    <element signature="e#279#280#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -146,7 +366,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/alphacell/model/cartera/LcVistaTramosYaVencidosPivot.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/alphacell/model/cartera/LcTramosYaVencidosPivot.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/alphacell/repository/cxc/TramosVencidosRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/alphacell/model/cartera/TramosVencidosLC.java" />
@@ -196,6 +415,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/alphacell/model/cartera/TablaCxcpivote.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/dialog/finaciero/cxcFlujoFechasCortes.xhtml" />
         <option value="$PROJECT_DIR$/src/main/webapp/financiero/FlujoCuentasxCobrar.xhtml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/alphacell/util/streams/ConverterStream.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/alphacell/controller/financiero/CxCFlujoBean.java" />
       </list>
     </option>
@@ -289,10 +509,10 @@
     <panes>
       <pane id="Scope" />
       <pane id="PackagesPane" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane />
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1062,7 +1282,9 @@
       <workItem from="1481735382023" duration="776000" />
       <workItem from="1481736599953" duration="18489000" />
       <workItem from="1481902023768" duration="81000" />
-      <workItem from="1482936050512" duration="24133000" />
+      <workItem from="1482936050512" duration="24281000" />
+      <workItem from="1483024591081" duration="3974000" />
+      <workItem from="1483037015058" duration="12096000" />
     </task>
     <task id="LOCAL-00001" summary="Hi">
       <created>1464900277059</created>
@@ -1173,7 +1395,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="998409000" />
+    <option name="totallyTimeSpent" value="1014627000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1185,7 +1407,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1196,8 +1418,8 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36384267" sideWeight="0.5546624" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28214827" sideWeight="0.44533762" order="1" side_tool="true" content_ui="tabs" x="1070" y="215" width="235" height="416" />
       <window_info id="JSF" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28214827" sideWeight="0.44533762" order="1" side_tool="true" content_ui="tabs" x="1070" y="215" width="235" height="416" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30932897" sideWeight="0.45306632" order="2" side_tool="false" content_ui="tabs" x="107" y="283" width="1384" height="417" />
@@ -1206,8 +1428,8 @@
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5016077" sideWeight="0.4969651" order="5" side_tool="false" content_ui="tabs" x="0" y="0" width="1416" height="875" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32947233" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5016077" sideWeight="0.4969651" order="5" side_tool="false" content_ui="tabs" x="0" y="0" width="1416" height="875" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329582" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31467474" sideWeight="0.40620154" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.290469" sideWeight="0.5546624" order="0" side_tool="false" content_ui="combo" />
@@ -1255,7 +1477,15 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="190" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/alphacell/controller/financiero/CxCFlujoBean.java</url>
+          <line>565</line>
+          <properties />
+          <option name="timeStamp" value="199" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="206" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
@@ -1268,13 +1498,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/util/reporte/MyUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/util/reporte/ConecctionMssqlServer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
@@ -1486,15 +1709,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="884">
           <caret line="68" column="8" selection-start-line="68" selection-start-column="8" selection-end-line="68" selection-end-column="71" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#914#915#0" expanded="false" />
-            <element signature="e#959#960#0" expanded="false" />
-            <element signature="e#1196#1197#0" expanded="false" />
-            <element signature="e#1249#1250#0" expanded="false" />
-            <element signature="e#1508#1509#0" expanded="false" />
-            <element signature="e#1557#1558#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1517,7 +1731,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="21" column="56" selection-start-line="21" selection-start-column="56" selection-end-line="21" selection-end-column="56" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1548,37 +1761,90 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/model/financiero/Tablaflujo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
+        <state relative-caret-position="748">
           <caret line="58" column="4" selection-start-line="58" selection-start-column="4" selection-end-line="60" selection-end-column="30" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#4650#4651#0" expanded="false" />
+            <element signature="e#4678#4679#0" expanded="false" />
+            <element signature="e#4708#4709#0" expanded="false" />
+            <element signature="e#4733#4734#0" expanded="false" />
+            <element signature="e#4770#4771#0" expanded="false" />
+            <element signature="e#4798#4799#0" expanded="false" />
+            <element signature="e#4832#4833#0" expanded="false" />
+            <element signature="e#4862#4863#0" expanded="false" />
+            <element signature="e#4908#4909#0" expanded="false" />
+            <element signature="e#4946#4947#0" expanded="false" />
+            <element signature="e#4983#4984#0" expanded="false" />
+            <element signature="e#5016#5017#0" expanded="false" />
+            <element signature="e#5068#5069#0" expanded="false" />
+            <element signature="e#5112#5113#0" expanded="false" />
+            <element signature="e#5152#5153#0" expanded="false" />
+            <element signature="e#5188#5189#0" expanded="false" />
+            <element signature="e#5246#5247#0" expanded="false" />
+            <element signature="e#5296#5297#0" expanded="false" />
+            <element signature="e#5327#5328#0" expanded="false" />
+            <element signature="e#5354#5355#0" expanded="false" />
+            <element signature="e#5394#5395#0" expanded="false" />
+            <element signature="e#5426#5427#0" expanded="false" />
+            <element signature="e#5458#5459#0" expanded="false" />
+            <element signature="e#5486#5487#0" expanded="false" />
+            <element signature="e#5528#5529#0" expanded="false" />
+            <element signature="e#5562#5563#0" expanded="false" />
+            <element signature="e#5599#5600#0" expanded="false" />
+            <element signature="e#5631#5632#0" expanded="false" />
+            <element signature="e#5682#5683#0" expanded="false" />
+            <element signature="e#5724#5725#0" expanded="false" />
+            <element signature="e#5757#5758#0" expanded="false" />
+            <element signature="e#5786#5787#0" expanded="false" />
+            <element signature="e#5830#5831#0" expanded="false" />
+            <element signature="e#5866#5867#0" expanded="false" />
+            <element signature="e#5905#5906#0" expanded="false" />
+            <element signature="e#5939#5940#0" expanded="false" />
+            <element signature="e#5994#5995#0" expanded="false" />
+            <element signature="e#6040#6041#0" expanded="false" />
+            <element signature="e#6077#6078#0" expanded="false" />
+            <element signature="e#6110#6111#0" expanded="false" />
+            <element signature="e#6162#6163#0" expanded="false" />
+            <element signature="e#6206#6207#0" expanded="false" />
+            <element signature="e#6240#6241#0" expanded="false" />
+            <element signature="e#6272#6273#0" expanded="false" />
+            <element signature="e#6320#6321#0" expanded="false" />
+            <element signature="e#6362#6363#0" expanded="false" />
+            <element signature="e#6394#6395#0" expanded="false" />
+            <element signature="e#6424#6425#0" expanded="false" />
+            <element signature="e#6468#6469#0" expanded="false" />
+            <element signature="e#6506#6507#0" expanded="false" />
+            <element signature="e#6553#6554#0" expanded="false" />
+            <element signature="e#6598#6599#0" expanded="false" />
+            <element signature="e#6774#6775#0" expanded="false" />
+            <element signature="e#6804#6805#0" expanded="false" />
+            <element signature="e#6850#6851#0" expanded="false" />
+            <element signature="e#6888#6889#0" expanded="false" />
+            <element signature="e#6928#6929#0" expanded="false" />
+            <element signature="e#6960#6961#0" expanded="false" />
+            <element signature="e#7014#7015#0" expanded="false" />
+            <element signature="e#7056#7057#0" expanded="false" />
+            <element signature="e#7095#7096#0" expanded="false" />
+            <element signature="e#7130#7131#0" expanded="false" />
+            <element signature="e#7186#7187#0" expanded="false" />
+            <element signature="e#7234#7235#0" expanded="false" />
+            <element signature="e#7271#7272#0" expanded="false" />
+            <element signature="e#7304#7305#0" expanded="false" />
+            <element signature="e#7356#7357#0" expanded="false" />
+            <element signature="e#7400#7401#0" expanded="false" />
+            <element signature="e#8031#8032#0" expanded="false" />
+            <element signature="e#8092#8093#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/repository/CxCFlujoRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
+        <state relative-caret-position="1649">
           <caret line="109" column="41" selection-start-line="109" selection-start-column="41" selection-end-line="109" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/dialog/finaciero/cxcFlujoFechasCortes.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="804">
-          <caret line="48" column="66" selection-start-line="48" selection-start-column="66" selection-end-line="48" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/model/cartera/TablaCxcpivote.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2580">
-          <caret line="348" column="0" selection-start-line="348" selection-start-column="0" selection-end-line="348" selection-end-column="0" />
           <folding>
-            <element signature="e#8310#8311#0" expanded="true" />
-            <element signature="e#8343#8344#0" expanded="true" />
-            <element signature="e#8395#8396#0" expanded="true" />
-            <element signature="e#8439#8440#0" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1587,23 +1853,193 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="33" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
+          <folding>
+            <element signature="e#435#436#0" expanded="false" />
+            <element signature="e#459#460#0" expanded="false" />
+            <element signature="e#506#507#0" expanded="false" />
+            <element signature="e#541#542#0" expanded="false" />
+            <element signature="e#573#574#0" expanded="false" />
+            <element signature="e#594#595#0" expanded="false" />
+            <element signature="e#638#639#0" expanded="false" />
+            <element signature="e#667#668#0" expanded="false" />
+            <element signature="e#704#705#0" expanded="false" />
+            <element signature="e#730#731#0" expanded="false" />
+            <element signature="e#784#785#0" expanded="false" />
+            <element signature="e#823#824#0" expanded="false" />
+            <element signature="e#857#858#0" expanded="false" />
+            <element signature="e#880#881#0" expanded="false" />
+            <element signature="e#928#929#0" expanded="false" />
+            <element signature="e#961#962#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/model/cartera/TablaCxcpivote.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4267">
+          <caret line="348" column="0" selection-start-line="348" selection-start-column="0" selection-end-line="348" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#3959#3960#0" expanded="false" />
+            <element signature="e#4011#4012#0" expanded="false" />
+            <element signature="e#4397#4398#0" expanded="false" />
+            <element signature="e#4422#4423#0" expanded="false" />
+            <element signature="e#4459#4460#0" expanded="false" />
+            <element signature="e#4487#4488#0" expanded="false" />
+            <element signature="e#4521#4522#0" expanded="false" />
+            <element signature="e#4551#4552#0" expanded="false" />
+            <element signature="e#4597#4598#0" expanded="false" />
+            <element signature="e#4635#4636#0" expanded="false" />
+            <element signature="e#4675#4676#0" expanded="false" />
+            <element signature="e#4711#4712#0" expanded="false" />
+            <element signature="e#4769#4770#0" expanded="false" />
+            <element signature="e#4819#4820#0" expanded="false" />
+            <element signature="e#4859#4860#0" expanded="false" />
+            <element signature="e#4891#4892#0" expanded="false" />
+            <element signature="e#4945#4946#0" expanded="false" />
+            <element signature="e#4987#4988#0" expanded="false" />
+            <element signature="e#5019#5020#0" expanded="false" />
+            <element signature="e#5043#5044#0" expanded="false" />
+            <element signature="e#5081#5082#0" expanded="false" />
+            <element signature="e#5107#5108#0" expanded="false" />
+            <element signature="e#5140#5141#0" expanded="false" />
+            <element signature="e#5165#5166#0" expanded="false" />
+            <element signature="e#5205#5206#0" expanded="false" />
+            <element signature="e#5233#5234#0" expanded="false" />
+            <element signature="e#5266#5267#0" expanded="false" />
+            <element signature="e#5291#5292#0" expanded="false" />
+            <element signature="e#5331#5332#0" expanded="false" />
+            <element signature="e#5359#5360#0" expanded="false" />
+            <element signature="e#5392#5393#0" expanded="false" />
+            <element signature="e#5417#5418#0" expanded="false" />
+            <element signature="e#5457#5458#0" expanded="false" />
+            <element signature="e#5485#5486#0" expanded="false" />
+            <element signature="e#5518#5519#0" expanded="false" />
+            <element signature="e#5543#5544#0" expanded="false" />
+            <element signature="e#5583#5584#0" expanded="false" />
+            <element signature="e#5611#5612#0" expanded="false" />
+            <element signature="e#5644#5645#0" expanded="false" />
+            <element signature="e#5669#5670#0" expanded="false" />
+            <element signature="e#5709#5710#0" expanded="false" />
+            <element signature="e#5737#5738#0" expanded="false" />
+            <element signature="e#5770#5771#0" expanded="false" />
+            <element signature="e#5795#5796#0" expanded="false" />
+            <element signature="e#5835#5836#0" expanded="false" />
+            <element signature="e#5863#5864#0" expanded="false" />
+            <element signature="e#5896#5897#0" expanded="false" />
+            <element signature="e#5921#5922#0" expanded="false" />
+            <element signature="e#5961#5962#0" expanded="false" />
+            <element signature="e#5989#5990#0" expanded="false" />
+            <element signature="e#6022#6023#0" expanded="false" />
+            <element signature="e#6047#6048#0" expanded="false" />
+            <element signature="e#6087#6088#0" expanded="false" />
+            <element signature="e#6115#6116#0" expanded="false" />
+            <element signature="e#6148#6149#0" expanded="false" />
+            <element signature="e#6173#6174#0" expanded="false" />
+            <element signature="e#6213#6214#0" expanded="false" />
+            <element signature="e#6241#6242#0" expanded="false" />
+            <element signature="e#6282#6283#0" expanded="false" />
+            <element signature="e#6314#6315#0" expanded="false" />
+            <element signature="e#6368#6369#0" expanded="false" />
+            <element signature="e#6410#6411#0" expanded="false" />
+            <element signature="e#6446#6447#0" expanded="false" />
+            <element signature="e#6474#6475#0" expanded="false" />
+            <element signature="e#6520#6521#0" expanded="false" />
+            <element signature="e#6554#6555#0" expanded="false" />
+            <element signature="e#6589#6590#0" expanded="false" />
+            <element signature="e#6618#6619#0" expanded="false" />
+            <element signature="e#6662#6663#0" expanded="false" />
+            <element signature="e#6696#6697#0" expanded="false" />
+            <element signature="e#7092#7093#0" expanded="false" />
+            <element signature="e#7124#7125#0" expanded="false" />
+            <element signature="e#7237#7238#0" expanded="false" />
+            <element signature="e#7269#7270#0" expanded="false" />
+            <element signature="e#7381#7382#0" expanded="false" />
+            <element signature="e#7413#7414#0" expanded="false" />
+            <element signature="e#7448#7449#0" expanded="false" />
+            <element signature="e#7480#7481#0" expanded="false" />
+            <element signature="e#7524#7525#0" expanded="false" />
+            <element signature="e#7556#7557#0" expanded="false" />
+            <element signature="e#7591#7592#0" expanded="false" />
+            <element signature="e#7623#7624#0" expanded="false" />
+            <element signature="e#7667#7668#0" expanded="false" />
+            <element signature="e#7699#7700#0" expanded="false" />
+            <element signature="e#7734#7735#0" expanded="false" />
+            <element signature="e#7766#7767#0" expanded="false" />
+            <element signature="e#7810#7811#0" expanded="false" />
+            <element signature="e#7842#7843#0" expanded="false" />
+            <element signature="e#7877#7878#0" expanded="false" />
+            <element signature="e#7910#7911#0" expanded="false" />
+            <element signature="e#7954#7955#0" expanded="false" />
+            <element signature="e#7986#7987#0" expanded="false" />
+            <element signature="e#8021#8022#0" expanded="false" />
+            <element signature="e#8053#8054#0" expanded="false" />
+            <element signature="e#8097#8098#0" expanded="false" />
+            <element signature="e#8129#8130#0" expanded="false" />
+            <element signature="e#8164#8165#0" expanded="false" />
+            <element signature="e#8196#8197#0" expanded="false" />
+            <element signature="e#8240#8241#0" expanded="false" />
+            <element signature="e#8272#8273#0" expanded="false" />
+            <element signature="e#8310#8311#0" expanded="false" />
+            <element signature="e#8343#8344#0" expanded="false" />
+            <element signature="e#8395#8396#0" expanded="false" />
+            <element signature="e#8439#8440#0" expanded="false" />
+            <element signature="e#8941#8942#0" expanded="false" />
+            <element signature="e#8989#8990#0" expanded="false" />
+            <element signature="e#9632#9633#0" expanded="false" />
+            <element signature="e#9697#9698#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/dialog/finaciero/cxcFlujoFechasCortes.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="816">
+          <caret line="48" column="66" selection-start-line="48" selection-start-column="66" selection-end-line="48" selection-end-column="66" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/util/streams/ConverterStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#234#235#0" expanded="true" />
+            <element signature="e#279#280#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/financiero/FlujoCuentasxCobrar.xhtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="35">
-          <caret line="72" column="56" selection-start-line="72" selection-start-column="56" selection-end-line="72" selection-end-column="56" />
+        <state relative-caret-position="-101">
+          <caret line="85" column="0" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/controller/financiero/CxCFlujoBean.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="52">
-          <caret line="500" column="47" selection-start-line="500" selection-start-column="47" selection-end-line="500" selection-end-column="47" />
-          <folding />
+        <state relative-caret-position="86">
+          <caret line="554" column="55" selection-start-line="554" selection-start-column="55" selection-end-line="554" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3199#3200#0" expanded="true" />
+            <element signature="e#3242#3243#0" expanded="true" />
+            <element signature="e#3312#3313#0" expanded="true" />
+            <element signature="e#3376#3377#0" expanded="true" />
+            <element signature="e#3419#3420#0" expanded="true" />
+            <element signature="e#3460#3461#0" expanded="true" />
+            <element signature="e#3526#3527#0" expanded="true" />
+            <element signature="e#3586#3587#0" expanded="true" />
+            <element signature="e#3622#3623#0" expanded="true" />
+            <element signature="e#3657#3658#0" expanded="true" />
+            <element signature="e#3710#3711#0" expanded="true" />
+            <element signature="e#3753#3754#0" expanded="true" />
+            <element signature="e#6378#6390#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

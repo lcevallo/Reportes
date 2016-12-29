@@ -1,24 +1,24 @@
 package com.alphacell.controller.financiero;
 
-import com.alphacell.model.Semanatemp;
-import com.alphacell.model.cartera.TablaCxcpivote;
-import com.alphacell.model.financiero.FechasCorte;
-import com.alphacell.repository.CxCFlujoRepository;
-import com.alphacell.util.ManejoFechas;
-import com.alphacell.util.jsf.FormatoExcelPoi;
-import com.alphacell.util.reporte.Reporte;
-import com.lowagie.text.*;
-import net.sf.jasperreports.engine.JRException;
-import org.apache.commons.io.IOUtils;
-import org.apache.poi.hssf.usermodel.*;
-import org.apache.poi.hssf.util.HSSFColor;
-import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Font;
-import org.apache.poi.ss.usermodel.Row;
-import org.primefaces.context.RequestContext;
-import org.primefaces.event.SelectEvent;
-import org.primefaces.event.UnselectEvent;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -27,19 +27,37 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.ServletContext;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.Serializable;
-import java.math.BigDecimal;
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
-import java.util.*;
-import java.util.List;
-import java.util.stream.IntStream;
+
+import org.apache.commons.io.IOUtils;
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFCellStyle;
+import org.apache.poi.hssf.usermodel.HSSFDataFormat;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Font;
+import org.apache.poi.ss.usermodel.IndexedColors;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.primefaces.context.RequestContext;
+import org.primefaces.event.SelectEvent;
+import org.primefaces.event.UnselectEvent;
+
+import com.alphacell.model.Semanatemp;
+import com.alphacell.model.cartera.TablaCxcpivote;
+import com.alphacell.model.financiero.FechasCorte;
+import com.alphacell.repository.CxCFlujoRepository;
+import com.alphacell.util.ManejoFechas;
+import com.alphacell.util.jsf.FormatoExcelPoi;
+import com.alphacell.util.reporte.Reporte;
+import com.alphacell.util.streams.ConverterStream;
+import com.lowagie.text.BadElementException;
+import com.lowagie.text.Document;
+import com.lowagie.text.DocumentException;
+import com.lowagie.text.Image;
+import com.lowagie.text.PageSize;
+
+import net.sf.jasperreports.engine.JRException;
 
 
 /**
@@ -497,52 +515,56 @@ public class CxCFlujoBean implements Serializable {
         sheet.createRow(1);
          //Aqui ya agregue una linea en la segunda posicion del excel ahora voy a iterar por las dos filas que son el encabezado
         // Get iterator to all the rows in current sheet
-        Iterator<Row> rowIterator = sheet.iterator();
-        // Traversing over each row of XLSX file
-        while (rowIterator.hasNext() && rowIterator.next().getRowNum()>2) {
-            Row row = rowIterator.next();
-
-            // For each row, iterate through each columns
-            Iterator<Cell> cellIterator = row.cellIterator();
-            Map<Integer,String> cabecera1= new HashMap<>();
 
 
-            while (cellIterator.hasNext()) {
+        HSSFRow header0=sheet.getRow(0);
+        Map<Integer,String> cabecera1= new HashMap<>();
 
-                Cell cell = cellIterator.next();
+        Stream<Cell> cellStream= ConverterStream.asStream(header0.cellIterator());
 
-               int numCol=cell.getColumnIndex();
+        cellStream.forEach(cell-> {
 
-                if(cell.getRowIndex()==0)
-                {
-                    cabecera1.put(cell.getColumnIndex(),cell.toString());
-
-                    if(cell.toString().contains("Semana:") && !(cell.toString().contains("Total")) )
+                    if(cell.toString().contains("-"))
                     {
-                       cell.setCellValue(this.getFechaFormateada(this.diasCorteList.get(cell.getColumnIndex()).getFechaCorte()));
+                        String valor=cell.toString();
 
+                        List<String> initials = Arrays.stream(valor.split(" "))
+                                .collect(Collectors.toList());
+
+                        cell.setCellValue(initials.get(0)+" "+initials.get(1));
+                        String valor2=initials.stream().filter(x -> initials.indexOf(x)>2).collect(Collectors.joining());
+
+                        cabecera1.put(cell.getColumnIndex(),"S."+valor2);
+
+                    }
+                    else
+                    {
+                        cabecera1.put(cell.getColumnIndex(), cell.toString());
+                        cell.setCellType(Cell.CELL_TYPE_BLANK);
                     }
 
                 }
+            );
 
-                if(cell.getRowIndex()==1)
+        //this.getFechaFormateada(this.diasCorteList.get(cell.getColumnIndex()).getFechaCorte())
+        HSSFRow header1=sheet.getRow(1);
+
+        cabecera1.forEach((k,v)->
                 {
-
-
-
+                    header1.createCell(k).setCellType(XSSFCell.CELL_TYPE_STRING);
+                    header1.getCell(k).setCellValue(v);
+                    System.out.println("La llave es :"+k+" el valor es:" +v);
                 }
 
-            }
-        }
-
-
+        );
 
         this.postDescarga(document);
+
     }
 
     public void postDescarga(Object document)
     {
-        HashSet omitirColumnas = new HashSet();
+        HashSet omitirColumnas = new HashSet<Integer>();
         omitirColumnas.add(new Integer(0));
         omitirColumnas.add(new Integer(1));
         omitirColumnas.add(new Integer(2));
