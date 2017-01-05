@@ -1,16 +1,17 @@
 package com.alphacell.controller.financiero;
 
-import com.alphacell.model.financiero.TblReporteVentas;
-import com.alphacell.repository.ReporteVentasRepository;
-import com.alphacell.util.jsf.FormatoExcelPoi;
-
-import javax.faces.view.ViewScoped;
-import javax.inject.Inject;
-import javax.inject.Named;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
+
+import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
+
+import com.alphacell.model.financiero.TblReporteVentas;
+import com.alphacell.repository.ReporteVentasRepository;
+import com.alphacell.util.jsf.FormatoExcelPoi;
 
 /**
  * Created by admin on 05/04/2016.
@@ -89,7 +90,7 @@ public class ReporteVentasBean implements Serializable {
         omitirColumnas.add(new Integer("14"));
         omitirColumnas.add(new Integer("16"));
 
-        FormatoExcelPoi.formatearArchivoExcel(document,omitirColumnas);
+        FormatoExcelPoi.formatearArchivoExcel(document,omitirColumnas,0);
 
     }
 

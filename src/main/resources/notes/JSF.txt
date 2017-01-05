@@ -27,3 +27,45 @@ Esto saque de FlujoCuentasxCobrar.xhtml
                           //myNewVal.deleteCharAt(pos);
                           strVal=myNewVal.toString();
                       }
+
+    PARA MANEJAR STREAM DE ROWS DENTRO DE UN ARCHIVO DE EXCEL
+
+    //En esta seccion copiare mediante stream de una hoja a otra
+        HSSFSheet sheet2 = wb.createSheet("DATOS");
+
+
+            Stream<Row> rowStream = ConverterStream.asStreamRow(sheet.rowIterator());
+
+            rowStream.skip(2).forEach(row->{
+
+
+                HSSFRow headerInside=sheet2.createRow(row.getRowNum());
+
+
+                Stream<Cell> cellStream2= ConverterStream.asStream(row.cellIterator());
+                        cellStream2.forEach(cell->{
+                                                    int k=cell.getColumnIndex();
+                                                    HSSFCell cellNew= headerInside.createCell(k);
+                                                    cellNew.setCellStyle(cell.getCellStyle());
+
+                                    switch (cell.getCellType()) {
+                                        case HSSFCell.CELL_TYPE_STRING:
+                                            cellNew.setCellValue(cell.getStringCellValue());
+                                            break;
+                                        case HSSFCell.CELL_TYPE_NUMERIC:
+                                            cellNew.setCellValue(cell.getNumericCellValue());
+                                            break;
+                                        case HSSFCell.CELL_TYPE_BLANK:
+                                            cellNew.setCellValue(HSSFCell.CELL_TYPE_BLANK);
+                                            break;
+                                        case HSSFCell.CELL_TYPE_BOOLEAN:
+                                            cellNew.setCellValue(cell.getBooleanCellValue());
+                                            break;
+                                    }
+
+                                }
+                                            );
+
+            });
+
+            wb.removeSheetAt(0);

@@ -1,19 +1,21 @@
 package com.alphacell.controller.financiero;
 
-import com.alphacell.model.financiero.Tmpcxptramo;
-import com.alphacell.model.financiero.Tmppivotcxp;
-import com.alphacell.repository.ReporteCxPxTramosRepository;
-import com.alphacell.util.jsf.FormatoExcelPoi;
-import org.primefaces.context.RequestContext;
-
-import javax.faces.view.ViewScoped;
-import javax.inject.Inject;
-import javax.inject.Named;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
+
+import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
+
+import org.primefaces.context.RequestContext;
+
+import com.alphacell.model.financiero.Tmpcxptramo;
+import com.alphacell.model.financiero.Tmppivotcxp;
+import com.alphacell.repository.ReporteCxPxTramosRepository;
+import com.alphacell.util.jsf.FormatoExcelPoi;
 
 /**
  * Created by luis on 24/05/16.
@@ -104,7 +106,7 @@ public class ReporteCxPTramoDetalleBean implements Serializable {
         omitirColumnas.add(new Integer("1"));
         omitirColumnas.add(new Integer("2"));
 
-        FormatoExcelPoi.formatearArchivoExcel(document,omitirColumnas);
+        FormatoExcelPoi.formatearArchivoExcel(document,omitirColumnas,0);
 
     }
 

@@ -66,7 +66,7 @@ public class CarteraTotalBean implements Serializable {
         omitirColumnas.add(new Integer("0"));
         omitirColumnas.add(new Integer("1"));
 
-        FormatoExcelPoi.formatearArchivoExcel(document,omitirColumnas);
+        FormatoExcelPoi.formatearArchivoExcel(document,omitirColumnas,0);
 
     }
 

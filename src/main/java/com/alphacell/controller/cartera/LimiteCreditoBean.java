@@ -1,16 +1,17 @@
 package com.alphacell.controller.cartera;
 
-import com.alphacell.model.cartera.JpaAlphaLimitecredito;
-import com.alphacell.repository.LimiteCreditoRepository;
-import com.alphacell.util.jsf.FormatoExcelPoi;
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import java.io.Serializable;
-import java.util.HashSet;
-import java.util.List;
+
+import com.alphacell.model.cartera.JpaAlphaLimitecredito;
+import com.alphacell.repository.LimiteCreditoRepository;
+import com.alphacell.util.jsf.FormatoExcelPoi;
 
 /**
  * Created by luis.cevallos on 28/3/2016.
@@ -83,7 +84,7 @@ public class LimiteCreditoBean implements Serializable {
         omitirColumnas.add(new Integer("0"));
         omitirColumnas.add(new Integer("1"));
 
-        FormatoExcelPoi.formatearArchivoExcel(document,omitirColumnas);
+        FormatoExcelPoi.formatearArchivoExcel(document,omitirColumnas,0);
 
     }
 

@@ -1,16 +1,17 @@
 package com.alphacell.controller.financiero;
 
-import com.alphacell.model.financiero.TmpCxpFlujoVencidos;
-import com.alphacell.repository.cxp.FlujoVencidosRepository;
-import com.alphacell.util.jsf.FormatoExcelPoi;
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import java.io.Serializable;
-import java.util.HashSet;
-import java.util.List;
+
+import com.alphacell.model.financiero.TmpCxpFlujoVencidos;
+import com.alphacell.repository.cxp.FlujoVencidosRepository;
+import com.alphacell.util.jsf.FormatoExcelPoi;
 
 /**
  * Created by luis on 18/08/16.
@@ -57,7 +58,7 @@ public class ReporteCXPFlujoVencidoBean implements Serializable {
 
 
 
-        FormatoExcelPoi.formatearArchivoExcel(document,omitirColumnas);
+        FormatoExcelPoi.formatearArchivoExcel(document,omitirColumnas,0);
 
     }
 

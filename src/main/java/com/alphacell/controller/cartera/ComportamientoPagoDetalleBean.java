@@ -102,7 +102,7 @@ public class ComportamientoPagoDetalleBean implements Serializable{
         omitirColumnas.add(new Integer("1"));
         omitirColumnas.add(new Integer("3"));
 
-        FormatoExcelPoi.formatearArchivoExcel(document,omitirColumnas);
+        FormatoExcelPoi.formatearArchivoExcel(document,omitirColumnas,0);
 
     }
 
@@ -116,7 +116,7 @@ public class ComportamientoPagoDetalleBean implements Serializable{
         omitirColumnas.add(new Integer("2"));
         omitirColumnas.add(new Integer("4"));
 
-        FormatoExcelPoi.formatearArchivoExcel(document,omitirColumnas);
+        FormatoExcelPoi.formatearArchivoExcel(document,omitirColumnas,0);
 
     }
 

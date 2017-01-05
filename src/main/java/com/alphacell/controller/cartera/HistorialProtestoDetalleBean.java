@@ -1,16 +1,18 @@
 package com.alphacell.controller.cartera;
 
-import com.alphacell.model.cartera.Historialprotesto;
-import com.alphacell.repository.HistorialProtestoRepository;
-import com.alphacell.util.jsf.FormatoExcelPoi;
-import org.primefaces.context.RequestContext;
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.List;
 
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import java.io.Serializable;
-import java.util.HashSet;
-import java.util.List;
+
+import org.primefaces.context.RequestContext;
+
+import com.alphacell.model.cartera.Historialprotesto;
+import com.alphacell.repository.HistorialProtestoRepository;
+import com.alphacell.util.jsf.FormatoExcelPoi;
 
 /**
  * Created by luis.cevallos on 4/4/2016.
@@ -87,7 +89,7 @@ public class HistorialProtestoDetalleBean implements Serializable {
         omitirColumnas.add(new Integer("1"));
         omitirColumnas.add(new Integer("2"));
 
-        FormatoExcelPoi.formatearArchivoExcel(document,omitirColumnas);
+        FormatoExcelPoi.formatearArchivoExcel(document,omitirColumnas,0);
 
     }
 

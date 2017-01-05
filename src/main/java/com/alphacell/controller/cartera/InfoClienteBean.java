@@ -1,16 +1,17 @@
 package com.alphacell.controller.cartera;
 
-import com.alphacell.model.cartera.Cxcinfocliente;
-import com.alphacell.repository.InfoClienteRepository;
-import com.alphacell.util.jsf.FormatoExcelPoi;
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import java.io.Serializable;
-import java.util.HashSet;
-import java.util.List;
+
+import com.alphacell.model.cartera.Cxcinfocliente;
+import com.alphacell.repository.InfoClienteRepository;
+import com.alphacell.util.jsf.FormatoExcelPoi;
 
 /**
  * Created by luis on 02/06/16.
@@ -51,7 +52,7 @@ public class InfoClienteBean implements Serializable {
         omitirColumnas.add(new Integer("11"));
         omitirColumnas.add(new Integer("12"));
 
-        FormatoExcelPoi.formatearArchivoExcel(document, omitirColumnas);
+        FormatoExcelPoi.formatearArchivoExcel(document, omitirColumnas,0);
 
     }
 

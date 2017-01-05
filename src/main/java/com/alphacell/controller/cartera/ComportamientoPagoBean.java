@@ -1,13 +1,11 @@
 package com.alphacell.controller.cartera;
 
-import com.alphacell.model.cartera.ColumnasComportamiento;
-import com.alphacell.model.cartera.ComportamientoPivote;
-import com.alphacell.repository.ComportamientoPagoRepository;
-import com.alphacell.util.jsf.FormatoExcelPoi;
-import com.alphacell.util.reporte.Reporte;
-import com.google.common.collect.FluentIterable;
-import com.google.common.base.*;
-import net.sf.jasperreports.engine.JRException;
+import java.io.IOException;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -15,13 +13,14 @@ import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import java.io.IOException;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.function.Function;
+
+import com.alphacell.model.cartera.ColumnasComportamiento;
+import com.alphacell.model.cartera.ComportamientoPivote;
+import com.alphacell.repository.ComportamientoPagoRepository;
+import com.alphacell.util.jsf.FormatoExcelPoi;
+import com.alphacell.util.reporte.Reporte;
+
+import net.sf.jasperreports.engine.JRException;
 
 
 /**
@@ -195,7 +194,7 @@ public class ComportamientoPagoBean implements Serializable {
         omitirColumnas.add(new Integer("20"));
         omitirColumnas.add(new Integer("21"));
 
-        FormatoExcelPoi.formatearArchivoExcel(document,omitirColumnas);
+        FormatoExcelPoi.formatearArchivoExcel(document,omitirColumnas,0);
 
     }
 

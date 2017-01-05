@@ -1,21 +1,23 @@
 package com.alphacell.controller.financiero;
 
-import com.alphacell.model.financiero.LcTblCxp;
-import com.alphacell.model.financiero.LcVistaProveedoresAlpha;
-import com.alphacell.repository.CuentasxPagarRepository;
-import com.alphacell.util.jsf.FormatoExcelPoi;
-import org.primefaces.context.RequestContext;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
+
+import org.primefaces.context.RequestContext;
+
+import com.alphacell.model.financiero.LcTblCxp;
+import com.alphacell.model.financiero.LcVistaProveedoresAlpha;
+import com.alphacell.repository.CuentasxPagarRepository;
+import com.alphacell.util.jsf.FormatoExcelPoi;
 
 /**
  * Created by luis.cevallos on 20/4/2016.
@@ -123,7 +125,7 @@ public class ReporteCuentasXPagarBean implements Serializable{
         omitirColumnas.add(new Integer("6"));
         omitirColumnas.add(new Integer("7"));
 
-        FormatoExcelPoi.formatearArchivoExcel(document,omitirColumnas);
+        FormatoExcelPoi.formatearArchivoExcel(document,omitirColumnas,0);
 
     }
 

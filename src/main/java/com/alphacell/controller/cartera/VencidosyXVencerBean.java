@@ -1,16 +1,17 @@
 package com.alphacell.controller.cartera;
 
-import com.alphacell.model.cartera.TmpCxcVyv;
-import com.alphacell.repository.cxc.VencidosYxVencerRepository;
-import com.alphacell.util.jsf.FormatoExcelPoi;
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import java.io.Serializable;
-import java.util.HashSet;
-import java.util.List;
+
+import com.alphacell.model.cartera.TmpCxcVyv;
+import com.alphacell.repository.cxc.VencidosYxVencerRepository;
+import com.alphacell.util.jsf.FormatoExcelPoi;
 
 /**
  * Created by luis on 25/08/16.
@@ -56,7 +57,7 @@ public class VencidosyXVencerBean implements Serializable{
         omitirColumnas.add(new Integer("12"));
         omitirColumnas.add(new Integer("8"));
 
-        FormatoExcelPoi.formatearArchivoExcel(document,omitirColumnas);
+        FormatoExcelPoi.formatearArchivoExcel(document,omitirColumnas,0);
 
     }
 

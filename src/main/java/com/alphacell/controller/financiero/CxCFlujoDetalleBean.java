@@ -129,7 +129,7 @@ public class CxCFlujoDetalleBean implements Serializable{
         omitirColumnas.add(new Integer("2"));
         omitirColumnas.add(new Integer("3"));
 
-        FormatoExcelPoi.formatearArchivoExcel(document,omitirColumnas);
+        FormatoExcelPoi.formatearArchivoExcel(document,omitirColumnas,0);
 
     }
 }

@@ -84,7 +84,7 @@ public class ChequePostfechadoBean implements Serializable{
         omitirColumnas.add(new Integer("5"));
         omitirColumnas.add(new Integer("7"));
 
-        FormatoExcelPoi.formatearArchivoExcel(document,omitirColumnas);
+        FormatoExcelPoi.formatearArchivoExcel(document,omitirColumnas,0);
     }
 
     public void cambiarFormaBusqueda()
