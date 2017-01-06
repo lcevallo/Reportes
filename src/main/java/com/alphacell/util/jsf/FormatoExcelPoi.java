@@ -74,11 +74,16 @@ public class FormatoExcelPoi {
 				if (columnasNumero.contains(numeroColumna))
 					continue;
 
+				if ((cell.getCellType()== Cell.CELL_TYPE_FORMULA))
+					continue;
+
 				String strVal = cell.getStringCellValue();
 				String strVal2 = cell.getStringCellValue();
 
-				if (strVal.isEmpty() || strVal == null)
+				if (strVal.isEmpty() || strVal == null )
 					continue;
+
+
 
 				cell.setCellType(HSSFCell.CELL_TYPE_BLANK);
 				cell.setCellType(HSSFCell.CELL_TYPE_NUMERIC);

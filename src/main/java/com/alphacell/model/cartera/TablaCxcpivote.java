@@ -124,16 +124,20 @@ public class TablaCxcpivote implements Serializable {
     private BigDecimal sum9;
 
 
+    @Transient
+    private String company;
 
 
     public TablaCxcpivote() {
         this.listaValores= new ArrayList<>();
+        this.company="alph";
     }
 
     public TablaCxcpivote(Integer id) {
 
         this.listaValores= new ArrayList<>();
         this.id = id;
+        this.company="alph";
     }
 
     public TablaCxcpivote(Integer id, String codigoCliente, BigDecimal creditmax) {
@@ -142,6 +146,7 @@ public class TablaCxcpivote implements Serializable {
         this.id = id;
         this.codigoCliente = codigoCliente;
         this.creditmax = creditmax;
+        this.company="alph";
     }
 
     public Integer getId() {
@@ -397,6 +402,14 @@ public class TablaCxcpivote implements Serializable {
         this.listaValores = listaValores;
     }
 
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -421,7 +434,6 @@ public class TablaCxcpivote implements Serializable {
     public String toString() {
         return "Entities.TablaCxcpivote[ id=" + id + " ]";
     }
-
 
 
 }

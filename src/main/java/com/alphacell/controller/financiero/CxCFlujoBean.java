@@ -36,6 +36,7 @@ import org.apache.poi.hssf.usermodel.HSSFDataFormat;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.hssf.util.CellReference;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Font;
 import org.apache.poi.ss.usermodel.IndexedColors;
@@ -558,7 +559,16 @@ public class CxCFlujoBean implements Serializable {
 			}
 
 		}
-		sheet.createRow(1);
+		//sheet.createRow(1);
+
+        HSSFRow header2 = sheet.getRow(1);
+
+        if (header2 != null) {
+            sheet.shiftRows(1, sheet.getLastRowNum(), 1);
+        } else {
+            header2 = sheet.createRow(1);
+        }
+
 		// Aqui ya agregue una linea en la segunda posicion del excel ahora voy
 		// a iterar por las dos filas que son el encabezado
 		// Get iterator to all the rows in current sheet
@@ -586,13 +596,35 @@ public class CxCFlujoBean implements Serializable {
 			}
 		});
 
-		HSSFRow header2 = sheet.createRow(1);
-		cabecera1.forEach((k, v) -> {
-			header2.createCell(k).setCellType(XSSFCell.CELL_TYPE_STRING);
-			header2.getCell(k).setCellValue(v);
-		}
 
-		);
+               
+                HSSFRow header2A = sheet.getRow(1);
+                
+		cabecera1.forEach((k, v) -> {
+			header2A.createCell(k).setCellType(XSSFCell.CELL_TYPE_STRING);
+			header2A.getCell(k).setCellValue(v);
+		});
+                
+        int finalSumaColumna=sheet.getLastRowNum()+1;
+        HSSFRow header3 = sheet.createRow(finalSumaColumna);
+        List<String> ColumnasSkips = new ArrayList<>(Arrays.asList("A", "B","C"));
+
+        cabecera1.forEach((k, v) -> {
+
+            Cell cell=header3.createCell(k);
+            String alpha= CellReference.convertNumToColString(cell.getColumnIndex());
+
+            if (!ColumnasSkips.stream().filter(x->x.equals(alpha)).findFirst().isPresent())
+            {
+                String cellName=CellReference.convertNumToColString(cell.getColumnIndex())+(cell.getRowIndex());
+                String formula="SUM("+alpha+"3:"+cellName+")";
+                cell.setCellType(HSSFCell.CELL_TYPE_FORMULA);
+                cell.setCellFormula(formula);
+
+            }
+
+        });
+
 
 		this.postDescarga(document);
 	}
