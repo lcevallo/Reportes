@@ -63,7 +63,7 @@ public class FlujoVencidosRepository implements Serializable{
 
 
         resumenSubTable = busqueda.stream()
-                .collect(Collectors.groupingBy(si -> si.getAccountnum()));
+                .collect(Collectors.groupingBy(TmpCxpFlujoVencidos::getAccountnum));
 
 
         resumenSubTable.forEach((k,v)->listaEnviada.add(new CXPSumatoriaVencidas(k,v)));

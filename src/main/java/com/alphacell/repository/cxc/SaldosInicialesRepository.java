@@ -78,7 +78,7 @@ public class SaldosInicialesRepository implements Serializable {
             listaEnviada  = new ArrayList<ClientesLC>();
 
             empleadosSubTable = tmpcxcsaldosinicialesList.stream()
-                    .collect(Collectors.groupingBy(si -> si.getAccountnum()));
+                    .collect(Collectors.groupingBy(Tmpcxcsaldosiniciales::getAccountnum));
 
 
             empleadosSubTable.forEach((k,v)->listaEnviada.add(new ClientesLC(k,v)));

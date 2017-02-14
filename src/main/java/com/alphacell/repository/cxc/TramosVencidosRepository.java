@@ -86,7 +86,7 @@ public class TramosVencidosRepository implements Serializable {
                 */
 
                 vencidosSubtable=tmpTramosVencidos.stream()
-                        .collect(Collectors.groupingBy(si->si.getAccountnum()));
+                        .collect(Collectors.groupingBy(LcTramosYaVencidosPivot::getAccountnum));
 
                 vencidosSubtable.forEach((k,v)->listaEnviada.add(new TramosVencidosLC(k,v)));
 

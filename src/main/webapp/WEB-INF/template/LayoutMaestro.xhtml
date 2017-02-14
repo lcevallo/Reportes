@@ -10,6 +10,18 @@
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <h:outputStylesheet library="css" name="sistema.css" />
+    <style type="text/css">
+        .colored-red {
+            background-color: #FF0000;
+            color: #FFFFFF;
+        }
+
+        .colored-orange {
+            background-color: #FF600C;
+            color: #FFFFFF;
+        }
+    </style>
+        
         <script type="text/javascript">
             PrimeFaces.locales['es'] = {
                 closeText: 'Cerrar',
@@ -80,8 +92,8 @@
                 </p:submenu>
                 <p:submenu label="Logistica" icon="ui-icon-document">
                     <p:column>
-                        <p:submenu label="Reporte">
-                            <p:menuitem value="Reporte.Inventario" url="#" />
+                        <p:submenu label="Logistica">
+                            <p:menuitem value="Rotacion Inventario" url="/logistica/rotacionInventario.jsf" />
 
                         </p:submenu>
                     </p:column>

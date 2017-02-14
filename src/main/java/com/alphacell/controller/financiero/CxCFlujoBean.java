@@ -199,7 +199,7 @@ public class CxCFlujoBean implements Serializable {
 		this.semanatempList = cxCFlujoRepository.buscar8Semanas(this.semanaInicialList.get(0));
 		this.tablaCxcpivoteList = cxCFlujoRepository.buscarPivoteFlujo(this.semanaInicialList.get(0));
 
-		this.tablaCxcpivoteList.stream().filter(z -> z != null).forEach(x -> {
+		this.tablaCxcpivoteList.stream().filter(Objects::nonNull).forEach(x -> {
 			List<BigDecimal> listaEnviar = new ArrayList<BigDecimal>();
 			listaEnviar.add(x.getA());
 			listaEnviar.add(x.getA1());
@@ -264,15 +264,15 @@ public class CxCFlujoBean implements Serializable {
 		});// fin del foreach
 
 		// 10 veces
-		this.SumaColumnas.add(this.tablaCxcpivoteList.stream().filter(Objects::nonNull).map(x -> x.getA())
+		this.SumaColumnas.add(this.tablaCxcpivoteList.stream().filter(Objects::nonNull).map(TablaCxcpivote::getA)
                 .filter(Objects::nonNull)
 				.reduce(BigDecimal.ZERO, BigDecimal::add));
 
-		this.SumaColumnas.add(this.tablaCxcpivoteList.stream().filter(Objects::nonNull).map(x -> x.getA1())
+		this.SumaColumnas.add(this.tablaCxcpivoteList.stream().filter(Objects::nonNull).map(TablaCxcpivote::getA1)
                 .filter(Objects::nonNull)
                 .reduce(BigDecimal.ZERO, BigDecimal::add));
 
-		this.SumaColumnas.add(this.tablaCxcpivoteList.stream().filter(Objects::nonNull).map(x -> x.getA2())
+		this.SumaColumnas.add(this.tablaCxcpivoteList.stream().filter(Objects::nonNull).map(TablaCxcpivote::getA2)
                 .filter(Objects::nonNull)
                 .reduce(BigDecimal.ZERO, BigDecimal::add));
 
