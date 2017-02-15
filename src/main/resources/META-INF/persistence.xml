@@ -30,6 +30,8 @@
     <class>com.alphacell.model.cartera.TmpCxcVyv</class>
     <class>com.alphacell.model.cartera.LcVistaChequesPostfechados</class>
     <class>com.alphacell.model.logistica.VistaLogiIndicemensualinventario</class>
+    <class>com.alphacell.model.ventas.LcCadenaItems</class>
+    <class>com.alphacell.model.ventas.LcCadenaAlph</class>
     <properties>
       <!-- <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://localhost\MSSQLSERVER:1433;databaseName=Produccion" /> -->
       <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://192.168.10.21\MSSQLSERVER:1433;databaseName=Produccion"/>
@@ -40,9 +42,8 @@
       <property name="hibernate.show_sql" value="true"/>
       <property name="hibernate.format_sql" value="true"/>
       <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServer2012Dialect"/>
-        <property name="hibernate.connection.url"
-                  value="jdbc:sqlserver://192.168.10.21\MSSQLSERVER:1433;databaseName=Produccion"/>
-        <property name="hibernate.connection.driver_class" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+      <property name="hibernate.connection.url" value="jdbc:sqlserver://192.168.10.21\MSSQLSERVER:1433;databaseName=Produccion"/>
+      <property name="hibernate.connection.driver_class" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
     </properties>
   </persistence-unit>
 </persistence>

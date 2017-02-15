@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui"
+      xmlns:pe="http://primefaces.org/ui/extensions"
+>
+<h:body>
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet library="css" name="sistema.css" />
+    </h:head>
+    <p:dialog header="Creacion Cadena" modal="true" showEffect="fade"
+              hideEffect="fade" widgetVar="ventasCrearCadenaDialogWidget" width="40%"
+              position="top" appendToBody="false" draggable="false"
+              resizable="true" id="ventasCrearCadenaDialog">
+
+        <h:form id="frm-dialog-crearCadena">
+            <p:panelGrid columns="3"
+                         layout="grid"
+                         id="grid-CrearCadena"
+                         style="margin-top: 10px;"
+                         columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2"
+                         styleClass="panelgrid-noborder"
+                         >
+
+            <p:outputLabel for="txt-codigo-cadena"  value="Codigo Cadena: " />
+            <p:inputText id="txt-codigo-cadena" value="#{configuracionVentasBean.cadenaNew.codigoCadena}" required="true"
+                         requiredMessage="Debe de colocar el codigo de la cadena" >
+            </p:inputText>
+            <p:message id="txt-codigo-msg" for="txt-codigo-cadena" />
+
+            <p:outputLabel for="txt-nombre-cadena"  value="Nombre Cadena: " />
+            <p:inputText id="txt-nombre-cadena" value="#{configuracionVentasBean.cadenaNew.nombre}" required="true"
+                         requiredMessage="Debe de colocar el nombre de la cadena" >
+            </p:inputText>
+            <p:message id="txt-nombre-msg" for="txt-nombre-cadena" />
+
+            <p:outputLabel for="txt-descripcion-cadena"  value="Descripcion:" />
+            <p:inputTextarea id="txt-descripcion-cadena" value="#{configuracionVentasBean.cadenaNew.descripcion}"
+                             rows="5"
+                             />
+            <p:message for="txt-descripcion-cadena" />
+
+
+            <f:facet name="footer" >
+                <div style="clear: both; text-align:right">
+                    <p:commandButton id="save-Cadena-Button"
+                                     value="Guardar"
+                                     icon="fa fa-save"
+                                     process="ventasCrearCadenaDialog"
+                                     oncomplete="if (!args.validationFailed) PF('ventasCrearCadenaDialogWidget').hide()"
+                                     actionListener="#{configuracionVentasBean.guardarCadena}" />
+                </div>
+            </f:facet>
+            </p:panelGrid>
+            <p:defaultCommand target="save-Cadena-Button" />
+        </h:form>
+    </p:dialog>
+</h:body>
+</html>

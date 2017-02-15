@@ -65,6 +65,24 @@ h1 {
     padding-bottom:5px;
 }
 
+/* PANELGRID */
+
+.ui-panelgrid {
+	width: 100%;
+	border: none;
+	margin-top: 20px;
+	border-style: none
+}
+.ui-panelgrid td {
+	height: 34px;
+}
+
+/* PANELGRID */
+.ui-panelgrid.panelgrid-noborder .ui-grid-responsive {
+	border: none;
+}
+
+
 .sin-bordes td{
 	border: none;
 	padding: 5px;
