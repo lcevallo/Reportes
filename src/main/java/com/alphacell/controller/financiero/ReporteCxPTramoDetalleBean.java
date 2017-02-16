@@ -2,6 +2,7 @@ package com.alphacell.controller.financiero;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -90,8 +91,9 @@ public class ReporteCxPTramoDetalleBean implements Serializable {
         RequestContext context = RequestContext.getCurrentInstance();
         this.tmpcxptramoList=reporteCxPxTramosRepository.buscarDetalleTramosXSemana(fecha_inicial,record.getAccountnum(),num_semana);
 
-        RequestContext.getCurrentInstance().update("cxpTramoDialog");
-        RequestContext.getCurrentInstance().update("cxpTramoDetalleTbl");
+        RequestContext.getCurrentInstance().update(
+                Arrays.asList("fmrxlsCxpTramoDetalle:cxpTramoDetalleTbl","fmrxlsCxpTramoDetalle:cxpTramoDialog"));
+
 
         context.execute("PF('cxpTramoDialogWidget').show();");
 

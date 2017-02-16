@@ -19,6 +19,7 @@
                         value="#{configuracionVentasBean.cadenaSelected}"
                         converter="omnifaces.SelectItemsConverter"
                 >
+                    <p:ajax event="change" listener="#{configuracionVentasBean.handleCadenaChange}" />
                     <f:selectItem itemLabel="Selecione una cadena" noSelectionOption="true"  />
                     <f:selectItems value="#{configuracionVentasBean.cmbCadenaAlph}" var="cadena"
                                    itemValue="#{cadena}" itemLabel="#{cadena.nombre}" />

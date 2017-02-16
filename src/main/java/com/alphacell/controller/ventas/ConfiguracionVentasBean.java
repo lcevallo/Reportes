@@ -12,6 +12,7 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.event.ActionEvent;
+import javax.faces.event.AjaxBehaviorEvent;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -57,6 +58,12 @@ public class ConfiguracionVentasBean implements Serializable{
         this.cargarCadenas();
     }
 
+
+    public void handleCadenaChange(AjaxBehaviorEvent event)
+    {
+        if(cadenaSelected!=null)
+        this.cadenaNew= this.cadenaSelected;
+    }
 
     public void prepararNuevaCadena(ActionEvent event) {
 

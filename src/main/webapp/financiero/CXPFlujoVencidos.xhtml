@@ -23,6 +23,24 @@
             </p:toolbarGroup>
         </p:toolbar>
 
+            <p:spacer/>
+            <h:panelGrid columns="6" style="margin-bottom:10px; margin-left: 10px" cellpadding="5">
+
+            <p:outputLabel value="Codigo Proveedor" for="cod_proveedor" />
+            <p:inputText id="cod_proveedor" value="#{reporteCXPFlujoVencidoBean.flujoVencidoFilter.codProveedor}" />
+
+            <p:outputLabel value="Fecha del Documento" for="fecha_docu" />
+                <p:calendar id="fecha_docu"  value="#{reporteCXPFlujoVencidoBean.flujoVencidoFilter.fechaDocumento}"
+                            pattern="dd/MM/yyyy" readonlyInput="false"
+                            showButtonPanel="true" navigator="true"
+                            pages="1" mode="popup" locale="es"
+                />
+
+            <p:outputLabel></p:outputLabel>
+            <p:commandButton value="Buscar" icon="fa fa-search"
+                             id="boton-buscar-flujosVencidos" update="@form"
+                             action="#{reporteCXPFlujoVencidoBean.buscarFiltro}" />
+            </h:panelGrid>
         <p:dataTable
                 id="table-cxpFlujoVencido"
                 value="#{reporteCXPFlujoVencidoBean.tableCxpFlujoVencido}"

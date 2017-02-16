@@ -7,6 +7,13 @@ package com.alphacell.repository.cxp;
 
 import com.alphacell.model.financiero.CXPSumatoriaVencidas;
 import com.alphacell.model.financiero.TmpCxpFlujoVencidos;
+import com.alphacell.util.jpa.filter.FlujoVencidoFilter;
+import org.apache.commons.lang3.StringUtils;
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -72,4 +79,30 @@ public class FlujoVencidosRepository implements Serializable{
 
 
     }
+
+    @SuppressWarnings("unchecked")
+    public List<TmpCxpFlujoVencidos> filtrados(FlujoVencidoFilter flujoVencidoFilter)
+    {
+        Session session= manager.unwrap(Session.class);
+        Criteria criteria=session.createCriteria(TmpCxpFlujoVencidos.class);
+
+        if(StringUtils.isNotBlank(flujoVencidoFilter.getCodProveedor()))
+        {
+            switch (flujoVencidoFilter.getCodProveedor()){
+                case "Todos":
+                    return this.cargarTablaCXPFlujoVencidos();
+                default:
+                    criteria.add(Restrictions.eq("accountnum",flujoVencidoFilter.getCodProveedor()));
+            }
+
+        }
+
+        if(flujoVencidoFilter.getFechaDocumento()!=null)
+            criteria.add(Restrictions.eq("transdate",flujoVencidoFilter.getFechaDocumento()));
+
+        return criteria.addOrder(Order.desc("transdate")).list();
+
+    }
+
+
 }
