@@ -7,14 +7,7 @@ package com.alphacell.model.ventas;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.Lob;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-import javax.persistence.Transient;
+import javax.persistence.*;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -27,6 +20,16 @@ import com.alphacell.model.xls.LcCadenaItemsXLS;
 @Entity
 @Table(name = "LC_CADENA_ITEMS")
 @XmlRootElement
+@NamedStoredProcedureQueries({
+        @NamedStoredProcedureQuery(name = "LcCadenaItems.sp_guardar_cadenaitem",procedureName = "dbo.LC_GUARDAR_CADENAITEM",
+                                                            parameters = {
+                                                                @StoredProcedureParameter(mode = ParameterMode.IN,type = String.class,name ="codigo_cadena" ),
+                                                                @StoredProcedureParameter(mode = ParameterMode.IN,type = String.class,name ="descripcion_cadena" ),
+                                                                @StoredProcedureParameter(mode = ParameterMode.IN,type = String.class,name ="codigo_item_alph" ),
+                                                                @StoredProcedureParameter(mode = ParameterMode.IN,type = String.class,name ="descripcion_item_alph" )
+                                                            }
+                                   )
+})
 @NamedQueries({
     @NamedQuery(name = "LcCadenaItems.findAll", query = "SELECT l FROM LcCadenaItems l"),
     @NamedQuery(name = "LcCadenaItems.findByCodigoItem", query = "SELECT l FROM LcCadenaItems l WHERE l.lcCadenaItemsPK.codigoItem = :codigoItem"),

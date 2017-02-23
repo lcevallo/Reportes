@@ -24,6 +24,7 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.apache.commons.lang3.StringUtils;
 import org.omnifaces.util.Ajax;
 import org.primefaces.component.datatable.DataTable;
 import org.primefaces.context.RequestContext;
@@ -100,7 +101,6 @@ public class ConfiguracionVentasBean implements Serializable{
         }
     }
 
-
     public void handleCadenaChange(AjaxBehaviorEvent event)
     {
         if(cadenaSelected!=null)
@@ -154,10 +154,16 @@ public class ConfiguracionVentasBean implements Serializable{
                 lcCadenaItemsLocal.setLcCadenaItemsPK(new LcCadenaItemsPK(obj.getCodigo(),this.cadenaSelected.getCodigoCadena()));
                 lcCadenaItemsLocal.setDescripcionCadena(obj.getDescripcion());
                 lcCadenaItemsLocal.setRowkey(atomicInteger.getAndIncrement());
+
+                //TODO: Tengo que crear el itemLocal en la base y devolverlo como debe de ser con el trassient lcCadenaItemsXLS
+                lcCadenaItemsLocal=this.serviceConfigVentas.guardar(lcCadenaItemsLocal);
+                if(StringUtils.isNotBlank(lcCadenaItemsLocal.getFkCodigoAlph()))
+                {
+                    lcCadenaItemsLocal.setLcCadenaItemsXLS(new LcCadenaItemsXLS(lcCadenaItemsLocal.getFkCodigoAlph(),lcCadenaItemsLocal.getDescripcionAlph()));
+                }
+
                 this.tableCadenaItems.add(lcCadenaItemsLocal);
             });
-
-
             }
         catch (Exception e) {
                 e.printStackTrace();

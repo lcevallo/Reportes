@@ -8,6 +8,9 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceException;
 import javax.persistence.Query;
+import javax.persistence.StoredProcedureQuery;
+
+import org.hibernate.jpa.spi.StoredProcedureQueryParameterRegistration;
 
 import com.alphacell.model.ventas.LcCadenaAlph;
 import com.alphacell.model.ventas.LcCadenaItems;
@@ -71,4 +74,19 @@ public class ConfigRepository implements Serializable{
                 .getSingleResult();
     }
 
+    public LcCadenaItems guardarCadenaItem(LcCadenaItems lcCadenaItems) {
+    
+        StoredProcedureQuery query= manager.createStoredProcedureQuery("LcCadenaItems.sp_guardar_cadenaitem")
+                .setParameter("codigo_cadena",lcCadenaItems.getLcCadenaItemsPK().getCodigoItem())
+                .setParameter("descripcion_cadena",lcCadenaItems.getDescripcionCadena())
+                .setParameter("codigo_item_alph",lcCadenaItems.getFkCodigoAlph())
+                .setParameter("descripcion_item_alph",lcCadenaItems.getDescripcionAlph());
+
+
+        ((StoredProcedureQueryParameterRegistration) query.getParameter("codigo_item_alph")).enablePassingNulls(true);
+        ((StoredProcedureQueryParameterRegistration) query.getParameter("descripcion_item_alph")).enablePassingNulls(true);
+
+        return (LcCadenaItems) query.getSingleResult();
+
+    }
 }

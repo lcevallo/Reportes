@@ -26,4 +26,10 @@ public class ServiceConfigVentas implements Serializable {
     public void removerItemCadena(LcCadenaItems cadenaItemsSelected) throws NegocioException {
         configRepository.remover(cadenaItemsSelected);
     }
+
+    @Transacional
+    public LcCadenaItems guardar(LcCadenaItems lcCadenaItems)
+    {
+       return configRepository.guardarCadenaItem(lcCadenaItems);
+    }
 }
