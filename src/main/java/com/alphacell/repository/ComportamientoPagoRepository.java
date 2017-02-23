@@ -1,17 +1,19 @@
 package com.alphacell.repository;
 
-import com.alphacell.model.cartera.ComportamientoPivote;
-import com.alphacell.model.cartera.Tmpcxccomportamientodetalle;
-import com.alphacell.model.cartera.Tmpcxccomportamientooffsetrecid;
-import org.hibernate.SQLQuery;
-import org.hibernate.Session;
-
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
+
+import org.hibernate.SQLQuery;
+import org.hibernate.Session;
+
+import com.alphacell.model.cartera.ComportamientoPivote;
+import com.alphacell.model.cartera.Tmpcxccomportamientodetalle;
+import com.alphacell.model.cartera.Tmpcxccomportamientooffsetrecid;
 
 /**
  * Created by luis.cevallos on 11/4/2016.
@@ -51,6 +53,7 @@ public class ComportamientoPagoRepository  implements Serializable{
 
 
             Session session = manager.unwrap(Session.class);
+
             SQLQuery query = session.createSQLQuery("EXEC dbo.LC_CXC_COMPORTAMIENTOPAGO_DETALLE :INVOICE,:GRUPO,:opcion,:fechas30P,:fechas45P,:fechas60P,:fechas90P,:fechas120P,:fechas150P").addEntity(Tmpcxccomportamientodetalle.class);
             query.setString("INVOICE", Factura);
             query.setString("GRUPO", grupo);

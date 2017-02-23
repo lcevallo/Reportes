@@ -5,24 +5,18 @@
  */
 package com.alphacell.repository.cxp;
 
-import com.alphacell.model.financiero.CXPSumatoriaVencidas;
-import com.alphacell.model.financiero.TmpCxpFlujoVencidos;
-import com.alphacell.util.jpa.filter.FlujoVencidoFilter;
-import org.apache.commons.lang3.StringUtils;
-import org.hibernate.Criteria;
-import org.hibernate.Session;
-import org.hibernate.criterion.MatchMode;
-import org.hibernate.criterion.Order;
-import org.hibernate.criterion.Restrictions;
-
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.persistence.StoredProcedureQuery;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.StoredProcedureQuery;
+
+import com.alphacell.model.financiero.CXPSumatoriaVencidas;
+import com.alphacell.model.financiero.TmpCxpFlujoVencidos;
 
 /**
  *
@@ -37,27 +31,20 @@ public class FlujoVencidosRepository implements Serializable{
 
     public List<TmpCxpFlujoVencidos> cargarTablaCXPFlujoVencidos()
     {
-        List<TmpCxpFlujoVencidos> listaEnviada= new ArrayList<TmpCxpFlujoVencidos>();;
+        List<TmpCxpFlujoVencidos> listaEnviada= new ArrayList<TmpCxpFlujoVencidos>();
 
         try {
-
-
             StoredProcedureQuery query = this.manager.createStoredProcedureQuery("LC_CXP_FLUJO_X_TRAMOS",TmpCxpFlujoVencidos.class);
-
             if (query.execute()) {
-
                 listaEnviada = query.getResultList();
             }
-
-
             return listaEnviada;
-
         } catch (SecurityException | IllegalStateException e) {
             e.printStackTrace();
         }
         return null;
-
     }
+
 
     public List<CXPSumatoriaVencidas> cargarResumenFlujoVencido()
     {
@@ -79,6 +66,7 @@ public class FlujoVencidosRepository implements Serializable{
 
 
     }
+    /*
 
     @SuppressWarnings("unchecked")
     public List<TmpCxpFlujoVencidos> filtrados(FlujoVencidoFilter flujoVencidoFilter)
@@ -103,6 +91,6 @@ public class FlujoVencidosRepository implements Serializable{
         return criteria.addOrder(Order.desc("transdate")).list();
 
     }
-
+*/
 
 }

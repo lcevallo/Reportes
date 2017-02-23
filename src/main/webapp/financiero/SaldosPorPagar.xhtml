@@ -1,0 +1,118 @@
+<ui:composition template="/WEB-INF/template/LayoutMaestro.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+>
+    <ui:define name="titulo">Saldos Por Pagar x fecha</ui:define>
+
+    <ui:define name="cuerpo">
+
+
+        <h:form id="frm-saldoxpagar">
+        <p:messages/>
+        <p:toolbar>
+            <p:toolbarGroup align="left">
+                <h:commandLink>
+                    <p:graphicImage library="images" name="excel.png" width="24"/>
+                    <p:dataExporter type="xls" target="table-sxpFlujoVencido" fileName="saldoPorPagar"
+                                    postProcessor="#{saldosxPagarBean.postProcessXLS}"
+                    />
+                </h:commandLink>
+            </p:toolbarGroup>
+        </p:toolbar>
+
+            <p:spacer/>
+            <h:panelGrid columns="6" style="margin-bottom:10px; margin-left: 10px" cellpadding="5">
+
+            <p:outputLabel value="Codigo Proveedor" for="sxp_cod_proveedor" />
+            <p:inputText id="sxp_cod_proveedor" value="#{saldosxPagarBean.flujoVencidoFilter.codProveedor}" />
+
+            <p:outputLabel value="Fecha del Documento" for="sxp_fecha_docu" />
+                <p:calendar id="sxp_fecha_docu"  value="#{saldosxPagarBean.flujoVencidoFilter.fechaDocumento}"
+                            pattern="dd/MM/yyyy" readonlyInput="false"
+                            showButtonPanel="true" navigator="true"
+                            pages="1" mode="popup" locale="es"
+                />
+
+            <p:outputLabel></p:outputLabel>
+            <p:commandButton value="Buscar" icon="fa fa-search"
+                             id="sxp_boton-buscar-flujosVencidos" update="@form"
+                             action="#{saldosxPagarBean.buscarSaldosxPagar}" />
+            </h:panelGrid>
+        <p:dataTable
+                id="table-sxpFlujoVencido"
+                value="#{saldosxPagarBean.tableLcTblCxp}"
+                var="dtbsxpTblCxp"
+                tableStyle="table-layout: fixed"
+                scrollable="true" scrollWidth="1340"
+                paginatorPosition="bottom"
+                paginator="true"
+                rows="15"
+                paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                currentPageReportTemplate="Pagina: ({currentPage} de {totalPages})"
+                rowsPerPageTemplate="5,15,25"
+                rowKey="#{dtbsxpTblCxp.id}"
+                emptyMessage="No existen datos para presentar"
+        >
+
+            <p:column headerText="Codigo Proveedor" >
+                <h:outputText value="#{dtbsxpTblCxp.accountnum}" />
+            </p:column>
+
+            <p:column headerText="Tipo" >
+                <h:outputText value="#{dtbsxpTblCxp.tipo}" />
+            </p:column>
+
+            <p:column headerText="Proveedor" filterBy="#{dtbsxpTblCxp.nombreCliente}" filterMatchMode="contains" >
+                <h:outputText value="#{dtbsxpTblCxp.nombreCliente}" />
+            </p:column>
+
+            <p:column headerText="Fecha Transaccion" >
+                <h:outputText value="#{dtbsxpTblCxp.transdate}" >
+                    <f:convertDateTime dateStyle="full" pattern="MM/dd/yyyy" timeZone="EST" type="date" />
+                </h:outputText>
+            </p:column>
+
+            <p:column headerText="No Doc">
+                <h:outputText value="#{dtbsxpTblCxp.invoice}"/>
+            </p:column>
+
+            <p:column headerText="Ref de Pago">
+                <h:outputText value="#{dtbsxpTblCxp.paymReference}" />
+            </p:column>
+
+            <p:column headerText="Diario">
+                <h:outputText value="#{dtbsxpTblCxp.voucher}"/>
+            </p:column>
+
+
+            <p:column headerText="Descripcion" >
+                <h:outputText value="#{dtbsxpTblCxp.des}" />
+            </p:column>
+
+            <p:column headerText="Debito" >
+                <h:outputText value="#{dtbsxpTblCxp.debito}" >
+                    <f:convertNumber pattern="#,##0.00" />
+                </h:outputText>
+            </p:column>
+
+            <p:column headerText="Credito" >
+                <h:outputText value="#{dtbsxpTblCxp.credito}" >
+                    <f:convertNumber pattern="#,##0.00" />
+                </h:outputText>
+            </p:column>
+
+            <p:column headerText="Saldo">
+                <h:outputText value="#{dtbsxpTblCxp.acarreo}">
+                    <f:convertNumber pattern="#,##0.00"/>
+                </h:outputText>
+            </p:column>
+
+        </p:dataTable>
+</h:form>
+
+    </ui:define>
+
+</ui:composition>

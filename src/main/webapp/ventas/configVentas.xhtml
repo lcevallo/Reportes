@@ -12,8 +12,7 @@
         <h:form id="form-Config-Ventas">
 
         <p:messages id="messagesConfigVentas" showDetail="true" autoUpdate="true" closable="true" />
-            <p:toolbar style="margin-top: 20px">
-            <p:toolbarGroup>
+                <h:panelGrid columns="4" cellpadding="2">
                 <p:selectOneMenu
                         id="cmb-cfgventas-cadenas"
                         value="#{configuracionVentasBean.cadenaSelected}"
@@ -25,34 +24,51 @@
                                    itemValue="#{cadena}" itemLabel="#{cadena.nombre}" />
                 </p:selectOneMenu>
                 <p:spacer />
-                <p:commandButton value="Crear cadena"  icon="fa fa-link" process="@this, cmb-cfgventas-cadenas"
+                <p:fileUpload label="excel crear items cadenas"
+                              fileUploadListener="#{configuracionVentasBean.upload}"
+                              sizeLimit="52428800" auto="true"
+                              mode="advanced"
+                              cancelLabel="ha cancelado la subida"
+                              allowTypes="/(\.|\/)(xls|xlsx)$/"
+                              uploadLabel="Subir archivo template de items"
+                              dragDropSupport="false"
+                              skinSimple="true"
+                              update="table-cadenas-items-alpha"/>
+                </h:panelGrid>
+            <p:separator />
+            <p:commandButton value="Crear cadena"  icon="fa fa-link" process="@this, cmb-cfgventas-cadenas"
+                             update="frm-dialog-crearCadena"
+                             oncomplete="PF('ventasCrearCadenaDialogWidget').show()">
 
-                                 oncomplete="PF('ventasCrearCadenaDialogWidget').show()">
-
-                    <f:setPropertyActionListener value="#{configuracionVentasBean.cadenaSelected}"
-                                                 target="#{configuracionVentasBean.cadenaNew}" />
-
-                </p:commandButton>
-            </p:toolbarGroup>
-            </p:toolbar>
+                <f:setPropertyActionListener value="#{configuracionVentasBean.cadenaSelected}"
+                                             target="#{configuracionVentasBean.cadenaNew}" />
+            </p:commandButton>
             <p:separator/>
             <p:spacer />
             <p:dataTable
                     id="table-cadenas-items-alpha"
+                    editable="true"
+                    editMode="cell"
                     value="#{configuracionVentasBean.tableCadenaItems}"
-                    var="record_items_cadena"
-                    filteredValue="#{configuracionVentasBean.tableCadenaItemsFiltered}"
                     selection="#{configuracionVentasBean.cadenaItemsSelected}"
                     selectionMode="single"
+                    var="record_items_cadena"
                     paginatorPosition="bottom"
                     paginator="true"
                     paginatorAlwaysVisible="false"
                     rows="15"
+                    rowKey="#{record_items_cadena.rowkey}"
                     paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
                     currentPageReportTemplate="Pagina: ({currentPage} de {totalPages})"
                     rowsPerPageTemplate="5,15,25"
                     emptyMessage="No existen datos para presentar"
             >
+                <p:ajax event="cellEdit" listener="#{configuracionVentasBean.onCellEdit}" />
+
+                <p:column headerText="Num Col">
+                    <h:outputText value="#{record_items_cadena.rowkey}" />
+                </p:column>
+
                 <p:column headerText="COD. ITEM CADENA">
                     <h:outputText value="#{record_items_cadena.lcCadenaItemsPK.codigoItem}" />
                 </p:column>
@@ -62,14 +78,58 @@
                 </p:column>
 
                 <p:column headerText="COD. ITEM ALPH">
-                    <h:outputText value="#{record_items_cadena.fkCodigoAlph}" />
+                    <p:cellEditor>
+                       <f:facet name="output"><h:outputText value="#{record_items_cadena.lcCadenaItemsXLS.codigo}" /></f:facet>
+                        <f:facet name="input">
+                          <p:selectOneMenu value="#{record_items_cadena.lcCadenaItemsXLS}"
+                                           style="..." var="t"  converter="omnifaces.SelectItemsConverter"
+                                           valueChangeListener="#{configuracionVentasBean.changeDescripcionAlpha}"
+                          >
+                              <p:ajax event="change" update="table-cadenas-items-alpha" />
+
+                              <f:selectItem itemLabel="Escoja un Item" noSelectionOption="true" />
+                              <f:selectItems value="#{configuracionVentasBean.cmbListItemERP}" var="itemsAlph" itemLabel="#{itemsAlph.codigo}" itemValue="#{itemsAlph}"  />
+                              <p:column>
+                                 #{t.codigo}
+                              </p:column>
+                              <p:column>
+                                  #{t.descripcion}
+                              </p:column>
+                          </p:selectOneMenu>
+                        </f:facet>
+                    </p:cellEditor>
                 </p:column>
 
                 <p:column headerText="DESC. ITEM CADENA">
                     <h:outputText value="#{record_items_cadena.descripcionAlph}" />
                 </p:column>
-
+                <p:column style="text-align: center" class="DataTableCellBorder">
+                <p:commandButton icon="ui-icon-trash" title="Eliminar"
+                                 oncomplete="PF('confirmationWidget-CfgItemCadena').show()"
+                                 process="@this"
+                                 update="form-Config-Ventas:confirmDialog-CfgItemCadena">
+                      <f:setPropertyActionListener target="#{configuracionVentasBean.cadenaItemsSelected}"
+                                                 value="#{record_items_cadena}" />
+                </p:commandButton>
+                </p:column>
             </p:dataTable>
+
+
+            <p:confirmDialog id="confirmDialog-CfgItemCadena"
+                             widgetVar="confirmationWidget-CfgItemCadena"
+                             message="Esta seguro de querer eliminar #{configuracionVentasBean.cadenaItemsSelected.descripcionCadena} ?"
+                             header="Borrar Item Cadena" severity="alert">
+                <div style="text-align:center">
+                    <p:commandButton id="btn-confirm-CfgItemCadena" value="OK" update="messagesConfigVentas"
+                                     oncomplete="PF('confirmationWidget-CfgItemCadena').hide();"
+                                     actionListener="#{configuracionVentasBean.excluir}" process="@this">
+                            <f:setPropertyActionListener value="" target="" />
+                    </p:commandButton>
+                    <p:button value="Cancel" onclick="PF('confirmationWidget-CfgItemCadena').hide(); return false;" />
+                </div>
+            </p:confirmDialog>
+
+
 
         </h:form>
         <ui:include src="/WEB-INF/dialog/ventas/creaCadenaDialog.xhtml" />

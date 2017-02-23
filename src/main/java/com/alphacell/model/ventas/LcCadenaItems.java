@@ -6,6 +6,7 @@
 package com.alphacell.model.ventas;
 
 import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -13,8 +14,11 @@ import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+
+import com.alphacell.model.xls.LcCadenaItemsXLS;
 
 /**
  *
@@ -45,6 +49,13 @@ public class LcCadenaItems implements Serializable {
     @Column(name = "descripcion_alph")
     private String descripcionAlph;
 
+    @Transient
+    private Integer rowkey;
+
+    @Transient
+    private LcCadenaItemsXLS lcCadenaItemsXLS;
+
+
     public LcCadenaItems() {
     }
 
@@ -54,6 +65,14 @@ public class LcCadenaItems implements Serializable {
 
     public LcCadenaItems(String codigoItem, String fkCodigoCadena) {
         this.lcCadenaItemsPK = new LcCadenaItemsPK(codigoItem, fkCodigoCadena);
+    }
+
+    public Integer getRowkey() {
+        return rowkey;
+    }
+
+    public void setRowkey(Integer rowkey) {
+        this.rowkey = rowkey;
     }
 
     public LcCadenaItemsPK getLcCadenaItemsPK() {
@@ -110,7 +129,17 @@ public class LcCadenaItems implements Serializable {
 
     @Override
     public String toString() {
-        return "com.alphacell.model.ventas.LcCadenaItems[ lcCadenaItemsPK=" + lcCadenaItemsPK + " ]";
+        return String.format("LcCadenaItems[%s,%s]",lcCadenaItemsPK.getCodigoItem(),lcCadenaItemsPK.getFkCodigoCadena());
+        //return "com.alphacell.model.ventas.LcCadenaItems[ lcCadenaItemsPK=" + lcCadenaItemsPK + " ]";
     }
-    
+
+    public LcCadenaItemsXLS getLcCadenaItemsXLS() {
+        return lcCadenaItemsXLS;
+    }
+
+    public void setLcCadenaItemsXLS(LcCadenaItemsXLS lcCadenaItemsXLS) {
+        this.lcCadenaItemsXLS = lcCadenaItemsXLS;
+        this.setFkCodigoAlph(lcCadenaItemsXLS.getCodigo());
+        this.setDescripcionAlph(lcCadenaItemsXLS.getDescripcion());
+    }
 }

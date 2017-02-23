@@ -29,7 +29,7 @@ public class ReporteCXPFlujoVencidoBean implements Serializable {
     private static final long serialVersionUID = 9004947568336717399L;
 
     private List<TmpCxpFlujoVencidos> tableCxpFlujoVencido;
-    private List<TmpCxpFlujoVencidos>  tableCxpFlujoVencidoFiltered;
+    private List<TmpCxpFlujoVencidos> tableCxpFlujoVencidoFiltered;
 
     private FlujoVencidoFilter flujoVencidoFilter;
 
@@ -68,7 +68,6 @@ public class ReporteCXPFlujoVencidoBean implements Serializable {
         FormatoExcelPoi.formatearArchivoExcel(document,omitirColumnas,0);
     }
 
-
     public void buscarFiltro()
     {
         //this.tableCxpFlujoVencidoFiltered=this.flujoVencidosRepository.filtrados(this.flujoVencidoFilter);
@@ -98,11 +97,7 @@ public class ReporteCXPFlujoVencidoBean implements Serializable {
         {
             this.tableCxpFlujoVencido= this.flujoVencidosRepository.cargarTablaCXPFlujoVencidos();
         }
-
-
-
         //this.tableCxpFlujoVencido=this.tableCxpFlujoVencidoFiltered;
-
         //System.out.println(this.tableCxpFlujoVencidoFiltered);
     }
 

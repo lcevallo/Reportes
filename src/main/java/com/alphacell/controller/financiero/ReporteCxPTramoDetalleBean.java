@@ -92,7 +92,7 @@ public class ReporteCxPTramoDetalleBean implements Serializable {
         this.tmpcxptramoList=reporteCxPxTramosRepository.buscarDetalleTramosXSemana(fecha_inicial,record.getAccountnum(),num_semana);
 
         RequestContext.getCurrentInstance().update(
-                Arrays.asList("fmrxlsCxpTramoDetalle:cxpTramoDetalleTbl","fmrxlsCxpTramoDetalle:cxpTramoDialog"));
+                Arrays.asList("fmrxlsCxpTramoDetalle:cxpTramoDetalleTbl","cxpTramoDialog"));
 
 
         context.execute("PF('cxpTramoDialogWidget').show();");

@@ -2,13 +2,13 @@ package com.alphacell.model.logistica;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.math.MathContext;
 import java.util.Calendar;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -18,10 +18,14 @@ import javax.persistence.Transient;
  */
 @Entity
 @Table(name = "VISTA_LOGI_INDICEMENSUALINVENTARIO", schema = "dbo", catalog = "Produccion")
+
 @NamedQuery(
-        name = "VistaLogiIndicemensualinventario.findAll",
-        query = "from VistaLogiIndicemensualinventario"
+        name="VistaLogiIndicemensualinventario.itemsDistintos",
+        query = "SELECT  DISTINCT v.itemid,v.name from VistaLogiIndicemensualinventario v"
 )
+@NamedQueries({
+        @NamedQuery(name = "VistaLogiIndicemensualinventario.findAll",query = "from VistaLogiIndicemensualinventario")
+})
 
 public class VistaLogiIndicemensualinventario implements Serializable{
     /**
@@ -39,7 +43,6 @@ public class VistaLogiIndicemensualinventario implements Serializable{
     private BigDecimal totalDisponible;
 
     private String color;
-
 
     @Basic
     @Id

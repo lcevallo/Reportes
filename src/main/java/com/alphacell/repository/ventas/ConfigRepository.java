@@ -6,9 +6,14 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceException;
 import javax.persistence.Query;
 
 import com.alphacell.model.ventas.LcCadenaAlph;
+import com.alphacell.model.ventas.LcCadenaItems;
+import com.alphacell.model.ventas.LcCadenaItemsPK;
+import com.alphacell.model.xls.LcCadenaItemsXLS;
+import com.alphacell.services.NegocioException;
 
 public class ConfigRepository implements Serializable{
 
@@ -36,7 +41,34 @@ public class ConfigRepository implements Serializable{
         listaenviada=query.getResultList();
 
         return listaenviada;
+    }
 
+    public List<LcCadenaItemsXLS> getAllItemsERP()
+	{
+
+        List<LcCadenaItemsXLS> listaenviada=new ArrayList<LcCadenaItemsXLS>();
+
+        Query query= manager.createQuery( "Select DISTINCT new com.alphacell.model.xls.LcCadenaItemsXLS(v.itemid,v.name) from VistaLogiIndicemensualinventario v",LcCadenaItemsXLS.class);
+
+        //Query query = manager.createNamedQuery("VistaLogiIndicemensualinventario.itemsDistintos");
+
+       return (List<LcCadenaItemsXLS>) query.getResultList();
+	}
+
+    public void remover(LcCadenaItems lcCadenaItems) throws NegocioException {
+        try {
+            lcCadenaItems = porItemsPK(lcCadenaItems.getLcCadenaItemsPK());
+            manager.remove(lcCadenaItems);
+            manager.flush();
+        } catch (PersistenceException e) {
+            throw new NegocioException("Se elimino el Item de la cadena!. ");
+        }
+    }
+
+    public LcCadenaItems porItemsPK(LcCadenaItemsPK lcCadenaItemsPK){
+	    return (LcCadenaItems)manager.createNativeQuery("LcCadenaItems.findByCodigoItem",LcCadenaItems.class)
+                .setParameter("codigoItem",lcCadenaItemsPK.getCodigoItem())
+                .getSingleResult();
     }
 
 }

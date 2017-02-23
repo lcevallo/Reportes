@@ -5,6 +5,8 @@ import java.io.Serializable;
 import javax.inject.Inject;
 
 import com.alphacell.model.ventas.LcCadenaAlph;
+import com.alphacell.model.ventas.LcCadenaItems;
+import com.alphacell.services.NegocioException;
 import com.alphacell.repository.ventas.ConfigRepository;
 import com.alphacell.util.jpa.Transacional;
 
@@ -20,4 +22,8 @@ public class ServiceConfigVentas implements Serializable {
         configRepository.guardaCadena(lcCadenaAlph);
     }
 
+    @Transacional
+    public void removerItemCadena(LcCadenaItems cadenaItemsSelected) throws NegocioException {
+        configRepository.remover(cadenaItemsSelected);
+    }
 }
