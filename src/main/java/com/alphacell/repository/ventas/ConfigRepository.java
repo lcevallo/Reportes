@@ -69,24 +69,37 @@ public class ConfigRepository implements Serializable{
     }
 
     public LcCadenaItems porItemsPK(LcCadenaItemsPK lcCadenaItemsPK){
-	    return (LcCadenaItems)manager.createNativeQuery("LcCadenaItems.findByCodigoItem",LcCadenaItems.class)
+	    return (LcCadenaItems)manager.createNamedQuery("LcCadenaItems.findByCodigoItem",LcCadenaItems.class)
                 .setParameter("codigoItem",lcCadenaItemsPK.getCodigoItem())
+                .setParameter("fkCodigoCadena",lcCadenaItemsPK.getFkCodigoCadena())
                 .getSingleResult();
+    }
+
+    public List<LcCadenaItems> traerPorCadena(String codigoFK)
+    {
+        List<LcCadenaItems> listaEnviada= new ArrayList<>();
+
+        Query query= manager.createNamedQuery("LcCadenaItems.findByFkCodigoCadena")
+                                            .setParameter("fkCodigoCadena",codigoFK);
+
+        return query.getResultList();
     }
 
     public LcCadenaItems guardarCadenaItem(LcCadenaItems lcCadenaItems) {
     
-        StoredProcedureQuery query= manager.createStoredProcedureQuery("LcCadenaItems.sp_guardar_cadenaitem")
+        StoredProcedureQuery query= manager.createNamedStoredProcedureQuery("LcCadenaItems.sp_guardar_cadenaitem")
                 .setParameter("codigo_cadena",lcCadenaItems.getLcCadenaItemsPK().getCodigoItem())
+                .setParameter("fk_codigo_cadena",lcCadenaItems.getLcCadenaItemsPK().getFkCodigoCadena())
                 .setParameter("descripcion_cadena",lcCadenaItems.getDescripcionCadena())
                 .setParameter("codigo_item_alph",lcCadenaItems.getFkCodigoAlph())
                 .setParameter("descripcion_item_alph",lcCadenaItems.getDescripcionAlph());
 
-
         ((StoredProcedureQueryParameterRegistration) query.getParameter("codigo_item_alph")).enablePassingNulls(true);
         ((StoredProcedureQueryParameterRegistration) query.getParameter("descripcion_item_alph")).enablePassingNulls(true);
-
-        return (LcCadenaItems) query.getSingleResult();
-
+          if(query.execute())
+          {
+              return (LcCadenaItems) query.getSingleResult();
+          }
+          return null;
     }
 }

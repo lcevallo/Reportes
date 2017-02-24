@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="42bb9734-3d35-4382-8a18-0f8fc37f30f9" name="Default" comment="Saldos Iniciales aqui use Java Lambdas">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/ventas/RegistroItem.xhtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/alphacell/controller/ventas/ConfiguracionVentasBean.java" afterPath="$PROJECT_DIR$/src/main/java/com/alphacell/controller/ventas/ConfiguracionVentasBean.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/alphacell/model/ventas/LcCadenaItems.java" afterPath="$PROJECT_DIR$/src/main/java/com/alphacell/model/ventas/LcCadenaItems.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/alphacell/repository/ventas/ConfigRepository.java" afterPath="$PROJECT_DIR$/src/main/java/com/alphacell/repository/ventas/ConfigRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/alphacell/services/ventas/ServiceConfigVentas.java" afterPath="$PROJECT_DIR$/src/main/java/com/alphacell/services/ventas/ServiceConfigVentas.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/ventas/configVentas.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/ventas/configVentas.xhtml" />
     </list>
     <list id="5fb3735a-a8d9-4456-8b9c-5922df4d1f29" name="Failed commit: Default" comment="Aqui agregue la informacion del cliente ya que Paula HD lo necesitaba" />
@@ -46,56 +47,42 @@
     <favorites_list name="Reportes" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="vertical" split-proportion="0.5225806">
+    <splitter split-orientation="vertical" split-proportion="0.5681342">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="configVentas.xhtml" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/webapp/ventas/configVentas.xhtml">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="85">
-                  <caret line="50" column="61" lean-forward="true" selection-start-line="50" selection-start-column="61" selection-end-line="50" selection-end-column="61" />
+                <state relative-caret-position="0">
+                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="9" selection-end-column="29" />
+                  <folding>
+                    <marker date="1487975722372" expanded="true" signature="64:8096" ph="..." />
+                    <marker date="1487975722372" expanded="true" signature="495:8078" ph="..." />
+                    <marker date="1487975722372" expanded="true" signature="536:7986" ph="..." />
+                    <marker date="1487975722372" expanded="true" signature="2762:3163" ph="..." />
+                    <marker date="1487975722372" expanded="true" signature="3026:3138" ph="..." />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="RegistroItem.xhtml" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/main/webapp/ventas/RegistroItem.xhtml">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="187">
+                  <caret line="11" column="17" lean-forward="false" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="ConfiguracionVentasBean.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="ConfiguracionVentasBean.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/controller/ventas/ConfiguracionVentasBean.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="102">
-                  <caret line="157" column="113" lean-forward="false" selection-start-line="157" selection-start-column="113" selection-end-line="157" selection-end-column="113" />
+                <state relative-caret-position="182">
+                  <caret line="89" column="0" lean-forward="false" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
                   <folding>
                     <element signature="imports" expanded="true" />
-                    <element signature="e#8691#8692#0" expanded="true" />
-                    <element signature="e#8730#8731#0" expanded="true" />
-                    <marker date="1487893916343" expanded="false" signature="2604:2619" ph=" { " />
-                    <marker date="1487893916343" expanded="false" signature="2673:2679" ph=" }" />
-                    <marker date="1487893916343" expanded="false" signature="3613:3628" ph=" { " />
-                    <marker date="1487893916343" expanded="false" signature="3685:3691" ph=" }" />
-                    <marker date="1487893916343" expanded="false" signature="8104:8115" ph=" { " />
-                    <marker date="1487893916343" expanded="false" signature="8136:8142" ph=" }" />
-                    <marker date="1487893916343" expanded="false" signature="8210:8221" ph=" { " />
-                    <marker date="1487893916343" expanded="false" signature="8256:8262" ph=" }" />
-                    <marker date="1487893916343" expanded="false" signature="8307:8318" ph=" { " />
-                    <marker date="1487893916343" expanded="false" signature="8340:8346" ph=" }" />
-                    <marker date="1487893916343" expanded="false" signature="8410:8421" ph=" { " />
-                    <marker date="1487893916343" expanded="false" signature="8458:8464" ph=" }" />
-                    <marker date="1487893916343" expanded="false" signature="8504:8515" ph=" { " />
-                    <marker date="1487893916343" expanded="false" signature="8532:8538" ph=" }" />
-                    <marker date="1487893916343" expanded="false" signature="8592:8603" ph=" { " />
-                    <marker date="1487893916343" expanded="false" signature="8630:8636" ph=" }" />
-                    <marker date="1487893916343" expanded="false" signature="8806:8817" ph=" { " />
-                    <marker date="1487893916343" expanded="false" signature="8858:8864" ph=" }" />
-                    <marker date="1487893916343" expanded="false" signature="8915:8926" ph=" { " />
-                    <marker date="1487893916343" expanded="false" signature="8953:8959" ph=" }" />
-                    <marker date="1487893916343" expanded="false" signature="9160:9171" ph=" { " />
-                    <marker date="1487893916343" expanded="false" signature="9203:9209" ph=" }" />
-                    <marker date="1487893916343" expanded="false" signature="9430:9441" ph=" { " />
-                    <marker date="1487893916343" expanded="false" signature="9463:9469" ph=" }" />
-                    <marker date="1487893916343" expanded="false" signature="9543:9554" ph=" { " />
-                    <marker date="1487893916343" expanded="false" signature="9591:9597" ph=" }" />
-                    <marker date="1487893916343" expanded="false" signature="9652:9663" ph=" { " />
-                    <marker date="1487893916343" expanded="false" signature="9691:9697" ph=" }" />
                   </folding>
                 </state>
               </provider>
@@ -104,8 +91,8 @@
           <file leaf-file-name="ServiceConfigVentas.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/services/ventas/ServiceConfigVentas.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="128">
-                  <caret line="26" column="44" lean-forward="false" selection-start-line="26" selection-start-column="44" selection-end-line="26" selection-end-column="44" />
+                <state relative-caret-position="96">
+                  <caret line="32" column="43" lean-forward="false" selection-start-line="32" selection-start-column="43" selection-end-line="32" selection-end-column="43" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -113,37 +100,12 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="ConfigRepository.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/repository/ventas/ConfigRepository.java">
+          <file leaf-file-name="TransactionInterceptor.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/util/jpa/TransactionInterceptor.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-124">
-                  <caret line="76" column="73" lean-forward="false" selection-start-line="76" selection-start-column="73" selection-end-line="76" selection-end-column="73" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                    <element signature="e#853#854#0" expanded="true" />
-                    <element signature="e#894#895#0" expanded="true" />
-                    <element signature="e#1148#1162#0" expanded="true" />
-                    <element signature="e#1431#1449#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="LcCadenaItemsXLS.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/model/xls/LcCadenaItemsXLS.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="425">
-                  <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-                  <folding>
-                    <element signature="e#338#339#0" expanded="false" />
-                    <element signature="e#367#368#0" expanded="false" />
-                    <element signature="e#411#412#0" expanded="false" />
-                    <element signature="e#447#448#0" expanded="false" />
-                    <element signature="e#485#486#0" expanded="false" />
-                    <element signature="e#519#520#0" expanded="false" />
-                    <element signature="e#573#574#0" expanded="false" />
-                    <element signature="e#619#620#0" expanded="false" />
-                  </folding>
+                <state relative-caret-position="62">
+                  <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -151,19 +113,21 @@
           <file leaf-file-name="LcCadenaItems.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/model/ventas/LcCadenaItems.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="88">
-                  <caret line="142" column="35" lean-forward="false" selection-start-line="142" selection-start-column="16" selection-end-line="142" selection-end-column="35" />
+                <state relative-caret-position="62">
+                  <caret line="144" column="16" lean-forward="false" selection-start-line="144" selection-start-column="16" selection-end-line="144" selection-end-column="16" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="LcCadenaItemsPK.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/model/ventas/LcCadenaItemsPK.java">
+          <file leaf-file-name="ConfigRepository.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/repository/ventas/ConfigRepository.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="170">
-                  <caret line="20" column="13" lean-forward="false" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-                  <folding />
+                <state relative-caret-position="-134">
+                  <caret line="87" column="25" lean-forward="false" selection-start-line="87" selection-start-column="25" selection-end-line="87" selection-end-column="25" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -175,8 +139,8 @@
           <file leaf-file-name="VistaLogiIndicemensualinventario.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/model/logistica/VistaLogiIndicemensualinventario.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="85">
-                  <caret line="41" column="47" lean-forward="false" selection-start-line="41" selection-start-column="47" selection-end-line="41" selection-end-column="47" />
+                <state relative-caret-position="136">
+                  <caret line="44" column="25" lean-forward="false" selection-start-line="44" selection-start-column="25" selection-end-line="44" selection-end-column="25" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <marker date="1487877474245" expanded="true" signature="643:715" ph="SELECT DISTI... VistaLogiIndicemensualinventario" />
@@ -194,8 +158,8 @@
       <list>
         <option value="CSS File" />
         <option value="Enum" />
-        <option value="jsf" />
         <option value="Class" />
+        <option value="jsf" />
       </list>
     </option>
   </component>
@@ -212,6 +176,8 @@
       <find>AddCarrera-formImage:AddCarrera-messagesImag</find>
       <find>bin</find>
       <find>msgs-tipoMateria</find>
+      <find>Sitáxis ilegal</find>
+      <find>Operación</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -225,7 +191,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/webapp/cartera/ChequesPostfechados.xhtml" />
         <option value="$PROJECT_DIR$/src/main/webapp/cartera/HistorialProtesto.xhtml" />
         <option value="$PROJECT_DIR$/src/main/webapp/cartera/VencidosyXVencer.xhtml" />
         <option value="$PROJECT_DIR$/src/main/java/com/alphacell/model/cartera/TmpCxpFlujoVencidos.java" />
@@ -271,11 +236,12 @@
         <option value="$PROJECT_DIR$/src/main/webapp/financiero/FlujoCuentasxCobrar.xhtml" />
         <option value="$PROJECT_DIR$/src/main/java/com/alphacell/controller/financiero/ReporteCXPFlujoVencidoBean.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/alphacell/model/logistica/VistaLogiIndicemensualinventario.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/ventas/configVentas.xhtml" />
         <option value="$PROJECT_DIR$/src/main/java/com/alphacell/services/ventas/ServiceConfigVentas.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/alphacell/model/ventas/LcCadenaItems.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/alphacell/repository/ventas/ConfigRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/alphacell/controller/ventas/ConfiguracionVentasBean.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/ventas/configVentas.xhtml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/ventas/RegistroItem.xhtml" />
       </list>
     </option>
   </component>
@@ -1041,7 +1007,7 @@
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
-    <navigator proportions="" version="1">
+    <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -1054,7 +1020,105 @@
       <manualOrder />
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Reportes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Reportes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Reportes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Reportes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Reportes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Reportes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Reportes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Reportes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ventas" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Reportes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Reportes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="project.structure.last.edited" value="Modules" />
@@ -1864,6 +1928,7 @@
       <workItem from="1487610465588" duration="4922000" />
       <workItem from="1487781183827" duration="45064000" />
       <workItem from="1487891252587" duration="2683000" />
+      <workItem from="1487950724950" duration="18488000" />
     </task>
     <task id="LOCAL-00001" summary="Hi">
       <created>1464900277059</created>
@@ -1974,7 +2039,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1253707000" />
+    <option name="totallyTimeSpent" value="1272195000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -2003,8 +2068,9 @@
       <window_info id="JSF" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31751227" sideWeight="0.45306632" order="2" side_tool="false" content_ui="tabs" x="107" y="283" width="1384" height="417" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30605564" sideWeight="0.45306632" order="2" side_tool="false" content_ui="tabs" x="107" y="283" width="1384" height="417" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3279743" sideWeight="0.4969651" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32405892" sideWeight="0.32603255" order="20" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
@@ -2013,7 +2079,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329582" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29425114" sideWeight="0.45826513" order="5" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28895614" sideWeight="0.5417349" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28895614" sideWeight="0.5417349" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33222592" sideWeight="0.463125" order="1" side_tool="false" content_ui="tabs" />
@@ -2028,7 +2094,6 @@
       <window_info id="JPA Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33590734" sideWeight="0.4970458" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.400982" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="News Feed" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32405892" sideWeight="0.32603255" order="20" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39905363" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32868218" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="19" side_tool="false" content_ui="tabs" />
@@ -2067,7 +2132,7 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="252" />
+      <option name="time" value="259" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
@@ -2080,62 +2145,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/util/jsf/FacesUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="8" column="24" lean-forward="false" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/util/jsf/FacesMessages.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="9" column="41" lean-forward="false" selection-start-line="9" selection-start-column="41" selection-end-line="9" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/css/sistema.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1326">
-          <caret line="78" column="0" lean-forward="false" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/model/ventas/LcCadenaAlph.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1224">
-          <caret line="101" column="0" lean-forward="false" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/util/jpa/filter/FlujoVencidoFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/template/LayoutMaestro.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-174">
-          <caret line="89" column="36" lean-forward="true" selection-start-line="89" selection-start-column="36" selection-end-line="89" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="32" column="20" lean-forward="true" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/jboss/weld/servlet/weld-servlet/2.3.2.Final/weld-servlet-2.3.2.Final-sources.jar!/org/jboss/weld/el/WeldMethodExpression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/jboss/weld/servlet/weld-servlet/2.3.2.Final/weld-servlet-2.3.2.Final-sources.jar!/org/jboss/weld/util/el/ForwardingMethodExpression.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -2234,13 +2243,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/util/jpa/TransactionInterceptor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="31" lean-forward="false" selection-start-line="0" selection-start-column="31" selection-end-line="0" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/dialog/finaciero/cxpTramoDetalle.xhtml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -2266,7 +2268,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="67" lean-forward="true" selection-start-line="5" selection-start-column="67" selection-end-line="5" selection-end-column="67" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2323,9 +2324,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="97">
           <caret line="48" column="65" lean-forward="true" selection-start-line="48" selection-start-column="65" selection-end-line="48" selection-end-column="65" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2378,27 +2376,135 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/controller/financiero/ReporteCXPFlujoVencidoBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="28">
+          <caret line="70" column="30" lean-forward="true" selection-start-line="70" selection-start-column="30" selection-end-line="70" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/model/ventas/LcCadenaItemsPK.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="31">
+          <caret line="24" column="28" lean-forward="true" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/model/xls/LcCadenaItemsXLS.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+        <state relative-caret-position="85">
+          <caret line="5" column="26" lean-forward="true" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_74/src.zip!/java/util/List.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="260" column="12" lean-forward="false" selection-start-line="260" selection-start-column="12" selection-end-line="260" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/services/NegocioException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="13" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/jboss/weld/servlet/weld-servlet/2.3.2.Final/weld-servlet-2.3.2.Final-sources.jar!/org/jboss/weld/interceptor/proxy/TerminalAroundInvokeInvocationContext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="48" column="0" lean-forward="false" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/jboss/weld/servlet/weld-servlet/2.3.2.Final/weld-servlet-2.3.2.Final-sources.jar!/org/jboss/weld/interceptor/proxy/AroundInvokeInvocationContext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="62">
+          <caret line="81" column="0" lean-forward="false" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/jboss/weld/servlet/weld-servlet/2.3.2.Final/weld-servlet-2.3.2.Final-sources.jar!/org/jboss/weld/bean/proxy/CombinedInterceptorAndDecoratorStackMethodHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="92" column="0" lean-forward="false" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/jboss/weld/servlet/weld-servlet/2.3.2.Final/weld-servlet-2.3.2.Final-sources.jar!/org/jboss/weld/interceptor/proxy/InterceptorMethodHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="55" column="0" lean-forward="false" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/jboss/weld/servlet/weld-servlet/2.3.2.Final/weld-servlet-2.3.2.Final-sources.jar!/org/jboss/weld/interceptor/reader/SimpleInterceptorInvocation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="53">
+          <caret line="73" column="0" lean-forward="false" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/util/jpa/TransactionInterceptor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="62">
+          <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/model/ventas/LcCadenaItems.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="62">
+          <caret line="144" column="16" lean-forward="false" selection-start-line="144" selection-start-column="16" selection-end-line="144" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/repository/ventas/ConfigRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-134">
+          <caret line="87" column="25" lean-forward="false" selection-start-line="87" selection-start-column="25" selection-end-line="87" selection-end-column="25" />
           <folding>
-            <element signature="e#338#339#0" expanded="false" />
-            <element signature="e#367#368#0" expanded="false" />
-            <element signature="e#411#412#0" expanded="false" />
-            <element signature="e#447#448#0" expanded="false" />
-            <element signature="e#485#486#0" expanded="false" />
-            <element signature="e#519#520#0" expanded="false" />
-            <element signature="e#573#574#0" expanded="false" />
-            <element signature="e#619#620#0" expanded="false" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/services/ventas/ServiceConfigVentas.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="32" column="43" lean-forward="false" selection-start-line="32" selection-start-column="43" selection-end-line="32" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/controller/ventas/ConfiguracionVentasBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="89" column="0" lean-forward="false" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/model/logistica/VistaLogiIndicemensualinventario.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="41" column="47" lean-forward="false" selection-start-line="41" selection-start-column="47" selection-end-line="41" selection-end-column="47" />
+        <state relative-caret-position="136">
+          <caret line="44" column="25" lean-forward="false" selection-start-line="44" selection-start-column="25" selection-end-line="44" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
             <marker date="1487877474245" expanded="true" signature="643:715" ph="SELECT DISTI... VistaLogiIndicemensualinventario" />
@@ -2408,97 +2514,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/ventas/configVentas.xhtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="50" column="61" lean-forward="true" selection-start-line="50" selection-start-column="61" selection-end-line="50" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/model/ventas/LcCadenaItemsPK.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="20" column="13" lean-forward="false" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/model/ventas/LcCadenaItems.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="142" column="35" lean-forward="false" selection-start-line="142" selection-start-column="16" selection-end-line="142" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/repository/ventas/ConfigRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-124">
-          <caret line="76" column="73" lean-forward="false" selection-start-line="76" selection-start-column="73" selection-end-line="76" selection-end-column="73" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="9" selection-end-column="29" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#853#854#0" expanded="true" />
-            <element signature="e#894#895#0" expanded="true" />
-            <element signature="e#1148#1162#0" expanded="true" />
-            <element signature="e#1431#1449#0" expanded="true" />
+            <marker date="1487975722372" expanded="true" signature="64:8096" ph="..." />
+            <marker date="1487975722372" expanded="true" signature="495:8078" ph="..." />
+            <marker date="1487975722372" expanded="true" signature="536:7986" ph="..." />
+            <marker date="1487975722372" expanded="true" signature="2762:3163" ph="..." />
+            <marker date="1487975722372" expanded="true" signature="3026:3138" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/services/ventas/ServiceConfigVentas.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/ventas/RegistroItem.xhtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="26" column="44" lean-forward="false" selection-start-line="26" selection-start-column="44" selection-end-line="26" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/controller/financiero/ReporteCXPFlujoVencidoBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28">
-          <caret line="70" column="30" lean-forward="true" selection-start-line="70" selection-start-column="30" selection-end-line="70" selection-end-column="30" />
+        <state relative-caret-position="187">
+          <caret line="11" column="17" lean-forward="false" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alphacell/controller/ventas/ConfiguracionVentasBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="157" column="113" lean-forward="false" selection-start-line="157" selection-start-column="113" selection-end-line="157" selection-end-column="113" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#8691#8692#0" expanded="true" />
-            <element signature="e#8730#8731#0" expanded="true" />
-            <marker date="1487893916343" expanded="false" signature="2604:2619" ph=" { " />
-            <marker date="1487893916343" expanded="false" signature="2673:2679" ph=" }" />
-            <marker date="1487893916343" expanded="false" signature="3613:3628" ph=" { " />
-            <marker date="1487893916343" expanded="false" signature="3685:3691" ph=" }" />
-            <marker date="1487893916343" expanded="false" signature="8104:8115" ph=" { " />
-            <marker date="1487893916343" expanded="false" signature="8136:8142" ph=" }" />
-            <marker date="1487893916343" expanded="false" signature="8210:8221" ph=" { " />
-            <marker date="1487893916343" expanded="false" signature="8256:8262" ph=" }" />
-            <marker date="1487893916343" expanded="false" signature="8307:8318" ph=" { " />
-            <marker date="1487893916343" expanded="false" signature="8340:8346" ph=" }" />
-            <marker date="1487893916343" expanded="false" signature="8410:8421" ph=" { " />
-            <marker date="1487893916343" expanded="false" signature="8458:8464" ph=" }" />
-            <marker date="1487893916343" expanded="false" signature="8504:8515" ph=" { " />
-            <marker date="1487893916343" expanded="false" signature="8532:8538" ph=" }" />
-            <marker date="1487893916343" expanded="false" signature="8592:8603" ph=" { " />
-            <marker date="1487893916343" expanded="false" signature="8630:8636" ph=" }" />
-            <marker date="1487893916343" expanded="false" signature="8806:8817" ph=" { " />
-            <marker date="1487893916343" expanded="false" signature="8858:8864" ph=" }" />
-            <marker date="1487893916343" expanded="false" signature="8915:8926" ph=" { " />
-            <marker date="1487893916343" expanded="false" signature="8953:8959" ph=" }" />
-            <marker date="1487893916343" expanded="false" signature="9160:9171" ph=" { " />
-            <marker date="1487893916343" expanded="false" signature="9203:9209" ph=" }" />
-            <marker date="1487893916343" expanded="false" signature="9430:9441" ph=" { " />
-            <marker date="1487893916343" expanded="false" signature="9463:9469" ph=" }" />
-            <marker date="1487893916343" expanded="false" signature="9543:9554" ph=" { " />
-            <marker date="1487893916343" expanded="false" signature="9591:9597" ph=" }" />
-            <marker date="1487893916343" expanded="false" signature="9652:9663" ph=" { " />
-            <marker date="1487893916343" expanded="false" signature="9691:9697" ph=" }" />
-          </folding>
         </state>
       </provider>
     </entry>

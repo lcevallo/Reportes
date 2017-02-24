@@ -22,8 +22,10 @@ import com.alphacell.model.xls.LcCadenaItemsXLS;
 @XmlRootElement
 @NamedStoredProcedureQueries({
         @NamedStoredProcedureQuery(name = "LcCadenaItems.sp_guardar_cadenaitem",procedureName = "dbo.LC_GUARDAR_CADENAITEM",
+                                                            resultClasses =LcCadenaItems.class,
                                                             parameters = {
                                                                 @StoredProcedureParameter(mode = ParameterMode.IN,type = String.class,name ="codigo_cadena" ),
+                                                                @StoredProcedureParameter(mode = ParameterMode.IN,type = String.class,name ="fk_codigo_cadena" ),
                                                                 @StoredProcedureParameter(mode = ParameterMode.IN,type = String.class,name ="descripcion_cadena" ),
                                                                 @StoredProcedureParameter(mode = ParameterMode.IN,type = String.class,name ="codigo_item_alph" ),
                                                                 @StoredProcedureParameter(mode = ParameterMode.IN,type = String.class,name ="descripcion_item_alph" )
@@ -32,7 +34,7 @@ import com.alphacell.model.xls.LcCadenaItemsXLS;
 })
 @NamedQueries({
     @NamedQuery(name = "LcCadenaItems.findAll", query = "SELECT l FROM LcCadenaItems l"),
-    @NamedQuery(name = "LcCadenaItems.findByCodigoItem", query = "SELECT l FROM LcCadenaItems l WHERE l.lcCadenaItemsPK.codigoItem = :codigoItem"),
+    @NamedQuery(name = "LcCadenaItems.findByCodigoItem", query = "SELECT l FROM LcCadenaItems l WHERE l.lcCadenaItemsPK.codigoItem = :codigoItem and l.lcCadenaItemsPK.fkCodigoCadena = :fkCodigoCadena"),
     @NamedQuery(name = "LcCadenaItems.findByFkCodigoCadena", query = "SELECT l FROM LcCadenaItems l WHERE l.lcCadenaItemsPK.fkCodigoCadena = :fkCodigoCadena"),
     @NamedQuery(name = "LcCadenaItems.findByFkCodigoAlph", query = "SELECT l FROM LcCadenaItems l WHERE l.fkCodigoAlph = :fkCodigoAlph")})
 public class LcCadenaItems implements Serializable {

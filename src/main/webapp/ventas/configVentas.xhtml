@@ -11,13 +11,23 @@
         <h:form id="form-Config-Ventas">
 
         <p:messages id="messagesConfigVentas" showDetail="true" autoUpdate="true" closable="true" />
-                <h:panelGrid columns="4" cellpadding="2">
+            <h:panelGrid columns="1" cellpadding="2">
+                <p:commandButton value="Crear cadena"  icon="fa fa-link" process="@this, cmb-cfgventas-cadenas"
+                                 update="frm-dialog-crearCadena"
+                                 oncomplete="PF('ventasCrearCadenaDialogWidget').show()">
+
+                    <f:setPropertyActionListener value="#{configuracionVentasBean.cadenaSelected}"
+                                                 target="#{configuracionVentasBean.cadenaNew}" />
+                </p:commandButton>
+            </h:panelGrid>
+
+            <h:panelGrid columns="4" cellpadding="2">
                 <p:selectOneMenu
                         id="cmb-cfgventas-cadenas"
                         value="#{configuracionVentasBean.cadenaSelected}"
                         converter="omnifaces.SelectItemsConverter"
                 >
-                    <p:ajax event="change" listener="#{configuracionVentasBean.handleCadenaChange}" />
+                    <p:ajax event="change" listener="#{configuracionVentasBean.handleCadenaChange}" update="form-Config-Ventas:table-cadenas-items-alpha" />
                     <f:selectItem itemLabel="Selecione una cadena" noSelectionOption="true"  />
                     <f:selectItems value="#{configuracionVentasBean.cmbCadenaAlph}" var="cadena"
                                    itemValue="#{cadena}" itemLabel="#{cadena.nombre}" />
@@ -34,16 +44,17 @@
                               skinSimple="true"
                               update="table-cadenas-items-alpha"/>
                 </h:panelGrid>
-            <p:separator />
-            <p:commandButton value="Crear cadena"  icon="fa fa-link" process="@this, cmb-cfgventas-cadenas"
-                             update="frm-dialog-crearCadena"
-                             oncomplete="PF('ventasCrearCadenaDialogWidget').show()">
 
-                <f:setPropertyActionListener value="#{configuracionVentasBean.cadenaSelected}"
-                                             target="#{configuracionVentasBean.cadenaNew}" />
-            </p:commandButton>
             <p:separator/>
-            <p:spacer />
+            <p:toolbar style="margin-top: 20px">
+                <p:toolbarGroup>
+                    <p:commandButton value="Buscar" action="#{configuracionVentasBean.buscar}"
+                                     update="@form" />
+                </p:toolbarGroup>
+                <p:toolbarGroup align="right">
+                    <p:button value="Nuevo" outcome="/ventas/RegistroItem" />
+                </p:toolbarGroup>
+            </p:toolbar>
             <p:dataTable
                     id="table-cadenas-items-alpha"
                     editable="true"
@@ -84,7 +95,7 @@
                                            style="..." var="t"  converter="omnifaces.SelectItemsConverter"
                                            valueChangeListener="#{configuracionVentasBean.changeDescripcionAlpha}"
                           >
-                              <p:ajax event="change" update="table-cadenas-items-alpha" />
+                              <p:ajax event="change" update="form-Config-Ventas:messagesConfigVentas,table-cadenas-items-alpha" />
 
                               <f:selectItem itemLabel="Escoja un Item" noSelectionOption="true" />
                               <f:selectItems value="#{configuracionVentasBean.cmbListItemERP}" var="itemsAlph" itemLabel="#{itemsAlph.codigo}" itemValue="#{itemsAlph}"  />
@@ -118,10 +129,9 @@
                              message="Esta seguro de querer eliminar #{configuracionVentasBean.cadenaItemsSelected.descripcionCadena} ?"
                              header="Borrar Item Cadena" severity="alert">
                 <div style="text-align:center">
-                    <p:commandButton id="btn-confirm-CfgItemCadena" value="OK" update="messagesConfigVentas"
+                    <p:commandButton id="btn-confirm-CfgItemCadena" value="OK" update="form-Config-Ventas:messagesConfigVentas,form-Config-Ventas:table-cadenas-items-alpha"
                                      oncomplete="PF('confirmationWidget-CfgItemCadena').hide();"
                                      actionListener="#{configuracionVentasBean.excluir}" process="@this">
-                            <f:setPropertyActionListener value="" target="" />
                     </p:commandButton>
                     <p:button value="Cancel" onclick="PF('confirmationWidget-CfgItemCadena').hide(); return false;" />
                 </div>

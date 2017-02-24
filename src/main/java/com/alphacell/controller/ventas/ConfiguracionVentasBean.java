@@ -85,6 +85,11 @@ public class ConfiguracionVentasBean implements Serializable{
     }
 
 
+    public void buscar()
+    {
+
+    }
+
     public void cargarItemsERP()
     {
         this.cmbListItemERP=configRepository.getAllItemsERP();
@@ -94,7 +99,7 @@ public class ConfiguracionVentasBean implements Serializable{
         try {
             serviceConfigVentas.removerItemCadena(cadenaItemsSelected);
             tableCadenaItems.remove(cadenaItemsSelected);
-            messages.info("Produto " + cadenaItemsSelected.getLcCadenaItemsPK().getCodigoItem()
+            messages.info("Item: " + cadenaItemsSelected.getLcCadenaItemsPK().getCodigoItem()
                     + " eliminado con exito.");
         } catch (NegocioException ne) {
             messages.error(ne.getMessage());
@@ -105,6 +110,11 @@ public class ConfiguracionVentasBean implements Serializable{
     {
         if(cadenaSelected!=null)
         this.cadenaNew= this.cadenaSelected;
+
+        this.tableCadenaItems.clear();
+        this.tableCadenaItems= this.configRepository.traerPorCadena(this.cadenaSelected.getCodigoCadena());
+        AtomicInteger atomicInteger = new AtomicInteger(0);
+        tableCadenaItems.forEach(obj->obj.setRowkey(atomicInteger.getAndIncrement()));
     }
 
     public void prepararNuevaCadena(ActionEvent event) {
@@ -153,15 +163,14 @@ public class ConfiguracionVentasBean implements Serializable{
                 LcCadenaItems lcCadenaItemsLocal= new LcCadenaItems();
                 lcCadenaItemsLocal.setLcCadenaItemsPK(new LcCadenaItemsPK(obj.getCodigo(),this.cadenaSelected.getCodigoCadena()));
                 lcCadenaItemsLocal.setDescripcionCadena(obj.getDescripcion());
-                lcCadenaItemsLocal.setRowkey(atomicInteger.getAndIncrement());
 
                 //TODO: Tengo que crear el itemLocal en la base y devolverlo como debe de ser con el trassient lcCadenaItemsXLS
                 lcCadenaItemsLocal=this.serviceConfigVentas.guardar(lcCadenaItemsLocal);
+                lcCadenaItemsLocal.setRowkey(atomicInteger.getAndIncrement());
                 if(StringUtils.isNotBlank(lcCadenaItemsLocal.getFkCodigoAlph()))
                 {
                     lcCadenaItemsLocal.setLcCadenaItemsXLS(new LcCadenaItemsXLS(lcCadenaItemsLocal.getFkCodigoAlph(),lcCadenaItemsLocal.getDescripcionAlph()));
                 }
-
                 this.tableCadenaItems.add(lcCadenaItemsLocal);
             });
             }
@@ -187,12 +196,18 @@ public class ConfiguracionVentasBean implements Serializable{
 
         LcCadenaItemsXLS oldValue= (LcCadenaItemsXLS) event.getOldValue();
         LcCadenaItemsXLS newValue= (LcCadenaItemsXLS) event.getNewValue();
+        LcCadenaItems lcCadenaItems= this.tableCadenaItems.get(index);
 
-        this.tableCadenaItems.get(index).setLcCadenaItemsXLS(newValue);
+        lcCadenaItems.setLcCadenaItemsXLS(newValue);
 
+
+        //TODO: Aqui tengo que guardar solo este row en la tabla
+
+        lcCadenaItems= this.serviceConfigVentas.guardar(lcCadenaItems);
+        lcCadenaItems.setRowkey(index);
 
        // String IdcolumnaDescripcion=table.getChildren().get(4).getId();
-
+        messages.info("Se ha modificado el valor del item: "+lcCadenaItems.getDescripcionCadena()+"  y se ha enlazado con el item ALPH: "+newValue.getDescripcion() );
         // Aqui lo complemente con un p:ajax update por que no lo estaba haciendo no se por que pero no actualizaba
         RequestContext.getCurrentInstance().update("form-Config-Ventas:table-cadenas-items-alpha");
         Ajax.update("form-Config-Ventas:table-cadenas-items-alpha");
