@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui"
+      xmlns:pe="http://primefaces.org/ui/extensions"
+>
+<h:body>
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet library="css" name="sistema.css" />
+    </h:head>
+    <p:dialog header="Creacion Item-Cadena" modal="true" showEffect="fade"
+              hideEffect="fade" widgetVar="ventasCrearItemCadenaDialogWidget" width="40%"
+              position="top" appendToBody="false" draggable="false"
+              resizable="true" id="ventasCrearItemCadenaDialog">
+
+        <h:form id="frm-dialog-crearItemCadena">
+            <p:panelGrid columns="3"
+                         layout="grid"
+                         id="grid-CrearItemCadena"
+                         style="margin-top: 10px;"
+                         columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2"
+                         styleClass="panelgrid-noborder"
+                         >
+
+            <p:outputLabel for="txt-codigo-cadena"  value="Cadena Seleccionada: " />
+            <p:inputText id="txt-codigo-cadena" value="#{configuracionVentasBean.cadenaSelected.nombre}" readonly="true" >
+            </p:inputText>
+            <p:outputLabel/>
+
+            <p:outputLabel for="txt-codigo-item"  value="Codigo Item: " />
+            <p:inputText id="txt-codigo-item" value="#{configuracionVentasBean.cadenaItemsNew.lcCadenaItemsPK.codigoItem}" required="true"
+                         requiredMessage="Debe de colocar el nombre de la cadena" >
+                <p:ajax update="txt-codigo-item"  event="keyup" />
+                <p:ajax event="blur"  update="txt-codigo-item" />
+            </p:inputText>
+            <p:message id="txt-nombre-msg" for="txt-codigo-item" />
+
+            <p:outputLabel for="txt-descripcion-itemcadena"  value="Descripcion Item Cadena:" />
+            <p:inputTextarea id="txt-descripcion-itemcadena" value="#{configuracionVentasBean.cadenaItemsNew.descripcionCadena}" required="true"
+                     requiredMessage="Debe de colocar una descripcion de este item que venga de la cadena"        rows="5"
+                             />
+            <p:message for="txt-descripcion-itemcadena" />
+
+
+                <p:outputLabel for="cmb-codigo-itemalph"  value="Codigo Item ALPH:" />
+               <p:selectOneMenu value="#{configuracionVentasBean.cadenaItemsNew.lcCadenaItemsXLS}"
+                                id="cmb-codigo-itemalph"
+                                required="true"
+                                requiredMessage="Debe de seleccionar un Item de ALPHACELL"
+                                 style="..." var="t"  converter="omnifaces.SelectItemsConverter"
+                >
+                <p:ajax event="change" update="txt-descripcion-itemcadenaAlph" />
+                <f:selectItem itemLabel="Escoja un Item" noSelectionOption="true" />
+                <f:selectItems value="#{configuracionVentasBean.cmbListItemERP}" var="itemsAlph" itemLabel="#{itemsAlph.codigo}" itemValue="#{itemsAlph}"  />
+                <p:column>
+                    #{t.codigo}
+                </p:column>
+                <p:column>
+                    #{t.descripcion}
+                </p:column>
+               </p:selectOneMenu>
+                <p:message for="cmb-codigo-itemalph" />
+
+                <p:outputLabel for="txt-descripcion-itemcadenaAlph"  value="Descripcion Item Alph:" />
+                <p:inputTextarea id="txt-descripcion-itemcadenaAlph" value="#{configuracionVentasBean.cadenaItemsNew.descripcionAlph}" readonly="true"
+                                        rows="5"
+                />
+                <p:outputLabel/>
+
+
+            <f:facet name="footer" >
+                <div style="clear: both; text-align:right">
+                    <p:commandButton id="save-CadenaItem-Button"
+                                     value="Guardar"
+                                     icon="fa fa-save"
+                                     process="ventasCrearItemCadenaDialog"
+                                     oncomplete="if (!args.validationFailed) PF('ventasCrearItemCadenaDialogWidget').hide()"
+                                     actionListener="#{configuracionVentasBean.guardarItemCadena}" />
+                </div>
+            </f:facet>
+            </p:panelGrid>
+            <p:defaultCommand target="save-CadenaItem-Button" />
+        </h:form>
+    </p:dialog>
+</h:body>
+</html>

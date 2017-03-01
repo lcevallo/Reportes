@@ -5,13 +5,13 @@
  */
 package com.alphacell.model.ventas;
 
-import java.io.Serializable;
+import com.alphacell.model.xls.LcCadenaItemsXLS;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-
-import com.alphacell.model.xls.LcCadenaItemsXLS;
+import java.io.Serializable;
 
 /**
  *
@@ -62,6 +62,7 @@ public class LcCadenaItems implements Serializable {
 
 
     public LcCadenaItems() {
+        this.lcCadenaItemsXLS= new LcCadenaItemsXLS();
     }
 
     public LcCadenaItems(LcCadenaItemsPK lcCadenaItemsPK) {
@@ -78,14 +79,23 @@ public class LcCadenaItems implements Serializable {
 
     public void setRowkey(Integer rowkey) {
         this.rowkey = rowkey;
+
+        if( StringUtils.isNotBlank(this.getFkCodigoAlph()))
+        {
+            this.lcCadenaItemsXLS.setCodigo(this.getFkCodigoAlph());
+            this.lcCadenaItemsXLS.setDescripcion(this.getDescripcionAlph());
+        }
+
     }
 
     public LcCadenaItemsPK getLcCadenaItemsPK() {
+
         return lcCadenaItemsPK;
     }
 
     public void setLcCadenaItemsPK(LcCadenaItemsPK lcCadenaItemsPK) {
         this.lcCadenaItemsPK = lcCadenaItemsPK;
+
     }
 
     public String getDescripcionCadena() {

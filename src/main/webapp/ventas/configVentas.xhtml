@@ -27,7 +27,7 @@
                         value="#{configuracionVentasBean.cadenaSelected}"
                         converter="omnifaces.SelectItemsConverter"
                 >
-                    <p:ajax event="change" listener="#{configuracionVentasBean.handleCadenaChange}" update="form-Config-Ventas:table-cadenas-items-alpha" />
+                    <p:ajax event="change" listener="#{configuracionVentasBean.handleCadenaChange}" update="form-Config-Ventas:table-cadenas-items-alpha form-Config-Ventas:btn-cfgventas-newItem" />
                     <f:selectItem itemLabel="Selecione una cadena" noSelectionOption="true"  />
                     <f:selectItems value="#{configuracionVentasBean.cmbCadenaAlph}" var="cadena"
                                    itemValue="#{cadena}" itemLabel="#{cadena.nombre}" />
@@ -45,14 +45,41 @@
                               update="table-cadenas-items-alpha"/>
                 </h:panelGrid>
 
-            <p:separator/>
+            <p:accordionPanel activeIndex="1" >
+                <p:tab title="Busqueda">
+            <p:panelGrid columns="2" id="panel-filtro-confVentas" style="width: 100%; margin-top: 20px"
+                         columnClasses="rotulo, campo">
+                <p:outputLabel value="Codigo Item Cadena" for="txt-confVentas-codigoItem"/>
+                <p:inputText id="txt-confVentas-codigoItem" size="20" value="#{configuracionVentasBean.cadenaItemFilter.codigoItemCadena}" />
+
+                <p:outputLabel for="txt-confVentas-descripcionItem"  value="Descripcion Item: " />
+                <p:inputText id="txt-confVentas-descripcionItem" value="#{configuracionVentasBean.cadenaItemFilter.descripcionItemCadena}" />
+
+                <p:outputLabel for="txt-confVentas-codigoAlph"  value="Codigo Alphacell: " />
+                <p:inputText id="txt-confVentas-codigoAlph" value="#{configuracionVentasBean.cadenaItemFilter.codigoAlpha}" />
+
+                <p:outputLabel for="txt-confVentas-descripcionAlph"  value="Descripcion Alphacell: " />
+                <p:inputText id="txt-confVentas-descripcionAlph" value="#{configuracionVentasBean.cadenaItemFilter.descripcionAlpha}" />
+
+            </p:panelGrid>
+                </p:tab>
+            </p:accordionPanel>
+
             <p:toolbar style="margin-top: 20px">
                 <p:toolbarGroup>
                     <p:commandButton value="Buscar" action="#{configuracionVentasBean.buscar}"
                                      update="@form" />
                 </p:toolbarGroup>
                 <p:toolbarGroup align="right">
-                    <p:button value="Nuevo" outcome="/ventas/RegistroItem" />
+
+                    <p:commandButton value="Nuevo Item" icon="fa fa-plus"
+                                     id="btn-cfgventas-newItem"
+                                     disabled="#{configuracionVentasBean.cadenaSelected eq null}"
+                                     actionListener="#{configuracionVentasBean.prepararNuevoItemCadena}"
+                                     oncomplete="PF('ventasCrearItemCadenaDialogWidget').show()"
+                                     update="ventasCrearItemCadenaDialog" process="@this">
+                        <p:resetInput target="ventasCrearItemCadenaDialog" />
+                    </p:commandButton>
                 </p:toolbarGroup>
             </p:toolbar>
             <p:dataTable
@@ -139,5 +166,6 @@
 
         </h:form>
         <ui:include src="/WEB-INF/dialog/ventas/creaCadenaDialog.xhtml" />
+        <ui:include src="/WEB-INF/dialog/ventas/creaItemCadenaDialog.xhtml" />
     </ui:define>
 </ui:composition>

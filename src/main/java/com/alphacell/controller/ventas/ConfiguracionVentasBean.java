@@ -40,6 +40,7 @@ import com.alphacell.repository.ventas.ConfigRepository;
 import com.alphacell.services.NegocioException;
 import com.alphacell.services.ventas.ServiceConfigVentas;
 import com.alphacell.util.file.ExcelHelper;
+import com.alphacell.util.jpa.filter.CadenaItemFilter;
 import com.alphacell.util.jsf.FacesMessages;
 
 
@@ -61,6 +62,10 @@ public class ConfiguracionVentasBean implements Serializable{
     private List<LcCadenaItems> tableCadenaItems;
     private List<LcCadenaItems> tableCadenaItemsFiltered;
     private LcCadenaItems cadenaItemsSelected;
+    private LcCadenaItems cadenaItemsNew;
+
+    private CadenaItemFilter cadenaItemFilter;
+
 
     private List<LcCadenaItemsXLS> tableListaCadenaItemsXlsx;
     private List<LcCadenaItemsXLS> cmbListItemERP;
@@ -78,17 +83,21 @@ public class ConfiguracionVentasBean implements Serializable{
     @PostConstruct
     public void init()
     {
+        this.cadenaItemFilter= new CadenaItemFilter();
+
         this.cargarCadenas();
         this.tableCadenaItems= new ArrayList<>();
         this.tableListaCadenaItemsXlsx= new ArrayList<>();
         this.cargarItemsERP();
     }
 
-
-    public void buscar()
+    public void prepararNuevoItemCadena()
     {
-
+        this.cadenaItemsNew=new LcCadenaItems();
+        this.cadenaItemsNew.setLcCadenaItemsPK(new LcCadenaItemsPK("",this.cadenaSelected.getCodigoCadena()));
     }
+
+    public void buscar(){this.tableCadenaItems=configRepository.filtrados(this.cadenaSelected.getCodigoCadena(),this.cadenaItemFilter);}
 
     public void cargarItemsERP()
     {
@@ -184,14 +193,14 @@ public class ConfiguracionVentasBean implements Serializable{
         }//fin del if
     }
 
-
+   
 
     public void changeDescripcionAlpha(ValueChangeEvent event)
     {
         DataTable table1 = getParentDatatable((UIComponent) event.getSource());
         Object o = table1.getRowData();
 
-        // Espero funcione
+
         int index = table1.getRowIndex();
 
         LcCadenaItemsXLS oldValue= (LcCadenaItemsXLS) event.getOldValue();
@@ -200,23 +209,19 @@ public class ConfiguracionVentasBean implements Serializable{
 
         lcCadenaItems.setLcCadenaItemsXLS(newValue);
 
-
-        //TODO: Aqui tengo que guardar solo este row en la tabla
-
         lcCadenaItems= this.serviceConfigVentas.guardar(lcCadenaItems);
         lcCadenaItems.setRowkey(index);
 
-       // String IdcolumnaDescripcion=table.getChildren().get(4).getId();
+
         messages.info("Se ha modificado el valor del item: "+lcCadenaItems.getDescripcionCadena()+"  y se ha enlazado con el item ALPH: "+newValue.getDescripcion() );
-        // Aqui lo complemente con un p:ajax update por que no lo estaba haciendo no se por que pero no actualizaba
+
+
         RequestContext.getCurrentInstance().update("form-Config-Ventas:table-cadenas-items-alpha");
         Ajax.update("form-Config-Ventas:table-cadenas-items-alpha");
 
-
     }//Aqui termina changeDescripcionAlpha
 
-
-
+  
     /**
      * Funcion que retorna un componente HtmlDatatable
      * Me ayudo a saber que row era la marcada cuando
@@ -256,6 +261,20 @@ public class ConfiguracionVentasBean implements Serializable{
 
         RequestContext.getCurrentInstance().update(
                 Arrays.asList("form-Config-Ventas:messagesConfigVentas", "form-Config-Ventas:cmb-cfgventas-cadenas"));
+    }
+
+    public void guardarItemCadena()
+    {
+
+        String codigoItem= this.cadenaItemsNew.getLcCadenaItemsPK().getCodigoItem();
+
+        //this.cadenaItemsNew.setLcCadenaItemsPK(new LcCadenaItemsPK(codigoItem,this.cadenaSelected.getCodigoCadena()));
+
+        this.serviceConfigVentas.guardar(this.cadenaItemsNew);
+
+        messages.info("Se ha creado un Item en la cadena!");
+        this.cargarItemsERP();
+        RequestContext.getCurrentInstance().update(Arrays.asList("form-Config-Ventas:table-cadenas-items-alpha","form-Config-Ventas:messagesConfigVentas"));
 
     }
 
@@ -324,5 +343,20 @@ public class ConfiguracionVentasBean implements Serializable{
         this.listaItemXLSselected = listaItemXLSselected;
     }
 
+    public LcCadenaItems getCadenaItemsNew() {
+        return cadenaItemsNew;
+    }
+
+    public void setCadenaItemsNew(LcCadenaItems cadenaItemsNew) {
+        this.cadenaItemsNew = cadenaItemsNew;
+    }
+
+	public CadenaItemFilter getCadenaItemFilter() {
+		return cadenaItemFilter;
+	}
+
+	public void setCadenaItemFilter(CadenaItemFilter cadenaItemFilter) {
+		this.cadenaItemFilter = cadenaItemFilter;
+	}
 
 }

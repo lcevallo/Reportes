@@ -10,6 +10,13 @@ import javax.persistence.PersistenceException;
 import javax.persistence.Query;
 import javax.persistence.StoredProcedureQuery;
 
+import com.alphacell.util.jpa.filter.CadenaItemFilter;
+import org.apache.commons.lang3.StringUtils;
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 import org.hibernate.jpa.spi.StoredProcedureQueryParameterRegistration;
 
 import com.alphacell.model.ventas.LcCadenaAlph;
@@ -101,5 +108,30 @@ public class ConfigRepository implements Serializable{
               return (LcCadenaItems) query.getSingleResult();
           }
           return null;
+    }
+
+    public List<LcCadenaItems> filtrados(String codigoCadena, CadenaItemFilter cadenaItemFilter) {
+        Session session = manager.unwrap(Session.class);
+        Criteria criteria = session.createCriteria(LcCadenaItems.class);
+
+        criteria.add(Restrictions.eq("fkCodigoCadena", codigoCadena));
+
+        if (StringUtils.isNotBlank(cadenaItemFilter.getCodigoItemCadena())) {
+            criteria.add(Restrictions.ilike("codigoItem", cadenaItemFilter.getCodigoItemCadena(), MatchMode.ANYWHERE));
+        }
+
+        if (StringUtils.isNotBlank(cadenaItemFilter.getDescripcionItemCadena())) {
+            criteria.add(Restrictions.ilike("descripcionCadena", cadenaItemFilter.getDescripcionItemCadena(), MatchMode.ANYWHERE));
+        }
+
+        if (StringUtils.isNotBlank(cadenaItemFilter.getCodigoAlpha())) {
+            criteria.add(Restrictions.ilike("fkCodigoAlph", cadenaItemFilter.getCodigoAlpha(), MatchMode.ANYWHERE));
+        }
+
+        if (StringUtils.isNotBlank(cadenaItemFilter.getDescripcionAlpha())) {
+            criteria.add(Restrictions.ilike("descripcionAlph", cadenaItemFilter.getDescripcionItemCadena(), MatchMode.ANYWHERE));
+        }
+
+        return criteria.addOrder(Order.asc("codigoItem")).list();
     }
 }
