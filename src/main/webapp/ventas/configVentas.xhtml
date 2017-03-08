@@ -11,17 +11,8 @@
         <h:form id="form-Config-Ventas">
 
         <p:messages id="messagesConfigVentas" showDetail="true" autoUpdate="true" closable="true" />
-            <h:panelGrid columns="1" cellpadding="2">
-                <p:commandButton value="Crear cadena"  icon="fa fa-link" process="@this, cmb-cfgventas-cadenas"
-                                 update="frm-dialog-crearCadena"
-                                 oncomplete="PF('ventasCrearCadenaDialogWidget').show()">
 
-                    <f:setPropertyActionListener value="#{configuracionVentasBean.cadenaSelected}"
-                                                 target="#{configuracionVentasBean.cadenaNew}" />
-                </p:commandButton>
-            </h:panelGrid>
-
-            <h:panelGrid columns="4" cellpadding="2">
+                <h:panelGrid columns="4" cellpadding="2">
                 <p:selectOneMenu
                         id="cmb-cfgventas-cadenas"
                         value="#{configuracionVentasBean.cadenaSelected}"
@@ -45,6 +36,28 @@
                               update="table-cadenas-items-alpha"/>
                 </h:panelGrid>
 
+
+            <p:toolbar style="margin-top: 20px">
+            <p:toolbarGroup>
+
+            <p:commandButton value="Crear cadena"  icon="fa fa-link" process="@this, cmb-cfgventas-cadenas"
+                             update="frm-dialog-crearCadena"
+                             oncomplete="PF('ventasCrearCadenaDialogWidget').show()">
+
+                <f:setPropertyActionListener value="#{configuracionVentasBean.cadenaSelected}"
+                                             target="#{configuracionVentasBean.cadenaNew}" />
+            </p:commandButton>
+
+            <p:commandButton value="Descargar Plantilla" icon="fa fa-file-text-o" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);"  >
+                <p:fileDownload value="#{configuracionVentasBean.file}" />
+            </p:commandButton>
+
+            <p:commandButton icon="fa fa-question" type="button" value="Ayuda Plantilla"
+                             onclick="PF('cadenaExcelAyuda-Widget').show()" />
+
+            </p:toolbarGroup>
+            </p:toolbar>
+
             <p:accordionPanel activeIndex="1" >
                 <p:tab title="Busqueda">
             <p:panelGrid columns="2" id="panel-filtro-confVentas" style="width: 100%; margin-top: 20px"
@@ -67,9 +80,10 @@
 
             <p:toolbar style="margin-top: 20px">
                 <p:toolbarGroup>
-                    <p:commandButton value="Buscar" action="#{configuracionVentasBean.buscar}"
+                <p:commandButton value="Buscar" action="#{configuracionVentasBean.buscar}"
                                      update="@form" />
                 </p:toolbarGroup>
+
                 <p:toolbarGroup align="right">
 
                     <p:commandButton value="Nuevo Item" icon="fa fa-plus"
@@ -82,6 +96,8 @@
                     </p:commandButton>
                 </p:toolbarGroup>
             </p:toolbar>
+            <p:spacer />
+
             <p:dataTable
                     id="table-cadenas-items-alpha"
                     editable="true"
@@ -164,8 +180,28 @@
                 </div>
             </p:confirmDialog>
 
+            <p:dialog  modal="true" widgetVar="cadenaExcelAyuda-Widget" header="Ayuda Excel"
+                      resizable="false" style="min-width: 50px" responsive="true" closable="true">
+                <p:graphicImage value="/resources/images/AyudaPlantillaCadenaVentas.png" />
+            </p:dialog>
+
+            <p:dialog modal="true" widgetVar="statusDialog-ConfigVentas" header="Status" draggable="false" closable="false">
+                <p:graphicImage value="/resources/images/loading.gif" />
+            </p:dialog>
+
         </h:form>
+
+
         <ui:include src="/WEB-INF/dialog/ventas/creaCadenaDialog.xhtml" />
         <ui:include src="/WEB-INF/dialog/ventas/creaItemCadenaDialog.xhtml" />
+        <script type="text/javascript">
+            function start() {
+                PF('statusDialog-ConfigVentas').show();
+            }
+
+            function stop() {
+                PF('statusDialog-ConfigVentas').hide();
+            }
+        </script>
     </ui:define>
 </ui:composition>

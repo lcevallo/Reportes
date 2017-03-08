@@ -6,6 +6,7 @@
 package com.alphacell.controller.ventas;
 
 
+import java.io.InputStream;
 import java.io.Serializable;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -17,6 +18,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.annotation.PostConstruct;
 import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.faces.event.AjaxBehaviorEvent;
 import javax.faces.event.ValueChangeEvent;
@@ -30,6 +32,8 @@ import org.primefaces.component.datatable.DataTable;
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.CellEditEvent;
 import org.primefaces.event.FileUploadEvent;
+import org.primefaces.model.DefaultStreamedContent;
+import org.primefaces.model.StreamedContent;
 import org.primefaces.model.UploadedFile;
 
 import com.alphacell.model.ventas.LcCadenaAlph;
@@ -71,6 +75,8 @@ public class ConfiguracionVentasBean implements Serializable{
     private List<LcCadenaItemsXLS> cmbListItemERP;
     private LcCadenaItemsXLS listaItemXLSselected;
 
+    private StreamedContent file;
+
     @Inject
     private ConfigRepository configRepository;
 
@@ -83,6 +89,10 @@ public class ConfiguracionVentasBean implements Serializable{
     @PostConstruct
     public void init()
     {
+        InputStream stream= FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream("/resources/media/TemplateItemsCadena.xlsx");
+        file= new DefaultStreamedContent(stream,"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet","TemplateItemsCadena.xlsx");
+
+
         this.cadenaItemFilter= new CadenaItemFilter();
 
         this.cargarCadenas();
@@ -97,7 +107,11 @@ public class ConfiguracionVentasBean implements Serializable{
         this.cadenaItemsNew.setLcCadenaItemsPK(new LcCadenaItemsPK("",this.cadenaSelected.getCodigoCadena()));
     }
 
-    public void buscar(){this.tableCadenaItems=configRepository.filtrados(this.cadenaSelected.getCodigoCadena(),this.cadenaItemFilter);}
+    public void buscar(){
+        this.tableCadenaItems=configRepository.filtrados(this.cadenaSelected.getCodigoCadena(),this.cadenaItemFilter);
+        AtomicInteger atomicInteger = new AtomicInteger(0);
+        tableCadenaItems.forEach(obj->obj.setRowkey(atomicInteger.getAndIncrement()));
+    }
 
     public void cargarItemsERP()
     {
@@ -143,6 +157,8 @@ public class ConfiguracionVentasBean implements Serializable{
     {
         this.cmbCadenaAlph=this.configRepository.getAllCadenas();
     }
+
+    
 
     //Metodo para subir archivo de excel
     public void upload(FileUploadEvent event) {
@@ -359,4 +375,12 @@ public class ConfiguracionVentasBean implements Serializable{
 		this.cadenaItemFilter = cadenaItemFilter;
 	}
 
+
+    public StreamedContent getFile() {
+        return file;
+    }
+
+    public void setFile(StreamedContent file) {
+        this.file = file;
+    }
 }

@@ -112,16 +112,18 @@ public class ConfigRepository implements Serializable{
 
     public List<LcCadenaItems> filtrados(String codigoCadena, CadenaItemFilter cadenaItemFilter) {
         Session session = manager.unwrap(Session.class);
+
         Criteria criteria = session.createCriteria(LcCadenaItems.class);
 
-        criteria.add(Restrictions.eq("fkCodigoCadena", codigoCadena));
+
+        criteria.add(Restrictions.eq("lcCadenaItemsPK.fkCodigoCadena", codigoCadena));
 
         if (StringUtils.isNotBlank(cadenaItemFilter.getCodigoItemCadena())) {
-            criteria.add(Restrictions.ilike("codigoItem", cadenaItemFilter.getCodigoItemCadena(), MatchMode.ANYWHERE));
+            criteria.add(Restrictions.ilike("lcCadenaItemsPK.codigoItem", cadenaItemFilter.getCodigoItemCadena(), MatchMode.ANYWHERE));
         }
 
         if (StringUtils.isNotBlank(cadenaItemFilter.getDescripcionItemCadena())) {
-            criteria.add(Restrictions.ilike("descripcionCadena", cadenaItemFilter.getDescripcionItemCadena(), MatchMode.ANYWHERE));
+            criteria.add(Restrictions.like("descripcionCadena", "%"+cadenaItemFilter.getDescripcionItemCadena()+"%"));
         }
 
         if (StringUtils.isNotBlank(cadenaItemFilter.getCodigoAlpha())) {
@@ -129,9 +131,9 @@ public class ConfigRepository implements Serializable{
         }
 
         if (StringUtils.isNotBlank(cadenaItemFilter.getDescripcionAlpha())) {
-            criteria.add(Restrictions.ilike("descripcionAlph", cadenaItemFilter.getDescripcionItemCadena(), MatchMode.ANYWHERE));
+            criteria.add(Restrictions.like("descripcionAlph", "%"+cadenaItemFilter.getDescripcionItemCadena()+"%"));
         }
 
-        return criteria.addOrder(Order.asc("codigoItem")).list();
+        return criteria.addOrder(Order.asc("lcCadenaItemsPK.codigoItem")).list();
     }
 }
