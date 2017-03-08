@@ -24,7 +24,7 @@
                                    itemValue="#{cadena}" itemLabel="#{cadena.nombre}" />
                 </p:selectOneMenu>
                 <p:spacer />
-                <p:fileUpload label="excel crear items cadenas"
+                <p:fileUpload label="Cargar excel"
                               fileUploadListener="#{configuracionVentasBean.upload}"
                               sizeLimit="52428800" auto="true"
                               mode="advanced"
@@ -58,6 +58,8 @@
             </p:toolbarGroup>
             </p:toolbar>
 
+            <p:separator/>
+
             <p:accordionPanel activeIndex="1" >
                 <p:tab title="Busqueda">
             <p:panelGrid columns="2" id="panel-filtro-confVentas" style="width: 100%; margin-top: 20px"
@@ -85,6 +87,11 @@
                 </p:toolbarGroup>
 
                 <p:toolbarGroup align="right">
+
+                    <p:commandButton icon="fa fa-file-excel-o" value="Excel"  ajax="false"   >
+                        <p:dataExporter type="xls" target="table-cadenas-items-alpha" postProcessor="#{configuracionVentasBean.postProcessXLS}" fileName="cadenaItem" />
+                    </p:commandButton>
+
 
                     <p:commandButton value="Nuevo Item" icon="fa fa-plus"
                                      id="btn-cfgventas-newItem"

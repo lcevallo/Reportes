@@ -63,7 +63,7 @@
         <p:outputPanel>
 <h:form>
             <p:megaMenu orientation="horizontal" style="margin-top:20px">
-                <p:submenu label="Financiero" icon="ui-icon-check">
+                <p:submenu label="Financiero" icon="fa fa-area-chart">
                     <p:column>
                         <p:submenu label="Reporte Financiero">
                             <p:menuitem value="Ventas" url="/financiero/reporteVentas.jsf" />
@@ -75,7 +75,7 @@
                         </p:submenu>
                     </p:column>
                 </p:submenu>
-                <p:submenu label="Cartera" icon="ui-icon-check">
+                <p:submenu label="Cartera" icon="fa fa-credit-card">
                     <p:column>
                         <p:submenu label="Reporte Cartera">
                             <p:menuitem value="Saldos Iniciales" url="/cartera/SaldosIniciales.jsf" />
@@ -90,11 +90,18 @@
                         </p:submenu>
                     </p:column>
                 </p:submenu>
-                <p:submenu label="Logistica" icon="ui-icon-document">
+                <p:submenu label="Ventas" icon="fa fa-money">
                     <p:column>
-                        <p:submenu label="Logistica">
-                            <p:menuitem value="Rotacion Inventario" url="/logistica/rotacionInventario.jsf" />
+                        <p:submenu label="Reporte y Config Ventas">
+                            <p:menuitem value="Cargar Cadena Item" url="/ventas/configVentas.jsf" />
+                        </p:submenu>
+                    </p:column>
+                </p:submenu>
 
+                <p:submenu label="Logistica" icon="fa fa-ship">
+                    <p:column>
+                        <p:submenu label="Reportes de Logistica">
+                            <p:menuitem value="Rotacion Inventario" url="/logistica/rotacionInventario.jsf" />
                         </p:submenu>
                     </p:column>
                 </p:submenu>

@@ -13,6 +13,7 @@ import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -46,6 +47,7 @@ import com.alphacell.services.ventas.ServiceConfigVentas;
 import com.alphacell.util.file.ExcelHelper;
 import com.alphacell.util.jpa.filter.CadenaItemFilter;
 import com.alphacell.util.jsf.FacesMessages;
+import com.alphacell.util.jsf.FormatoExcelPoi;
 
 
 /**
@@ -113,6 +115,22 @@ public class ConfiguracionVentasBean implements Serializable{
         tableCadenaItems.forEach(obj->obj.setRowkey(atomicInteger.getAndIncrement()));
     }
 
+    public void postProcessXLS(Object document)
+    {
+        HashSet omitirColumnas = new HashSet();
+
+        //add elements to HashSet object
+        omitirColumnas.add(new Integer("1"));
+        omitirColumnas.add(new Integer("2"));
+        omitirColumnas.add(new Integer("3"));
+        omitirColumnas.add(new Integer("4"));
+        //omitirColumnas.add(new Integer("5"));
+
+
+
+        FormatoExcelPoi.formatearArchivoExcel(document,omitirColumnas,0);
+    }
+
     public void cargarItemsERP()
     {
         this.cmbListItemERP=configRepository.getAllItemsERP();
@@ -131,10 +149,13 @@ public class ConfiguracionVentasBean implements Serializable{
 
     public void handleCadenaChange(AjaxBehaviorEvent event)
     {
+
+        this.tableCadenaItems.clear();
+
         if(cadenaSelected!=null)
         this.cadenaNew= this.cadenaSelected;
 
-        this.tableCadenaItems.clear();
+
         this.tableCadenaItems= this.configRepository.traerPorCadena(this.cadenaSelected.getCodigoCadena());
         AtomicInteger atomicInteger = new AtomicInteger(0);
         tableCadenaItems.forEach(obj->obj.setRowkey(atomicInteger.getAndIncrement()));

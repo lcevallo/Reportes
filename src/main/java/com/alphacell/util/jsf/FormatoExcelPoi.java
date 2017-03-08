@@ -9,10 +9,7 @@ import java.util.HashSet;
 import java.util.Locale;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.hssf.usermodel.HSSFCellStyle;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.hssf.usermodel.*;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 
@@ -83,6 +80,12 @@ public class FormatoExcelPoi {
 				if (strVal.isEmpty() || strVal == null )
 					continue;
 
+				if(strVal.contains("org.primefaces.component.commandbutton.CommandButton"))
+				{
+					row.removeCell(cell);
+					continue;
+				}
+
 
 
 				cell.setCellType(HSSFCell.CELL_TYPE_BLANK);
@@ -141,6 +144,8 @@ public class FormatoExcelPoi {
 
 			}
 		}
+
+
 
 	}
 }
