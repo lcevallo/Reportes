@@ -6,7 +6,6 @@
 package com.alphacell.model.ventas;
 
 import java.io.Serializable;
-
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -20,9 +19,7 @@ import javax.validation.constraints.Size;
 @Embeddable
 public class LcCadenaItemsPK implements Serializable {
 
-   
-	private static final long serialVersionUID = 1L;
-	@Basic(optional = false)
+    @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 60)
     @Column(name = "codigo_item")

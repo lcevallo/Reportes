@@ -30,8 +30,11 @@
     <class>com.alphacell.model.cartera.TmpCxcVyv</class>
     <class>com.alphacell.model.cartera.LcVistaChequesPostfechados</class>
     <class>com.alphacell.model.logistica.VistaLogiIndicemensualinventario</class>
-    <class>com.alphacell.model.ventas.LcCadenaItems</class>
     <class>com.alphacell.model.ventas.LcCadenaAlph</class>
+    <class>com.alphacell.model.logistica.LcVistaListaInventarios</class>
+    <class>com.alphacell.model.ventas.LcCadenaItemRErp</class>
+    <class>com.alphacell.model.ventas.LcCadenaItems</class>
+    <class>com.alphacell.model.ventas.LcVistaExcelVentasInicial</class>
     <properties>
       <!-- <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://localhost\MSSQLSERVER:1433;databaseName=Produccion" /> -->
       <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://192.168.10.21\MSSQLSERVER:1433;databaseName=Produccion"/>

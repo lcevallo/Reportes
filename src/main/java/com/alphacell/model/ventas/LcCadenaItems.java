@@ -8,35 +8,23 @@ package com.alphacell.model.ventas;
 import com.alphacell.model.xls.LcCadenaItemsXLS;
 import org.apache.commons.lang3.StringUtils;
 
+import java.io.Serializable;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import java.io.Serializable;
 
 /**
  *
  * @author luis.cevallos
  */
 @Entity
-@Table(name = "LC_CADENA_ITEMS")
+@Table(name = "LC_CADENA_ITEMS", schema = "dbo", catalog = "Produccion")
 @XmlRootElement
-@NamedStoredProcedureQueries({
-        @NamedStoredProcedureQuery(name = "LcCadenaItems.sp_guardar_cadenaitem",procedureName = "dbo.LC_GUARDAR_CADENAITEM",
-                                                            resultClasses =LcCadenaItems.class,
-                                                            parameters = {
-                                                                @StoredProcedureParameter(mode = ParameterMode.IN,type = String.class,name ="codigo_cadena" ),
-                                                                @StoredProcedureParameter(mode = ParameterMode.IN,type = String.class,name ="fk_codigo_cadena" ),
-                                                                @StoredProcedureParameter(mode = ParameterMode.IN,type = String.class,name ="descripcion_cadena" ),
-                                                                @StoredProcedureParameter(mode = ParameterMode.IN,type = String.class,name ="codigo_item_alph" ),
-                                                                @StoredProcedureParameter(mode = ParameterMode.IN,type = String.class,name ="descripcion_item_alph" )
-                                                            }
-                                   )
-})
 @NamedQueries({
     @NamedQuery(name = "LcCadenaItems.findAll", query = "SELECT l FROM LcCadenaItems l"),
-    @NamedQuery(name = "LcCadenaItems.findByCodigoItem", query = "SELECT l FROM LcCadenaItems l WHERE l.lcCadenaItemsPK.codigoItem = :codigoItem and l.lcCadenaItemsPK.fkCodigoCadena = :fkCodigoCadena"),
+    @NamedQuery(name = "LcCadenaItems.findByCodigoItem", query = "SELECT l FROM LcCadenaItems l WHERE l.lcCadenaItemsPK.codigoItem = :codigoItem"),
     @NamedQuery(name = "LcCadenaItems.findByFkCodigoCadena", query = "SELECT l FROM LcCadenaItems l WHERE l.lcCadenaItemsPK.fkCodigoCadena = :fkCodigoCadena"),
-    @NamedQuery(name = "LcCadenaItems.findByFkCodigoAlph", query = "SELECT l FROM LcCadenaItems l WHERE l.fkCodigoAlph = :fkCodigoAlph")})
+    @NamedQuery(name = "LcCadenaItems.findByMarca", query = "SELECT l FROM LcCadenaItems l WHERE l.marca = :marca")})
 public class LcCadenaItems implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -46,23 +34,14 @@ public class LcCadenaItems implements Serializable {
     @Size(max = 2147483647)
     @Column(name = "descripcion_cadena")
     private String descripcionCadena;
-    @Size(max = 60)
-    @Column(name = "fk_codigo_alph")
-    private String fkCodigoAlph;
-    @Lob
-    @Size(max = 2147483647)
-    @Column(name = "descripcion_alph")
-    private String descripcionAlph;
+    @Size(max = 70)
+    @Column(name = "marca")
+    private String marca;
 
     @Transient
     private Integer rowkey;
 
-    @Transient
-    private LcCadenaItemsXLS lcCadenaItemsXLS;
-
-
     public LcCadenaItems() {
-        this.lcCadenaItemsXLS= new LcCadenaItemsXLS();
     }
 
     public LcCadenaItems(LcCadenaItemsPK lcCadenaItemsPK) {
@@ -80,22 +59,14 @@ public class LcCadenaItems implements Serializable {
     public void setRowkey(Integer rowkey) {
         this.rowkey = rowkey;
 
-        if( StringUtils.isNotBlank(this.getFkCodigoAlph()))
-        {
-            this.lcCadenaItemsXLS.setCodigo(this.getFkCodigoAlph());
-            this.lcCadenaItemsXLS.setDescripcion(this.getDescripcionAlph());
-        }
-
     }
 
     public LcCadenaItemsPK getLcCadenaItemsPK() {
-
         return lcCadenaItemsPK;
     }
 
     public void setLcCadenaItemsPK(LcCadenaItemsPK lcCadenaItemsPK) {
         this.lcCadenaItemsPK = lcCadenaItemsPK;
-
     }
 
     public String getDescripcionCadena() {
@@ -106,21 +77,15 @@ public class LcCadenaItems implements Serializable {
         this.descripcionCadena = descripcionCadena;
     }
 
-    public String getFkCodigoAlph() {
-        return fkCodigoAlph;
+    public String getMarca() {
+        return marca;
     }
 
-    public void setFkCodigoAlph(String fkCodigoAlph) {
-        this.fkCodigoAlph = fkCodigoAlph;
+    public void setMarca(String marca) {
+        this.marca = marca;
     }
 
-    public String getDescripcionAlph() {
-        return descripcionAlph;
-    }
 
-    public void setDescripcionAlph(String descripcionAlph) {
-        this.descripcionAlph = descripcionAlph;
-    }
 
     @Override
     public int hashCode() {
@@ -144,17 +109,8 @@ public class LcCadenaItems implements Serializable {
 
     @Override
     public String toString() {
-        return String.format("LcCadenaItems[%s,%s]",lcCadenaItemsPK.getCodigoItem(),lcCadenaItemsPK.getFkCodigoCadena());
         //return "com.alphacell.model.ventas.LcCadenaItems[ lcCadenaItemsPK=" + lcCadenaItemsPK + " ]";
+        return  String.format("LcCadenaItems[%s,%s]",lcCadenaItemsPK.getCodigoItem(),lcCadenaItemsPK.getFkCodigoCadena());
     }
-
-    public LcCadenaItemsXLS getLcCadenaItemsXLS() {
-        return lcCadenaItemsXLS;
-    }
-
-    public void setLcCadenaItemsXLS(LcCadenaItemsXLS lcCadenaItemsXLS) {
-        this.lcCadenaItemsXLS = lcCadenaItemsXLS;
-        this.setFkCodigoAlph(lcCadenaItemsXLS.getCodigo());
-        this.setDescripcionAlph(lcCadenaItemsXLS.getDescripcion());
-    }
+    
 }

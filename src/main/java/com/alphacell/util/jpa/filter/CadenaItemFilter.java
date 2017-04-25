@@ -17,6 +17,8 @@ public class CadenaItemFilter implements Serializable {
 	
 	private String descripcionAlpha;
 
+	private String marca;
+
 	public String getCodigoItemCadena() {
 		return codigoItemCadena;
 	}
@@ -48,8 +50,12 @@ public class CadenaItemFilter implements Serializable {
 	public void setDescripcionAlpha(String descripcionAlpha) {
 		this.descripcionAlpha = descripcionAlpha;
 	}
-	
-	
-	
-	
+
+	public String getMarca() {
+		return marca;
+	}
+
+	public void setMarca(String marca) {
+		this.marca = marca;
+	}
 }

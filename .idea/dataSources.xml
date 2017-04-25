@@ -7,5 +7,24 @@
       <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
       <jdbc-url>jdbc:sqlserver://192.168.10.21\MSSQLSERVER:1433;databaseName=Produccion</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="ReportesPU/Hibernate" uuid="cf38727e-1ada-4709-a79f-cc800cf05f1b">
+      <driver-ref>sqlserver.ms</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml</remarks>
+      <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
+      <jdbc-url>jdbc:sqlserver://192.168.10.21\MSSQLSERVER:1433;databaseName=Produccion</jdbc-url>
+      <libraries>
+        <library>
+          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/SQL Server/4.0.2206.100/sqlserver-win-auth.jar</url>
+        </library>
+        <library>
+          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/SQL Server/4.0.2206.100/sqljdbc4-4.0.2206.100.jar</url>
+        </library>
+        <library>
+          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/SQL Server/4.0.2206.100/sqlserver-driver-license.txt</url>
+        </library>
+      </libraries>
+    </data-source>
   </component>
 </project>

@@ -8,7 +8,18 @@
       </database-info>
       <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed" />
       <user-name>sa</user-name>
-      <user-password>df84df84df84dfebdfc6dfdadfc2dfcbdf84df98df9adf9bdf9f</user-password>
+      <introspection-schemas>Produccion:INFORMATION_SCHEMA,dbo,sys</introspection-schemas>
+    </data-source>
+    <data-source name="ReportesPU/Hibernate" uuid="cf38727e-1ada-4709-a79f-cc800cf05f1b">
+      <database-info product="Microsoft SQL Server" version="11.00.5613" jdbc-version="4.0" driver-name="Microsoft JDBC Driver 4.0 for SQL Server" driver-version="4.0.2206.100">
+        <extra-name-characters>$#@</extra-name-characters>
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed" />
+      <user-name>sa</user-name>
+      <introspection-schemas>Produccion:dbo</introspection-schemas>
+      <resolve-scope>Produccion:*</resolve-scope>
+      <unqualified-resolve-schemas>Produccion:*</unqualified-resolve-schemas>
     </data-source>
   </component>
 </project>

@@ -27,6 +27,7 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import com.alphacell.model.ventas.*;
 import org.apache.commons.lang3.StringUtils;
 import org.omnifaces.util.Ajax;
 import org.primefaces.component.datatable.DataTable;
@@ -37,9 +38,7 @@ import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
 import org.primefaces.model.UploadedFile;
 
-import com.alphacell.model.ventas.LcCadenaAlph;
-import com.alphacell.model.ventas.LcCadenaItems;
-import com.alphacell.model.ventas.LcCadenaItemsPK;
+import com.alphacell.model.xls.LCExcelVentas1;
 import com.alphacell.model.xls.LcCadenaItemsXLS;
 import com.alphacell.repository.ventas.ConfigRepository;
 import com.alphacell.services.NegocioException;
@@ -65,17 +64,20 @@ public class ConfiguracionVentasBean implements Serializable{
     private LcCadenaAlph cadenaSelected;
     private LcCadenaAlph cadenaNew= new LcCadenaAlph();
 
-    private List<LcCadenaItems> tableCadenaItems;
-    private List<LcCadenaItems> tableCadenaItemsFiltered;
-    private LcCadenaItems cadenaItemsSelected;
-    private LcCadenaItems cadenaItemsNew;
+
+    private List<LcVistaExcelVentasInicial> tableVistaExcelVentasIniciales;
+    private List<LcVistaExcelVentasInicial> tableVistaExcelVentasInicialesFiltered;
+    private LcVistaExcelVentasInicial lcVistaExcelVentasInicialSelected;
+    private LcVistaExcelVentasInicial lcVistaExcelVentasInicialNew;
 
     private CadenaItemFilter cadenaItemFilter;
 
 
-    private List<LcCadenaItemsXLS> tableListaCadenaItemsXlsx;
+    private List<LCExcelVentas1> tableListaCadenaItemsXlsx;
     private List<LcCadenaItemsXLS> cmbListItemERP;
     private LcCadenaItemsXLS listaItemXLSselected;
+
+    private LCExcelVentas1 listaLcExcelVentas1;
 
     private StreamedContent file;
 
@@ -91,44 +93,58 @@ public class ConfiguracionVentasBean implements Serializable{
     @PostConstruct
     public void init()
     {
-        InputStream stream= FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream("/resources/media/TemplateItemsCadena.xlsx");
+        InputStream stream= FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream("/resources/media/TemplateItemsCadenaAlpha.xlsx");
         file= new DefaultStreamedContent(stream,"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet","TemplateItemsCadena.xlsx");
 
 
         this.cadenaItemFilter= new CadenaItemFilter();
 
         this.cargarCadenas();
-        this.tableCadenaItems= new ArrayList<>();
+        this.tableVistaExcelVentasIniciales= new ArrayList<>();
+        this.tableVistaExcelVentasInicialesFiltered= new ArrayList<>();
+
         this.tableListaCadenaItemsXlsx= new ArrayList<>();
+        this.lcVistaExcelVentasInicialSelected= new LcVistaExcelVentasInicial();
+        this.lcVistaExcelVentasInicialNew= new LcVistaExcelVentasInicial();
+
         this.cargarItemsERP();
     }
 
     public void prepararNuevoItemCadena()
     {
+        /*
         this.cadenaItemsNew=new LcCadenaItems();
         this.cadenaItemsNew.setLcCadenaItemsPK(new LcCadenaItemsPK("",this.cadenaSelected.getCodigoCadena()));
+        */
+
     }
 
     public void buscar(){
+        //TODO: tengo que hacer el metodo buscar
+
+        this.tableVistaExcelVentasIniciales=configRepository.filtrados(this.cadenaSelected.getCodigoCadena(),this.cadenaItemFilter);
+
+        /*
         this.tableCadenaItems=configRepository.filtrados(this.cadenaSelected.getCodigoCadena(),this.cadenaItemFilter);
         AtomicInteger atomicInteger = new AtomicInteger(0);
         tableCadenaItems.forEach(obj->obj.setRowkey(atomicInteger.getAndIncrement()));
+        */
     }
 
     public void postProcessXLS(Object document)
     {
-        HashSet omitirColumnas = new HashSet();
+        
+    	HashSet omitirColumnas = new HashSet();
 
         //add elements to HashSet object
         omitirColumnas.add(new Integer("1"));
         omitirColumnas.add(new Integer("2"));
         omitirColumnas.add(new Integer("3"));
         omitirColumnas.add(new Integer("4"));
-        //omitirColumnas.add(new Integer("5"));
-
 
 
         FormatoExcelPoi.formatearArchivoExcel(document,omitirColumnas,0);
+        
     }
 
     public void cargarItemsERP()
@@ -138,27 +154,35 @@ public class ConfiguracionVentasBean implements Serializable{
 
     public void excluir() {
         try {
-            serviceConfigVentas.removerItemCadena(cadenaItemsSelected);
-            tableCadenaItems.remove(cadenaItemsSelected);
-            messages.info("Item: " + cadenaItemsSelected.getLcCadenaItemsPK().getCodigoItem()
+
+            serviceConfigVentas.removerItemCadenaItemVistaInicial(this.lcVistaExcelVentasInicialSelected);
+            tableVistaExcelVentasIniciales.remove(this.lcVistaExcelVentasInicialSelected);
+
+            messages.info("Item: " + this.lcVistaExcelVentasInicialSelected.getItemid()
                     + " eliminado con exito.");
+
         } catch (NegocioException ne) {
             messages.error(ne.getMessage());
         }
+
     }
 
     public void handleCadenaChange(AjaxBehaviorEvent event)
     {
 
-        this.tableCadenaItems.clear();
+        this.tableVistaExcelVentasIniciales.clear();
 
         if(cadenaSelected!=null)
         this.cadenaNew= this.cadenaSelected;
 
+       
+        this.tableVistaExcelVentasIniciales=  this.configRepository.getByCadena(this.cadenaSelected.getCodigoCadena());
 
+        /*
         this.tableCadenaItems= this.configRepository.traerPorCadena(this.cadenaSelected.getCodigoCadena());
         AtomicInteger atomicInteger = new AtomicInteger(0);
         tableCadenaItems.forEach(obj->obj.setRowkey(atomicInteger.getAndIncrement()));
+        */
     }
 
     public void prepararNuevaCadena(ActionEvent event) {
@@ -166,7 +190,7 @@ public class ConfiguracionVentasBean implements Serializable{
         if(cadenaSelected!=null)
         {
             cadenaNew = new LcCadenaAlph();
-            cadenaNew = this.configRepository.getByCodigo(cadenaSelected.getCodigoCadena());
+            cadenaNew = this.configRepository.getByCadenaCodigo(cadenaSelected.getCodigoCadena());
         }
         else
         {
@@ -179,7 +203,6 @@ public class ConfiguracionVentasBean implements Serializable{
         this.cmbCadenaAlph=this.configRepository.getAllCadenas();
     }
 
-    
 
     //Metodo para subir archivo de excel
     public void upload(FileUploadEvent event) {
@@ -190,7 +213,6 @@ public class ConfiguracionVentasBean implements Serializable{
             return;
         }
 
-
         if(file != null) {
         try {
             Path archivoTemporal = Files.createTempFile(null, null);
@@ -198,28 +220,21 @@ public class ConfiguracionVentasBean implements Serializable{
             String rutaArchivoExcel=archivoTemporal.toString();
 
             ExcelHelper excelHelper= new ExcelHelper(rutaArchivoExcel);
-            //Primero voy a llenar una lista con la informacion que me viene del excel
 
-           //tableCadenaItems= excelHelper.readData("com.alphacell",LcCadenaItems.class.getSimpleName());
-            this.tableListaCadenaItemsXlsx= excelHelper.readData("com.alphacell.model.xls.",LcCadenaItemsXLS.class.getName());
+            this.tableListaCadenaItemsXlsx= excelHelper.readData("com.alphacell.model.xls.",LCExcelVentas1.class.getName());
+
             //Luego con esa lista hago una subida de informacion de cada objeto
-            AtomicInteger atomicInteger = new AtomicInteger(0);
-
             this.tableListaCadenaItemsXlsx.forEach(obj->{
-                LcCadenaItems lcCadenaItemsLocal= new LcCadenaItems();
-                lcCadenaItemsLocal.setLcCadenaItemsPK(new LcCadenaItemsPK(obj.getCodigo(),this.cadenaSelected.getCodigoCadena()));
-                lcCadenaItemsLocal.setDescripcionCadena(obj.getDescripcion());
 
-                //TODO: Tengo que crear el itemLocal en la base y devolverlo como debe de ser con el trassient lcCadenaItemsXLS
-                lcCadenaItemsLocal=this.serviceConfigVentas.guardar(lcCadenaItemsLocal);
-                lcCadenaItemsLocal.setRowkey(atomicInteger.getAndIncrement());
-                if(StringUtils.isNotBlank(lcCadenaItemsLocal.getFkCodigoAlph()))
-                {
-                    lcCadenaItemsLocal.setLcCadenaItemsXLS(new LcCadenaItemsXLS(lcCadenaItemsLocal.getFkCodigoAlph(),lcCadenaItemsLocal.getDescripcionAlph()));
-                }
-                this.tableCadenaItems.add(lcCadenaItemsLocal);
+                LcVistaExcelVentasInicial lcVistaExcelVentasInicial= new LcVistaExcelVentasInicial(this.cadenaSelected.getCodigoCadena(),obj.getMarca(),obj.getModelo_unificado(),obj.getCod_alpha(),obj.getDescripcion_cadena());
+                this.configRepository.guardarSPExcelVentasR(lcVistaExcelVentasInicial);
+
             });
-            }
+
+            //Aqui debo de buscar en la Vista sobre
+            this.tableVistaExcelVentasIniciales=this.configRepository.getByCadena(this.cadenaSelected.getCodigoCadena());
+
+        }
         catch (Exception e) {
                 e.printStackTrace();
                 messages.error(e.getMessage());
@@ -230,11 +245,36 @@ public class ConfiguracionVentasBean implements Serializable{
         }//fin del if
     }
 
-   
+    private void guardarSinSp() {
+        AtomicInteger atomicInteger = new AtomicInteger(0);
+
+        this.tableListaCadenaItemsXlsx.forEach(obj->{
+
+            LcCadenaItemsPK pk_lcCadenaItems= new LcCadenaItemsPK(obj.getModelo_unificado(),this.cadenaSelected.getCodigoCadena());
+            LcCadenaItems lcCadenaItems= new LcCadenaItems(pk_lcCadenaItems);
+            lcCadenaItems.setDescripcionCadena(obj.getDescripcion_cadena());
+            lcCadenaItems.setMarca(obj.getMarca());
+
+            lcCadenaItems= this.serviceConfigVentas.salvarCadenaItem(lcCadenaItems);
+
+            if(lcCadenaItems!=null)
+            {
+                LcCadenaItemRErpPK lcCadenaItemRErpPK= new LcCadenaItemRErpPK(lcCadenaItems.getLcCadenaItemsPK().getCodigoItem(),lcCadenaItems.getLcCadenaItemsPK().getFkCodigoCadena(),obj.getCod_alpha());
+                LcCadenaItemRErp lcCadenaItemRErp= new LcCadenaItemRErp(lcCadenaItemRErpPK);
+                lcCadenaItemRErp= this.serviceConfigVentas.salvarLcCadenaItemRERP(lcCadenaItemRErp);
+
+            }//fin del bloque if
+            //this.tableCadenaItems.add(lcCadenaItemsLocal);
+        });
+    }
+
 
     public void changeDescripcionAlpha(ValueChangeEvent event)
     {
-        DataTable table1 = getParentDatatable((UIComponent) event.getSource());
+        //DataTable table1 = getParentDatatable((UIComponent) event.getSource());
+        //Esta es otra forma de obtener el datatable a partir del id
+        DataTable table1 = (DataTable) FacesContext.getCurrentInstance().getViewRoot().findComponent("form-Config-Ventas:table-cadenas-items-alpha");
+
         Object o = table1.getRowData();
 
 
@@ -242,6 +282,20 @@ public class ConfiguracionVentasBean implements Serializable{
 
         LcCadenaItemsXLS oldValue= (LcCadenaItemsXLS) event.getOldValue();
         LcCadenaItemsXLS newValue= (LcCadenaItemsXLS) event.getNewValue();
+
+        //TODO: Debo de arreglar este tema
+
+        LcVistaExcelVentasInicial lcVistaExcelVentasInicial= this.tableVistaExcelVentasIniciales.get(index);
+        lcVistaExcelVentasInicial.setLcCadenaItemsXLS(newValue);
+
+        lcVistaExcelVentasInicial.setCodigoItem(newValue.getCodigo());
+        lcVistaExcelVentasInicial.setName(newValue.getDescripcion());
+
+        Integer valor= this.configRepository.guardarSPExcelVentasR(lcVistaExcelVentasInicial);
+
+
+        messages.info("Se ha modificado el valor del item: "+oldValue.getDescripcion()+"  y se ha enlazado con el item ALPH: "+newValue.getDescripcion() );
+        /*
         LcCadenaItems lcCadenaItems= this.tableCadenaItems.get(index);
 
         lcCadenaItems.setLcCadenaItemsXLS(newValue);
@@ -249,10 +303,11 @@ public class ConfiguracionVentasBean implements Serializable{
         lcCadenaItems= this.serviceConfigVentas.guardar(lcCadenaItems);
         lcCadenaItems.setRowkey(index);
 
-
         messages.info("Se ha modificado el valor del item: "+lcCadenaItems.getDescripcionCadena()+"  y se ha enlazado con el item ALPH: "+newValue.getDescripcion() );
 
+*/
 
+        table1.reset();
         RequestContext.getCurrentInstance().update("form-Config-Ventas:table-cadenas-items-alpha");
         Ajax.update("form-Config-Ventas:table-cadenas-items-alpha");
 
@@ -303,12 +358,13 @@ public class ConfiguracionVentasBean implements Serializable{
     public void guardarItemCadena()
     {
 
+        /*
         String codigoItem= this.cadenaItemsNew.getLcCadenaItemsPK().getCodigoItem();
 
         //this.cadenaItemsNew.setLcCadenaItemsPK(new LcCadenaItemsPK(codigoItem,this.cadenaSelected.getCodigoCadena()));
 
         this.serviceConfigVentas.guardar(this.cadenaItemsNew);
-
+*/
         messages.info("Se ha creado un Item en la cadena!");
         this.cargarItemsERP();
         RequestContext.getCurrentInstance().update(Arrays.asList("form-Config-Ventas:table-cadenas-items-alpha","form-Config-Ventas:messagesConfigVentas"));
@@ -339,30 +395,45 @@ public class ConfiguracionVentasBean implements Serializable{
         this.cadenaNew = cadenaNew;
     }
 
-    public List<LcCadenaItems> getTableCadenaItems() {
-        return tableCadenaItems;
+    public List<LcVistaExcelVentasInicial> getTableVistaExcelVentasIniciales() {
+        return tableVistaExcelVentasIniciales;
     }
 
-    public void setTableCadenaItems(List<LcCadenaItems> tableCadenaItems) {
-        this.tableCadenaItems = tableCadenaItems;
+    public void setTableVistaExcelVentasIniciales(List<LcVistaExcelVentasInicial> tableVistaExcelVentasIniciales) {
+        this.tableVistaExcelVentasIniciales = tableVistaExcelVentasIniciales;
     }
 
-    public LcCadenaItems getCadenaItemsSelected() {
-        return cadenaItemsSelected;
+    public List<LcVistaExcelVentasInicial> getTableVistaExcelVentasInicialesFiltered() {
+        return tableVistaExcelVentasInicialesFiltered;
     }
 
-    public void setCadenaItemsSelected(LcCadenaItems cadenaItemsSelected) {
-        this.cadenaItemsSelected = cadenaItemsSelected;
+    public void setTableVistaExcelVentasInicialesFiltered(List<LcVistaExcelVentasInicial> tableVistaExcelVentasInicialesFiltered) {
+        this.tableVistaExcelVentasInicialesFiltered = tableVistaExcelVentasInicialesFiltered;
     }
 
-    public List<LcCadenaItems> getTableCadenaItemsFiltered() {
-        return tableCadenaItemsFiltered;
+    public LcVistaExcelVentasInicial getLcVistaExcelVentasInicialSelected() {
+        return lcVistaExcelVentasInicialSelected;
     }
 
-    public void setTableCadenaItemsFiltered(List<LcCadenaItems> tableCadenaItemsFiltered) {
-        this.tableCadenaItemsFiltered = tableCadenaItemsFiltered;
+    public void setLcVistaExcelVentasInicialSelected(LcVistaExcelVentasInicial lcVistaExcelVentasInicialSelected) {
+        this.lcVistaExcelVentasInicialSelected = lcVistaExcelVentasInicialSelected;
     }
 
+    public LcVistaExcelVentasInicial getLcVistaExcelVentasInicialNew() {
+        return lcVistaExcelVentasInicialNew;
+    }
+
+    public void setLcVistaExcelVentasInicialNew(LcVistaExcelVentasInicial lcVistaExcelVentasInicialNew) {
+        this.lcVistaExcelVentasInicialNew = lcVistaExcelVentasInicialNew;
+    }
+
+    public List<LCExcelVentas1> getTableListaCadenaItemsXlsx() {
+        return tableListaCadenaItemsXlsx;
+    }
+
+    public void setTableListaCadenaItemsXlsx(List<LCExcelVentas1> tableListaCadenaItemsXlsx) {
+        this.tableListaCadenaItemsXlsx = tableListaCadenaItemsXlsx;
+    }
 
     public List<LcCadenaItemsXLS> getCmbListItemERP() {
         return cmbListItemERP;
@@ -380,22 +451,21 @@ public class ConfiguracionVentasBean implements Serializable{
         this.listaItemXLSselected = listaItemXLSselected;
     }
 
-    public LcCadenaItems getCadenaItemsNew() {
-        return cadenaItemsNew;
+    public LCExcelVentas1 getListaLcExcelVentas1() {
+        return listaLcExcelVentas1;
     }
 
-    public void setCadenaItemsNew(LcCadenaItems cadenaItemsNew) {
-        this.cadenaItemsNew = cadenaItemsNew;
+    public void setListaLcExcelVentas1(LCExcelVentas1 listaLcExcelVentas1) {
+        this.listaLcExcelVentas1 = listaLcExcelVentas1;
     }
 
-	public CadenaItemFilter getCadenaItemFilter() {
+    public CadenaItemFilter getCadenaItemFilter() {
 		return cadenaItemFilter;
 	}
 
 	public void setCadenaItemFilter(CadenaItemFilter cadenaItemFilter) {
 		this.cadenaItemFilter = cadenaItemFilter;
 	}
-
 
     public StreamedContent getFile() {
         return file;
@@ -404,4 +474,5 @@ public class ConfiguracionVentasBean implements Serializable{
     public void setFile(StreamedContent file) {
         this.file = file;
     }
+
 }

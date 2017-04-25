@@ -32,7 +32,6 @@ public class LcCadenaItemsXLS {
     }
 
 
-
     @Override
     public String toString() {
         return  String.format("LcCadenaItemsXLS[%s,%s]",codigo,descripcion);

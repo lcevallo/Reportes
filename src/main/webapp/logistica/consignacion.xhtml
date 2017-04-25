@@ -1,0 +1,70 @@
+<ui:composition template="/WEB-INF/template/LayoutMaestro.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:o="http://omnifaces.org/ui"
+>
+    <ui:define name="titulo">Consignacion</ui:define>
+
+
+    <ui:define name="cuerpo">
+    <h:form id="frm-LOG-consignacion">
+    <p:messages id="message-log-consignacion"/>
+
+        <h:panelGrid columns="2" cellpadding="2">
+            <p:outputLabel value="Seleccione una bodega " for="cmb-log-consignacion-bodegas" />
+            <p:selectOneMenu
+                    id="cmb-log-consignacion-bodegas"
+                    value="#{consignacionBean.inventarioSelected}"
+                    converter="omnifaces.SelectItemsConverter"
+            >
+                <p:ajax event="change" listener="#{consignacionBean.handleInventarioChange}" update="" />
+                <f:selectItem itemLabel="Selecione un inventario" noSelectionOption="true"  />
+                <f:selectItems value="#{consignacionBean.cmbInventarios}" var="inventario"
+                               itemValue="#{inventario}" itemLabel="#{inventario.inventlocationid}" />
+            </p:selectOneMenu>
+
+        </h:panelGrid>
+
+        <p:tabView id="tab-consignaciones">
+
+
+        <p:tab title="Consignacion">
+
+        </p:tab>
+
+            <p:tab title="Disponibilidad">
+                <p:dataTable
+                        id="table-cadenas-items-alpha"
+                        editable="true"
+                        editMode="cell"
+                        value="#{configuracionVentasBean.tableCadenaItems}"
+                        selection="#{configuracionVentasBean.cadenaItemsSelected}"
+                        selectionMode="single"
+                        var="record_items_cadena"
+                        paginatorPosition="bottom"
+                        paginator="true"
+                        paginatorAlwaysVisible="false"
+                        rows="15"
+                        rowKey="#{record_items_cadena.rowkey}"
+                        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                        currentPageReportTemplate="Pagina: ({currentPage} de {totalPages})"
+                        rowsPerPageTemplate="5,15,25"
+                        emptyMessage="No existen datos para presentar"
+                >
+
+
+
+            </p:tab>
+
+        </p:tabView>
+
+
+
+    </h:form>
+    </ui:define>
+
+</ui:composition>
+

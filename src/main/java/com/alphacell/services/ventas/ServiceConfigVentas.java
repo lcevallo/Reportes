@@ -5,9 +5,11 @@ import java.io.Serializable;
 import javax.inject.Inject;
 
 import com.alphacell.model.ventas.LcCadenaAlph;
+import com.alphacell.model.ventas.LcCadenaItemRErp;
 import com.alphacell.model.ventas.LcCadenaItems;
-import com.alphacell.services.NegocioException;
+import com.alphacell.model.ventas.LcVistaExcelVentasInicial;
 import com.alphacell.repository.ventas.ConfigRepository;
+import com.alphacell.services.NegocioException;
 import com.alphacell.util.jpa.Transacional;
 
 public class ServiceConfigVentas implements Serializable {
@@ -18,18 +20,37 @@ public class ServiceConfigVentas implements Serializable {
     private ConfigRepository configRepository;
 
     @Transacional
-    public void salvarCadena(LcCadenaAlph lcCadenaAlph) {
-        configRepository.guardaCadena(lcCadenaAlph);
+    public LcCadenaAlph salvarCadena(LcCadenaAlph lcCadenaAlph) {
+       return  configRepository.guardaCadena(lcCadenaAlph);
+    }
+    
+    @Transacional
+    public LcCadenaItems salvarCadenaItem(LcCadenaItems lcCadenaItems) {
+       return  configRepository.guardaCadenaItems(lcCadenaItems);
+    }
+    
+    @Transacional
+    public LcCadenaItemRErp  salvarLcCadenaItemRERP(LcCadenaItemRErp lcCadenaItemRErp)
+    {
+       return configRepository.guardaRelacionCadenaItemERP(lcCadenaItemRErp);
+    }
+    
+    @Transacional
+    public void removerItemCadenaItemVistaInicial(LcVistaExcelVentasInicial lcVistaExcelVentasInicial) throws NegocioException
+    {
+        configRepository.removerCadenaItemVistaInicial(lcVistaExcelVentasInicial);
     }
 
     @Transacional
     public void removerItemCadena(LcCadenaItems cadenaItemsSelected) throws NegocioException {
-        configRepository.remover(cadenaItemsSelected);
+        configRepository.removerCadenaItem(cadenaItemsSelected);
     }
 
     @Transacional
-    public LcCadenaItems guardar(LcCadenaItems lcCadenaItems)
+    public Integer guardarSPExcelVentas(LcVistaExcelVentasInicial lcVistaExcelVentasInicial)
     {
-       return configRepository.guardarCadenaItem(lcCadenaItems);
+      return  configRepository.guardarSPExcelVentasR(lcVistaExcelVentasInicial);
     }
+
+   
 }
